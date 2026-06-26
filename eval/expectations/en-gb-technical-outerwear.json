@@ -1,0 +1,9 @@
+{
+  "expectedMatchIds": ["frag_001", "frag_002", "frag_003", "frag_005"],
+  "expectedGaps": [
+    { "topicLabel": "technical fabric performance specifications", "coverage": "partial" },
+    { "topicLabel": "sustainable material composition story", "coverage": "none" },
+    { "topicLabel": "care instructions extending technical performance", "coverage": "partial" },
+    { "topicLabel": "Brand guideline coverage: technical-precision", "coverage": "partial" }
+  ]
+}

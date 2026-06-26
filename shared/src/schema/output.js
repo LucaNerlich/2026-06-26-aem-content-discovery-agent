@@ -41,7 +41,7 @@ export const SectionUnion = z.discriminatedUnion("kind", [ReuseSection, NewSecti
 export const DraftOutline = z.object({
   title: z.string().min(1),
   pathHint: z.string(),
-  sections: z.array(SectionUnion),
+  sections: z.array(SectionUnion).min(1).max(8),
 });
 
 export const AgentOutput = z.object({

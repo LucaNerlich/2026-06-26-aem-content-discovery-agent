@@ -6,7 +6,7 @@ import {
   truncateHead,
 } from "./errors.js";
 
-const CHAT_TIMEOUT_MS = 60_000;
+const CHAT_TIMEOUT_MS = 120_000;
 
 function buildPromptHead(system, user) {
   return [system ? `system: ${system}` : null, `user: ${user}`].filter(Boolean).join(" | ");

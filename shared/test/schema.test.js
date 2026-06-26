@@ -130,6 +130,21 @@ test("StructuredBrief: missing audience fails with field name", () => {
   assert.ok(result.error.issues.some((i) => i.path.join(".") === "audience"));
 });
 
+test("StructuredBrief: rejects empty requiredTopics array", () => {
+  const result = StructuredBrief.safeParse({ ...validBrief, requiredTopics: [] });
+  assert.equal(result.success, false);
+  assert.ok(result.error.issues.some((i) => i.path.join(".") === "requiredTopics"));
+});
+
+test("StructuredBrief: rejects requiredTopics containing empty string", () => {
+  const result = StructuredBrief.safeParse({
+    ...validBrief,
+    requiredTopics: ["recycled materials", ""],
+  });
+  assert.equal(result.success, false);
+  assert.ok(result.error.issues.some((i) => i.path.join(".").startsWith("requiredTopics")));
+});
+
 test("MatchedFragment: rejects reason of 141 chars", () => {
   const result = MatchedFragment.safeParse({ ...validMatched, reason: "x".repeat(141) });
   assert.equal(result.success, false);
@@ -187,4 +202,26 @@ test("AgentOutput: rejects wrong schemaVersion", () => {
   const result = AgentOutput.safeParse({ ...validOutput, schemaVersion: "2.0" });
   assert.equal(result.success, false);
   assert.ok(result.error.issues.some((i) => i.path.join(".") === "schemaVersion"));
+});
+
+test("AgentOutput: rejects draftOutline with more than 8 sections", () => {
+  const nine = Array.from({ length: 9 }, () => validNewSection);
+  const result = AgentOutput.safeParse({
+    ...validOutput,
+    draftOutline: { ...validOutput.draftOutline, sections: nine },
+  });
+  assert.equal(result.success, false);
+  assert.ok(
+    result.error.issues.some((i) => i.path.join(".") === "draftOutline.sections"),
+    `expected an issue on draftOutline.sections; got ${JSON.stringify(result.error.issues)}`,
+  );
+});
+
+test("AgentOutput: rejects draftOutline with zero sections", () => {
+  const result = AgentOutput.safeParse({
+    ...validOutput,
+    draftOutline: { ...validOutput.draftOutline, sections: [] },
+  });
+  assert.equal(result.success, false);
+  assert.ok(result.error.issues.some((i) => i.path.join(".") === "draftOutline.sections"));
 });

@@ -6,10 +6,12 @@
     "aemdisc-agent": "src/cli.js"
   },
   "scripts": {
-    "start": "node src/cli.js"
+    "start": "node src/cli.js",
+    "test": "node --test --test-reporter spec 'test/**/*.test.js'"
   },
   "dependencies": {
     "@aemdisc/shared": "*",
-    "mri": "^1.2.0"
+    "mri": "^1.2.0",
+    "zod": "^3.25.76"
   }
 }
