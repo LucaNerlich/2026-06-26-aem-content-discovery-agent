@@ -7,5 +7,17 @@
         <include pattern="/content/dam/aemcontentdisc/jcr:content(/.*)?"/>
     </filter>
     <filter root="/content/dam/aemcontentdisc/asset.jpg" mode="merge"/>
+    <filter root="/content/dam/aemcontentdisc/en-gb" mode="merge">
+        <exclude pattern="/content/dam/aemcontentdisc/en-gb/.*"/>
+        <include pattern="/content/dam/aemcontentdisc/en-gb/jcr:content(/.*)?"/>
+    </filter>
+    <filter root="/content/dam/aemcontentdisc/fr-fr" mode="merge">
+        <exclude pattern="/content/dam/aemcontentdisc/fr-fr/.*"/>
+        <include pattern="/content/dam/aemcontentdisc/fr-fr/jcr:content(/.*)?"/>
+    </filter>
+    <filter root="/content/dam/aemcontentdisc/de-de" mode="merge">
+        <exclude pattern="/content/dam/aemcontentdisc/de-de/.*"/>
+        <include pattern="/content/dam/aemcontentdisc/de-de/jcr:content(/.*)?"/>
+    </filter>
     <filter root="/content/experience-fragments/aemcontentdisc" mode="merge"/>
 </workspaceFilter>

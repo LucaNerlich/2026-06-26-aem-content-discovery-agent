@@ -1,0 +1,20 @@
+{
+  "name": "@aemdisc/shared",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "test": "node --test --test-reporter spec 'test/**/*.test.js'"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.7.0",
+    "ofetch": "^1.4.1",
+    "pino": "^9.5.0",
+    "sqlite-vec": "^0.1.6",
+    "wink-bm25-text-search": "^3.1.2",
+    "zod": "^3.24.1"
+  }
+}

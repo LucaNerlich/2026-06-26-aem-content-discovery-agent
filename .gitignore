@@ -4,3 +4,6 @@ node_modules/
 *.jar
 /author
 /.idea
+shared/.cache/
+.DS_Store
+*.log

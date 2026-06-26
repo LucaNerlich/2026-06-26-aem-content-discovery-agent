@@ -1,0 +1,20 @@
+{
+  "name": "aem-content-discovery-agent",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "workspaces": [
+    "shared",
+    "content-seeder",
+    "discovery-agent"
+  ],
+  "scripts": {
+    "seed": "npm run -w content-seeder seed",
+    "agent": "npm run -w discovery-agent start",
+    "eval": "node eval/run.js",
+    "test": "node --test --test-reporter spec 'shared/test/**/*.test.js' 'content-seeder/test/**/*.test.js' 'discovery-agent/test/**/*.test.js'"
+  }
+}

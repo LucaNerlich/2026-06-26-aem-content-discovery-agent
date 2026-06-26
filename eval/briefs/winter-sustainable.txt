@@ -1,0 +1,1 @@
+I'm writing a landing page for our new sustainable winter collection. Target audience is eco-conscious women aged 25–40 in the UK market. The page needs to cover: our recycled materials sourcing story, care instructions that extend garment life, and seasonal styling tips. Tone should match our premium brand voice. The page will sit under `/en-gb/collections/winter-sustainable`.
