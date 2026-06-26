@@ -53,6 +53,8 @@ eval/
   Cosine uses `embeddinggemma:300m` so paraphrases are not penalised.
 - **aggregate** — unweighted mean of per-brief metrics over the 5 briefs.
 
+Briefs in `eval/briefs/` without a matching `eval/expectations/` file are skipped (with a `warn:` line on stderr) rather than aborting the run — additional alpha-runner briefs live alongside the eval set, but un-calibrated expectations would skew aggregate metrics.
+
 ## Per-brief scenarios
 
 | Brief | Locale (effective) | Why it's here |

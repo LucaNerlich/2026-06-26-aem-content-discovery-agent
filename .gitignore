@@ -7,3 +7,5 @@ node_modules/
 shared/.cache/
 .DS_Store
 *.log
+data/corpus.json
+data/embeddings.db
