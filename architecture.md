@@ -76,7 +76,7 @@ Three npm workspaces wired through the root `package.json`:
 ├── discovery-agent/       # `npm run agent` — CLI + 4-stage pipeline + Markdown renderer
 │   └── src/{cli.js, pipeline/, render/markdown.js}
 ├── eval/                  # `npm run eval` — F1 harness over hand-labelled briefs
-│   ├── briefs/            # 8 briefs spanning en-gb / fr-fr / de-de
+│   ├── briefs/            # 8 briefs spanning en-gb / en-us / fr-fr / de-de
 │   ├── expectations/      # gold fragment ids + gap topics
 │   └── run.js
 ├── config/models.json     # single source of truth for chat/embedding model selection
@@ -129,10 +129,12 @@ sequenceDiagram
     CLI-->>U: Markdown (default) or JSON (--json)
 ```
 
-Each stage lives in `discovery-agent/src/pipeline/`. Every LLM call is
-retried **once** on `OllamaJsonParseError` or `ZodError` with the previous
-error message glued onto the system prompt; a second failure throws and
-the CLI exits with code `1`.
+Each stage lives in `discovery-agent/src/pipeline/`. LLM calls in
+`analyseGaps` and `compose` are retried **once** on `OllamaJsonParseError`
+or `ZodError` with the previous error message glued onto the system
+prompt; a second failure throws and the CLI exits with code `1`.
+`parseBrief` retries **twice** on shape errors, each retry tightening
+the system prompt with the prior validation message before giving up.
 
 ### 1. parseBrief
 
@@ -159,9 +161,12 @@ Source: `discovery-agent/src/pipeline/retrieve.js`.
   (`en-*` for an `en-gb` brief) → all locales. Each fallback sets
   `retrievalResult.localeRelaxed`, which `analyseGaps` later surfaces as a
   structural gap.
-- For each `requiredTopic`: embed the topic, run a `sqlite-vec` k-NN search
-  against the locale-filtered ids, run a `wink-bm25-text-search` query
-  against the same set, min-max-normalise BM25 to `[0,1]`, then fuse.
+- For each `requiredTopic`: embed the topic, run a `sqlite-vec` cosine
+  scan (the SQL orders all stored vectors by distance; locale-id
+  filtering and the top-k cut are applied in-app as the result set is
+  read), run a `wink-bm25-text-search` query against the same locale
+  set, divide each BM25 score by the per-query max to scale to `[0,1]`,
+  then fuse.
 - Keep each fragment's best per-topic score (max-over-topics).
 - Split results into `matches` (top-k, default 3), `nearMisses` (the rest
   of the survivors), and `droppedByBrandFilter` (high-scoring fragments
@@ -255,10 +260,10 @@ invocation. The locked canonical corpus is produced by
 flowchart LR
     Topic["requiredTopic[i]"] --> Embed["embed(topic)<br/>768-d"]
     Topic --> BM25Q["BM25 query"]
-    Embed --> Vec["sqlite-vec<br/>k-NN over filterIds"]
+    Embed --> Vec["sqlite-vec scan<br/>(in-app filter + top-k)"]
     BM25Q --> Lex["wink-bm25-text-search"]
     Vec --> Cos["cosine in [0,1]"]
-    Lex --> Norm["min-max normalise to [0,1]"]
+    Lex --> Norm["divide by per-query max → [0,1]"]
     Cos --> Fuse["fused = 0.6·cosine<br/>+ 0.3·bm25<br/>+ 0.1·freshness"]
     Norm --> Fuse
     Fresh["freshness = clamp(1 − age_months/18, 0, 1)"] --> Fuse
@@ -434,7 +439,7 @@ npm run agent eval/briefs/winter-sustainable.txt -- --json # canonical AgentOutp
   ],
   "gaps": [
     { "topic": "seasonal styling tips", "coverage": "none", "description": "No candidate fragments address seasonal styling tips.", "partialMatches": [], "suggestedAction": "Write a 200-word en-gb seasonal-campaign fragment covering \"seasonal styling tips\", applying sustainability-voice and technical-precision." },
-    { "topic": "Brand guideline coverage: technical-precision", "coverage": "partial", "description": "No top match applies the `technical-precision` brand guideline required by the brief.", "partialMatches": ["frag_003", "frag_005"], "suggestedAction": "Add fragments tagged `technical-precision` (alongside sustainability-voice) for the en-gb corpus." }
+    { "topic": "Brand guideline coverage: technical-precision", "coverage": "partial", "description": "No top match applies the `technical-precision` brand guideline required by the brief.", "partialMatches": ["frag_003", "frag_005"], "suggestedAction": "Add fragments tagged `technical-precision` (alongside sustainability-voice) for the en-gb corpus so this brand voice is represented in the top matches." }
   ],
   "draftOutline": {
     "title": "Sustainable Winter Collection — UK Landing",

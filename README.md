@@ -55,7 +55,7 @@ npm run agent -- eval/briefs/winter-sustainable.txt --json
 ### 5 — Evaluate
 
 ```bash
-npm run eval    # precision@3 / recall@3 / gap-F1 across 5 briefs → eval/latest.json
+npm run eval    # precision@3 / recall@3 / gap-F1 across 8 briefs → eval/latest.json
 npm test        # unit tests across all workspaces
 ```
 
