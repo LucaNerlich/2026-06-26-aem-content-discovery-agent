@@ -86,9 +86,8 @@ Three npm workspaces wired through the root `package.json`:
 │   ├── corpus.json        # canonical content corpus (committed)
 │   └── embeddings.db      # sqlite-vec 768-d vectors (committed)
 ├── aemcontentdisc/        # AEM project: CF Model XML + Maven build (optional)
-├── docs/                  # architecture deep-dive, sample run, prompt-log
-├── why.md                 # append-only decision log
-└── prompt-log.md          # auto-appended runtime chat transcript
+└── docs/                  # architecture, sample run, prompt templates, decision log,
+                           # runtime prompt log, interview guide, augment history
 ```
 
 The split exists because the seeder and agent have different lifecycles
@@ -336,7 +335,7 @@ over its OpenAI-compatible HTTP API:
   `compose`, `seeder`) fall back to `chat.default`. Changing models is a
   config edit, not a code change.
 
-Defaults in `config/models.json` (see `why.md` for the picks):
+Defaults in `config/models.json` (see `docs/why.md` for the picks):
 
 | Stage | Model |
 |---|---|
@@ -377,16 +376,16 @@ implementations:
 `--source=aem` is the only switch that flips between them. The pipeline
 above the source is identical, which is why the AEM path is exercised by
 the same tests as the JSON path. The decision log entry "JSON-primary,
-AEM-optional" in `why.md` explains why JSON wins as the default.
+AEM-optional" in `docs/why.md` explains why JSON wins as the default.
 
 ## Prompt logging
 
 `shared/src/llm/prompt-log.js` appends a Markdown entry to
-`prompt-log.md` for **every** chat call — success or failure — with the
-model, system + user heads, response (or error class + message), and
-duration. `PROMPT_LOG_PATH` overrides the location. Together with `why.md`
-and the typed error taxonomy, this gives a complete audit trail for any
-agent run without enabling DEBUG-level logging.
+`docs/runtime-prompt-log.md` for **every** chat call — success or failure —
+with the model, system + user heads, response (or error class + message),
+and duration. `PROMPT_LOG_PATH` overrides the location. Together with
+`docs/why.md` and the typed error taxonomy, this gives a complete audit
+trail for any agent run without enabling DEBUG-level logging.
 
 ## Production note: Adobe MCP
 

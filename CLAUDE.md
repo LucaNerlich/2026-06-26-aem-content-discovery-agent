@@ -78,7 +78,7 @@ Two implementations behind the `FragmentSource` interface:
 
 ### LLM layer (`shared/src/llm/`)
 
-- `chat.js` — posts to the OpenAI-compatible `/v1/chat/completions` endpoint served by LM Studio. Strips `<think>...</think>` blocks. Every call (success or failure) is appended to `prompt-log.md`.
+- `chat.js` — posts to the OpenAI-compatible `/v1/chat/completions` endpoint served by LM Studio. Strips `<think>...</think>` blocks. Every call (success or failure) is appended to `docs/runtime-prompt-log.md` (override with `PROMPT_LOG_PATH`).
 - `embed.js` — posts to LM Studio's OpenAI-compatible `/v1/embeddings` endpoint.
 - `llm.js` — host resolution and shared `llmFetch` helper. The client talks to LM Studio at `http://localhost:1234` (override with `LLM_HOST`).
 - `errors.js` — 7 typed error classes (`LlmUnavailableError`, `LlmServerError`, `LlmTimeoutError`, `LlmModelNotFoundError`, `LlmJsonParseError`, `LlmContextOverflowError`, `LlmInvariantError`). Only `Unavailable` and `Server` are retried inside `llmFetch`. `JsonParseError` retry is the caller's responsibility (re-prompt with error context).
@@ -98,4 +98,4 @@ All stages produce / consume Zod-validated types from `shared/src/schema/`:
 
 ### Decision log
 
-`why.md` is append-only. Add a dated entry before finishing any non-trivial decision.
+`docs/why.md` is append-only. Add a dated entry before finishing any non-trivial decision.

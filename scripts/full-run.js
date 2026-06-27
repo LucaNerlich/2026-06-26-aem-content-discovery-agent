@@ -2,7 +2,7 @@
 // Full-run harness: drives the discovery agent against every brief in
 // eval/briefs/ and captures both the validated AgentOutput JSON and the
 // rendered Markdown for each into runs/full-run/. See Task 15 in the spec
-// and the "Why split into 15a/15b/15c" entry in why.md.
+// and the "Why split into 15a/15b/15c" entry in docs/why.md.
 import { readFile, writeFile, readdir, mkdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { resolve, join, basename, dirname } from "node:path";

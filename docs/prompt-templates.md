@@ -4,7 +4,7 @@ Verbatim system / user prompt templates used by every LLM call in the agent
 pipeline plus the seeder, with notes on the tuning iterations behind each one.
 
 For the auto-generated transcript of every actual chat call (model, duration,
-truncated prompt, truncated response) see the root [`prompt-log.md`](../prompt-log.md);
+truncated prompt, truncated response) see [`runtime-prompt-log.md`](runtime-prompt-log.md);
 it is appended to by `shared/src/llm/prompt-log.js` on every chat invocation.
 
 The agent calls one chat model and one embedding model:

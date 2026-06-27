@@ -1,10 +1,10 @@
 # Interview Walkthrough — AEM Content Discovery Agent
 
 Companion to the take-home submission. Cross-references the original brief
-([`AEM_Content_Discovery_Agent_Brief.pdf`](AEM_Content_Discovery_Agent_Brief.pdf)),
-the architecture overview ([`architecture.md`](architecture.md)), the
-decision log ([`why.md`](why.md)), and the evaluation harness output
-([`eval/latest.json`](eval/latest.json)).
+([`AEM_Content_Discovery_Agent_Brief.pdf`](../AEM_Content_Discovery_Agent_Brief.pdf)),
+the architecture overview ([`docs/architecture.md`](architecture.md)), the
+decision log ([`docs/why.md`](why.md)), and the evaluation harness output
+([`eval/latest.json`](../eval/latest.json)).
 
 ## 1. Two-minute opening pitch
 
@@ -21,11 +21,11 @@ Two architectural moves keep it reviewer-friendly and honest:
 1. **JSON-primary, AEM-optional.** `data/corpus.json` and `data/embeddings.db`
    are committed; the agent runs on a clean clone with no AEM SDK install.
    A live AEM Assets path still ships behind `--source=aem` to demonstrate
-   AEM depth ([`why.md` § JSON-primary, AEM-optional](why.md)).
+   AEM depth ([`docs/why.md` § JSON-primary, AEM-optional](why.md)).
 2. **Eval harness as the design contract.** `npm run eval` scores precision@3,
    recall@3, and a semantic gap-F1 across 8 hand-labelled briefs and exits
    non-zero below the 0.6 gap-F1 threshold. Latest aggregate: **gap-F1 ≈ 0.75**
-   (above the floor) on the locked seed ([`eval/latest.json`](eval/latest.json)).
+   (above the floor) on the locked seed ([`eval/latest.json`](../eval/latest.json)).
 
 ### Where the RAG happens
 
@@ -68,15 +68,15 @@ a bounded re-prompt on failure.
 |---|---|---|
 | Synthetic content library, 15–20 JSON fragments, locked schema (`id`, `title`, `category`, `targetAudience`, `brandGuidelinesApplied`, `locale`, `lastModified`, `content`) | `data/corpus.json` (seeded by `content-seeder/`); schema in `shared/src/schema/fragment.js`; CF Model XML in `aemcontentdisc/ui.content/` | Seeded with 40/locale × 3 locales = 120 fragments (above the 15–20 floor) to give meaningful retrieval signal. Same shape on both sides of the JSON ↔ AEM boundary. |
 | Runnable agent script — single command, prints all three outputs | `npm run agent -- eval/briefs/winter-sustainable.txt` (Markdown) and `… --json` (canonical `AgentOutput`); entry point `discovery-agent/src/cli.js` | No AEM dependency on the default path. |
-| Architecture doc — one page, justifies (a) embedding model, (b) chunking, (c) retrieval method, (d) why agentic | [`architecture.md`](architecture.md) at the repo root + deep-dive [`docs/architecture.md`](docs/architecture.md); rationale recorded per-decision in [`why.md`](why.md) | All four required questions answered with citations to source files. |
-| Prompt logs | [`prompt-log.md`](prompt-log.md) (auto-appended on every chat call) + curated templates in [`docs/prompt-log.md`](docs/prompt-log.md) | Every call — success or failure — is logged with `{ ts, model, ok, durationMs, system, user, response }` on success or `{ ts, model, ok, durationMs, system, user, errorClass, errorMessageHead }` on failure; `system`/`user`/`response`/`errorMessageHead` are truncated to 200 chars. |
-| Sample run for the example brief in the README | [`docs/sample-run.md`](docs/sample-run.md) — captured JSON + Markdown render | The brief is reproduced verbatim from the PDF (winter-sustainable). |
+| Architecture doc — one page, justifies (a) embedding model, (b) chunking, (c) retrieval method, (d) why agentic | [`docs/architecture.md`](architecture.md); rationale recorded per-decision in [`docs/why.md`](why.md) | All four required questions answered with citations to source files. |
+| Prompt logs | [`docs/runtime-prompt-log.md`](runtime-prompt-log.md) (auto-appended on every chat call) + curated templates in [`docs/prompt-templates.md`](prompt-templates.md) | Every call — success or failure — is logged with `{ ts, model, ok, durationMs, system, user, response }` on success or `{ ts, model, ok, durationMs, system, user, errorClass, errorMessageHead }` on failure; `system`/`user`/`response`/`errorMessageHead` are truncated to 200 chars. |
+| Sample run for the example brief in the README | [`docs/sample-run.md`](sample-run.md) — captured JSON + Markdown render | The brief is reproduced verbatim from the PDF (winter-sustainable). |
 | Three output blocks: top matches, gaps, outline | `shared/src/schema/output.js` — `AgentOutput` (`schemaVersion: "1.0"`, `matchedFragments[0..3]`, `gaps[]`, `draftOutline.sections[1..8]`) | Markdown renderer is a pure view over the same object — no parallel implementation. |
 | Submission: code + prompt logs + corpus JSON + README + arch doc | Repo root holds all of them; corpus is committed | A grader can clone and run without re-seeding. |
 
 ## 3. Core technical decisions (with the "why" in one line each)
 
-The full reasoning per decision lives in [`why.md`](why.md). Headline calls:
+The full reasoning per decision lives in [`docs/why.md`](why.md). Headline calls:
 
 - **JSON-primary, AEM-optional** — `data/corpus.json` is canonical; AEM is two
   opt-in flags (`seed --aem-push`, `agent --source=aem`). Keeps the agent
@@ -117,9 +117,9 @@ The full reasoning per decision lives in [`why.md`](why.md). Headline calls:
   `analyseGaps` and `compose` retry exactly once.
   Composer enforces orphan-id rejection via `superRefine` so reuse sections
   can only cite ids present in `matchedFragments`.
-- **Prompt logging = every call, success or failure** — `prompt-log.md` is
-  greppable, 200-char head truncation; curated templates in
-  `docs/prompt-log.md` capture the verbatim system/user prompts per stage.
+- **Prompt logging = every call, success or failure** — `docs/runtime-prompt-log.md`
+  is greppable, 200-char head truncation; curated templates in
+  `docs/prompt-templates.md` capture the verbatim system/user prompts per stage.
 - **Eval harness = offline F1 + non-zero exit on regression** — 8 briefs in
   `eval/briefs/`, gold labels in `eval/expectations/`, scores written to
   `eval/latest.json`. Exits non-zero below `EVAL_F1_THRESHOLD` (default 0.6).
@@ -154,7 +154,7 @@ npm run agent -- eval/briefs/winter-sustainable.txt --source=aem
 
 Talking points to hit as it runs:
 
-- Show `prompt-log.md` updating in real time — every chat call is logged.
+- Show `docs/runtime-prompt-log.md` updating in real time — every chat call is logged.
 - `eval/latest.json` headline numbers from the most recent run:
   precision@3 ≈ **0.42**, recall@3 ≈ **0.42**, gap-F1 ≈ **0.75** (above the
   0.6 floor). Per-brief breakdown is honest — `de-de-workwear-tech` and
@@ -162,8 +162,8 @@ Talking points to hit as it runs:
   still landing gap-F1 of 0.8 (`de-de-workwear-tech`) and a perfect 1.0
   (`fr-fr-loungewear-premium`), which is the trade-off the next round of
   corpus tuning would attack.
-- Open `architecture.md` — point to the four required-by-PDF justifications.
-- Open `why.md` — show that every non-trivial choice has a dated entry with
+- Open `docs/architecture.md` — point to the four required-by-PDF justifications.
+- Open `docs/why.md` — show that every non-trivial choice has a dated entry with
   alternatives considered and consequences.
 
 ## 5. Likely panel questions — concise answer bullets
@@ -176,7 +176,7 @@ Talking points to hit as it runs:
 **Why `sqlite-vec` and not Qdrant / pgvector / FAISS?**
 - Zero-server constraint, SQL-queryable for debugging, right-sized for the
   120-fragment corpus, and a credible path to ~10k via the same primitives.
-  Documented in [`why.md` § sqlite-vec for persistent vector storage](why.md).
+  Documented in [`docs/why.md` § sqlite-vec for persistent vector storage](why.md).
 
 **Why the `0.6 / 0.3 / 0.1` weights — were they tuned?**
 - Hand-picked from a defensible story (semantic dominates paraphrase, BM25
@@ -229,7 +229,7 @@ Talking points to hit as it runs:
 - **Gap-F1 reflects an LLM judge.** The harness greedy-matches expected and
   returned gap labels by cosine ≥ 0.5 plus `coverage` enum agreement.
   Different chat models drift on `partial` vs `none` — documented in
-  [`eval/README.md` § Model variance](eval/README.md).
+  [`eval/README.md` § Model variance](../eval/README.md).
 - **No learned retrieval weights.** Weights are constants; on a substantially
   different corpus character (long-form technical docs) they would need
   re-tuning. Would explore RRF + small held-out tuning set at scale.
@@ -238,7 +238,7 @@ Talking points to hit as it runs:
   revisiting at the hypothetical 40k+ scale.
 - **No incremental seeding.** Each `npm run seed` drops and recreates
   `data/embeddings.db`. Acceptable while the corpus is 120 rows; the cache
-  key `(id, lastModified, model)` is sketched in `why.md` and can be added
+  key `(id, lastModified, model)` is sketched in `docs/why.md` and can be added
   when the requirement appears.
 - **Markdown renderer is a single view.** A second view (HTML, JSON-LD,
   AEM CF authoring payload) would be straightforward — the `AgentOutput`
@@ -251,14 +251,13 @@ Talking points to hit as it runs:
 
 | File | What it is |
 |---|---|
-| [`AEM_Content_Discovery_Agent_Brief.pdf`](AEM_Content_Discovery_Agent_Brief.pdf) | Original take-home brief from Adobe. |
-| [`README.md`](README.md) | Setup, quickstart, run commands. |
-| [`architecture.md`](architecture.md) | One-page architecture overview at repo root. |
-| [`docs/architecture.md`](docs/architecture.md) | Deeper pipeline + schema reference. |
-| [`docs/sample-run.md`](docs/sample-run.md) | Real `--json` capture of the PDF's example brief + Markdown render. |
-| [`docs/prompt-log.md`](docs/prompt-log.md) | Verbatim system/user templates and tuning notes per stage. |
-| [`prompt-log.md`](prompt-log.md) | Auto-appended runtime chat transcript (every call). |
-| [`why.md`](why.md) | Append-only decision log. |
-| [`eval/README.md`](eval/README.md) | Eval harness design + metric definitions. |
-| [`eval/latest.json`](eval/latest.json) | Most recent run's metrics, per-brief. |
-| [`config/models.json`](config/models.json) | Single source of truth for chat + embedding model selection. |
+| [`AEM_Content_Discovery_Agent_Brief.pdf`](../AEM_Content_Discovery_Agent_Brief.pdf) | Original take-home brief from Adobe. |
+| [`README.md`](../README.md) | Setup, quickstart, run commands. |
+| [`docs/architecture.md`](architecture.md) | Pipeline + schema reference. |
+| [`docs/sample-run.md`](sample-run.md) | Real `--json` capture of the PDF's example brief + Markdown render. |
+| [`docs/prompt-templates.md`](prompt-templates.md) | Verbatim system/user templates and tuning notes per stage. |
+| [`docs/runtime-prompt-log.md`](runtime-prompt-log.md) | Auto-appended runtime chat transcript (every call). |
+| [`docs/why.md`](why.md) | Append-only decision log. |
+| [`eval/README.md`](../eval/README.md) | Eval harness design + metric definitions. |
+| [`eval/latest.json`](../eval/latest.json) | Most recent run's metrics, per-brief. |
+| [`config/models.json`](../config/models.json) | Single source of truth for chat + embedding model selection. |

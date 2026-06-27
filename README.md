@@ -3,7 +3,7 @@
 An Adobe AI Engineering interview deliverable: a Node CLI that ingests afree-form content brief, retrieves relevant
 fragments from a local corpus usinghybrid vector + BM25 search, asks a local LLM to judge content gaps, andreturns a
 strict three-block `AgentOutput` (top matches, gaps, draft outline). The original brief PDF lives at
-the[repo root](AEM_Content_Discovery_Agent_Brief.pdf); the decision log is in`why.md`.
+the[repo root](AEM_Content_Discovery_Agent_Brief.pdf); the decision log is in`docs/why.md`.
 
 ## How to Use
 
@@ -347,10 +347,13 @@ demonstrate the read/write round-trip without making AEM a prerequisite.
 ├── docs/
 │   ├── architecture.md           full pipeline + schema + Adobe MCP notes
 │   ├── sample-run.md             real end-to-end output for winter-sustainable.txt
-│   └── prompt-log.md             every system/user prompt template + tuning notes
+│   ├── prompt-templates.md       every system/user prompt template + tuning notes
+│   ├── runtime-prompt-log.md     auto-appended runtime chat transcript
+│   ├── why.md                    dated decision log (append-only)
+│   ├── interview-guide.md        interview walkthrough
+│   ├── augment-spec.md           append-only specification log
+│   └── pure-augment-log.md       append-only Augment Code session log
 ├── aemcontentdisc/               AEM project (CF Model, Maven build, optional)
-├── why.md                        dated decision log (append-only)
-├── prompt-log.md                 auto-appended runtime chat transcript
 └── AEM_Content_Discovery_Agent_Brief.pdf
 ```
 
@@ -370,7 +373,7 @@ demonstrate the read/write round-trip without making AEM a prerequisite.
 - **No linter, no formatter.** `node --check` only. Single-author 8h exercise;config files trade poorly against pipeline
   depth.
 
-The detailed rationale for every non-trivial choice is in`why.md`.
+The detailed rationale for every non-trivial choice is in`docs/why.md`.
 
 ## External documentation
 
