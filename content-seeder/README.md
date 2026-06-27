@@ -88,9 +88,9 @@ Key behaviours:
 
 ### `aem-push.js` (library module)
 
-`content-seeder/src/aem-push.js` exports helpers (`createOrUpdateFragment`, `deleteFragmentTree`) for
-pushing the generated corpus into AEM Author via the shared AEM client. It is **not** wired into the
-`seed` or `embed` CLIs; consume it programmatically from your own script.
+`content-seeder/src/aem-push.js` exports helpers (`pushFragments`, `resetLocales`, `validateCfModel`,
+`aemClient`) for pushing the generated corpus into AEM Author via the shared AEM client. It is **not**
+wired into the `seed` or `embed` CLIs; consume it programmatically from your own script.
 
 ## Input / output
 
