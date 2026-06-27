@@ -5,8 +5,8 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 import {
-  OllamaJsonParseError,
-  OllamaTimeoutError,
+  LlmJsonParseError,
+  LlmTimeoutError,
 } from "@aemdisc/shared";
 import { parseBrief } from "../src/pipeline/parseBrief.js";
 
@@ -91,8 +91,8 @@ test("parseBrief: retries once on ZodError (bad shape) then succeeds", async () 
   assert.match(chat.calls[1].system, /previous attempt failed validation/);
 });
 
-test("parseBrief: retries once on OllamaJsonParseError then succeeds", async () => {
-  const jsonErr = new OllamaJsonParseError("not valid JSON", {
+test("parseBrief: retries once on LlmJsonParseError then succeeds", async () => {
+  const jsonErr = new LlmJsonParseError("not valid JSON", {
     model: "gemma4:26b",
     responseHead: "not json {",
   });
@@ -124,11 +124,11 @@ test("parseBrief: hard fails after two bad-shape retries (three attempts total)"
 });
 
 test("parseBrief: non-shape errors propagate immediately without retry", async () => {
-  const timeoutErr = new OllamaTimeoutError("timed out", { model: "gemma4:26b" });
+  const timeoutErr = new LlmTimeoutError("timed out", { model: "gemma4:26b" });
   const chat = makeChat([timeoutErr, VALID]);
   await assert.rejects(
     () => parseBrief(BRIEF_TEXT, { chat }),
-    (err) => err instanceof OllamaTimeoutError,
+    (err) => err instanceof LlmTimeoutError,
   );
   assert.equal(chat.calls.length, 1, "must not retry on non-shape errors");
 });

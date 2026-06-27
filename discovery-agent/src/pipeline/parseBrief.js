@@ -1,7 +1,7 @@
 import {
   chat as defaultChat,
   getChatModel,
-  OllamaJsonParseError,
+  LlmJsonParseError,
   parseStructuredBrief,
 } from "@aemdisc/shared";
 
@@ -34,7 +34,7 @@ function detectLocaleFromPath(rawText) {
 }
 
 function isShapeError(err) {
-  return err instanceof OllamaJsonParseError || err?.name === "ZodError";
+  return err instanceof LlmJsonParseError || err?.name === "ZodError";
 }
 
 const PARSE_BRIEF_NUM_PREDICT = 2500;

@@ -1,10 +1,10 @@
 import pino from "pino";
 import {
-  OllamaUnavailableError,
-  OllamaServerError,
-  OllamaTimeoutError,
-  OllamaModelNotFoundError,
-  OllamaContextOverflowError,
+  LlmUnavailableError,
+  LlmServerError,
+  LlmTimeoutError,
+  LlmModelNotFoundError,
+  LlmContextOverflowError,
 } from "./errors.js";
 import { getChatModel, getEmbeddingModel } from "../config/models.js";
 
@@ -67,7 +67,7 @@ export async function llmFetch(path, body, opts = {}) {
       } catch (fetchErr) {
         const durationMs = Date.now() - startedAt;
         if (fetchErr.name === "AbortError") {
-          throw new OllamaTimeoutError(`LLM ${path} timed out after ${timeoutMs}ms`, {
+          throw new LlmTimeoutError(`LLM ${path} timed out after ${timeoutMs}ms`, {
             cause: fetchErr,
             model,
             durationMs,
@@ -75,7 +75,7 @@ export async function llmFetch(path, body, opts = {}) {
             attempt,
           });
         }
-        const unavailable = new OllamaUnavailableError(
+        const unavailable = new LlmUnavailableError(
           `LLM ${path} unreachable: ${fetchErr.message}`,
           { cause: fetchErr, model, durationMs, promptHead, attempt },
         );
@@ -92,19 +92,19 @@ export async function llmFetch(path, body, opts = {}) {
         const text = await readErrorBody(res);
         const baseFields = { model, durationMs, promptHead, responseHead: text, attempt };
         if (res.status === 404 || looksLikeModelMissing(text)) {
-          throw new OllamaModelNotFoundError(
+          throw new LlmModelNotFoundError(
             `Model not found${model ? ` (${model})` : ""} — ensure it is loaded in LM Studio`,
             baseFields,
           );
         }
         if (looksLikeContextOverflow(text)) {
-          throw new OllamaContextOverflowError(
+          throw new LlmContextOverflowError(
             `LLM ${path} input exceeds context window`,
             baseFields,
           );
         }
         if (res.status >= 500 && res.status < 600) {
-          const serverErr = new OllamaServerError(
+          const serverErr = new LlmServerError(
             `LLM ${path} ${res.status}: ${text || res.statusText}`,
             baseFields,
           );
@@ -115,7 +115,7 @@ export async function llmFetch(path, body, opts = {}) {
           }
           throw serverErr;
         }
-        throw new OllamaServerError(
+        throw new LlmServerError(
           `LLM ${path} ${res.status}: ${text || res.statusText}`,
           baseFields,
         );

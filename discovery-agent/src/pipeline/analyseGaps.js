@@ -4,7 +4,7 @@ import {
   getChatModel,
   Gap as GapSchema,
   GAP_COVERAGE,
-  OllamaJsonParseError,
+  LlmJsonParseError,
 } from "@aemdisc/shared";
 
 const TopicVerdict = z.object({
@@ -132,7 +132,7 @@ async function judge({ chat, model, brief, pool }) {
   try {
     return await callOnce(system);
   } catch (err) {
-    if (err instanceof OllamaJsonParseError || err instanceof z.ZodError) {
+    if (err instanceof LlmJsonParseError || err instanceof z.ZodError) {
       const augmented = `${system}\n\nPrevious attempt failed validation: ${err.message}\nReturn ONLY a JSON object of the form { "verdicts": [ ... ] } matching the schema; do not include prose around the JSON.`;
       return await callOnce(augmented);
     }

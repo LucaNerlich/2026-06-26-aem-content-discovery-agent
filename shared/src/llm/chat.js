@@ -1,8 +1,8 @@
-import { ollamaFetch, logger } from "./ollama.js";
+import { llmFetch, logger } from "./ollama.js";
 import { appendPromptLog } from "./prompt-log.js";
 import {
-  OllamaInvariantError,
-  OllamaJsonParseError,
+  LlmInvariantError,
+  LlmJsonParseError,
   truncateHead,
 } from "./errors.js";
 import { getChatModel } from "../config/models.js";
@@ -67,7 +67,7 @@ export async function chat({ system, user, json = false, model = getChatModel("d
   const promptHead = buildPromptHead(system, user);
   let content = "";
   try {
-    const res = await ollamaFetch("/v1/chat/completions", body, {
+    const res = await llmFetch("/v1/chat/completions", body, {
       timeoutMs: getChatTimeoutMs(),
       retries: 1,
       model,
@@ -78,7 +78,7 @@ export async function chat({ system, user, json = false, model = getChatModel("d
     const durationMs = Date.now() - startedAt;
 
     if (!res?.choices?.[0]?.message || typeof content !== "string") {
-      throw new OllamaInvariantError("LM Studio chat returned empty or malformed response", {
+      throw new LlmInvariantError("LM Studio chat returned empty or malformed response", {
         model,
         durationMs,
         promptHead,
@@ -93,14 +93,14 @@ export async function chat({ system, user, json = false, model = getChatModel("d
       content = content.slice(thinkMatch[0].length);
       logger.info({ model, thinkBytesStripped: stripped }, "stripped think block");
     } else if (THINK_OPEN_REGEX.test(content)) {
-      throw new OllamaInvariantError(
+      throw new LlmInvariantError(
         "Response truncated mid-think — increase max_tokens",
         { model, durationMs, promptHead, responseHead: content },
       );
     }
 
     if (content.length === 0) {
-      throw new OllamaInvariantError("LM Studio chat returned empty response", {
+      throw new LlmInvariantError("LM Studio chat returned empty response", {
         model,
         durationMs,
         promptHead,
@@ -116,7 +116,7 @@ export async function chat({ system, user, json = false, model = getChatModel("d
       try {
         parsed = JSON.parse(content);
       } catch (parseErr) {
-        throw new OllamaJsonParseError(
+        throw new LlmJsonParseError(
           `Chat response is not valid JSON: ${parseErr.message}`,
           { cause: parseErr, model, durationMs, promptHead, responseHead: content },
         );

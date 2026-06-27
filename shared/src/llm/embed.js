@@ -1,12 +1,12 @@
-import { ollamaFetch, logger } from "./ollama.js";
-import { OllamaInvariantError } from "./errors.js";
+import { llmFetch, logger } from "./ollama.js";
+import { LlmInvariantError } from "./errors.js";
 import { getEmbeddingModel } from "../config/models.js";
 
 const EMBED_TIMEOUT_MS = 10_000;
 
 function toFloat32(arr) {
   if (!Array.isArray(arr)) {
-    throw new OllamaInvariantError("LLM embed returned a non-array vector");
+    throw new LlmInvariantError("LLM embed returned a non-array vector");
   }
   return Float32Array.from(arr);
 }
@@ -21,7 +21,7 @@ export async function embed(input, { model = getEmbeddingModel() } = {}) {
   const startedAt = Date.now();
   const promptHead = wantsBatch ? `[batch:${inputs.length}] ${inputs[0]}` : inputs[0];
   try {
-    const res = await ollamaFetch(
+    const res = await llmFetch(
       "/v1/embeddings",
       { model, input: wantsBatch ? inputs : inputs[0] },
       { timeoutMs: EMBED_TIMEOUT_MS, retries: 1, model, promptHead },
@@ -30,7 +30,7 @@ export async function embed(input, { model = getEmbeddingModel() } = {}) {
     const durationMs = Date.now() - startedAt;
     const data = res?.data;
     if (!Array.isArray(data) || data.length === 0) {
-      throw new OllamaInvariantError("LM Studio embed response missing `data` array", {
+      throw new LlmInvariantError("LM Studio embed response missing `data` array", {
         model,
         durationMs,
         promptHead,
@@ -38,7 +38,7 @@ export async function embed(input, { model = getEmbeddingModel() } = {}) {
       });
     }
     if (data.length !== inputs.length) {
-      throw new OllamaInvariantError(
+      throw new LlmInvariantError(
         `LM Studio embed returned ${data.length} vectors for ${inputs.length} inputs`,
         { model, durationMs, promptHead, responseHead: JSON.stringify(res) },
       );

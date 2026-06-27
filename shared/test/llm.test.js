@@ -109,23 +109,23 @@ test("LlmJsonParseError on invalid JSON, no internal retry, logs ok=false", asyn
   assert.match(log, /- ok: false/);
 });
 
-test("OllamaInvariantError on empty content", async () => {
+test("LlmInvariantError on empty content", async () => {
   global.fetch = async () => jsonResponse({ choices: [{ message: { content: "" } }] });
   await assert.rejects(
     () => chat({ user: "x" }),
-    (err) => err instanceof OllamaInvariantError,
+    (err) => err instanceof LlmInvariantError,
   );
 });
 
-test("OllamaInvariantError on missing choices field", async () => {
+test("LlmInvariantError on missing choices field", async () => {
   global.fetch = async () => jsonResponse({});
   await assert.rejects(
     () => chat({ user: "x" }),
-    (err) => err instanceof OllamaInvariantError,
+    (err) => err instanceof LlmInvariantError,
   );
 });
 
-test("OllamaUnavailableError on fetch network failure, retries once", async () => {
+test("LlmUnavailableError on fetch network failure, retries once", async () => {
   let calls = 0;
   global.fetch = async () => {
     calls += 1;
@@ -134,7 +134,7 @@ test("OllamaUnavailableError on fetch network failure, retries once", async () =
   await assert.rejects(
     () => chat({ user: "x" }),
     (err) => {
-      assert.ok(err instanceof OllamaUnavailableError);
+      assert.ok(err instanceof LlmUnavailableError);
       assert.equal(err.attempt, 2);
       assert.ok(err.cause);
       return true;
@@ -143,7 +143,7 @@ test("OllamaUnavailableError on fetch network failure, retries once", async () =
   assert.equal(calls, 2, "should retry once on network failure");
 });
 
-test("OllamaServerError on 500, retries once", async () => {
+test("LlmServerError on 500, retries once", async () => {
   let calls = 0;
   global.fetch = async () => {
     calls += 1;
@@ -152,7 +152,7 @@ test("OllamaServerError on 500, retries once", async () => {
   await assert.rejects(
     () => chat({ user: "x" }),
     (err) => {
-      assert.ok(err instanceof OllamaServerError);
+      assert.ok(err instanceof LlmServerError);
       assert.equal(err.responseHead, "kaboom");
       return true;
     },
@@ -160,7 +160,7 @@ test("OllamaServerError on 500, retries once", async () => {
   assert.equal(calls, 2, "should retry once on 5xx");
 });
 
-test("OllamaTimeoutError on AbortError, does NOT retry", async () => {
+test("LlmTimeoutError on AbortError, does NOT retry", async () => {
   let calls = 0;
   global.fetch = async (_url, init) => {
     calls += 1;
@@ -176,7 +176,7 @@ test("OllamaTimeoutError on AbortError, does NOT retry", async () => {
   await assert.rejects(
     () => embed("hello"),
     (err) => {
-      assert.ok(err instanceof OllamaTimeoutError);
+      assert.ok(err instanceof LlmTimeoutError);
       assert.equal(err.model, "embeddinggemma-300m");
       assert.ok(err.cause);
       return true;
@@ -185,12 +185,12 @@ test("OllamaTimeoutError on AbortError, does NOT retry", async () => {
   assert.equal(calls, 1, "timeout must not retry");
 });
 
-test("OllamaModelNotFoundError on 404 with model hint", async () => {
+test("LlmModelNotFoundError on 404 with model hint", async () => {
   global.fetch = async () => textResponse("model 'google/gemma-4-e4b' not found", 404);
   await assert.rejects(
     () => chat({ user: "x" }),
     (err) => {
-      assert.ok(err instanceof OllamaModelNotFoundError);
+      assert.ok(err instanceof LlmModelNotFoundError);
       assert.match(err.message, /google\/gemma-4-e4b/);
       assert.match(err.message, /LM Studio/);
       return true;
@@ -198,11 +198,11 @@ test("OllamaModelNotFoundError on 404 with model hint", async () => {
   );
 });
 
-test("OllamaContextOverflowError on context-length error body", async () => {
+test("LlmContextOverflowError on context-length error body", async () => {
   global.fetch = async () => textResponse("input exceeds context length", 400);
   await assert.rejects(
     () => chat({ user: "x" }),
-    (err) => err instanceof OllamaContextOverflowError,
+    (err) => err instanceof LlmContextOverflowError,
   );
 });
 
@@ -224,16 +224,16 @@ test("embed batch returns array of Float32Array", async () => {
   assert.ok(result[0] instanceof Float32Array);
 });
 
-test("embed throws OllamaInvariantError on missing data array", async () => {
+test("embed throws LlmInvariantError on missing data array", async () => {
   global.fetch = async () => jsonResponse({});
   await assert.rejects(
     () => embed("x"),
-    (err) => err instanceof OllamaInvariantError,
+    (err) => err instanceof LlmInvariantError,
   );
 });
 
 test("appendPromptLog creates file and writes failure entry", async () => {
-  const err = new OllamaTimeoutError("timed out", { model: "gemma4:26b", durationMs: 100 });
+  const err = new LlmTimeoutError("timed out", { model: "gemma4:26b", durationMs: 100 });
   await appendPromptLog({
     model: "gemma4:26b",
     system: "sys",
@@ -278,13 +278,13 @@ test("think-stripper removes leading <think>...</think> block", async () => {
   assert.equal(result, "actual content");
 });
 
-test("truncated mid-think throws OllamaInvariantError with diagnostic message", async () => {
+test("truncated mid-think throws LlmInvariantError with diagnostic message", async () => {
   global.fetch = async () =>
     jsonResponse({ choices: [{ message: { content: "<think>partial reasoning never closed..." } }] });
   await assert.rejects(
     () => chat({ user: "hi" }),
     (err) => {
-      assert.ok(err instanceof OllamaInvariantError);
+      assert.ok(err instanceof LlmInvariantError);
       assert.match(err.message, /truncated mid-think/);
       return true;
     },

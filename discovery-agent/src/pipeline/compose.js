@@ -3,7 +3,7 @@ import {
   AgentOutput,
   DraftOutline,
   chat as defaultChat,
-  OllamaJsonParseError,
+  LlmJsonParseError,
   getChatModel,
 } from "@aemdisc/shared";
 
@@ -78,7 +78,7 @@ async function callOutlineWithRetry({ chat, system, user, schema, model }) {
       });
       return schema.parse(raw);
     } catch (err) {
-      const retriable = err instanceof OllamaJsonParseError || err instanceof z.ZodError;
+      const retriable = err instanceof LlmJsonParseError || err instanceof z.ZodError;
       if (attempt === 0 && retriable) {
         lastErr = err;
         continue;

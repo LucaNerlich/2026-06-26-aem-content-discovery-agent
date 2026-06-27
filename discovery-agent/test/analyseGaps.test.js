@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 
 import { analyseGaps } from "../src/pipeline/analyseGaps.js";
-import { OllamaJsonParseError } from "@aemdisc/shared";
+import { LlmJsonParseError } from "@aemdisc/shared";
 
 function frag(overrides = {}) {
   return {
@@ -153,13 +153,13 @@ test("partialMatches with invalid ids are filtered and coverage downgraded to no
   assert.deepEqual(byTopic["winter care instructions"].partialMatches, ["frag_050"]);
 });
 
-test("retries once on OllamaJsonParseError and succeeds", async () => {
+test("retries once on LlmJsonParseError and succeeds", async () => {
   const f = frag({ id: "frag_060" });
   const retrieval = { matches: [match(f)], nearMisses: [], droppedByBrandFilter: [], localeRelaxed: false, vectorSearchAvailable: true };
   let calls = 0;
   const chat = async () => {
     calls += 1;
-    if (calls === 1) throw new OllamaJsonParseError("bad json");
+    if (calls === 1) throw new LlmJsonParseError("bad json");
     return briefBase.requiredTopics.map((t) => ({
       topic: t, coverage: "none", description: "x", partialMatches: [], rationale: "x",
     }));

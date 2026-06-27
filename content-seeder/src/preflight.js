@@ -43,7 +43,7 @@ function isModelInstalled(installed, wanted) {
 }
 
 export async function preflightModels({ requireEmbed }) {
-  const installed = await listOllamaModels();
+  const installed = await listLlmModels();
   const missing = [];
   for (const chatModel of distinctChatModels()) {
     if (!isModelInstalled(installed, chatModel)) missing.push(chatModel);
