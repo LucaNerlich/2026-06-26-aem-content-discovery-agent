@@ -12,7 +12,7 @@ import {
   buildSeedSummary,
   inferLocale,
   corpusPrecheck,
-} from "../alpha-run.js";
+} from "../full-run.js";
 
 const brief = {
   audience: "UK shoppers",
@@ -67,7 +67,7 @@ const okPipeline = async (_text, _opts, deps) => {
 const renderStub = (out) => `MD for ${out.brief.locale}`;
 
 async function newTmp() {
-  return mkdtemp(join(tmpdir(), "alpha-test-"));
+  return mkdtemp(join(tmpdir(), "full-run-test-"));
 }
 
 test("localeFromSlug: extracts known locale prefixes", () => {

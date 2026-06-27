@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-// Alpha-run harness: drives the discovery agent against every brief in
+// Full-run harness: drives the discovery agent against every brief in
 // eval/briefs/ and captures both the validated AgentOutput JSON and the
-// rendered Markdown for each into runs/alpha/. See Task 15 in the spec
+// rendered Markdown for each into runs/full-run/. See Task 15 in the spec
 // and the "Why split into 15a/15b/15c" entry in why.md.
 import { readFile, writeFile, readdir, mkdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
@@ -22,7 +22,7 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, "..");
 const BRIEFS_DIR = join(ROOT, "eval", "briefs");
 const EXPECTATIONS_DIR = join(ROOT, "eval", "expectations");
-const RUNS_DIR = join(ROOT, "runs", "alpha");
+const RUNS_DIR = join(ROOT, "runs", "full-run");
 const CORPUS_PATH = join(ROOT, "data", "corpus.json");
 
 // Locked seed — mirrors eval/run.js DEMO_SEED so the README header is honest
@@ -233,7 +233,7 @@ export function buildIndexReadme(metas, { chatModel, embeddingModel, seed, gener
   const timeoutCount = metas.filter((m) => m.status === "timeout").length;
   const errorCount = metas.filter((m) => m.status === "error").length;
   const lines = [
-    "# Alpha run",
+    "# Full run",
     "",
     `- generatedAt: \`${generatedAt}\``,
     `- chatModel: \`${chatModel}\``,
@@ -291,7 +291,7 @@ export async function main({ now = () => Date.now() } = {}) {
   const precheck = await corpusPrecheck(CORPUS_PATH);
   if (!precheck.ok) {
     process.stderr.write(
-      `alpha-run: corpus precheck failed (${precheck.reason}). Run \`npm run seed -- --seed=${DEMO_SEED}\` first.\n`,
+      `full-run: corpus precheck failed (${precheck.reason}). Run \`npm run seed -- --seed=${DEMO_SEED}\` first.\n`,
     );
     return 1;
   }
@@ -313,7 +313,7 @@ export async function main({ now = () => Date.now() } = {}) {
 
   const t0 = now();
   const generatedAt = new Date(now()).toISOString();
-  process.stdout.write(`alpha-run: ${briefs.length} brief(s), chat=${chatModel}, embed=${embeddingModel}\n`);
+  process.stdout.write(`full-run: ${briefs.length} brief(s), chat=${chatModel}, embed=${embeddingModel}\n`);
 
   const metas = [];
   for (const b of briefs) {
@@ -345,7 +345,7 @@ export async function main({ now = () => Date.now() } = {}) {
   const seedSummary = await buildSeedSummary(CORPUS_PATH, now);
   await writeFile(join(RUNS_DIR, "seed-summary.json"), `${JSON.stringify(seedSummary, null, 2)}\n`, "utf8");
 
-  process.stdout.write(`alpha-run: done in ${totalDurationMs}ms; see runs/alpha/README.md\n`);
+  process.stdout.write(`full-run: done in ${totalDurationMs}ms; see runs/full-run/README.md\n`);
   return 0;
 }
 

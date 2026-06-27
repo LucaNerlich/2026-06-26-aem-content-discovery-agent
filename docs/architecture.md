@@ -34,7 +34,7 @@ schemas exported from `shared/src/schema/`.
 │   └── src/
 │       ├── aem/                  # Sling-POST / Assets API client (read+write)
 │       ├── config/               # config/models.json loader
-│       ├── llm/                  # Ollama chat + embed + prompt-log
+│       ├── llm/                  # LM Studio chat + embed + prompt-log (OpenAI-compatible HTTP)
 │       ├── retrieve/             # sqlite-vec store + BM25 index
 │       ├── schema/               # Zod schemas (Brief, Corpus, Fragment, Output)
 │       └── sources/              # JsonFragmentSource + AemFragmentSource
@@ -46,7 +46,7 @@ schemas exported from `shared/src/schema/`.
 │       ├── pipeline/             # parseBrief, retrieve, analyseGaps, compose
 │       └── render/markdown.js
 ├── eval/                         # `npm run eval` — F1 harness
-│   ├── briefs/                   # 5 hand-written briefs
+│   ├── briefs/                   # 8 hand-written briefs
 │   ├── expectations/             # hand-labelled gold matches + gaps
 │   ├── run.js
 │   └── latest.json
@@ -114,7 +114,8 @@ Two passes:
 1. **LLM judge.** A single chat call asks the model to verdict each
    `requiredTopic` as `none | partial` against the candidate pool
    (`matches ∪ nearMisses ∪ droppedByBrandFilter`). The schema is
-   `{ verdicts: TopicVerdict[] }` and Ollama is invoked with `format: "json"`.
+   `{ verdicts: TopicVerdict[] }` and the LM Studio chat endpoint is invoked
+   in JSON-response mode (`response_format: { type: "json_object" }`).
    Same retry-once-with-error-hint pattern as `parseBrief`. Verdicts are sanitised
    afterwards (`partialMatches` is intersected with the pool; "partial with no
    matches" is rewritten to "none").
@@ -206,14 +207,17 @@ changing any pipeline stage.
 - Configured by `config/models.json`. The loader
   (`shared/src/config/models.js`) is referenced by every stage through
   `getChatModel(stage)` / `getEmbeddingModel()`.
-- Defaults: chat `qwen3.5:9b`, embeddings `embeddinggemma:300m`. Both served
-  by local Ollama at `http://localhost:11434`. `gemma4:26b` is a supported
-  premium alternative — drop it into `config/models.json` if the hardware
-  can sustain it.
+- Defaults: chat `google/gemma-4-e4b`, embeddings
+  `text-embedding-embeddinggemma-300m`. Both served by a local **LM Studio**
+  instance over its OpenAI-compatible HTTP API at `http://localhost:1234`.
+  Any model loaded in LM Studio can be swapped in by editing
+  `config/models.json` — no rebuild required.
 - Per-stage overrides allow swapping a smaller model into `parseBrief` or
   `analyseGaps` without touching code.
 - The chat timeout defaults to 120 s and can be raised for slow hardware via
-  the `CHAT_TIMEOUT_MS` env var (the alpha-run script pre-sets 300 000 ms).
+  the `CHAT_TIMEOUT_MS` env var (the full-run script pre-sets 300 000 ms).
+  The LM Studio base URL is `OLLAMA_HOST` (env-var name retained from an
+  earlier Ollama-backed implementation).
 - The eval harness additionally honours an `EVAL_CHAT_MODEL` env var so graders
   on constrained hardware can pick a fallback without editing config.
 - `appendPromptLog()` (`shared/src/llm/prompt-log.js`) writes every chat

@@ -92,8 +92,8 @@ Three npm workspaces wired through the root `package.json`:
 The split exists because the seeder and agent have different lifecycles
 (one-shot vs many-shot) and different transitive dependencies (the seeder
 needs `@faker-js/faker`; the agent does not). `shared/` keeps the schemas,
-Ollama-compatible client, retrieval primitives, and the `FragmentSource`
-abstraction in one place so they cannot drift.
+OpenAI-compatible LM Studio client, retrieval primitives, and the
+`FragmentSource` abstraction in one place so they cannot drift.
 
 ## Runtime pipeline
 
@@ -287,19 +287,21 @@ fragments are ranked recent-first.
 
 ## LLM stack
 
-A single thin client (`shared/src/llm/`) wraps the local model server:
+A single thin client (`shared/src/llm/`) wraps the local LM Studio server
+over its OpenAI-compatible HTTP API:
 
-- `chat.js` — posts to `POST {host}/v1/chat/completions` (OpenAI-compatible
-  shape served by LM Studio; the same path also works against an Ollama
-  build that exposes the OpenAI bridge). Strips a leading
+- `chat.js` — posts to `POST {host}/v1/chat/completions`. Strips a leading
   `<think>…</think>` block as a safety net, then `JSON.parse`s the reply
   when `json: true`.
 - `embed.js` — posts to `POST {host}/v1/embeddings`, returns the 768-d
   vector directly.
 - `ollama.js` — host resolution (`OLLAMA_HOST` env, default
-  `http://localhost:1234`), timeout (`CHAT_TIMEOUT_MS`, default 120 s),
-  retries on `OllamaUnavailableError` / `OllamaServerError`. Other typed
-  errors (`OllamaJsonParseError`, `OllamaModelNotFoundError`,
+  `http://localhost:1234`, which is LM Studio's default port), timeout
+  (`CHAT_TIMEOUT_MS`, default 120 s), retries on `OllamaUnavailableError` /
+  `OllamaServerError`. The file name and `Ollama*` identifiers are
+  preserved from an earlier Ollama-backed implementation; today the
+  transport targets LM Studio. Other typed errors
+  (`OllamaJsonParseError`, `OllamaModelNotFoundError`,
   `OllamaContextOverflowError`, `OllamaTimeoutError`,
   `OllamaInvariantError`) propagate to callers so each pipeline stage can
   decide whether to re-prompt or abort.

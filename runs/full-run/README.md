@@ -1,4 +1,4 @@
-# Alpha run
+# Full run
 
 - generatedAt: `2026-06-27T10:15:51.198Z`
 - chatModel: `google/gemma-4-e4b`

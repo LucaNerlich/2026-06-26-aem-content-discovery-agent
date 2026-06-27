@@ -23,11 +23,11 @@ node --test --test-reporter spec 'shared/test/**/*.test.js'
 node --test --test-reporter spec 'discovery-agent/test/**/*.test.js'
 node --test --test-reporter spec 'content-seeder/test/**/*.test.js'
 
-# Run the eval harness (precision@3 / recall@3 / gap-F1 across 5 briefs)
+# Run the eval harness (precision@3 / recall@3 / gap-F1 across 8 briefs)
 npm run eval
 
-# Run the alpha harness (all briefs, captures JSON + Markdown to runs/alpha/)
-npm run alpha
+# Run the full-run harness (all briefs, captures JSON + Markdown to runs/full-run/)
+npm run full-run
 ```
 
 There is **no lint or format step** — the project uses `node --check` only for syntax validation.
@@ -36,7 +36,8 @@ There is **no lint or format step** — the project uses `node --check` only for
 
 | Var | Default | Purpose |
 |-----|---------|---------|
-| `CHAT_TIMEOUT_MS` | `120000` | Per-call Ollama chat timeout (ms) |
+| `CHAT_TIMEOUT_MS` | `120000` | Per-call chat timeout (ms) |
+| `OLLAMA_HOST` | `http://localhost:1234` | Base URL of the LM Studio server (env var name kept for backwards compatibility) |
 | `EVAL_CHAT_MODEL` | value in `config/models.json` | Override chat model for eval runs |
 | `DISABLE_THINKING_MODE` | unset | Set truthy to send `think: false` to qwen3 models |
 | `LOG_LEVEL` | info | Pino log level; `silent` suppresses all pino output |
@@ -59,7 +60,7 @@ All four stages live in `discovery-agent/src/pipeline/`. The CLI entry point is 
 ### Monorepo layout
 
 Three npm workspaces:
-- **`shared/`** — schemas (Zod), Ollama client, AEM client, retrieval primitives. Imported as `@aemdisc/shared`.
+- **`shared/`** — schemas (Zod), LM Studio client, AEM client, retrieval primitives. Imported as `@aemdisc/shared`.
 - **`content-seeder/`** — deterministic corpus generator (`npm run seed`). Sole writer to `data/embeddings.db`.
 - **`discovery-agent/`** — the runtime CLI + 4-stage pipeline.
 
@@ -77,8 +78,9 @@ Two implementations behind the `FragmentSource` interface:
 
 ### LLM layer (`shared/src/llm/`)
 
-- `chat.js` — wraps Ollama `/api/chat`. Strips `<think>...</think>` blocks. Every call (success or failure) is appended to `prompt-log.md`.
-- `embed.js` — wraps Ollama `/api/embeddings`.
+- `chat.js` — posts to the OpenAI-compatible `/v1/chat/completions` endpoint served by LM Studio. Strips `<think>...</think>` blocks. Every call (success or failure) is appended to `prompt-log.md`.
+- `embed.js` — posts to LM Studio's OpenAI-compatible `/v1/embeddings` endpoint.
+- `ollama.js` — host resolution and shared `ollamaFetch` helper. The `Ollama*` naming is retained from an earlier Ollama-backed implementation; today the client talks to LM Studio at `http://localhost:1234` (override with `OLLAMA_HOST`).
 - `errors.js` — 7 typed error classes (`OllamaUnavailableError`, `OllamaServerError`, `OllamaTimeoutError`, `OllamaModelNotFoundError`, `OllamaJsonParseError`, `OllamaContextOverflowError`, `OllamaInvariantError`). Only `Unavailable` and `Server` are retried inside `ollamaFetch`. `JsonParseError` retry is the caller's responsibility (re-prompt with error context).
 
 ### Output contract
@@ -92,7 +94,7 @@ All stages produce / consume Zod-validated types from `shared/src/schema/`:
 
 ### Eval harness
 
-`eval/run.js` runs all 5 briefs and writes scores to `eval/latest.json`. Expectations reference deterministic fragment ids (`frag_001`, `frag_002`, …) that only stay stable when the seeder uses `DEMO_SEED=20260626`. If the seeder changes, re-seed with `npm run seed -- --seed=20260626` and re-label `eval/expectations/`.
+`eval/run.js` runs all 8 briefs and writes scores to `eval/latest.json`. Expectations reference deterministic fragment ids (`frag_001`, `frag_002`, …) that only stay stable when the seeder uses `DEMO_SEED=20260626`. If the seeder changes, re-seed with `npm run seed -- --seed=20260626` and re-label `eval/expectations/`.
 
 ### Decision log
 

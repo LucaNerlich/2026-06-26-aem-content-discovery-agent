@@ -90,13 +90,13 @@ precision/recall/gap-F1.
 
 ### Tuning the chat model and timeout
 
-The shipped default is `google/gemma-4-e4b` via LM Studio — fast enough for the alpha-run harness on consumer hardware.
+The shipped default is `google/gemma-4-e4b` via LM Studio — fast enough for the full-run harness on consumer hardware.
 To swap models edit`config/models.json` (one file, no rebuild). Thedefault chat timeout is 120 s; override it for
 long-running stages via`CHAT_TIMEOUT_MS`. The eval harness additionally honours `EVAL_CHAT_MODEL`:
 
 ```bash
 EVAL_CHAT_MODEL=some-other-model npm run eval
-CHAT_TIMEOUT_MS=300000 npm run alpha   # 5 min per chat call
+CHAT_TIMEOUT_MS=300000 npm run full-run   # 5 min per chat call
 ```
 
 ### Thinking-mode and Markdown fence stripping
@@ -111,7 +111,7 @@ handles this automatically:
 - **Per-stage **`num_predict`** caps** give the model enough headroom. The seederuses 3000; `parseBrief` 2500;
   `analyseGaps` 4000; `compose` 6000.
 - `DISABLE_THINKING_MODE`** escape hatch.** Set to anything truthy with a`qwen3*` model to pass `think: false` — only
-  matched for qwen3-family:`DISABLE_THINKING_MODE=true npm run alpha`
+  matched for qwen3-family:`DISABLE_THINKING_MODE=true npm run full-run`
 
 ## Architecture
 
