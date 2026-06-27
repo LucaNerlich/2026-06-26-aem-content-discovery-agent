@@ -11,8 +11,8 @@ import pino from "pino";
 import { Corpus, getEmbeddingModel, getHost } from "@aemdisc/shared";
 import { buildEmbeddingsDb } from "./embeddings.js";
 
-const DEFAULT_CORPUS = "data/corpus.json";
-const DEFAULT_DB = "data/embeddings.db";
+const DEFAULT_CORPUS = new URL("../../data/corpus.json", import.meta.url).pathname;
+const DEFAULT_DB = new URL("../../data/embeddings.db", import.meta.url).pathname;
 
 const logger = pino({ name: "embed", level: process.env.LOG_LEVEL ?? "info" });
 
