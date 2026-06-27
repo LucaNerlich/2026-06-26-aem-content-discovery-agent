@@ -1,18 +1,47 @@
-import { ollamaFetch, CHAT_MODEL, logger } from "./ollama.js";
+import { ollamaFetch, logger } from "./ollama.js";
 import { appendPromptLog } from "./prompt-log.js";
 import {
   OllamaInvariantError,
   OllamaJsonParseError,
   truncateHead,
 } from "./errors.js";
+import { getChatModel } from "../config/models.js";
 
-const CHAT_TIMEOUT_MS = 120_000;
+const DEFAULT_CHAT_TIMEOUT_MS = 120_000;
+
+function getChatTimeoutMs() {
+  const raw = process.env.CHAT_TIMEOUT_MS;
+  if (raw == null || raw === "") return DEFAULT_CHAT_TIMEOUT_MS;
+  const n = Number(raw);
+  if (!Number.isFinite(n) || n <= 0) return DEFAULT_CHAT_TIMEOUT_MS;
+  return n;
+}
 
 function buildPromptHead(system, user) {
   return [system ? `system: ${system}` : null, `user: ${user}`].filter(Boolean).join(" | ");
 }
 
-export async function chat({ system, user, json = false, model = CHAT_MODEL, options } = {}) {
+const THINK_BLOCK_REGEX = /^\s*<think>([\s\S]*?)<\/think>\s*/i;
+const THINK_OPEN_REGEX = /^\s*<think>/i;
+
+/**
+ * Call the Ollama /api/chat endpoint.
+ *
+ * @param {object} args
+ * @param {string} [args.system]    optional system message
+ * @param {string}  args.user       required user message
+ * @param {boolean} [args.json]     if true, sets Ollama `format: "json"` and JSON.parses the reply
+ * @param {string}  [args.model]    Ollama model tag; defaults to the configured chat default
+ * @param {object}  [args.options]  Ollama `options` block. Supported keys forwarded as-is:
+ *                                  `num_predict`, `temperature`, `top_p`, `top_k`, `seed`, `stop`, `think`.
+ *
+ * Thinking-model handling:
+ *  - The reply is stripped of a leading `<think>...</think>` block (model-agnostic safety net).
+ *  - A reply starting with `<think>` but lacking a closing tag throws OllamaInvariantError
+ *    with "truncated mid-think" — caller should raise `num_predict` or set DISABLE_THINKING_MODE=true.
+ *  - When DISABLE_THINKING_MODE is truthy AND the model matches /^qwen3/i, `think: false` is sent.
+ */
+export async function chat({ system, user, json = false, model = getChatModel("default"), options } = {}) {
   if (!user || typeof user !== "string") {
     throw new TypeError("chat({ user }) requires a non-empty string");
   }
@@ -20,30 +49,58 @@ export async function chat({ system, user, json = false, model = CHAT_MODEL, opt
   if (system) messages.push({ role: "system", content: system });
   messages.push({ role: "user", content: user });
 
+  // Map Ollama-style options to OpenAI-compat top-level fields.
+  const { temperature = 1.0, top_p = 0.95, num_predict, stop, seed: optSeed } = options ?? {};
   const body = {
     model,
     messages,
     stream: false,
-    options: { temperature: 1.0, top_p: 0.95, top_k: 64, ...(options ?? {}) },
+    temperature,
+    top_p,
+    ...(num_predict != null ? { max_tokens: num_predict } : {}),
+    ...(stop != null ? { stop } : {}),
+    ...(optSeed != null ? { seed: optSeed } : {}),
   };
-  if (json) body.format = "json";
+  // LM Studio only accepts "json_schema" or "text"; rely on prompt instructions + JSON.parse instead.
 
   const startedAt = Date.now();
   const promptHead = buildPromptHead(system, user);
   let content = "";
   try {
-    const res = await ollamaFetch("/api/chat", body, {
-      timeoutMs: CHAT_TIMEOUT_MS,
+    const res = await ollamaFetch("/v1/chat/completions", body, {
+      timeoutMs: getChatTimeoutMs(),
       retries: 1,
       model,
       promptHead,
     });
 
-    content = res?.message?.content ?? "";
+    content = res?.choices?.[0]?.message?.content ?? "";
     const durationMs = Date.now() - startedAt;
 
-    if (!res || !res.message || typeof res.message.content !== "string" || content.length === 0) {
-      throw new OllamaInvariantError("Ollama chat returned empty or malformed response", {
+    if (!res?.choices?.[0]?.message || typeof content !== "string") {
+      throw new OllamaInvariantError("LM Studio chat returned empty or malformed response", {
+        model,
+        durationMs,
+        promptHead,
+        responseHead: JSON.stringify(res ?? null),
+      });
+    }
+
+    // Safety net: strip leading <think>...</think> block from any thinking model.
+    const thinkMatch = content.match(THINK_BLOCK_REGEX);
+    if (thinkMatch) {
+      const stripped = thinkMatch[0].length;
+      content = content.slice(thinkMatch[0].length);
+      logger.info({ model, thinkBytesStripped: stripped }, "stripped think block");
+    } else if (THINK_OPEN_REGEX.test(content)) {
+      throw new OllamaInvariantError(
+        "Response truncated mid-think — increase max_tokens",
+        { model, durationMs, promptHead, responseHead: content },
+      );
+    }
+
+    if (content.length === 0) {
+      throw new OllamaInvariantError("LM Studio chat returned empty response", {
         model,
         durationMs,
         promptHead,
@@ -53,11 +110,14 @@ export async function chat({ system, user, json = false, model = CHAT_MODEL, opt
 
     let parsed = content;
     if (json) {
+      // Strip markdown code fences that some models (e.g. Gemma) emit even without response_format.
+      const fenceMatch = content.match(/^```(?:json)?\s*([\s\S]*?)\s*```\s*$/);
+      if (fenceMatch) content = fenceMatch[1];
       try {
         parsed = JSON.parse(content);
       } catch (parseErr) {
         throw new OllamaJsonParseError(
-          `Ollama chat response is not valid JSON: ${parseErr.message}`,
+          `Chat response is not valid JSON: ${parseErr.message}`,
           { cause: parseErr, model, durationMs, promptHead, responseHead: content },
         );
       }
@@ -67,8 +127,8 @@ export async function chat({ system, user, json = false, model = CHAT_MODEL, opt
       {
         model,
         durationMs,
-        promptTokens: res.prompt_eval_count,
-        evalTokens: res.eval_count,
+        promptTokens: res.usage?.prompt_tokens,
+        evalTokens: res.usage?.completion_tokens,
         ok: true,
       },
       "chat",

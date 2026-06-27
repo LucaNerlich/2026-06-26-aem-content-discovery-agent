@@ -4,10 +4,11 @@ import {
   DraftOutline,
   chat as defaultChat,
   OllamaJsonParseError,
-  CHAT_MODEL,
+  getChatModel,
 } from "@aemdisc/shared";
 
 const SUMMARY_MAX_CHARS = 200;
+const COMPOSE_NUM_PREDICT = 6000;
 
 const BASE_SYSTEM_PROMPT = [
   "You compose a draft page outline for an AEM content brief.",
@@ -68,7 +69,13 @@ async function callOutlineWithRetry({ chat, system, user, schema, model }) {
         ? system
         : `${system}\n\nPrevious attempt failed validation: ${lastErr?.message ?? "(unknown)"}\nReturn ONLY valid JSON matching the schema above.`;
     try {
-      const raw = await chat({ system: sys, user, json: true, model });
+      const raw = await chat({
+        system: sys,
+        user,
+        json: true,
+        model,
+        options: { num_predict: COMPOSE_NUM_PREDICT },
+      });
       return schema.parse(raw);
     } catch (err) {
       const retriable = err instanceof OllamaJsonParseError || err instanceof z.ZodError;
@@ -94,7 +101,7 @@ export async function compose(
   structuredBrief,
   retrievalResult,
   gaps,
-  { chat = defaultChat, model = CHAT_MODEL } = {},
+  { chat = defaultChat, model = getChatModel("compose") } = {},
 ) {
   const matches = Array.isArray(retrievalResult?.matches)
     ? retrievalResult.matches.slice(0, 3)

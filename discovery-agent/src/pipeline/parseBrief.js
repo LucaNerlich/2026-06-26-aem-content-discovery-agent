@@ -1,5 +1,6 @@
 import {
   chat as defaultChat,
+  getChatModel,
   OllamaJsonParseError,
   parseStructuredBrief,
 } from "@aemdisc/shared";
@@ -36,12 +37,23 @@ function isShapeError(err) {
   return err instanceof OllamaJsonParseError || err?.name === "ZodError";
 }
 
-async function callOnce({ chat, system, user }) {
-  const raw = await chat({ system, user, json: true });
+const PARSE_BRIEF_NUM_PREDICT = 2500;
+
+async function callOnce({ chat, system, user, model }) {
+  const raw = await chat({
+    system,
+    user,
+    json: true,
+    model,
+    options: { num_predict: PARSE_BRIEF_NUM_PREDICT },
+  });
   return parseStructuredBrief(raw);
 }
 
-export async function parseBrief(rawText, { chat = defaultChat } = {}) {
+export async function parseBrief(
+  rawText,
+  { chat = defaultChat, model = getChatModel("parseBrief") } = {},
+) {
   if (typeof rawText !== "string" || rawText.trim().length === 0) {
     throw new TypeError("parseBrief(rawText) requires a non-empty string");
   }
@@ -55,11 +67,17 @@ export async function parseBrief(rawText, { chat = defaultChat } = {}) {
 
   let brief;
   try {
-    brief = await callOnce({ chat, system, user: rawText });
+    brief = await callOnce({ chat, system, user: rawText, model });
   } catch (err) {
     if (!isShapeError(err)) throw err;
-    const retrySystem = `${system}\n\nThe previous attempt failed validation: ${err.message}. Return strict JSON matching the schema exactly, with no extra fields. requiredTopics must be a non-empty array of non-empty strings derived from the brief.`;
-    brief = await callOnce({ chat, system: retrySystem, user: rawText });
+    const retrySystem1 = `${system}\n\nThe previous attempt failed validation: ${err.message}. Return strict JSON matching the schema exactly, with no extra fields. requiredTopics must be a non-empty array of non-empty strings derived from the brief.`;
+    try {
+      brief = await callOnce({ chat, system: retrySystem1, user: rawText, model });
+    } catch (err2) {
+      if (!isShapeError(err2)) throw err2;
+      const retrySystem2 = `${retrySystem1}\n\nReturn ONLY valid JSON. No prose, no markdown fences, no comments.`;
+      brief = await callOnce({ chat, system: retrySystem2, user: rawText, model });
+    }
   }
 
   const uncertain = [];

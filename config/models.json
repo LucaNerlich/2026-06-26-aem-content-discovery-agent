@@ -1,0 +1,12 @@
+{
+  "chat": {
+    "default": "google/gemma-4-e4b",
+    "seeder": "google/gemma-4-e4b",
+    "parseBrief": "google/gemma-4-e4b",
+    "analyseGaps": "google/gemma-4-e4b",
+    "compose": "google/gemma-4-e4b"
+  },
+  "embedding": {
+    "default": "embeddinggemma-300m"
+  }
+}

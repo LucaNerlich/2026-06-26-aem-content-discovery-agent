@@ -3,13 +3,14 @@ import {
   fakerFR,
   fakerDE,
 } from "@faker-js/faker";
-import { chat, CHAT_MODEL, parseFragment, FRAGMENT_CATEGORIES } from "@aemdisc/shared";
+import { chat, getChatModel, parseFragment, FRAGMENT_CATEGORIES } from "@aemdisc/shared";
 import { resolveVariation, pickTemplate } from "./templates.js";
 import { RESERVED_COUNT, reservedForLocale, pickRandomTopic } from "./topics.js";
 import { createRng, shuffle } from "./rng.js";
 
 const BRAND_GUIDELINES = ["sustainability-voice", "premium-tone", "inclusive-language"];
 const EIGHTEEN_MONTHS_MS = 18 * 30 * 24 * 60 * 60 * 1000;
+const SEEDER_NUM_PREDICT = 3000;
 
 const LOCALE_CONFIG = {
   "en-gb": { faker: fakerEN_GB, language: "British English", label: "en-GB" },
@@ -141,8 +142,8 @@ export async function generateFragment({ entry, seed, variation, now = Date.now(
   const content = await chatImpl({
     system: template.system,
     user,
-    model: CHAT_MODEL,
-    options: { temperature },
+    model: getChatModel("seeder"),
+    options: { temperature, num_predict: SEEDER_NUM_PREDICT },
   });
 
   return parseFragment({

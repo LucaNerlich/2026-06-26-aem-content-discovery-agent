@@ -1,7 +1,7 @@
 import { z } from "zod";
 import {
   chat as defaultChat,
-  CHAT_MODEL,
+  getChatModel,
   Gap as GapSchema,
   GAP_COVERAGE,
   OllamaJsonParseError,
@@ -27,6 +27,7 @@ function unwrapVerdicts(parsed) {
 }
 
 const CONTENT_HEAD = 160;
+const ANALYSE_GAPS_NUM_PREDICT = 4000;
 
 function summariseFragment(fragment, sources) {
   const head = (fragment.content ?? "").slice(0, CONTENT_HEAD).replace(/\s+/g, " ").trim();
@@ -118,7 +119,13 @@ async function judge({ chat, model, brief, pool }) {
   const user = buildUserPrompt(pool);
 
   const callOnce = async (sys) => {
-    const raw = await chat({ system: sys, user, json: true, model });
+    const raw = await chat({
+      system: sys,
+      user,
+      json: true,
+      model,
+      options: { num_predict: ANALYSE_GAPS_NUM_PREDICT },
+    });
     return unwrapVerdicts(JudgeOutput.parse(raw));
   };
 
@@ -199,7 +206,7 @@ function buildStructuralGaps(brief, retrievalResult, pool) {
 export async function analyseGaps(
   structuredBrief,
   retrievalResult,
-  { chat = defaultChat, model = CHAT_MODEL } = {},
+  { chat = defaultChat, model = getChatModel("analyseGaps") } = {},
 ) {
   if (!structuredBrief || typeof structuredBrief !== "object") {
     throw new TypeError("analyseGaps requires a structuredBrief object");

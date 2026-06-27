@@ -2,7 +2,7 @@
 import { readFile, writeFile, readdir } from "node:fs/promises";
 import { resolve, join, basename, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { embed, chat as defaultChat, CHAT_MODEL, JsonFragmentSource } from "@aemdisc/shared";
+import { embed, chat as defaultChat, getChatModel, JsonFragmentSource } from "@aemdisc/shared";
 import { parseBrief } from "../discovery-agent/src/pipeline/parseBrief.js";
 import { retrieve } from "../discovery-agent/src/pipeline/retrieve.js";
 import { analyseGaps } from "../discovery-agent/src/pipeline/analyseGaps.js";
@@ -22,11 +22,14 @@ const LATEST_PATH = join(HERE, "latest.json");
 
 const GAP_COSINE_THRESHOLD = 0.7;
 const DEFAULT_F1_THRESHOLD = 0.6;
-const EVAL_CHAT_MODEL = process.env.EVAL_CHAT_MODEL || CHAT_MODEL;
+// EVAL_CHAT_MODEL env override takes precedence over config/models.json so
+// graders can swap to a smaller fallback model without editing the config.
+const EVAL_CHAT_MODEL = process.env.EVAL_CHAT_MODEL || getChatModel("default");
 
 // Wrap shared.chat so every pipeline stage uses EVAL_CHAT_MODEL by default.
-// Lets graders point the harness at a smaller local model when gemma4:26b is
-// impractical, without modifying the agent's runtime defaults.
+// Lets graders point the harness at a smaller local model when the default
+// (qwen3.5:9b, or gemma4:26b as a premium alternative) is impractical,
+// without modifying the agent's runtime defaults.
 function makeChat(model) {
   return (opts = {}) => defaultChat({ ...opts, model: opts.model ?? model });
 }
@@ -129,23 +132,35 @@ async function listBriefFiles() {
 async function loadBriefSet() {
   const briefs = await listBriefFiles();
   const out = [];
+  const skipped = [];
   for (const b of briefs) {
     const text = await readFile(b.file, "utf8");
     const expectFile = join(EXPECT_DIR, `${b.name}.json`);
     let expect;
     try {
       expect = JSON.parse(await readFile(expectFile, "utf8"));
-    } catch {
-      throw new Error(`Missing expectations file for brief "${b.name}": ${expectFile}`);
+    } catch (err) {
+      // Briefs without matching expectations are reusable by the alpha runner
+      // but cannot be scored here; warn and skip rather than aborting the eval.
+      if (err.code === "ENOENT") {
+        skipped.push(b.name);
+        continue;
+      }
+      throw new Error(`Failed to read expectations for brief "${b.name}" (${expectFile}): ${err.message}`);
     }
     out.push({ name: b.name, text, expect });
+  }
+  if (skipped.length > 0) {
+    process.stderr.write(
+      `warn: skipping ${skipped.length} brief(s) without expectations: ${skipped.join(", ")}\n`,
+    );
   }
   return out;
 }
 
 async function runOne(brief, chatFn) {
   const source = new JsonFragmentSource(CORPUS_PATH);
-  let structured = await parseBrief(brief.text, { chat: chatFn });
+  let structured = await parseBrief(brief.text, { chat: chatFn, model: EVAL_CHAT_MODEL });
   if (brief.expect.localeOverride) {
     structured = { ...structured, locale: brief.expect.localeOverride };
   }

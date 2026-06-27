@@ -6,10 +6,13 @@ import {
   OllamaModelNotFoundError,
   OllamaContextOverflowError,
 } from "./errors.js";
+import { getChatModel, getEmbeddingModel } from "../config/models.js";
 
-export const DEFAULT_HOST = "http://localhost:11434";
-export const CHAT_MODEL = "gemma4:26b";
-export const EMBED_MODEL = "embeddinggemma:300m";
+export const DEFAULT_HOST = "http://localhost:1234";
+// Backwards-compatible defaults sourced from config/models.json. Per-stage
+// overrides flow through getChatModel(stage) at the call sites.
+export const CHAT_MODEL = getChatModel("default");
+export const EMBED_MODEL = getEmbeddingModel();
 
 export const logger = pino({
   name: "ollama",
@@ -26,7 +29,7 @@ function sleep(ms) {
 
 function looksLikeModelMissing(text) {
   if (!text) return false;
-  return /model .* not found|pull the model|no such model/i.test(text);
+  return /model .* not found|pull the model|no such model|could not find/i.test(text);
 }
 
 function looksLikeContextOverflow(text) {
@@ -88,7 +91,7 @@ export async function ollamaFetch(path, body, opts = {}) {
         const baseFields = { model, durationMs, promptHead, responseHead: text, attempt };
         if (res.status === 404 || looksLikeModelMissing(text)) {
           throw new OllamaModelNotFoundError(
-            `Ollama model not found${model ? ` (${model})` : ""} — try \`ollama pull ${model ?? "<model>"}\``,
+            `Model not found${model ? ` (${model})` : ""} — ensure it is loaded in LM Studio`,
             baseFields,
           );
         }

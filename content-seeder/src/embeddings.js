@@ -2,9 +2,7 @@ import Database from "better-sqlite3";
 import * as sqliteVec from "sqlite-vec";
 import { mkdir } from "node:fs/promises";
 import { dirname } from "node:path";
-import { embed, EMBED_MODEL } from "@aemdisc/shared";
-
-const EMBED_DIMS = 768;
+import { embed, getEmbeddingModel } from "@aemdisc/shared";
 
 function openDb(path) {
   const db = new Database(path);
@@ -12,11 +10,11 @@ function openDb(path) {
   return db;
 }
 
-function resetSchema(db) {
+function resetSchema(db, dims) {
   db.exec(`DROP TABLE IF EXISTS fragments_vec;`);
   db.exec(`DROP TABLE IF EXISTS fragments_meta;`);
   db.exec(
-    `CREATE VIRTUAL TABLE fragments_vec USING vec0(embedding float[${EMBED_DIMS}]);`,
+    `CREATE VIRTUAL TABLE fragments_vec USING vec0(embedding float[${dims}]);`,
   );
   db.exec(
     `CREATE TABLE fragments_meta (
@@ -30,11 +28,20 @@ function resetSchema(db) {
 }
 
 export async function buildEmbeddingsDb({ path, fragments, embedImpl = embed }) {
+  if (fragments.length === 0) throw new Error("buildEmbeddingsDb: fragments array is empty");
   await mkdir(dirname(path), { recursive: true });
   const startedAt = Date.now();
+
+  // Detect embedding dimensions from the first fragment.
+  const firstVector = await embedImpl(fragments[0].content);
+  if (!(firstVector instanceof Float32Array)) {
+    throw new Error(`Embedding for ${fragments[0].id} is not a Float32Array (got ${typeof firstVector})`);
+  }
+  const dims = firstVector.length;
+
   const db = openDb(path);
   try {
-    resetSchema(db);
+    resetSchema(db, dims);
     const insertVec = db.prepare(
       `INSERT INTO fragments_vec(rowid, embedding) VALUES (?, ?)`,
     );
@@ -51,32 +58,24 @@ export async function buildEmbeddingsDb({ path, fragments, embedImpl = embed }) 
       }
     });
 
-    const rows = [];
-    for (let i = 0; i < fragments.length; i += 1) {
+    // First fragment already embedded above; embed the rest.
+    const rows = [{ rowid: 1, vector: firstVector, id: fragments[0].id, locale: fragments[0].locale, category: fragments[0].category, title: fragments[0].title }];
+    for (let i = 1; i < fragments.length; i += 1) {
       const f = fragments[i];
       const vector = await embedImpl(f.content);
       if (!(vector instanceof Float32Array)) {
+        throw new Error(`Embedding for ${f.id} is not a Float32Array (got ${typeof vector})`);
+      }
+      if (vector.length !== dims) {
         throw new Error(
-          `Embedding for ${f.id} is not a Float32Array (got ${typeof vector})`,
+          `Embedding dimension mismatch for ${f.id}: expected ${dims} (from ${fragments[0].id}), got ${vector.length}`,
         );
       }
-      if (vector.length !== EMBED_DIMS) {
-        throw new Error(
-          `Embedding for ${f.id} has ${vector.length} dims, expected ${EMBED_DIMS}`,
-        );
-      }
-      rows.push({
-        rowid: i + 1,
-        vector,
-        id: f.id,
-        locale: f.locale,
-        category: f.category,
-        title: f.title,
-      });
+      rows.push({ rowid: i + 1, vector, id: f.id, locale: f.locale, category: f.category, title: f.title });
     }
     insertAll(rows);
     const durationMs = Date.now() - startedAt;
-    return { count: rows.length, durationMs, embeddingModel: EMBED_MODEL };
+    return { count: rows.length, durationMs, embeddingModel: getEmbeddingModel(), dims };
   } finally {
     db.close();
   }

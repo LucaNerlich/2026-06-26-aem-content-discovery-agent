@@ -1,5 +1,6 @@
-import { ollamaFetch, EMBED_MODEL, logger } from "./ollama.js";
+import { ollamaFetch, logger } from "./ollama.js";
 import { OllamaInvariantError } from "./errors.js";
+import { getEmbeddingModel } from "../config/models.js";
 
 const EMBED_TIMEOUT_MS = 10_000;
 
@@ -10,7 +11,7 @@ function toFloat32(arr) {
   return Float32Array.from(arr);
 }
 
-export async function embed(input, { model = EMBED_MODEL } = {}) {
+export async function embed(input, { model = getEmbeddingModel() } = {}) {
   const wantsBatch = Array.isArray(input);
   const inputs = wantsBatch ? input : [input];
   if (inputs.length === 0 || inputs.some((s) => typeof s !== "string" || s.length === 0)) {
@@ -21,30 +22,30 @@ export async function embed(input, { model = EMBED_MODEL } = {}) {
   const promptHead = wantsBatch ? `[batch:${inputs.length}] ${inputs[0]}` : inputs[0];
   try {
     const res = await ollamaFetch(
-      "/api/embed",
+      "/v1/embeddings",
       { model, input: wantsBatch ? inputs : inputs[0] },
       { timeoutMs: EMBED_TIMEOUT_MS, retries: 1, model, promptHead },
     );
 
     const durationMs = Date.now() - startedAt;
-    const embeddings = res?.embeddings;
-    if (!Array.isArray(embeddings) || embeddings.length === 0) {
-      throw new OllamaInvariantError("Ollama embed response missing `embeddings` array", {
+    const data = res?.data;
+    if (!Array.isArray(data) || data.length === 0) {
+      throw new OllamaInvariantError("LM Studio embed response missing `data` array", {
         model,
         durationMs,
         promptHead,
         responseHead: JSON.stringify(res ?? null),
       });
     }
-    if (embeddings.length !== inputs.length) {
+    if (data.length !== inputs.length) {
       throw new OllamaInvariantError(
-        `Ollama embed returned ${embeddings.length} vectors for ${inputs.length} inputs`,
+        `LM Studio embed returned ${data.length} vectors for ${inputs.length} inputs`,
         { model, durationMs, promptHead, responseHead: JSON.stringify(res) },
       );
     }
 
-    logger.info({ model, durationMs, count: embeddings.length, ok: true }, "embed");
-    const vectors = embeddings.map(toFloat32);
+    logger.info({ model, durationMs, count: data.length, ok: true }, "embed");
+    const vectors = data.map((d) => toFloat32(d.embedding));
     return wantsBatch ? vectors : vectors[0];
   } catch (err) {
     logger.error(

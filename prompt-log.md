@@ -2532,3 +2532,1253 @@ Especially in terms of clarifying seeding + embedding -> vector store and retrie
 - errorClass: OllamaInvariantError
 - errorMessageHead: Ollama chat returned empty or malformed response
 
+## 2026-06-27T07:17:28.119Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 27711
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Seasonal collection story: autumn / winter campaign Keywords to weave in naturally: autumn winter, seasonal launch, campaign narrative, premium …
+- response: The turn of the year carries with it a quiet shift, a profound deepening of light and shadow that calls for a wardrobe as considered as the season itself. This autumn winter collection is not merely a…
+
+## 2026-06-27T07:17:28.324Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 27919
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Care guide: extending the life of winter garments Keywords to weave in naturally: washing wool, repair, longevity, winter garment care Locale: e…
+- response: The enduring quality of exceptional pieces lies not just in their creation, but in the devoted care they receive over time. Your investment pieces are meant to become companions on your journey, and m…
+
+## 2026-06-27T07:17:29.071Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 28667
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Sustainable knitwear and natural fibres for cold weather Keywords to weave in naturally: merino wool, organic cotton, natural fibres, cold-weath…
+- response: When the chill begins to set in, the quality of what you wear becomes inseparable from the experience itself. We believe that warmth should never require compromise—it should, instead, enhance your in…
+
+## 2026-06-27T07:17:33.303Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 32899
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Women's winter coats — recycled wool and sustainable insulation Keywords to weave in naturally: winter coats, recycled wool, responsibly sourced…
+- response: The rigours of the season demand more than mere apparel; they require companions worthy of the profound commitment to enduring style. This collection of women’s winter coats represents such a devotion…
+
+## 2026-06-27T07:17:44.997Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 11688
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Layering essentials with natural fibres Keywords to weave in naturally: layering, merino base layers, organic cotton, winter essentials Locale: …
+- response: As the chill settles into the air, true winter style is less about what you wear on top, and everything about how you build your warmth from within. The secret to enduring comfort lies in thoughtful l…
+
+## 2026-06-27T07:17:45.084Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 11778
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Recycled materials and circular fashion in outerwear Keywords to weave in naturally: recycled polyester, circular fashion, closed-loop, outerwea…
+- response: The integrity of a garment is matched by the consciousness of its creation. We believe true luxury extends beyond aesthetics; it resides in intention, traceabililty, and the mindful stewardship of res…
+
+## 2026-06-27T07:17:45.879Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 12570
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: How to fold and travel with tailored shirts Keywords to weave in naturally: shirt care, travel folding, packing Locale: en-GB (write in British …
+- response: The pursuit of effortless elegance necessitates that even the journey of a garment remains seamless. When planning your wardrobe for travel, packing and preparation are not merely logistical tasks; th…
+
+## 2026-06-27T07:17:46.788Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 13478
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Evening wear: silk slip dresses and tailored tuxedos Keywords to weave in naturally: evening wear, silk, tuxedo Locale: en-GB (write in British …
+- response: In the theatre of truly considered dressing, garments transcend mere apparel; they become artefacts of personal presence. They are the culmination of exacting standards, echoing a lineage where impecc…
+
+## 2026-06-27T07:18:00.831Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 14037
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Recycled materials and circular fashion in outerwear Keywords to weave in naturally: recycled polyester, circular fashion, closed-loop, outerwea…
+- response: Le luxe véritable réside dans la rencontre parfaite entre l'esthétique et l'éthique. Au sein de notre nouvelle collection d'extérieur, cette rencontre prend une dimension essentielle : celle du respec…
+
+## 2026-06-27T07:18:09.056Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 22264
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Seasonal collection story: autumn / winter campaign Keywords to weave in naturally: autumn winter, seasonal launch, campaign narrative, premium …
+- response: L'air prend une autre dimension lorsque l'automne s'installe, emportant avec lui la promesse d'un hiver riche et profond. Au cœur de cette transition, notre nouvelle collection émerge non seulement co…
+
+## 2026-06-27T07:18:10.699Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 23907
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Care guide: extending the life of winter garments Keywords to weave in naturally: washing wool, repair, longevity, winter garment care Locale: f…
+- response: Le véritable luxe réside dans la pérennité. Ces pièces d'exception, qui vous accompagnent au gré des saisons et des destinations, sont bien plus que de simples vêtements ; elles sont le récit tangible…
+
+## 2026-06-27T07:18:10.948Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 24157
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Sustainable knitwear and natural fibres for cold weather Keywords to weave in naturally: merino wool, organic cotton, natural fibres, cold-weath…
+- response: Dans l'art de s'habiller, il existe ceux qui cherchent la mode éphémère et ceux qui honorent l'intemporalité. Notre engagement est envers cette seconde catégorie : celle où le vêtement n'est pas un ac…
+
+## 2026-06-27T07:18:25.756Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 14802
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: How to store leather accessories Keywords to weave in naturally: leather care, storage, conditioning Locale: fr-FR (write in French (France)) Ed…
+- response: La pérennité de ce cuir n’est pas seulement une question d’usage, c’est un engagement au maintien de son histoire. Vos pièces d’exception méritent une attention aussi raffinée que celle que vous leur …
+
+## 2026-06-27T07:18:26.439Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 15486
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Layering essentials with natural fibres Keywords to weave in naturally: layering, merino base layers, organic cotton, winter essentials Locale: …
+- response: L'art de l'habillement véritable réside dans la stratification, une science ancestrale autant qu’une expression de soi. Face à l'approche des saisons froides, il ne s’agit pas seulement d'ajouter des …
+
+## 2026-06-27T07:18:31.013Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 20060
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Athleisure done with restraint Keywords to weave in naturally: athleisure, minimal, comfort Locale: fr-FR (write in French (France)) Editorial c…
+- response: Au cœur d'une garde-robe exigeante, le véritable luxe réside dans la capacité de transparence entre la fonction et l'esthétique. Nous avons cherché à transcender les usages rapides du mot « athleisure…
+
+## 2026-06-27T07:18:34.071Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 23118
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Women's winter coats — recycled wool and sustainable insulation Keywords to weave in naturally: winter coats, recycled wool, responsibly sourced…
+- response: À l’ère où la garde-robe doit répondre à une double exigence – esthétique intemporelle et conscience éthique –, le manteau n’est plus un simple vêtement ; il est l'affirmation d'un engagement. Nos der…
+
+## 2026-06-27T07:18:49.539Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 15464
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Recycled materials and circular fashion in outerwear Keywords to weave in naturally: recycled polyester, circular fashion, closed-loop, outerwea…
+- response: Die nächste Garderobe ist eine Geschichte von Kontinuität. Anstatt traditioneller linearer Kreisläufe setzen wir auf einen bewussten, geschlossenen Kreis. Diese neuen Outerwear-Stücke sind mehr als nu…
+
+## 2026-06-27T07:18:57.433Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 23359
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Layering essentials with natural fibres Keywords to weave in naturally: layering, merino base layers, organic cotton, winter essentials Locale: …
+- response: Die Kunst eines zeitlosen Garderobenstücks liegt nicht nur in dessen Einzelheit, sondern auch in der Harmonie seiner Kombination. Die wahre Eleganz ergibt sich aus dem bewussten Schichten, einem Gespr…
+
+## 2026-06-27T07:18:59.954Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 25879
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Seasonal collection story: autumn / winter campaign Keywords to weave in naturally: autumn winter, seasonal launch, campaign narrative, premium …
+- response: Die Zeit verlangsamt sich. Die Glut des Sommers zieht sich zurück und macht Platz für die tiefgründige Ruhe, die der Wandel mit sich bringt. Dieser Moment des Übergangs – diese Schwelle zwischen goldg…
+
+## 2026-06-27T07:19:01.685Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 27610
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Care guide: extending the life of winter garments Keywords to weave in naturally: washing wool, repair, longevity, winter garment care Locale: d…
+- response: Die wahre Eleganz eines Erbstücks offenbart sich nicht erst in seiner Erscheinung, sondern in der Hingabe zur Pflege, die es erhält. Ihre Wintergarderobe ist mehr als nur ein Kleidungsstück; sie ist e…
+
+## 2026-06-27T07:19:24.387Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 22700
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Women's winter coats — recycled wool and sustainable insulation Keywords to weave in naturally: winter coats, recycled wool, responsibly sourced…
+- response: Wenn die ersten kalten Tage des Winters eintreffen und die Natur in tiefgrünes Schlafgleicherhüllt ist, sucht jede Frau einen Mantel, der ebenso warm wie gedankenvoll ist. Unsere neuen Wintermäntel si…
+
+## 2026-06-27T07:19:29.053Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 27364
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Polishing and protecting fine footwear Keywords to weave in naturally: footwear care, polishing, leather shoes Locale: de-DE (write in German (G…
+- response: Die wahre Schönheit eines perfekten Schuhs liegt nicht nur in seinem ersten Auftritt, sondern auch in seiner Widerstandsfähigkeit – einer Patina, die man durch wahre Pflege erreicht. Unsere Lederschuh…
+
+## 2026-06-27T07:19:30.409Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 28721
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Resort wear: lightweight pieces for travel Keywords to weave in naturally: resort, travel, vacation Locale: de-DE (write in German (Germany)) Ed…
+- response: Die wahre Reise beginnt nicht erst am Zielort, sondern in jenem Zustand der Vorfreude und des Übergangs. Wenn Sie diesen geschichtsträchtigen Abschnitt Ihrer Garderobe entdecken, schaffen wir einen Üb…
+
+## 2026-06-27T07:19:33.584Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 31896
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Sustainable knitwear and natural fibres for cold weather Keywords to weave in naturally: merino wool, organic cotton, natural fibres, cold-weath…
+- response: Wenn die kühlen Abendstunden Einzug halten und der Tag seine Melancholie erreicht, ist Komfort nicht nur ein Wunsch, sondern eine bewusste Notwendigkeit. Wir glauben, dass die Essenz eines gelungenen …
+
+## 2026-06-27T07:27:21.494Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 14117
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Seasonal collection story: autumn / winter campaign Keywords to weave in naturally: autumn winter, seasonal launch, campaign narrative, premium …
+- response: The turning of the year brings with it a particular gravity, a hushed promise of richer hues and textures. This is the spirit embodied within our latest autumn winter collection, a sanctuary found in …
+
+## 2026-06-27T07:27:23.920Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 16545
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Sustainable knitwear and natural fibres for cold weather Keywords to weave in naturally: merino wool, organic cotton, natural fibres, cold-weath…
+- response: The discerning dressing in the chill requires more than mere warmth; it demands integrity. Our latest collection of cold-weather knitwear is born from a deep respect for the materials themselves, each…
+
+## 2026-06-27T07:27:24.346Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 16972
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Women's winter coats — recycled wool and sustainable insulation Keywords to weave in naturally: winter coats, recycled wool, responsibly sourced…
+- response: In confronting the rigours of a northern winter, true elegance is found not merely in form, but in profound substance. Our collection of women's winter coats represents precisely this convergence of e…
+
+## 2026-06-27T07:27:28.050Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 20675
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Care guide: extending the life of winter garments Keywords to weave in naturally: washing wool, repair, longevity, winter garment care Locale: e…
+- response: The integrity of truly exceptional pieces is not solely found in their initial creation, but also in the devotion accorded to them throughout their long service. As the seasons turn and your treasured…
+
+## 2026-06-27T07:27:42.465Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 14410
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Recycled materials and circular fashion in outerwear Keywords to weave in naturally: recycled polyester, circular fashion, closed-loop, outerwea…
+- response: The journey toward mindful consumption demands integrity at every stage, from concept to completion. We believe that true luxury lies not only in exceptional design but also in a profound commitment t…
+
+## 2026-06-27T07:27:44.222Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 16166
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Daily-wear denim: fits and fabrics Keywords to weave in naturally: denim, fit guide, everyday Locale: en-GB (write in British English) Editorial…
+- response: The enduring appeal of denim lies not merely in its resilience, but in the conscientious way it has evolved to meet contemporary life. For those who regard their wardrobe as a curated narrative, the c…
+
+## 2026-06-27T07:27:48.374Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 20318
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Athleisure done with restraint Keywords to weave in naturally: athleisure, minimal, comfort Locale: en-GB (write in British English) Editorial c…
+- response: Our contemporary pieces are born from the belief that uncompromising ease need not sacrifice integrity. The essence of thoughtful design lies in restraint, allowing quality to speak volumes while main…
+
+## 2026-06-27T07:27:50.727Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 22671
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Layering essentials with natural fibres Keywords to weave in naturally: layering, merino base layers, organic cotton, winter essentials Locale: …
+- response: The pursuit of truly exceptional dressing begins not with a grand statement, but with intelligent construction. It is the silent architecture beneath the surface that dictates how a silhouette moves a…
+
+## 2026-06-27T07:28:08.019Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 17288
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Sustainable knitwear and natural fibres for cold weather Keywords to weave in naturally: merino wool, organic cotton, natural fibres, cold-weath…
+- response: L'approche de l'hiver exige une garde-robe qui raconte autant qu'elle protège. Pour affronter les matinées mordantes ou les soirées douces, rien ne vaut le cocon protecteur des matières naturelles. No…
+
+## 2026-06-27T07:28:14.847Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 24116
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Care guide: extending the life of winter garments Keywords to weave in naturally: washing wool, repair, longevity, winter garment care Locale: f…
+- response: L'acquisition d'un vêtement d'hiver de notre manufacture est bien plus qu'un simple achat ; c'est l'adoption d'une pièce maîtresse destinée à traverser les saisons, voire plusieurs générations. Sa qua…
+
+## 2026-06-27T07:28:19.594Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 28863
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Seasonal collection story: autumn / winter campaign Keywords to weave in naturally: autumn winter, seasonal launch, campaign narrative, premium …
+- response: Alors que le rythme terrestre ralentit et que les tonalités du ciel se font plus profondes, une nouvelle saison s’installe : celle de la maturation. C’est dans cette transition magnifique, entre le fl…
+
+## 2026-06-27T07:28:19.677Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 28946
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Recycled materials and circular fashion in outerwear Keywords to weave in naturally: recycled polyester, circular fashion, closed-loop, outerwea…
+- response: Le véritable luxe réside aujourd’hui dans le récit que porte une pièce, sa seconde vie. Notre engagement envers la mode circulaire n’est pas seulement un choix éthique ; c’est une transformation matér…
+
+## 2026-06-27T07:28:42.160Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 22479
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Smart-casual tailoring for the modern workplace Keywords to weave in naturally: tailoring, workwear, blazer Locale: fr-FR (write in French (Fran…
+- response: Le rituel de choisir une tenue qui vous représente ne devrait pas être une course effrénée aux tendances, mais un acte de curation. Au cœur du quotidien moderne, le véritable chic réside dans l'équili…
+
+## 2026-06-27T07:28:46.401Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 26722
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Layering essentials with natural fibres Keywords to weave in naturally: layering, merino base layers, organic cotton, winter essentials Locale: …
+- response: Au cœur de l'élégance véritable réside la connaissance : celle de savoir habiller pour affronter le temps sans jamais compromettre le style. L'art d'une garde-robe hivernale réussie ne tient pas au su…
+
+## 2026-06-27T07:28:48.631Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 28952
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Women's winter coats — recycled wool and sustainable insulation Keywords to weave in naturally: winter coats, recycled wool, responsibly sourced…
+- response: Dans les saisons où le froid affirme sa présence, le vêtement n'est pas un simple ajout, mais une seconde peau dont la qualité doit égaler les rigueurs de l'extérieur. Pour celles qui refusent le comp…
+
+## 2026-06-27T07:28:52.043Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 32362
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Hat care: shaping, brushing, storage Keywords to weave in naturally: hats, shaping, storage Locale: fr-FR (write in French (France)) Editorial c…
+- response: L’excellence d’un accessoire réside autant dans son apparition que dans la profondeur de son entretien. Votre couvre-chef est plus qu'un élément stylistique ; il est une extension intime de votre grâc…
+
+## 2026-06-27T07:29:13.382Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 21336
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Care guide: extending the life of winter garments Keywords to weave in naturally: washing wool, repair, longevity, winter garment care Locale: d…
+- response: Der Ruf des Winters ist greifbar, und mit ihm die Schönheit Ihrer hochwertigen Stücke. Doch gerade in dieser Zeit der tiefen Ruhe erfordert jeder wertvolle Mantel, jede warme Strickware eine besondere…
+
+## 2026-06-27T07:29:19.094Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 27046
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Recycled materials and circular fashion in outerwear Keywords to weave in naturally: recycled polyester, circular fashion, closed-loop, outerwea…
+- response: Die Kunst liegt nicht nur in der Form, sondern auch in der Geschichte, die sie erzählt. Unsere neue Oberbekleidung ist mehr als ein Kleidungsstück; sie ist die manifeste Entscheidung für eine bewusste…
+
+## 2026-06-27T07:29:21.297Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 29251
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Seasonal collection story: autumn / winter campaign Keywords to weave in naturally: autumn winter, seasonal launch, campaign narrative, premium …
+- response: Mit dem Schleier des Herbstes und der Erwartung des Winters beginnt erneut eine Zeit tiefgreifender Stimmungen, die unsere kreative Arbeit und unser Handwerk inspiriert. Diese Übergangszeit ist seit j…
+
+## 2026-06-27T07:29:25.566Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 33519
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Layering essentials with natural fibres Keywords to weave in naturally: layering, merino base layers, organic cotton, winter essentials Locale: …
+- response: Die Kunst des richtigen Kleidens, insbesondere in den Herausforderungen der kälteren Monate, besteht nicht im Einsatz eines einzigen, bedingungslos warmen Kleidungsstücks. Sie liegt vielmehr in der ra…
+
+## 2026-06-27T07:29:58.783Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 33214
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Women's winter coats — recycled wool and sustainable insulation Keywords to weave in naturally: winter coats, recycled wool, responsibly sourced…
+- response: Wenn die Kälte des Winters zuschlägt, braucht wahre Eleganz einen Ankerpunkt von Qualität – ein Kleidungsstück, das Stil und Verantwortung vereint. Unsere neuen Damenmäntel sind mehr als nur äußere Sc…
+
+## 2026-06-27T07:29:59.110Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 33541
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Hat care: shaping, brushing, storage Keywords to weave in naturally: hats, shaping, storage Locale: de-DE (write in German (Germany)) Editorial …
+- response: Die wahre Eleganz einer Kopfbedeckung liegt nicht nur in ihrem ersten Auftritt, sondern auch in der Sorgfalt, mit der Sie sie erhalten. Jedes Detail ist ein Zeuge Ihrer anspruchsvollen Ästhetik, und d…
+
+## 2026-06-27T07:30:04.366Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 38796
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Hand-finished leather goods from heritage workshops Keywords to weave in naturally: leather, heritage, craftsmanship Locale: de-DE (write in Ger…
+- response: Es ist die Begegnung zweier unzertrennlicher Elemente: eines materialspezifischen Ursprungs und einer zeitlosen Fertigkeit. Bei unseren Gütern geht es nicht bloß um ein Accessoire, sondern um die grei…
+
+## 2026-06-27T07:30:04.729Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 39160
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Sustainable knitwear and natural fibres for cold weather Keywords to weave in naturally: merino wool, organic cotton, natural fibres, cold-weath…
+- response: Die Schwelle zum kalten Wetter ist erreicht, und mit ihr die Forderung nach Trachten, denen Integrität innewohnt. Hochwertige Kaltwetter-Strickwaren sind mehr als nur Schutz gegen die Kälte; sie sind …
+
+## 2026-06-27T07:30:50.493Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 19258
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Sustainable knitwear and natural fibres for cold weather Keywords to weave in naturally: merino wool, organic cotton, natural fibres, cold-weath…
+- response: The true measure of luxury lies in its origins. This season, we return to the essential virtues of natural fibres—those elemental materials that form the bedrock of enduring style. Our cold-weather co…
+
+## 2026-06-27T07:30:54.610Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 23374
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Care guide: extending the life of winter garments Keywords to weave in naturally: washing wool, repair, longevity, winter garment care Locale: e…
+- response: The enduring beauty of a truly superior winter garment lies not only in its initial splendor but in the devoted care afforded to it over time. These pieces, crafted from exquisite materials and though…
+
+## 2026-06-27T07:30:56.502Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 25270
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Seasonal collection story: autumn / winter campaign Keywords to weave in naturally: autumn winter, seasonal launch, campaign narrative, premium …
+- response: As the cadence of year slows and the palette of nature deepens, we turn towards a luxurious equilibrium. This is the heart of our Autumn/Winter collection—a carefully conceived capsule born from a rev…
+
+## 2026-06-27T07:30:57.515Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 26283
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Women's winter coats — recycled wool and sustainable insulation Keywords to weave in naturally: winter coats, recycled wool, responsibly sourced…
+- response: The season turns into something elemental with the advent of true winter, demanding garments that are not merely functional but enduring. Our newest collection of women's outerwear meets this challeng…
+
+## 2026-06-27T07:31:19.945Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 22402
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Recycled materials and circular fashion in outerwear Keywords to weave in naturally: recycled polyester, circular fashion, closed-loop, outerwea…
+- response: The turning of the seasons demands pieces that are as thoughtful in their making as they are in their presence. This season, our collection of essential outerwear embodies that considered approach, ma…
+
+## 2026-06-27T07:31:21.944Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 24397
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Removing common stains from delicate fabrics Keywords to weave in naturally: stain removal, delicates, silk Locale: en-GB (write in British Engl…
+- response: The enduring beauty of truly exceptional pieces lies not just in their initial perfection, but in the mindful devotion given to their maintenance. Caring for your most cherished acquisitions, especial…
+
+## 2026-06-27T07:31:22.668Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 25124
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Layering essentials with natural fibres Keywords to weave in naturally: layering, merino base layers, organic cotton, winter essentials Locale: …
+- response: As the chill of winter sets in, true warmth begins with thoughtful preparation. The secret to enduring comfort against a crisp hillside breeze lies not in one heavy garment, but in the quiet harmony o…
+
+## 2026-06-27T07:31:32.285Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 34740
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Capsule wardrobe: ten pieces, one season Keywords to weave in naturally: capsule, wardrobe, essentials Locale: en-GB (write in British English) …
+- response: In an era of relentless trends, true elegance lies not in abundance, but in intention. The modern pursuit of style shouldn't be a frantic search through disparate pieces, but a quiet confidence born f…
+
+## 2026-06-27T07:31:54.376Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 22088
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Festival season: bold colour and texture Keywords to weave in naturally: festival, summer, colour Locale: en-GB (write in British English) Edito…
+- response: The vibrancy of high summer calls for hues as rich and resonant as the memories you wish to make. As the season reaches its breathtaking zenith, the passage into festival deserves a reflection of your…
+
+## 2026-06-27T07:31:55.455Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 23165
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Summer linen essentials for warm climates Keywords to weave in naturally: linen, summer, lightweight Locale: en-GB (write in British English) Ed…
+- response: The promise of summer lies in textiles that breathe, and our linen pieces embody this ancient truth. When seeking warmth during the zenith of a season, the inherent quality and superb drape of true li…
+
+## 2026-06-27T07:31:56.203Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 23914
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Pre-fall edit: between-season layering pieces Keywords to weave in naturally: pre-fall, layering, transitional Locale: en-GB (write in British E…
+- response: There is a beautiful melancholy in those days when the summer warmth begins to soften at the edges. The kind of glorious ambiguity where a crisp morning demands more than a simple tee, but the afterno…
+
+## 2026-06-27T07:31:56.260Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 23971
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Daily-wear denim: fits and fabrics Keywords to weave in naturally: denim, fit guide, everyday Locale: en-GB (write in British English) Editorial…
+- response: The pursuit of the perfect garment begins not with trend, but with intention. True quality lies in pieces that transcend season and silhouette, becoming the steadfast foundation of a discerning wardro…
+
+## 2026-06-27T07:32:21.330Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 25069
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Resort wear: lightweight pieces for travel Keywords to weave in naturally: resort, travel, vacation Locale: en-GB (write in British English) Edi…
+- response: The journey itself merits consideration, and for those who seek seamless passage from daily pursuits into moments of pure ease, the integrity of their attire must remain paramount. Our collection of l…
+
+## 2026-06-27T07:32:23.025Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 26762
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Spring campaign: garden party styling Keywords to weave in naturally: spring, garden party, florals Locale: en-GB (write in British English) Edi…
+- response: As the turning of the year brings with it the promise of warmth and renewal, few occasions speak to the quintessential elegance of the season quite like a garden party. This is a time when the bounty …
+
+## 2026-06-27T07:32:35.529Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 39267
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Evening wear: silk slip dresses and tailored tuxedos Keywords to weave in naturally: evening wear, silk, tuxedo Locale: en-GB (write in British …
+- response: As the air grows cooler and the occasion calls for something truly considered, there are those moments when dressing moves beyond mere attire and becomes an extension of intention. For the discerning …
+
+## 2026-06-27T07:32:38.774Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 42512
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Removing common stains from delicate fabrics Keywords to weave in naturally: stain removal, delicates, silk Locale: en-GB (write in British Engl…
+- response: The preservation of exceptional textiles is not merely a chore; it is an ongoing conversation between the garment and its keeper. Each mark, should it appear, represents a minor interruption to the fl…
+
+## 2026-06-27T07:33:00.332Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 21553
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Caring for cashmere through the seasons Keywords to weave in naturally: cashmere, knitwear care, seasonal Locale: en-GB (write in British Englis…
+- response: As the year turns and the crisp whisper of change filters through the windows, your treasured cashmere deserves guidance worthy of its exquisite softness. These luxurious fibres are not merely a layer…
+
+## 2026-06-27T07:33:01.029Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 22250
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Holiday gifting: timeless accessories Keywords to weave in naturally: holiday, gifting, accessories Locale: en-GB (write in British English) Edi…
+- response: As the year draws to a graceful close, bringing with it that quiet magic of approaching winter holidays, there is a beautiful pause in the rush. It is often within these moments of contemplation that …
+
+## 2026-06-27T07:33:02.134Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 23354
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Polishing and protecting fine footwear Keywords to weave in naturally: footwear care, polishing, leather shoes Locale: en-GB (write in British E…
+- response: The enduring quality of fine leather shoes is not merely established at their arrival, but rather cultivated through the diligent rituals of maintenance thereafter. To truly honour a pair of esteemed …
+
+## 2026-06-27T07:33:02.300Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 23521
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Evening wear: silk slip dresses and tailored tuxedos Keywords to weave in naturally: evening wear, silk, tuxedo Locale: en-GB (write in British …
+- response: There are those moments when clothing transcends mere attire, becoming the quiet language through which presence is declared. Our latest collection explores this transformative power, offering foundat…
+
+## 2026-06-27T07:33:24.627Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 22324
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Festival season: bold colour and texture Keywords to weave in naturally: festival, summer, colour Locale: en-GB (write in British English) Edito…
+- response: The arrival of summer signals a shift—a glorious permission to embrace vibrancy. This season demands textures that sing and hues that speak volumes, moving beyond the muted palettes of colder months. …
+
+## 2026-06-27T07:33:25.725Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 23421
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Polishing and protecting fine footwear Keywords to weave in naturally: footwear care, polishing, leather shoes Locale: en-GB (write in British E…
+- response: The pursuit of impeccable style begins with the details, and for the discerning owner of fine leather shoes, those details include their enduring condition. These pieces are not mere accessories; they…
+
+## 2026-06-27T07:33:27.180Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 24876
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Daily-wear denim: fits and fabrics Keywords to weave in naturally: denim, fit guide, everyday Locale: en-GB (write in British English) Editorial…
+- response: The pursuit of truly enduring style lies in pieces that transition seamlessly from the rush of the morning to the lingering quietude of evening. These are the anchors of a sophisticated wardrobe, and …
+
+## 2026-06-27T07:33:39.302Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 36998
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Spring campaign: garden party styling Keywords to weave in naturally: spring, garden party, florals Locale: en-GB (write in British English) Edi…
+- response: There is a profound poetry in the turning of the year, a resurgence found not merely in the calendar but within the spirit. As the muted hues of winter yield to the vibrant promise of warmth, it is a …
+
+## 2026-06-27T07:33:59.858Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 20551
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Silk scarves: traditional weaving techniques Keywords to weave in naturally: silk, weaving, heritage Locale: en-GB (write in British English) Ed…
+- response: There is a profound poetry inherent in the act of creation, particularly when it involves threads that carry centuries of knowledge. Each scarf is more than an accessory; it is a wearable chronicle, b…
+
+## 2026-06-27T07:34:02.003Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 22697
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Caring for cashmere through the seasons Keywords to weave in naturally: cashmere, knitwear care, seasonal Locale: en-GB (write in British Englis…
+- response: The journey of true cashmere is one demanding equal devotion to its wearing as to its upkeep. To ensure your esteemed pieces maintain their integrity and lustre across the span of a year, embracing se…
+
+## 2026-06-27T07:34:04.671Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 25365
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Daily-wear denim: fits and fabrics Keywords to weave in naturally: denim, fit guide, everyday Locale: en-GB (write in British English) Editorial…
+- response: The pursuit of the perfect daily garment is one that demands both enduring quality and effortless comfort. Selvedge denim, at its heart, represents a tangible continuum of industrious artistry, and th…
+
+## 2026-06-27T07:34:12.629Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 33322
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Spring campaign: garden party styling Keywords to weave in naturally: spring, garden party, florals Locale: en-GB (write in British English) Edi…
+- response: The slow turn of the year brings with it a profound shift in spirit, echoing the awakening of nature itself. As winter yields its quiet hold, we welcome the luminous promise of spring—a season steeped…
+
+## 2026-06-27T07:34:35.010Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 22360
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Resort wear: lightweight pieces for travel Keywords to weave in naturally: resort, travel, vacation Locale: en-GB (write in British English) Edi…
+- response: The transition into warmer months calls for clothing that moves with you—pieces designed not just for the journey, but for arrival. Our collection of lightweight essentials offers the perfect antidote…
+
+## 2026-06-27T07:34:35.753Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 23105
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: How to store leather accessories Keywords to weave in naturally: leather care, storage, conditioning Locale: en-GB (write in British English) Ed…
+- response: The life of a truly exceptional piece is measured not just by its moment of presence, but by the care bestowed upon it in repose. Your leather accessories are not mere objects; they are companions who…
+
+## 2026-06-27T07:34:36.503Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 23854
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Resort wear: lightweight pieces for travel Keywords to weave in naturally: resort, travel, vacation Locale: en-GB (write in British English) Edi…
+- response: The spirit of journey requires garments that are as versatile as they are exquisite. Our resort collection has been conceived for effortless movement, those precious moments when the destination itsel…
+
+## 2026-06-27T07:34:39.753Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 27104
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Spring campaign: garden party styling Keywords to weave in naturally: spring, garden party, florals Locale: en-GB (write in British English) Edi…
+- response: As the languid promise of warmer days graces the horizon, there arrives that glorious moment when nature awakens entirely. It is in this golden preface of spring that the preparations for a quintessen…
+
+## 2026-06-27T07:35:03.544Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 23788
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Pre-fall edit: between-season layering pieces Keywords to weave in naturally: pre-fall, layering, transitional Locale: en-GB (write in British E…
+- response: The changing light casts a different hue upon the landscape, marking not an end, but a sophisticated beginning. This is the pause between seasons—a fertile ground where true style finds its rhythm. We…
+
+## 2026-06-27T07:35:03.859Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 24103
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Hand-finished leather goods from heritage workshops Keywords to weave in naturally: leather, heritage, craftsmanship Locale: en-GB (write in Bri…
+- response: Within the esteemed confines of our generational workshops, a tradition is not merely upheld—it is amplified. Each piece emerges from a profound commitment to the integrity of its materials and the ma…
+
+## 2026-06-27T07:35:04.191Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 24435
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: How to store leather accessories Keywords to weave in naturally: leather care, storage, conditioning Locale: en-GB (write in British English) Ed…
+- response: The journey of fine leather is a testament to enduring quality, and like any object of significant character, it requires mindful stewardship. To ensure your accessories maintain the richness they pos…
+
+## 2026-06-27T07:35:07.626Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 27868
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Festival season: bold colour and texture Keywords to weave in naturally: festival, summer, colour Locale: en-GB (write in British English) Edito…
+- response: As the warmth of summer ascends and the air grows charged with anticipation, there arrives that luminous moment when celebration takes hold. It is during these golden months that our collections find …
+
+## 2026-06-27T07:35:32.235Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 24604
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Evening wear: silk slip dresses and tailored tuxedos Keywords to weave in naturally: evening wear, silk, tuxedo Locale: en-GB (write in British …
+- response: For those occasions where presence must be as considered as it is undeniable, the selection of your evening wear becomes a deliberate act of devotion to style. We understand that true luxury is not me…
+
+## 2026-06-27T07:35:33.223Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 25592
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Capsule wardrobe: ten pieces, one season Keywords to weave in naturally: capsule, wardrobe, essentials Locale: en-GB (write in British English) …
+- response: The pursuit of true style lies not in excess, but in intention. A thoughtfully curated wardrobe is an investment—in quality, yes, but also in the beautiful efficiency of your own dressing ritual. This…
+
+## 2026-06-27T07:35:33.829Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 26199
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Polishing and protecting fine footwear Keywords to weave in naturally: footwear care, polishing, leather shoes Locale: en-GB (write in British E…
+- response: The quiet ritual of tending to fine leather is a measured act, much like the arrival of autumn’s deepest hues or the hopeful promise held in early spring. When your most cherished leather shoes are re…
+
+## 2026-06-27T07:35:38.617Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 30986
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: High summer: linen suiting for warm-weather events Keywords to weave in naturally: high summer, linen suiting, events Locale: en-GB (write in Br…
+- response: The intensity of high summer demands a wardrobe that honours both uncompromising style and the ephemeral quality of the season. It is within this delicate balance that our collection of linen suiting …
+
+## 2026-06-27T07:36:05.873Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 27252
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Recycled materials and circular fashion in outerwear Keywords to weave in naturally: recycled polyester, circular fashion, closed-loop, outerwea…
+- response: Lorsque le vent se lève et annonce les grands changements de saison, certains vêtements échappent au temps en raconteur. Ils sont la preuve vivante qu’une nouvelle histoire peut naître d’un passé resp…
+
+## 2026-06-27T07:36:11.822Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 33202
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Sustainable knitwear and natural fibres for cold weather Keywords to weave in naturally: merino wool, organic cotton, natural fibres, cold-weath…
+- response: Lorsque les températures diminuent, le véritable luxe réside dans la rencontre parfaite entre l'efficacité et la douceur. Pour ceux dont la mode est une extension réfléchie de leur engagement, le froi…
+
+## 2026-06-27T07:36:15.735Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 37113
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Care guide: extending the life of winter garments Keywords to weave in naturally: washing wool, repair, longevity, winter garment care Locale: f…
+- response: Les saisons tournent, mais le confort d'une pièce maîtresse d'hiver mérite une attention particulière qui dépasse le simple devoir. Vos plus beaux manteaux, vos tricots lourds sont les compagnons sile…
+
+## 2026-06-27T07:36:24.400Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 45778
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Seasonal collection story: autumn / winter campaign Keywords to weave in naturally: autumn winter, seasonal launch, campaign narrative, premium …
+- response: L'arrivée de cette nouvelle saison n'est pas un simple changement dans le calendrier ; c’est une parenthèse, une invitation à la profondeur et à l'introspection. C'est dans cette richesse chromatique,…
+
+## 2026-06-27T07:36:59.331Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 34904
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Polishing and protecting fine footwear Keywords to weave in naturally: footwear care, polishing, leather shoes Locale: fr-FR (write in French (F…
+- response: Le véritable entretien d’une paire de chaussures n'est pas une simple formalité, mais un acte de préservation qui témoigne du respect que l’on porte à la matière noble et au savoir-faire qui l'a engen…
+
+## 2026-06-27T07:37:03.010Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 38585
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Women's winter coats — recycled wool and sustainable insulation Keywords to weave in naturally: winter coats, recycled wool, responsibly sourced…
+- response: Au cœur de l'hiver, où le raffinement rencontre la résistance au froid, notre collection sacrifie le compromis. Plus qu'un simple manteau, cette pièce est la déclaration d’une élégance pensée pour dur…
+
+## 2026-06-27T07:37:07.227Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 42802
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Layering essentials with natural fibres Keywords to weave in naturally: layering, merino base layers, organic cotton, winter essentials Locale: …
+- response: L'élégance véritable ne réside jamais dans l'accumulation, mais dans la connaissance. Dans le langage du vêtement, cela signifie maîtriser l'art de la superposition, transformer une nécessité saisonni…
+
+## 2026-06-27T07:37:08.551Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 44125
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Resort wear: lightweight pieces for travel Keywords to weave in naturally: resort, travel, vacation Locale: fr-FR (write in French (France)) Edi…
+- response: Le véritable voyage exige une garde-robe qui ne s'oppose pas au mouvement, mais l'accompagne dans sa fluidité. Les pièces présentées ici sont la parfaite incarnation de cette symbiose entre l'esthétiq…
+
+## 2026-06-27T07:37:37.856Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 29301
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Polishing and protecting fine footwear Keywords to weave in naturally: footwear care, polishing, leather shoes Locale: fr-FR (write in French (F…
+- response: Il existe une profondeur silencieuse dans le cuir véritable, celle qui témoigne du voyage et du temps. Ces belles pièces de maroquinerie sont plus que de simples chaussures ; elles sont les complices …
+
+## 2026-06-27T07:37:37.961Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 29407
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Pre-fall edit: between-season layering pieces Keywords to weave in naturally: pre-fall, layering, transitional Locale: fr-FR (write in French (F…
+- response: L’été s’adoucit dans sa lenteur, laissant derrière lui la chaleur vibrante pour accueillir les murmures d’une nouvelle saison. Cette parenthèse entre deux mondes est celle des transitions, ce temps pr…
+
+## 2026-06-27T07:37:49.002Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 40447
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Holiday gifting: timeless accessories Keywords to weave in naturally: holiday, gifting, accessories Locale: fr-FR (write in French (France)) Edi…
+- response: Alors que l'année touche à sa fin, certaines occasions dépassent la simple cadence du calendrier pour devenir le théâtre de gestes qui ont véritablement une résonance. Les fêtes sont plus qu'une paren…
+
+## 2026-06-27T07:37:50.502Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 41947
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Daily-wear denim: fits and fabrics Keywords to weave in naturally: denim, fit guide, everyday Locale: fr-FR (write in French (France)) Editorial…
+- response: Le vêtement qui accompagne le plus nos mouvements mérite une attention particulière. Le denim, loin d'être un simple basique, est la toile de fond intemporelle qui structure notre quotidien. Il incarn…
+
+## 2026-06-27T07:38:24.485Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 33980
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: High summer: linen suiting for warm-weather events Keywords to weave in naturally: high summer, linen suiting, events Locale: fr-FR (write in Fr…
+- response: L’apogée de l’été appelle une tenue qui ne soit pas seulement un vêtement, mais une véritable appréciation du temps présent. Lorsque les jours sont les plus longs et que le mercure atteint son zénith,…
+
+## 2026-06-27T07:38:26.959Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 36453
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Hand-finished leather goods from heritage workshops Keywords to weave in naturally: leather, heritage, craftsmanship Locale: fr-FR (write in Fre…
+- response: Dans l'élégance intemporelle de nos créations réside la mémoire du geste. Chaque pièce que nous vous présentons n'est pas une simple acquisition, mais la continuation d'un linage artisanal précieux. E…
+
+## 2026-06-27T07:38:35.355Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 44850
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: How to store leather accessories Keywords to weave in naturally: leather care, storage, conditioning Locale: fr-FR (write in French (France)) Ed…
+- response: Le cuir que vous avez choisi n'est pas un simple accessoire ; c’est une matière vivante, destinée à accompagner les étapes de votre histoire avec la dignité qu'elle mérite. Pour que cette alliance per…
+
+## 2026-06-27T07:38:36.078Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 45572
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Athleisure done with restraint Keywords to weave in naturally: athleisure, minimal, comfort Locale: fr-FR (write in French (France)) Editorial c…
+- response: Dans un rythme de vie où les transitions sont incessantes, chaque vêtement doit être plus qu'une simple tenue ; il doit être une alliée silencieuse, un prolongement de votre intention. C’est dans cet …
+
+## 2026-06-27T07:39:00.962Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 24874
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Spring campaign: garden party styling Keywords to weave in naturally: spring, garden party, florals Locale: fr-FR (write in French (France)) Edi…
+- response: Le printemps n’est pas seulement une saison ; c’est la promesse renouvelée de l'éclat. Et quelle meilleure incarnation que l'éveil vibratoire d’une parenthèse enchantée, la fête au jardin. Là où lesym…
+
+## 2026-06-27T07:39:03.187Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 27101
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Caring for cashmere through the seasons Keywords to weave in naturally: cashmere, knitwear care, seasonal Locale: fr-FR (write in French (France…
+- response: Le véritable luxe réside dans la permanence, et un vêtement si précieux que le nôtre est une ode à cet engagement. Notre cachemire n'est pas seulement un fragment de saison ; c'est une pièce maîtresse…
+
+## 2026-06-27T07:39:13.921Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 37834
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Removing common stains from delicate fabrics Keywords to weave in naturally: stain removal, delicates, silk Locale: fr-FR (write in French (Fran…
+- response: Chaque pièce que vous choisissez est une extension de votre histoire, un murmure de luxe dans le quotidien. Nous savons que même les plus précieuses entre les mains du temps peuvent subir les marques …
+
+## 2026-06-27T07:39:15.505Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 39408
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Resort wear: lightweight pieces for travel Keywords to weave in naturally: resort, travel, vacation Locale: fr-FR (write in French (France)) Edi…
+- response: L'art de voyager n'est pas seulement une affaire de destinations, mais il est intrinsèquement lié à l’enveloppe que nous choisissons pour accompagner nos mouvements. Pour les esprits qui embrassent le…
+
+## 2026-06-27T07:39:41.293Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 25742
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Silk scarves: traditional weaving techniques Keywords to weave in naturally: silk, weaving, heritage Locale: fr-FR (write in French (France)) Ed…
+- response: Au cœur de chaque pièce réside un savoir-faire qui défie le temps. Nous ne parlons pas simplement de foulards, mais d’une transmission vivante, ancrée dans les traditions séculaires de notre art. Ce g…
+
+## 2026-06-27T07:39:41.471Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 25918
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: How to store leather accessories Keywords to weave in naturally: leather care, storage, conditioning Locale: fr-FR (write in French (France)) Ed…
+- response: Pour que la beauté de votre cuir perdure au fil des saisons, un entretien attentif est requis. Le véritable artisanat ne réside pas seulement dans la création, mais aussi dans le savoir-faire requis p…
+
+## 2026-06-27T07:39:51.297Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 35745
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Festival season: bold colour and texture Keywords to weave in naturally: festival, summer, colour Locale: fr-FR (write in French (France)) Edito…
+- response: Le solstice d'été appelle une célébration sans retenue. Une époque où les sens sont éveillés au paroxysme de leur apogée, et où l'audace n'est pas une tendance, mais une nécessité. Pour ces instants f…
+
+## 2026-06-27T07:39:52.656Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 37105
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: High summer: linen suiting for warm-weather events Keywords to weave in naturally: high summer, linen suiting, events Locale: fr-FR (write in Fr…
+- response: L'apogée de l'été exige une élégance qui refuse la contrainte. Lorsque les journées sont les plus longues et les températures les plus hautes, le luxe véritable réside dans la capacité d'une silhouett…
+
+## 2026-06-27T07:40:16.866Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 24207
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Pre-fall edit: between-season layering pieces Keywords to weave in naturally: pre-fall, layering, transitional Locale: fr-FR (write in French (F…
+- response: L'équilibre est l'art délicat de la transition. À mesure que les saisons opèrent leur mue, c'est dans cette douce parenthèse entre les chaleurs estivales et les profondeurs de l'automne que résident l…
+
+## 2026-06-27T07:40:18.802Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 26142
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Smart-casual tailoring for the modern workplace Keywords to weave in naturally: tailoring, workwear, blazer Locale: fr-FR (write in French (Fran…
+- response: L'art de l'élégance moderne réside dans cette subtilité qui transforme une tenue professionnelle en une véritable déclaration de soi. Le bureau d'aujourd'hui exige plus qu'une simple tenue ; il demand…
+
+## 2026-06-27T07:40:21.014Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 28355
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Summer linen essentials for warm climates Keywords to weave in naturally: linen, summer, lightweight Locale: fr-FR (write in French (France)) Ed…
+- response: L'été dans les régions chaudes exige plus qu'une simple garde-robe ; il requiert une seconde peau qui honore la chaleur ambiante tout en préservant l'allure. Au cœur de cette saison méditerranéenne, l…
+
+## 2026-06-27T07:40:31.067Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 38407
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Removing common stains from delicate fabrics Keywords to weave in naturally: stain removal, delicates, silk Locale: fr-FR (write in French (Fran…
+- response: Chaque pièce qui nous accompagne est une histoire tissée, un vestige d'un savoir-faire qui transcende le temps. Or, la vie offre inévitablement ces marques fugaces – une tache, un accident — qui menac…
+
+## 2026-06-27T07:40:54.984Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 23908
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Hat care: shaping, brushing, storage Keywords to weave in naturally: hats, shaping, storage Locale: fr-FR (write in French (France)) Editorial c…
+- response: L'entretien de ces pièces uniques est un geste qui honore leur fabrication et les générations à venir. Comme tout objet de savoir-faire noble, vos chapeaux méritent une attention quotidienne, allant a…
+
+## 2026-06-27T07:40:55.600Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 24524
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Spring campaign: garden party styling Keywords to weave in naturally: spring, garden party, florals Locale: fr-FR (write in French (France)) Edi…
+- response: Le renouveau du printemps appelle une nouvelle élégance, celle qui trouve son apogée dans les cadres verdoyants d’une parenthèse enchantée. La saison des florais est revenue, et elle déploie sur nos c…
+
+## 2026-06-27T07:41:03.161Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 32083
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Daily-wear denim: fits and fabrics Keywords to weave in naturally: denim, fit guide, everyday Locale: fr-FR (write in French (France)) Editorial…
+- response: Le véritable art du vêtement réside dans la symbiose réussie entre le brut et le porté, entre l'intention du créateur et la réalité de votre quotidien. Pour qu'une pièce puisse transcender le stade de…
+
+## 2026-06-27T07:41:08.456Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 37378
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Removing common stains from delicate fabrics Keywords to weave in naturally: stain removal, delicates, silk Locale: fr-FR (write in French (Fran…
+- response: Il arrive à chacun que l'imprévu vienne gâcher la perfection d'une pièce maîtresse. Pourtant, une tache accidentelle n'est pas forcément le présage de la fin d'un cycle de vie magnifique. Pour les ama…
+
+## 2026-06-27T07:41:42.485Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 34023
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Pre-fall edit: between-season layering pieces Keywords to weave in naturally: pre-fall, layering, transitional Locale: fr-FR (write in French (F…
+- response: Le murmure du changement est dans l'air, annonçant avec une grâce silencieuse la transition des saisons. Notre nouvelle collection capsule incarne cette élégance entre deux temps, célébrant ce moment …
+
+## 2026-06-27T07:41:48.262Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 39798
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: How to store leather accessories Keywords to weave in naturally: leather care, storage, conditioning Locale: fr-FR (write in French (France)) Ed…
+- response: Pour que la beauté de ce cuir perpétue son histoire, il est essentiel de lui accorder le même respect que celui qu'il témoigne au quotidien. Notre travail ne s'arrête pas à la création ; il se poursui…
+
+## 2026-06-27T07:41:50.298Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 41835
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Holiday gifting: timeless accessories Keywords to weave in naturally: holiday, gifting, accessories Locale: fr-FR (write in French (France)) Edi…
+- response: Alors que le rythme des saisons ralentit et que l’atmosphère empreinte de fêtes s’installe, la quête du présent parfait prend une dimension nouvelle. Dans le luxe véritable, l’acte de donner transcend…
+
+## 2026-06-27T07:41:54.268Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 45805
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Silk scarves: traditional weaving techniques Keywords to weave in naturally: silk, weaving, heritage Locale: fr-FR (write in French (France)) Ed…
+- response: Chaque étole que nous créons est plus qu’un simple accessoire ; elle est le témoignage silencieux d'un art qui résiste au temps. Elle trouve son origine dans la fibre noble de la soie, matière premièr…
+
+## 2026-06-27T07:42:22.405Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 28122
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Capsule wardrobe: ten pieces, one season Keywords to weave in naturally: capsule, wardrobe, essentials Locale: fr-FR (write in French (France)) …
+- response: L'arrivée d'une nouvelle saison invite à un rythme différent, une parenthèse où le luxe réside dans la simplicité choisie. Arrêter de vivre au gré des tendances éphémères, c'est embrasser un art du ve…
+
+## 2026-06-27T07:42:34.438Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 40156
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: High summer: linen suiting for warm-weather events Keywords to weave in naturally: high summer, linen suiting, events Locale: fr-FR (write in Fr…
+- response: L'apogée de l'été exige une élégance qui défie les contraintes du temps et de la température. Lorsque les journées s'étirent dans leur splendeur brûlante, le véritable art consiste à trouver une étoff…
+
+## 2026-06-27T07:42:34.733Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 40455
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: How to fold and travel with tailored shirts Keywords to weave in naturally: shirt care, travel folding, packing Locale: fr-FR (write in French (…
+- response: Le voyage, qu'il soit bref ou prolongé, transforme le rituel de l'habillage en une véritable histoire. Pour que votre chemise taillée conserve la même perfection lorsqu’elle arrive à destination qu’au…
+
+## 2026-06-27T07:42:35.217Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 40940
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Daily-wear denim: fits and fabrics Keywords to weave in naturally: denim, fit guide, everyday Locale: fr-FR (write in French (France)) Editorial…
+- response: Le denim, matière fondamentale de l'uniforme moderne, mérite plus qu'une simple mention. Chez nous, il représente une véritable toile de fond pour le quotidien, un ouvrage pensé autant pour sa résista…
+
+## 2026-06-27T07:43:07.877Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 32656
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Care guide: extending the life of winter garments Keywords to weave in naturally: washing wool, repair, longevity, winter garment care Locale: d…
+- response: Die Pflege unserer Winterkleidung ist mehr als nur eine lästige Pflicht; sie ist ein Akt der Wertschätzung für die Handwerkskunst und die Langlebigkeit, die wir in jedes Stück investieren. Diese Kleid…
+
+## 2026-06-27T07:43:11.057Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 35835
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Layering essentials with natural fibres Keywords to weave in naturally: layering, merino base layers, organic cotton, winter essentials Locale: …
+- response: Die Kunst des Schichtens ist nicht bloß eine Frage der Mode, sondern eine tiefgründige Berücksichtigung des Klimas und der eigenen Bedürfnisse. Sie ist die Quintessenz eines durchdachten Garderobesaal…
+
+## 2026-06-27T07:43:13.011Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 37788
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Seasonal collection story: autumn / winter campaign Keywords to weave in naturally: autumn winter, seasonal launch, campaign narrative, premium …
+- response: Der Abschied des Sommers ist kein Ende, sondern die feierliche Vorbereitung auf eine tiefere, reifere Zeit. Die Natur selbst wandelt sich in ein Ballett aus gedämpften Farbtönen, und mit ihr erwacht e…
+
+## 2026-06-27T07:43:13.247Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 38025
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Recycled materials and circular fashion in outerwear Keywords to weave in naturally: recycled polyester, circular fashion, closed-loop, outerwea…
+- response: Die wahre Eleganz findet ihren Ursprung nicht im Neuanfang, sondern in der bewussten Transformation. Unser Ansatz zur Oberbekleidung verkörpert diese Philosophie tiefgreifend: Wir glauben, dass Luxus …
+
+## 2026-06-27T07:43:47.910Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 34657
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Hat care: shaping, brushing, storage Keywords to weave in naturally: hats, shaping, storage Locale: de-DE (write in German (Germany)) Editorial …
+- response: Die wahre Schönheit eines unserer Kopfbedeckungen liegt nicht nur in ihrer anfänglichen Perfektion, sondern vor allem in der Pflege und dem Respekt, den sie im Laufe ihrer Nutzung erhält. Die Kunst, d…
+
+## 2026-06-27T07:43:48.659Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 35407
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Summer linen essentials for warm climates Keywords to weave in naturally: linen, summer, lightweight Locale: de-DE (write in German (Germany)) E…
+- response: Der Sommer ist nicht nur eine Jahreszeit, er ist ein Zustand. Eine bewusste Übergangsphase, in der Kleidung weniger eine Abdeckung als vielmehr ein zweite Haut wird – leicht, atmungsaktiv und doch von…
+
+## 2026-06-27T07:43:57.251Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 43998
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Sustainable knitwear and natural fibres for cold weather Keywords to weave in naturally: merino wool, organic cotton, natural fibres, cold-weath…
+- response: Wenn die Temperaturen sinken, wandelt sich die Suche nach dem perfekten Kleidungsstück von einem Trend zu einer bewussten Notwendigkeit. Es geht nicht nur darum, warm zu bleiben; es geht darum, diese …
+
+## 2026-06-27T07:43:58.014Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 44762
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Women's winter coats — recycled wool and sustainable insulation Keywords to weave in naturally: winter coats, recycled wool, responsibly sourced…
+- response: Dieser Mantel ist mehr als ein Kleidungsstück; er ist ein Zeugnis der gelungenen Symbiose zwischen zeitloser Eleganz und bewusster Verantwortung. Er verkörpert die Überzeugung, dass kompromisslose Wär…
+
+## 2026-06-27T07:44:22.833Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 24815
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Evening wear: silk slip dresses and tailored tuxedos Keywords to weave in naturally: evening wear, silk, tuxedo Locale: de-DE (write in German (…
+- response: Die Magie des Abends liegt im Detail – in der Art, wie ein Stoff fällt, und in der Aussage, die ein Outfit macht. Für Momente größter Bedeutung spielt die Kleidung eine entscheidende Rolle. Wenn die N…
+
+## 2026-06-27T07:44:24.800Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 26781
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: High summer: linen suiting for warm-weather events Keywords to weave in naturally: high summer, linen suiting, events Locale: de-DE (write in Ge…
+- response: Wenn die Sommersonne ihren Höhepunkt erreicht und der Sommer in seine luxuriöseste Phase eintritt, bieten die feinen Garne des Leinens jene zeitlose Eleganz und den taktilen Komfort, der diesen besond…
+
+## 2026-06-27T07:44:29.641Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 31621
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Polishing and protecting fine footwear Keywords to weave in naturally: footwear care, polishing, leather shoes Locale: de-DE (write in German (G…
+- response: Die Pflege Ihrer feinen Lederschuhe ist nicht bloß ein Detail, sondern ein Akt der Achtung vor dem Handwerk und Ihrer eigenen Auswahl. Ein echtes Schuhwerk ist kein Gegenstand für den einmaligen Einsa…
+
+## 2026-06-27T07:44:30.370Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 32350
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Summer linen essentials for warm climates Keywords to weave in naturally: linen, summer, lightweight Locale: de-DE (write in German (Germany)) E…
+- response: Der Hochsommer lädt dazu ein, die Garderobe neu zu überdenken – hin zu einer Kleidung, die sowohl mit der Hitze mitschwingt als auch einen eigenen Widerstandsfähigkeit besitzt. In dieser herausfordern…
+
+## 2026-06-27T07:45:01.767Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 31392
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Summer linen essentials for warm climates Keywords to weave in naturally: linen, summer, lightweight Locale: de-DE (write in German (Germany)) E…
+- response: Wenn die Sommermonate in ihre volle Pracht treten und die Temperaturen steigen, kehrt sich unser Blick der bewährten Langlebigkeit und dem zeitlosen Charme bestimmter Materialien zu. Gerade in heißen …
+
+## 2026-06-27T07:45:02.688Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 32313
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Summer linen essentials for warm climates Keywords to weave in naturally: linen, summer, lightweight Locale: de-DE (write in German (Germany)) E…
+- response: Wenn die Tage länger werden und die Hitze sanft beginnt, ist die Kleidung nicht nur ein Kleidungsstück – sie wird Teil der Haut. In warmen Klimazonen ist die Balance zwischen Eleganz und Komfort eine …
+
+## 2026-06-27T07:45:05.645Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 35269
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: High summer: linen suiting for warm-weather events Keywords to weave in naturally: high summer, linen suiting, events Locale: de-DE (write in Ge…
+- response: Die Epoche des Hochsommers stellt besondere Anforderungen an die zeitliche Kleiderwahl und die Trägheit des Materials. Es ist eine Zeit höchster Intensität, in der wahre Qualität nicht nur Bestand hat…
+
+## 2026-06-27T07:45:06.066Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 35691
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: How to fold and travel with tailored shirts Keywords to weave in naturally: shirt care, travel folding, packing Locale: de-DE (write in German (…
+- response: Ein bewusstes Packen ist die erste Stufe der Pflege. Ihr maßgeschneidertes Hemd ist nicht nur ein Kleidungsstück, es ist ein Ausdruck Ihrer Präsenz – und seine Reise sollte ebenso würdig sein. Um die …
+
+## 2026-06-27T07:45:46.897Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 40824
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: How to fold and travel with tailored shirts Keywords to weave in naturally: shirt care, travel folding, packing Locale: de-DE (write in German (…
+- response: Die Eleganz eines perfekt geschnittenen Hemdes soll nicht nur am Ankunftsort triumphal erscheinen, sondern durchgängig seine makellose Form bewahren. Wenn die Reise beginnt und Sie Ihren persönlichen …
+
+## 2026-06-27T07:45:50.323Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 44252
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: High summer: linen suiting for warm-weather events Keywords to weave in naturally: high summer, linen suiting, events Locale: de-DE (write in Ge…
+- response: Die goldene Zeit des Jahres, wenn der Hochsommer seinen tiefsten Punkt erreicht und die Tage in eine träge Wärme gehüllt sind. Dies ist die Zeit der langen Schatten, der geschäftigen Sonnenuntergänge …
+
+## 2026-06-27T07:45:51.902Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 45830
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Smart-casual tailoring for the modern workplace Keywords to weave in naturally: tailoring, workwear, blazer Locale: de-DE (write in German (Germ…
+- response: Die moderne Arbeitswelt hat sich gewandelt, doch der Anspruch an Qualität und Ausdruck bleibt unangetastet. Die Anforderungen des zeitgenössischen Berufsalltags verlangen nach einer Garderobe, die nic…
+
+## 2026-06-27T07:45:52.002Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 45931
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Hat care: shaping, brushing, storage Keywords to weave in naturally: hats, shaping, storage Locale: de-DE (write in German (Germany)) Editorial …
+- response: Die Pflege Ihrer Kopfbedeckungen ist mehr als nur eine Notwendigkeit; sie ist ein Akt der Bewahrung und des Respekts vor dem Handwerk, das diesen besonderen Träger geschaffen hat. Diese Stücke sind ke…
+
+## 2026-06-27T07:46:29.194Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 37187
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Resort wear: lightweight pieces for travel Keywords to weave in naturally: resort, travel, vacation Locale: de-DE (write in German (Germany)) Ed…
+- response: Die schönsten Reisen beginnen mit der Leichtigkeit, die Sie in Ihren Kleidungsstücken finden. Unsere Kollektionen für das Resort sind mehr als nur Sommergarderobe; sie sind die Begleiter Ihrer Abenteu…
+
+## 2026-06-27T07:46:32.282Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 40275
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Silk scarves: traditional weaving techniques Keywords to weave in naturally: silk, weaving, heritage Locale: de-DE (write in German (Germany)) E…
+- response: Die Entstehung unserer Seidenschals ist weit mehr als die bloße Herstellung eines Accessoires; sie ist eine lebendige Chronik, ein tief verwurzeltes Erbe. Jedes dieser Gewebe ist das Ergebnis einer ja…
+
+## 2026-06-27T07:46:36.040Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 44033
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: High summer: linen suiting for warm-weather events Keywords to weave in naturally: high summer, linen suiting, events Locale: de-DE (write in Ge…
+- response: Der Hochsommer ist eine Ära höchster Kontraste: die Intensität des Lichts trifft auf die Sehnsucht nach kühler Eleganz. Die kurze Garderobe muss eine neue Balance finden, ohne jedoch ihren Anspruch an…
+
+## 2026-06-27T07:46:39.148Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 47140
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Spring campaign: garden party styling Keywords to weave in naturally: spring, garden party, florals Locale: de-DE (write in German (Germany)) Ed…
+- response: Der Frühling ist nicht bloß eine jahreszeitliche Verschiebung; er ist die musikalische Rückkehr der Natur, ein epochales Erwachen. Aus dem stillen Schlaf der Wintermonate erwacht das Leben in seiner v…
+
+## 2026-06-27T07:47:01.198Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 22046
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Pre-fall edit: between-season layering pieces Keywords to weave in naturally: pre-fall, layering, transitional Locale: de-DE (write in German (G…
+- response: Die Zeit zwischen den Jahreszeiten ist eine der spannendsten. Sie verlangt nach einer Garderobe, die nicht nur hält, sondern auch Geschichten erzählt – Stücke, die sich musikalisch anpassen können. Mi…
+
+## 2026-06-27T07:47:05.564Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 26411
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Resort wear: lightweight pieces for travel Keywords to weave in naturally: resort, travel, vacation Locale: de-DE (write in German (Germany)) Ed…
+- response: Die wahre Kunst der Reise liegt in der Leichtigkeit. Wenn Sie die Grenze zwischen Ankunft und Abreise verschwimmen lassen wollen, braucht Ihr Garderobe keine Kompromisse. Diese Kollektion wurde für di…
+
+## 2026-06-27T07:47:13.559Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 34406
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Polishing and protecting fine footwear Keywords to weave in naturally: footwear care, polishing, leather shoes Locale: de-DE (write in German (G…
+- response: Die wahre Wertschätzung eines erstklassigen Paares Schuhwerk liegt nicht nur in seinem ersten Tragen, sondern auch in der Hingabe, die es über Jahre hinweg begleitet. Die Pflege Ihrer luxuriösen Leder…
+
+## 2026-06-27T07:47:15.198Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 36046
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Evening wear: silk slip dresses and tailored tuxedos Keywords to weave in naturally: evening wear, silk, tuxedo Locale: de-DE (write in German (…
+- response: Die wahre Kunst der Abendgarderobe liegt nicht nur in ihrer Präsenz, sondern vor allem in der Erzählung, die sie mühelos erzählt. Sie ist eine kuratierte Antwort auf den Moment – ein kompromissloses S…
+
+## 2026-06-27T07:47:38.355Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 23115
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Caring for cashmere through the seasons Keywords to weave in naturally: cashmere, knitwear care, seasonal Locale: de-DE (write in German (German…
+- response: Die Langlebigkeit Ihres Kaschmirs ist ein Echo Ihrer eigenen Wertschätzung für Qualität und zeitlose Eleganz. Unser feinster Strick ist mehr als nur ein Kleidungsstück; er ist eine Investition, die Pf…
+
+## 2026-06-27T07:47:47.842Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 32606
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: High summer: linen suiting for warm-weather events Keywords to weave in naturally: high summer, linen suiting, events Locale: de-DE (write in Ge…
+- response: Wenn der Sommer seinen Höhepunkt erreicht und die Tage lang und goldgelb sind, verlangt nach dieser Intensität ein passender Stil. Es ist die Zeit jener besonderen Momente, in denen Eleganz nicht erzw…
+
+## 2026-06-27T07:47:48.619Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 33384
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Hat care: shaping, brushing, storage Keywords to weave in naturally: hats, shaping, storage Locale: de-DE (write in German (Germany)) Editorial …
+- response: Die Pflege eines besonderen Stücks sollte ein Ritual sein, eine stille Zeremonie der Achtsamkeit – ähnlich wie das bewusste Tragen. Wenn Ihre Hüte ihre Reise beendet haben, gebührt ihnen die gleiche S…
+
+## 2026-06-27T07:47:48.769Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 33531
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Capsule wardrobe: ten pieces, one season Keywords to weave in naturally: capsule, wardrobe, essentials Locale: de-DE (write in German (Germany))…
+- response: Die wahre Eleganz liegt in der Reduktion. In einer Welt, die von schnellem Wandel und Überflutung geprägt ist, bietet sich die bewusste Entscheidung als zeitlose Antwort an. Ein gut kuratierter Kleide…
+
+## 2026-06-27T07:48:13.237Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 24463
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Pre-fall edit: between-season layering pieces Keywords to weave in naturally: pre-fall, layering, transitional Locale: de-DE (write in German (G…
+- response: Die Kunst des Übergangs ist eine, die wahre Vielschichtigkeit und die subtile Eleganz antiker Textilien erfordert. In dieser Schwelle zwischen den Jahreszeiten, in der die Sommerhitze nachlässt und di…
+
+## 2026-06-27T07:48:21.140Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 32366
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Festival season: bold colour and texture Keywords to weave in naturally: festival, summer, colour Locale: de-DE (write in German (Germany)) Edit…
+- response: Der Sommer ist nicht nur eine Jahreszeit; er ist ein Versprechen von Licht, Wärme und ungebändigter Lebendigkeit. Wenn die langen Tage beginnen, ihre volle Pracht zu entfalten, erwachent auch die wahr…
+
+## 2026-06-27T07:48:29.933Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 41159
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Hand-finished leather goods from heritage workshops Keywords to weave in naturally: leather, heritage, craftsmanship Locale: de-DE (write in Ger…
+- response: Es ist eine tief verwurzelte Kunst, ein zeitloses Handwerk. Unsere Kollektion beginnt nicht mit einem Entwurf, sondern mit der Geschichte selbst – der Geschichte des Materials. Wir führen Sie in die k…
+
+## 2026-06-27T07:48:30.057Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 41282
+- system: You write long-form, history-rooted brand copy. Reverent, craftsmanship-led, lineage and provenance front-and-centre. Formal register.
+- user: Write the body copy for an AEM Content Fragment. Topic: Caring for cashmere through the seasons Keywords to weave in naturally: cashmere, knitwear care, seasonal Locale: de-DE (write in German (German…
+- response: Die Pflege dieses außergewöhnlichen Cashmermaterials ist mehr als nur eine Frage der Reinigung; es ist ein Akt der Wertschätzung für die Handwerkskunst und die Langlebigkeit dieser faszinierenden Schö…
+
+## 2026-06-27T07:48:54.045Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 23981
+- system: You write evocative seasonal copy that anchors the reader in time and place. Sensory detail, season-specific vocabulary, no hard sell.
+- user: Write the body copy for an AEM Content Fragment. Topic: Festival season: bold colour and texture Keywords to weave in naturally: festival, summer, colour Locale: de-DE (write in German (Germany)) Edit…
+- response: Der Hochsommer erreicht seinen Höhepunkt, und mit ihm die lebendigsten Farben des Jahres. Die Zeit der Feste ist gekommen – jene Momente, in denen wir bewusst stehen bleiben und die Intensität des Aug…
+
+## 2026-06-27T07:48:56.486Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 26424
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Smart-casual tailoring for the modern workplace Keywords to weave in naturally: tailoring, workwear, blazer Locale: de-DE (write in German (Germ…
+- response: Die modernen Anforderungen an unseren beruflichen Stil erfordern eine neue Balance. Die klare Linie des Business-Looks muss nicht länger das Korsett enger Steckbrücken überqueren. Wo früher die strikt…
+
+## 2026-06-27T07:49:04.414Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 34352
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Silk scarves: traditional weaving techniques Keywords to weave in naturally: silk, weaving, heritage Locale: de-DE (write in German (Germany)) E…
+- response: Die wahre Schönheit eines unserer Schals liegt nicht nur in seiner sinnlichen Oberfläche, sondern im stillen Echo der Tradition, das seinen Fasern innewohnt. Jedes Detail dieser Seidenstücke ist Zeugn…
+
+## 2026-06-27T07:49:05.434Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 35373
+- system: You write aspirational, brand-led narrative copy for a premium fashion house. Voice is confident, evocative, restrained. Avoid bullet lists; favour flowing prose.
+- user: Write the body copy for an AEM Content Fragment. Topic: Polishing and protecting fine footwear Keywords to weave in naturally: footwear care, polishing, leather shoes Locale: de-DE (write in German (G…
+- response: Die wahre Schönheit von erstklassigem Leder entfaltet sich nicht nur durch seinen Neuglanz, sondern in der langen Erzählung von Pflege und Hingabe. Ihre ausgewählten Lederschuhe sind mehr als nur Acce…
+
+## 2026-06-27T07:51:07.109Z — google/gemma-4-e4b
+- ok: false
+- durationMs: 15
+- system: You parse free-form content briefs into strict JSON. Return ONLY a JSON object with these fields: - audience: short string describing the target audience. - locale: one of "en-gb", "fr-fr", "de-de". I…
+- user: I'm writing a landing page for our new sustainable winter collection. Target audience is eco-conscious women aged 25–40 in the UK market. The page needs to cover: our recycled materials sourcing story…
+- errorClass: OllamaServerError
+- errorMessageHead: Ollama /v1/chat/completions 400: {"error":"'response_format.type' must be 'json_schema' or 'text'"}
+
+## 2026-06-27T07:53:38.977Z — google/gemma-4-e4b
+- ok: false
+- durationMs: 9840
+- system: You parse free-form content briefs into strict JSON. Return ONLY a JSON object with these fields: - audience: short string describing the target audience. - locale: one of "en-gb", "fr-fr", "de-de". I…
+- user: I'm writing a landing page for our new sustainable winter collection. Target audience is eco-conscious women aged 25–40 in the UK market. The page needs to cover: our recycled materials sourcing story…
+- errorClass: OllamaJsonParseError
+- errorMessageHead: Chat response is not valid JSON: Unexpected token '`', "```json { "... is not valid JSON
+
+## 2026-06-27T07:53:47.752Z — google/gemma-4-e4b
+- ok: false
+- durationMs: 8774
+- system: You parse free-form content briefs into strict JSON. Return ONLY a JSON object with these fields: - audience: short string describing the target audience. - locale: one of "en-gb", "fr-fr", "de-de". I…
+- user: I'm writing a landing page for our new sustainable winter collection. Target audience is eco-conscious women aged 25–40 in the UK market. The page needs to cover: our recycled materials sourcing story…
+- errorClass: OllamaJsonParseError
+- errorMessageHead: Chat response is not valid JSON: Unexpected token '`', "```json { "... is not valid JSON
+
+## 2026-06-27T07:53:57.927Z — google/gemma-4-e4b
+- ok: false
+- durationMs: 10174
+- system: You parse free-form content briefs into strict JSON. Return ONLY a JSON object with these fields: - audience: short string describing the target audience. - locale: one of "en-gb", "fr-fr", "de-de". I…
+- user: I'm writing a landing page for our new sustainable winter collection. Target audience is eco-conscious women aged 25–40 in the UK market. The page needs to cover: our recycled materials sourcing story…
+- errorClass: OllamaJsonParseError
+- errorMessageHead: Chat response is not valid JSON: Unexpected token '`', "```json { "... is not valid JSON
+
+## 2026-06-27T07:54:20.599Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 9831
+- system: You parse free-form content briefs into strict JSON. Return ONLY a JSON object with these fields: - audience: short string describing the target audience. - locale: one of "en-gb", "fr-fr", "de-de". I…
+- user: I'm writing a landing page for our new sustainable winter collection. Target audience is eco-conscious women aged 25–40 in the UK market. The page needs to cover: our recycled materials sourcing story…
+- response: { "audience": "Eco-conscious women (25–40, UK)", "locale": "en-gb", "tone": "premium", "brandGuidelines": [ "sustainability-voice", "premium-tone" ], "requiredTopics": [ "Sustainable Sourcing", "Produ…
+
+## 2026-06-27T07:55:20.556Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 8845
+- system: You parse free-form content briefs into strict JSON. Return ONLY a JSON object with these fields: - audience: short string describing the target audience. - locale: one of "en-gb", "fr-fr", "de-de". I…
+- user: I'm writing a landing page for our new sustainable winter collection. Target audience is eco-conscious women aged 25–40 in the UK market. The page needs to cover: our recycled materials sourcing story…
+- response: { "audience": "Eco-conscious women (25-40) in the UK", "locale": "en-gb", "tone": "premium", "brandGuidelines": [ "sustainability-voice" ], "requiredTopics": [ "recycled materials sourcing", "garment …
+
+## 2026-06-27T07:56:02.538Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 41739
+- system: You are a content gap auditor for an AEM Content Discovery agent. Given a structured brief and a pool of candidate Content Fragments, classify EACH required topic from the brief as either: - "none" — …
+- user: Candidate pool (JSON): [ { "id": "frag_008", "title": "Removing common stains from delicate fabrics", "locale": "en-gb", "brandGuidelinesApplied": [ "sustainability-voice", "premium-tone" ], "lastModi…
+- response: { "verdicts": [ { "topic": "recycled materials sourcing", "coverage": "partial", "description": "While there is excellent editorial content discussing the use of recycled materials and circular fashio…
+
+## 2026-06-27T07:56:58.462Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 55921
+- system: You are a content gap auditor for an AEM Content Discovery agent. Given a structured brief and a pool of candidate Content Fragments, classify EACH required topic from the brief as either: - "none" — …
+- user: Candidate pool (JSON): [ { "id": "frag_008", "title": "Removing common stains from delicate fabrics", "locale": "en-gb", "brandGuidelinesApplied": [ "sustainability-voice", "premium-tone" ], "lastModi…
+- response: { "verdicts": [ { "topic": "recycled materials sourcing", "coverage": "partial", "description": "While fragments confirm the usage of recycled materials and sustainable manufacturing, they do not deta…
+
+## 2026-06-27T07:57:36.317Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 37852
+- system: You compose a draft page outline for an AEM content brief. Output STRICT JSON matching this shape: { "title": string, "pathHint": string, "sections": Section[] } where 4 <= sections.length <= 6. Each …
+- user: { "brief": { "audience": "Eco-conscious women (25-40) in the UK", "locale": "en-gb", "tone": "premium", "brandGuidelines": [ "sustainability-voice" ], "requiredTopics": [ "recycled materials sourcing"…
+- response: { "title": "Sustainable Winter Collection Guide for Eco-Conscious Women", "pathHint": "/en-gb/collections/winter-sustainable", "sections": [ { "heading": "The Philosophy: Investing in Sustainable Styl…
+
+## 2026-06-27T07:57:47.959Z — google/gemma-4-e4b
+- ok: true
+- durationMs: 11639
+- system: You compose a draft page outline for an AEM content brief. Output STRICT JSON matching this shape: { "title": string, "pathHint": string, "sections": Section[] } where 4 <= sections.length <= 6. Each …
+- user: { "brief": { "audience": "Eco-conscious women (25-40) in the UK", "locale": "en-gb", "tone": "premium", "brandGuidelines": [ "sustainability-voice" ], "requiredTopics": [ "recycled materials sourcing"…
+- response: { "title": "Sustainable Outerwear Collection | Eco-Conscious Women's Guide", "pathHint": "/en-gb/collections/winter-sustainable", "sections": [ { "heading": "Our Commitment: Tracing the Journey of Our…
+
