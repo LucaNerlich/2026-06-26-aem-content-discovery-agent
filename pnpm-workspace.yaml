@@ -1,0 +1,9 @@
+packages:
+  - shared
+  - content-seeder
+  - discovery-agent
+
+linkWorkspacePackages: true
+
+onlyBuiltDependencies:
+  - better-sqlite3
