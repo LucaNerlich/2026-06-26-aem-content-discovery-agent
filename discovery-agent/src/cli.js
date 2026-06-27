@@ -3,6 +3,14 @@ import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import mri from "mri";
 
+// When run via `npm run -w discovery-agent`, process.cwd() is discovery-agent/.
+// INIT_CWD is set by npm to the directory where the root `npm run` was invoked.
+const REPO_ROOT = process.env.INIT_CWD ?? resolve(new URL("../..", import.meta.url).pathname);
+
+function resolveFromRoot(p) {
+  return resolve(REPO_ROOT, p);
+}
+
 const HELP = `Usage: aemdisc-agent [brief.txt] [options]
 
 Reads a content brief (file arg or stdin), runs the discovery pipeline, and
@@ -38,7 +46,10 @@ async function readStdin(stdin = process.stdin) {
 async function loadBrief(args, stdin) {
   const briefArg = args._[0];
   if (briefArg) {
-    const path = resolve(String(briefArg));
+    // Resolve relative paths against INIT_CWD (where `npm run` was invoked) so
+    // workspace-scoped execution doesn't silently shift the base to discovery-agent/.
+    const base = process.env.INIT_CWD ?? process.cwd();
+    const path = resolve(base, String(briefArg));
     try {
       const text = await readFile(path, "utf8");
       if (text.trim().length === 0) return { error: `Brief file is empty: ${path}` };
@@ -59,7 +70,7 @@ async function buildSource(args) {
   const kind = args.source;
   if (kind === "json") {
     const { JsonFragmentSource } = await import("@aemdisc/shared");
-    return new JsonFragmentSource(resolve(args.corpus));
+    return new JsonFragmentSource(resolveFromRoot(args.corpus));
   }
   if (kind === "aem") {
     const { AemFragmentSource, createAemClient } = await import("@aemdisc/shared");
@@ -77,7 +88,7 @@ function resolveTopK(args) {
   return n;
 }
 
-export async function runPipeline(briefText, { source, k, localeOverride } = {}, deps = {}) {
+export async function runPipeline(briefText, { source, k, localeOverride, vectorDbPath } = {}, deps = {}) {
   const { parseBrief } = deps.parseBrief
     ? { parseBrief: deps.parseBrief }
     : await import("./pipeline/parseBrief.js");
@@ -93,7 +104,7 @@ export async function runPipeline(briefText, { source, k, localeOverride } = {},
 
   let brief = await parseBrief(briefText);
   if (localeOverride) brief = { ...brief, locale: localeOverride };
-  const retrieval = await retrieve(brief, { source, k });
+  const retrieval = await retrieve(brief, { source, k, ...(vectorDbPath ? { vectorDbPath } : {}) });
   const gaps = await analyseGaps(brief, retrieval);
   return compose(brief, retrieval, gaps);
 }
@@ -129,7 +140,7 @@ export async function main({
 
   let output;
   try {
-    output = await runPipeline(briefRes.text, { source, k, localeOverride: args.locale });
+    output = await runPipeline(briefRes.text, { source, k, localeOverride: args.locale, vectorDbPath: resolveFromRoot("data/embeddings.db") });
   } catch (err) {
     stderr.write(`pipeline error: ${err?.message ?? err}\n`);
     if (process.env.LOG_LEVEL !== "silent" && err?.stack) stderr.write(`${err.stack}\n`);

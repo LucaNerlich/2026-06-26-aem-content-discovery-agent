@@ -278,13 +278,13 @@ test("truncated mid-think throws OllamaInvariantError with diagnostic message", 
   );
 });
 
-test("OpenAI-compat body uses response_format for json mode", async () => {
+test("OpenAI-compat body omits response_format for json mode (LM Studio compat)", async () => {
   let captured;
   global.fetch = async (_url, init) => {
     captured = JSON.parse(init.body);
     return jsonResponse({ choices: [{ message: { content: '{"x":1}' } }] });
   };
   await chat({ user: "hi", json: true });
-  assert.deepEqual(captured.response_format, { type: "json_object" });
+  assert.equal(captured.response_format, undefined, "response_format must not be set for LM Studio compat");
   assert.equal(captured.format, undefined, "Ollama format field must not be set");
 });
