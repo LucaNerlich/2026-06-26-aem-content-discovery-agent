@@ -181,6 +181,30 @@ test("runBriefWithRetry: timeout path is classified as status=timeout", async ()
   }
 });
 
+test("runBriefWithRetry: LlmTimeoutError class-name string is classified as status=timeout", async () => {
+  const dir = await newTmp();
+  try {
+    const timeoutPipeline = async () => { throw new Error("LlmTimeoutError: aborted after 120000ms"); };
+    const meta = await runBriefWithRetry(
+      { slug: "fixture-llm-timeout", text: "slow brief" },
+      {
+        source: { kind: "stub" },
+        runPipeline: timeoutPipeline,
+        stages,
+        render: renderStub,
+        runsDir: dir,
+        chatModel: "gemma4:26b",
+        embeddingModel: "embeddinggemma:300m",
+        now: () => Date.now(),
+      },
+    );
+    assert.equal(meta.status, "timeout");
+    assert.equal(meta.retryCount, 1);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
 test("runBriefWithRetry: second-attempt success records retryCount=1", async () => {
   const dir = await newTmp();
   try {

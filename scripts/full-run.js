@@ -209,7 +209,7 @@ export async function runBriefWithRetry(briefRec, ctx) {
   const finishedAt = new Date(now()).toISOString();
   const durationMs = (now() - t0) | 0;
   const msg = String(lastError?.message ?? lastError);
-  const isTimeout = /timeout|timed out|OllamaTimeoutError/i.test(msg);
+  const isTimeout = /timeout|timed out|OllamaTimeoutError|LlmTimeoutError/i.test(msg);
   const meta = {
     slug: briefRec.slug,
     brief: briefText.slice(0, 200),

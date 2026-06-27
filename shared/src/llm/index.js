@@ -1,8 +1,24 @@
 export { chat } from "./chat.js";
 export { embed } from "./embed.js";
-export { CHAT_MODEL, EMBED_MODEL, DEFAULT_HOST, getHost, ollamaFetch, logger } from "./ollama.js";
+export {
+  CHAT_MODEL,
+  EMBED_MODEL,
+  DEFAULT_HOST,
+  getHost,
+  llmFetch,
+  ollamaFetch,
+  logger,
+} from "./ollama.js";
 export { appendPromptLog, getPromptLogPath } from "./prompt-log.js";
 export {
+  LlmError,
+  LlmUnavailableError,
+  LlmServerError,
+  LlmTimeoutError,
+  LlmModelNotFoundError,
+  LlmJsonParseError,
+  LlmContextOverflowError,
+  LlmInvariantError,
   OllamaError,
   OllamaUnavailableError,
   OllamaServerError,

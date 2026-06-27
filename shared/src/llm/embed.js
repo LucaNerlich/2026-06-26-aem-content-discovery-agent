@@ -6,7 +6,7 @@ const EMBED_TIMEOUT_MS = 10_000;
 
 function toFloat32(arr) {
   if (!Array.isArray(arr)) {
-    throw new OllamaInvariantError("Ollama embed returned a non-array vector");
+    throw new OllamaInvariantError("LLM embed returned a non-array vector");
   }
   return Float32Array.from(arr);
 }

@@ -14,9 +14,9 @@ const TopicVerdict = z.object({
   partialMatches: z.array(z.string()),
   rationale: z.string().min(1),
 });
-// Ollama's `format: "json"` mode requires a top-level JSON object, so the
-// model is asked to return `{ "verdicts": [...] }`. We also accept a bare
-// array for backwards compatibility with tests and fixture fakes.
+// LM Studio JSON output is prompt-driven and requires a top-level JSON
+// object, so the model is asked to return `{ "verdicts": [...] }`. We also
+// accept a bare array for backwards compatibility with tests and fixture fakes.
 const JudgeOutput = z.union([
   z.object({ verdicts: z.array(TopicVerdict) }),
   z.array(TopicVerdict),

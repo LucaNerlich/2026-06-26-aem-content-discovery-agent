@@ -15,12 +15,14 @@ export const CHAT_MODEL = getChatModel("default");
 export const EMBED_MODEL = getEmbeddingModel();
 
 export const logger = pino({
-  name: "ollama",
+  name: "llm",
   level: process.env.LOG_LEVEL ?? "info",
 });
 
+// LLM_HOST is the canonical name; OLLAMA_HOST is retained as a backwards-
+// compatible fallback so existing environments keep working without change.
 export function getHost() {
-  return process.env.OLLAMA_HOST ?? DEFAULT_HOST;
+  return process.env.LLM_HOST ?? process.env.OLLAMA_HOST ?? DEFAULT_HOST;
 }
 
 function sleep(ms) {
@@ -45,7 +47,7 @@ async function readErrorBody(res) {
   }
 }
 
-export async function ollamaFetch(path, body, opts = {}) {
+export async function llmFetch(path, body, opts = {}) {
   const { timeoutMs, retries = 1, model, promptHead } = opts;
   const url = `${getHost()}${path}`;
   let lastErr;
@@ -65,7 +67,7 @@ export async function ollamaFetch(path, body, opts = {}) {
       } catch (fetchErr) {
         const durationMs = Date.now() - startedAt;
         if (fetchErr.name === "AbortError") {
-          throw new OllamaTimeoutError(`Ollama ${path} timed out after ${timeoutMs}ms`, {
+          throw new OllamaTimeoutError(`LLM ${path} timed out after ${timeoutMs}ms`, {
             cause: fetchErr,
             model,
             durationMs,
@@ -74,7 +76,7 @@ export async function ollamaFetch(path, body, opts = {}) {
           });
         }
         const unavailable = new OllamaUnavailableError(
-          `Ollama ${path} unreachable: ${fetchErr.message}`,
+          `LLM ${path} unreachable: ${fetchErr.message}`,
           { cause: fetchErr, model, durationMs, promptHead, attempt },
         );
         lastErr = unavailable;
@@ -97,13 +99,13 @@ export async function ollamaFetch(path, body, opts = {}) {
         }
         if (looksLikeContextOverflow(text)) {
           throw new OllamaContextOverflowError(
-            `Ollama ${path} input exceeds context window`,
+            `LLM ${path} input exceeds context window`,
             baseFields,
           );
         }
         if (res.status >= 500 && res.status < 600) {
           const serverErr = new OllamaServerError(
-            `Ollama ${path} ${res.status}: ${text || res.statusText}`,
+            `LLM ${path} ${res.status}: ${text || res.statusText}`,
             baseFields,
           );
           lastErr = serverErr;
@@ -114,7 +116,7 @@ export async function ollamaFetch(path, body, opts = {}) {
           throw serverErr;
         }
         throw new OllamaServerError(
-          `Ollama ${path} ${res.status}: ${text || res.statusText}`,
+          `LLM ${path} ${res.status}: ${text || res.statusText}`,
           baseFields,
         );
       }
@@ -126,3 +128,6 @@ export async function ollamaFetch(path, body, opts = {}) {
   }
   throw lastErr;
 }
+
+// Backwards-compatible alias; same function identity.
+export const ollamaFetch = llmFetch;

@@ -25,19 +25,19 @@ const THINK_BLOCK_REGEX = /^\s*<think>([\s\S]*?)<\/think>\s*/i;
 const THINK_OPEN_REGEX = /^\s*<think>/i;
 
 /**
- * Call the Ollama /api/chat endpoint.
+ * Call the LM Studio /v1/chat/completions endpoint (OpenAI-compatible).
  *
  * @param {object} args
  * @param {string} [args.system]    optional system message
  * @param {string}  args.user       required user message
- * @param {boolean} [args.json]     if true, sets Ollama `format: "json"` and JSON.parses the reply
- * @param {string}  [args.model]    Ollama model tag; defaults to the configured chat default
- * @param {object}  [args.options]  Ollama `options` block. Supported keys forwarded as-is:
+ * @param {boolean} [args.json]     if true, JSON.parses the reply (prompt-driven; LM Studio compat)
+ * @param {string}  [args.model]    chat model id; defaults to the configured chat default
+ * @param {object}  [args.options]  legacy options-shape block. Supported keys forwarded as-is:
  *                                  `num_predict`, `temperature`, `top_p`, `top_k`, `seed`, `stop`, `think`.
  *
  * Thinking-model handling:
  *  - The reply is stripped of a leading `<think>...</think>` block (model-agnostic safety net).
- *  - A reply starting with `<think>` but lacking a closing tag throws OllamaInvariantError
+ *  - A reply starting with `<think>` but lacking a closing tag throws LlmInvariantError
  *    with "truncated mid-think" — caller should raise `num_predict` or set DISABLE_THINKING_MODE=true.
  *  - When DISABLE_THINKING_MODE is truthy AND the model matches /^qwen3/i, `think: false` is sent.
  */
@@ -49,7 +49,7 @@ export async function chat({ system, user, json = false, model = getChatModel("d
   if (system) messages.push({ role: "system", content: system });
   messages.push({ role: "user", content: user });
 
-  // Map Ollama-style options to OpenAI-compat top-level fields.
+  // Map legacy options-shape keys to OpenAI-compat top-level fields.
   const { temperature = 1.0, top_p = 0.95, num_predict, stop, seed: optSeed } = options ?? {};
   const body = {
     model,

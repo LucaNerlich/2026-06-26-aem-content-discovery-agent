@@ -12,7 +12,7 @@ function distinctChatModels() {
   return [...out];
 }
 
-export async function listOllamaModels() {
+export async function listLlmModels() {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), PREFLIGHT_TIMEOUT_MS);
   try {
@@ -33,6 +33,9 @@ export async function listOllamaModels() {
     clearTimeout(timer);
   }
 }
+
+// Backwards-compatible alias; same function identity.
+export const listOllamaModels = listLlmModels;
 
 function isModelInstalled(installed, wanted) {
   // LM Studio model IDs are full repo-style paths (e.g. "google/gemma-4-e4b").

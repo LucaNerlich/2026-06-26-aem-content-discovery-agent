@@ -7,7 +7,7 @@ export function truncateHead(value, max = HEAD_MAX) {
   return s.length > max ? `${s.slice(0, max)}…` : s;
 }
 
-export class OllamaError extends Error {
+export class LlmError extends Error {
   constructor(message, opts = {}) {
     super(message);
     this.name = this.constructor.name;
@@ -22,10 +22,23 @@ export class OllamaError extends Error {
   }
 }
 
-export class OllamaUnavailableError extends OllamaError {}
-export class OllamaServerError extends OllamaError {}
-export class OllamaTimeoutError extends OllamaError {}
-export class OllamaModelNotFoundError extends OllamaError {}
-export class OllamaJsonParseError extends OllamaError {}
-export class OllamaContextOverflowError extends OllamaError {}
-export class OllamaInvariantError extends OllamaError {}
+export class LlmUnavailableError extends LlmError {}
+export class LlmServerError extends LlmError {}
+export class LlmTimeoutError extends LlmError {}
+export class LlmModelNotFoundError extends LlmError {}
+export class LlmJsonParseError extends LlmError {}
+export class LlmContextOverflowError extends LlmError {}
+export class LlmInvariantError extends LlmError {}
+
+// Backwards-compatible aliases. Same class identity, so `instanceof` checks
+// against either the Ollama* or Llm* name continue to work for any caller
+// that has not yet migrated. See Stage 1 of the legacy Ollama identifier
+// rename plan for context.
+export const OllamaError = LlmError;
+export const OllamaUnavailableError = LlmUnavailableError;
+export const OllamaServerError = LlmServerError;
+export const OllamaTimeoutError = LlmTimeoutError;
+export const OllamaModelNotFoundError = LlmModelNotFoundError;
+export const OllamaJsonParseError = LlmJsonParseError;
+export const OllamaContextOverflowError = LlmContextOverflowError;
+export const OllamaInvariantError = LlmInvariantError;

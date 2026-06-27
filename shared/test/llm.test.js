@@ -8,6 +8,17 @@ import {
   chat,
   embed,
   appendPromptLog,
+  getHost,
+  llmFetch,
+  ollamaFetch,
+  LlmError,
+  LlmUnavailableError,
+  LlmServerError,
+  LlmTimeoutError,
+  LlmModelNotFoundError,
+  LlmJsonParseError,
+  LlmContextOverflowError,
+  LlmInvariantError,
   OllamaError,
   OllamaUnavailableError,
   OllamaServerError,
@@ -73,7 +84,7 @@ test("chat json mode parses object response", async () => {
   assert.deepEqual(result, { a: 1 });
 });
 
-test("OllamaJsonParseError on invalid JSON, no internal retry, logs ok=false", async () => {
+test("LlmJsonParseError on invalid JSON, no internal retry, logs ok=false", async () => {
   let calls = 0;
   global.fetch = async () => {
     calls += 1;
@@ -82,7 +93,9 @@ test("OllamaJsonParseError on invalid JSON, no internal retry, logs ok=false", a
   await assert.rejects(
     () => chat({ user: "x", json: true }),
     (err) => {
-      assert.ok(err instanceof OllamaJsonParseError);
+      assert.ok(err instanceof LlmJsonParseError);
+      assert.ok(err instanceof OllamaJsonParseError, "legacy alias instanceof still passes");
+      assert.ok(err instanceof LlmError);
       assert.ok(err instanceof OllamaError);
       assert.equal(err.model, "google/gemma-4-e4b");
       assert.equal(err.responseHead, "not json {");
@@ -92,7 +105,7 @@ test("OllamaJsonParseError on invalid JSON, no internal retry, logs ok=false", a
   );
   assert.equal(calls, 1, "must not retry on JSON parse failure");
   const log = await readFile(logPath, "utf8");
-  assert.match(log, /errorClass: OllamaJsonParseError/);
+  assert.match(log, /errorClass: LlmJsonParseError/);
   assert.match(log, /- ok: false/);
 });
 
@@ -231,7 +244,7 @@ test("appendPromptLog creates file and writes failure entry", async () => {
   });
   const log = await readFile(logPath, "utf8");
   assert.match(log, /# Prompt Log/);
-  assert.match(log, /errorClass: OllamaTimeoutError/);
+  assert.match(log, /errorClass: LlmTimeoutError/);
   assert.match(log, /- ok: false/);
   assert.match(log, /- durationMs: 100/);
 });
@@ -287,4 +300,63 @@ test("OpenAI-compat body omits response_format for json mode (LM Studio compat)"
   await chat({ user: "hi", json: true });
   assert.equal(captured.response_format, undefined, "response_format must not be set for LM Studio compat");
   assert.equal(captured.format, undefined, "Ollama format field must not be set");
+});
+
+
+test("Llm* error classes are same-identity aliases of Ollama* classes", () => {
+  assert.equal(LlmError, OllamaError);
+  assert.equal(LlmUnavailableError, OllamaUnavailableError);
+  assert.equal(LlmServerError, OllamaServerError);
+  assert.equal(LlmTimeoutError, OllamaTimeoutError);
+  assert.equal(LlmModelNotFoundError, OllamaModelNotFoundError);
+  assert.equal(LlmJsonParseError, OllamaJsonParseError);
+  assert.equal(LlmContextOverflowError, OllamaContextOverflowError);
+  assert.equal(LlmInvariantError, OllamaInvariantError);
+  const e = new LlmJsonParseError("x");
+  assert.ok(e instanceof OllamaJsonParseError);
+  assert.ok(e instanceof OllamaError);
+  assert.ok(e instanceof LlmError);
+});
+
+test("llmFetch and ollamaFetch are same-identity aliases", () => {
+  assert.equal(llmFetch, ollamaFetch);
+});
+
+test("getHost: LLM_HOST takes precedence over OLLAMA_HOST", () => {
+  const oldLlm = process.env.LLM_HOST;
+  const oldOllama = process.env.OLLAMA_HOST;
+  try {
+    process.env.LLM_HOST = "http://llm-host:9001";
+    process.env.OLLAMA_HOST = "http://ollama-host:9002";
+    assert.equal(getHost(), "http://llm-host:9001");
+  } finally {
+    if (oldLlm === undefined) delete process.env.LLM_HOST; else process.env.LLM_HOST = oldLlm;
+    if (oldOllama === undefined) delete process.env.OLLAMA_HOST; else process.env.OLLAMA_HOST = oldOllama;
+  }
+});
+
+test("getHost: falls back to OLLAMA_HOST when LLM_HOST unset", () => {
+  const oldLlm = process.env.LLM_HOST;
+  const oldOllama = process.env.OLLAMA_HOST;
+  try {
+    delete process.env.LLM_HOST;
+    process.env.OLLAMA_HOST = "http://ollama-only:9003";
+    assert.equal(getHost(), "http://ollama-only:9003");
+  } finally {
+    if (oldLlm === undefined) delete process.env.LLM_HOST; else process.env.LLM_HOST = oldLlm;
+    if (oldOllama === undefined) delete process.env.OLLAMA_HOST; else process.env.OLLAMA_HOST = oldOllama;
+  }
+});
+
+test("getHost: returns DEFAULT_HOST when neither env var is set", () => {
+  const oldLlm = process.env.LLM_HOST;
+  const oldOllama = process.env.OLLAMA_HOST;
+  try {
+    delete process.env.LLM_HOST;
+    delete process.env.OLLAMA_HOST;
+    assert.equal(getHost(), "http://localhost:1234");
+  } finally {
+    if (oldLlm === undefined) delete process.env.LLM_HOST; else process.env.LLM_HOST = oldLlm;
+    if (oldOllama === undefined) delete process.env.OLLAMA_HOST; else process.env.OLLAMA_HOST = oldOllama;
+  }
 });
