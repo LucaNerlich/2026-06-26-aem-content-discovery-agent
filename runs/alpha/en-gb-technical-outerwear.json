@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "1.0",
+  "brief": {
+    "audience": "Detail-oriented UK shoppers interested in technical apparel specifications",
+    "locale": "en-gb",
+    "tone": "technical",
+    "brandGuidelines": [
+      "premium-tone",
+      "technical-precision",
+      "sustainability-voice"
+    ],
+    "requiredTopics": [
+      "fabric performance specifications",
+      "recycled wool insulation story",
+      "sustainable material composition",
+      "garment care and longevity"
+    ],
+    "pathHint": "/en-gb/collections/technical-outerwear-specifications"
+  },
+  "matchedFragments": [
+    {
+      "id": "frag_003",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_003",
+      "score": 0.6922979636860974,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone; fresh content"
+    },
+    {
+      "id": "frag_001",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_001",
+      "score": 0.6220940741363881,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone; fresh content"
+    },
+    {
+      "id": "frag_002",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_002",
+      "score": 0.6214953007015258,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone+sustainability-voice; fresh content"
+    }
+  ],
+  "gaps": [
+    {
+      "topic": "fabric performance specifications",
+      "coverage": "none",
+      "description": "While fragments mention cold-weather garments, none provide the level of technical detail (e.g., tensile strength, wind resistance data) required for a detail-oriented audience.",
+      "partialMatches": [],
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"fabric performance specifications\", applying premium-tone and technical-precision and sustainability-voice."
+    },
+    {
+      "topic": "recycled wool insulation story",
+      "coverage": "partial",
+      "description": "Fragment frag_001 directly addresses the use of recycled wool insulation but is primarily an editorial piece and may lack depth regarding the material's entire journey or technical origin.",
+      "partialMatches": [
+        "frag_001"
+      ],
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"recycled wool insulation story\", applying premium-tone and technical-precision and sustainability-voice."
+    },
+    {
+      "topic": "sustainable material composition",
+      "coverage": "partial",
+      "description": "Fragments frag_02 and frag_005 touch upon sustainable fibers and recycled materials, but they do not offer a comprehensive, singular guide on all possible compositions.",
+      "partialMatches": [
+        "frag_005"
+      ],
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"sustainable material composition\", applying premium-tone and technical-precision and sustainability-voice."
+    },
+    {
+      "topic": "garment care and longevity",
+      "coverage": "partial",
+      "description": "While guides exist (frag_003) and care topics like stain removal are covered, the pool lacks a holistic, comprehensive technical manual for all types of apparel longevity.",
+      "partialMatches": [
+        "frag_003"
+      ],
+      "suggestedAction": "Write a 200-word en-gb care-guide fragment covering \"garment care and longevity\", applying premium-tone and technical-precision and sustainability-voice."
+    },
+    {
+      "topic": "Brand guideline coverage: technical-precision",
+      "coverage": "partial",
+      "description": "No top match applies the `technical-precision` brand guideline required by the brief. Some candidates exist but lacked any required brand guideline and were filtered out.",
+      "partialMatches": [
+        "frag_011",
+        "frag_017",
+        "frag_014",
+        "frag_031",
+        "frag_013",
+        "frag_019",
+        "frag_004",
+        "frag_028"
+      ],
+      "suggestedAction": "Add fragments tagged `technical-precision` (alongside premium-tone, sustainability-voice) for the en-gb corpus so this brand voice is represented in the top matches."
+    }
+  ],
+  "draftOutline": {
+    "title": "Technical Specifications & Sustainable Story: Outerwear for Detail-Oriented Shoppers",
+    "pathHint": "/en-gb/collections/technical-outerwear-specifications",
+    "sections": [
+      {
+        "heading": "The Genesis of Enduring Style",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_002"
+        ],
+        "rationale": "Establishes the high-quality, intentional foundation of the collection and its commitment to enduring design."
+      },
+      {
+        "heading": "Uncompromising Technical Performance",
+        "kind": "new",
+        "rationale": "Provides the deep-dive data (e.g., tensile strength, barrier properties) required by detail-oriented shoppers lacking in the current content pool.",
+        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"fabric performance specifications\", applying premium-tone and technical-precision and sustainability-voice."
+      },
+      {
+        "heading": "Crafting Warmth: A Sustainable Material Journey",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_001"
+        ],
+        "rationale": "Introduces and details the use of recycled wool insulation within the collection's higher-level narrative."
+      },
+      {
+        "heading": "Maintaining Integrity: Garment Care and Longevity",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_003"
+        ],
+        "rationale": "Offers essential guidance on caring for and maintaining the garments, maximizing their lifespan."
+      }
+    ]
+  }
+}

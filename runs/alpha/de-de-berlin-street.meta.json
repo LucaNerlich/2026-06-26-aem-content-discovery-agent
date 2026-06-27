@@ -2,13 +2,22 @@
   "slug": "de-de-berlin-street",
   "brief": "Wir bauen eine Landing Page für unsere neue Berlin-Street-Style-Kapsel. Zielgruppe: junge Erwachsene in Deutschland, die sich für urbanen Streetwear und Berlin Fashion Week interessieren. Die Seite mu",
   "locale": "de-de",
-  "startedAt": "2026-06-26T22:51:32.749Z",
-  "finishedAt": "2026-06-26T23:23:38.607Z",
-  "durationMs": 1925858,
-  "stageDurations": {},
-  "chatModel": "gemma4:26b",
-  "embeddingModel": "embeddinggemma:300m",
-  "status": "timeout",
-  "error": "Ollama /api/chat timed out after 120000ms",
-  "retryCount": 1
+  "startedAt": "2026-06-27T10:15:51.199Z",
+  "finishedAt": "2026-06-27T10:16:53.013Z",
+  "durationMs": 61814,
+  "stageDurations": {
+    "parseBrief": 10653,
+    "retrieve": 73,
+    "analyseGaps": 30348,
+    "compose": 20739
+  },
+  "chatModel": "google/gemma-4-e4b",
+  "embeddingModel": "embeddinggemma-300m",
+  "matchedFragmentCount": 3,
+  "gapCounts": {
+    "none": 2,
+    "partial": 2
+  },
+  "status": "ok",
+  "retryCount": 0
 }

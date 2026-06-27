@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "1.0",
+  "brief": {
+    "audience": "Existing UK customers (28-45) concerned about consumption",
+    "locale": "en-gb",
+    "tone": "premium",
+    "brandGuidelines": [
+      "sustainability-voice",
+      "premium-tone"
+    ],
+    "requiredTopics": [
+      "spring capsule collection",
+      "sustainable cotton sourcing",
+      "winter to spring styling",
+      "care guide"
+    ],
+    "pathHint": "/en-gb/collections/spring-rewear-2027"
+  },
+  "matchedFragments": [
+    {
+      "id": "frag_024",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_024",
+      "score": 0.6754741232990773,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone; fresh content"
+    },
+    {
+      "id": "frag_021",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_021",
+      "score": 0.6623526425677013,
+      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice"
+    },
+    {
+      "id": "frag_002",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_002",
+      "score": 0.640762764839988,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone+sustainability-voice; fresh content"
+    }
+  ],
+  "gaps": [
+    {
+      "topic": "spring capsule collection",
+      "coverage": "partial",
+      "description": "While there are fragments dedicated to spring campaigns and capsule concepts, none cohesively combine the 'capsule' structure with both the premium tone and sustainable voice required by the brand guidelines.",
+      "partialMatches": [
+        "frag_021",
+        "frag_009"
+      ],
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"spring capsule collection\", applying sustainability-voice and premium-tone."
+    },
+    {
+      "topic": "sustainable cotton sourcing",
+      "coverage": "none",
+      "description": "The candidates cover general sustainable fibres and origin integrity, but none specifically address the sourcing details or focus on cotton required by this topic.",
+      "partialMatches": [],
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"sustainable cotton sourcing\", applying sustainability-voice and premium-tone."
+    },
+    {
+      "topic": "winter to spring styling",
+      "coverage": "partial",
+      "description": "Fragments cover transitional seasonality and styling concepts, but the necessary blend of Premium Tone AND Sustainability Voice across a W/S transition in one document is not consistently present.",
+      "partialMatches": [
+        "frag_024",
+        "frag_021"
+      ],
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"winter to spring styling\", applying sustainability-voice and premium-tone."
+    },
+    {
+      "topic": "care guide",
+      "coverage": "partial",
+      "description": "Specific maintenance guides exist for various items (footwear, hats, stains), but a holistic garment 'Care Guide' that aligns with the audience's concern for consumption through both required voices is missing.",
+      "partialMatches": [
+        "frag_023",
+        "frag_003"
+      ],
+      "suggestedAction": "Write a 200-word en-gb care-guide fragment covering \"care guide\", applying sustainability-voice and premium-tone."
+    }
+  ],
+  "draftOutline": {
+    "title": "Spring Rewear 2027: A Sustainable Journey Through Transition",
+    "pathHint": "/en-gb/collections/spring-rewear-2027",
+    "sections": [
+      {
+        "heading": "The Glorious Awakening: Celebrating the Arrival of Spring",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_024"
+        ],
+        "rationale": "Establishes the seasonal transition and premium, celebratory tone suitable for introducing a luxury lifestyle narrative."
+      },
+      {
+        "heading": "The Spring Capsule Collection: Pieces for the Modern Wardrobe",
+        "kind": "new",
+        "rationale": "Addresses the core product offering by providing a cohesively toned and volume-appropriate story on the new capsule pieces.",
+        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"spring capsule collection\", applying sustainability-voice and premium-tone."
+      },
+      {
+        "heading": "Our Commitment: Sustainable Cotton Sourcing and Integrity",
+        "kind": "new",
+        "rationale": "Dedicated focus on the specific raw material required by this audience, linking quality to ethical origins.",
+        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"sustainable cotton sourcing\", applying sustainability-voice and premium-tone."
+      },
+      {
+        "heading": "Beyond the Season: Winter to Spring Styling Versatility",
+        "kind": "new",
+        "rationale": "Provides actionable advice on maximizing wardrobe investment, crucial for the consumption-aware audience.",
+        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"winter to spring styling\", applying sustainability-voice and premium-tone."
+      },
+      {
+        "heading": "Caring for Your Investment: A Guide to Longevity",
+        "kind": "new",
+        "rationale": "Offers necessary practical information that aligns with the audience's mindful consumption habits and enhances product value.",
+        "sourcingHint": "Write a 200-word en-gb care-guide fragment covering \"care guide\", applying sustainability-voice and premium-tone."
+      }
+    ]
+  }
+}

@@ -2,13 +2,22 @@
   "slug": "en-gb-spring-rewear",
   "brief": "We're building a Spring 2027 capsule landing page that leans into a \"rewear, don't replace\" message for the UK market. Audience: existing customers aged 28-45 who already own one of our winter pieces ",
   "locale": "en-gb",
-  "startedAt": "2026-06-26T23:49:16.878Z",
-  "finishedAt": "2026-06-27T00:21:07.432Z",
-  "durationMs": 1910554,
-  "stageDurations": {},
-  "chatModel": "gemma4:26b",
-  "embeddingModel": "embeddinggemma:300m",
-  "status": "timeout",
-  "error": "Ollama /api/chat timed out after 120000ms",
-  "retryCount": 1
+  "startedAt": "2026-06-27T10:18:05.550Z",
+  "finishedAt": "2026-06-27T10:21:15.837Z",
+  "durationMs": 190287,
+  "stageDurations": {
+    "parseBrief": 20531,
+    "retrieve": 285,
+    "analyseGaps": 108220,
+    "compose": 61250
+  },
+  "chatModel": "google/gemma-4-e4b",
+  "embeddingModel": "embeddinggemma-300m",
+  "matchedFragmentCount": 3,
+  "gapCounts": {
+    "none": 1,
+    "partial": 3
+  },
+  "status": "ok",
+  "retryCount": 0
 }

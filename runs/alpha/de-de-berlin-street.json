@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "1.0",
+  "brief": {
+    "audience": "Young adults interested in urban street fashion and Berlin Fashion Week",
+    "locale": "de-de",
+    "tone": "premium",
+    "brandGuidelines": [
+      "sustainability-voice",
+      "premium-tone",
+      "inclusive-language"
+    ],
+    "requiredTopics": [
+      "Berlin Fashion Week street styles",
+      "Sustainable winter outerwear",
+      "Recycled materials",
+      "Wool coat care instructions"
+    ],
+    "pathHint": "/de-de/collections/berlin-street-style"
+  },
+  "matchedFragments": [
+    {
+      "id": "frag_085",
+      "path": "/content/dam/aemcontentdisc/de-de/frag_085",
+      "score": 0.7098968278284044,
+      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice; fresh content"
+    },
+    {
+      "id": "frag_083",
+      "path": "/content/dam/aemcontentdisc/de-de/frag_083",
+      "score": 0.6202918503533033,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone+inclusive-language; fresh content"
+    },
+    {
+      "id": "frag_081",
+      "path": "/content/dam/aemcontentdisc/de-de/frag_081",
+      "score": 0.5800029899903728,
+      "reason": "Partial semantic match; strong keyword overlap; brand: inclusive-language; fresh content"
+    }
+  ],
+  "gaps": [
+    {
+      "topic": "Berlin Fashion Week street styles",
+      "coverage": "none",
+      "description": "Although there are fragments on winter fashion, none specifically mention or address the context of Berlin Fashion Week or capture the dynamic nature of urban street style unique to that event.",
+      "partialMatches": [],
+      "suggestedAction": "Write a 200-word de-de product-story fragment covering \"Berlin Fashion Week street styles\", applying sustainability-voice and premium-tone and inclusive-language."
+    },
+    {
+      "topic": "Sustainable winter outerwear",
+      "coverage": "partial",
+      "description": "While high-quality, sustainable winter coats are covered (e.g., in frag_085), the content might lack full depth regarding how it aligns with both premium brand execution and inclusive language across all global markets.",
+      "partialMatches": [
+        "frag_085"
+      ],
+      "suggestedAction": "Write a 200-word de-de product-story fragment covering \"Sustainable winter outerwear\", applying sustainability-voice and premium-tone and inclusive-language."
+    },
+    {
+      "topic": "Recycled materials",
+      "coverage": "partial",
+      "description": "There is a direct match on the topic (frag_083), but the content may need to provide broader detail regarding the circular journey and material sourcing beyond just application in outerwear.",
+      "partialMatches": [
+        "frag_083"
+      ],
+      "suggestedAction": "Write a 200-word de-de product-story fragment covering \"Recycled materials\", applying sustainability-voice and premium-tone and inclusive-language."
+    },
+    {
+      "topic": "Wool coat care instructions",
+      "coverage": "none",
+      "description": "The available fragments offer general care guides for winter garments or specific fiber types (like cashmere), but none provide detailed, targeted instructions exclusively for maintaining wool coats.",
+      "partialMatches": [],
+      "suggestedAction": "Write a 200-word de-de care-guide fragment covering \"Wool coat care instructions\", applying sustainability-voice and premium-tone and inclusive-language."
+    }
+  ],
+  "draftOutline": {
+    "title": "Berlin Street Style: The Future of Sustainable Winter Outerwear",
+    "pathHint": "/de-de/collections/berlin-street-style",
+    "sections": [
+      {
+        "heading": "The Pulse of Berlin: Street Style Meets Sustainability",
+        "kind": "new",
+        "rationale": "Establish the product context by tying the collection to the high-energy, trendsetting environment of Berlin Fashion Week, filtering trends through a sustainable luxury lens.",
+        "sourcingHint": "Write a 200-word de-de product-story fragment covering \"Berlin Fashion Week street styles\", applying sustainability-voice and premium-tone and inclusive-language."
+      },
+      {
+        "heading": "Crafted for the Modern Climate: Sustainable Winter Outerwear",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_085"
+        ],
+        "rationale": "Provides the primary product narrative, detailing how the coats offer protection while maintaining an aesthetic harmony with changing seasons and environmental consciousness."
+      },
+      {
+        "heading": "The Circular Journey: Materials with a Meaningful Past",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_083"
+        ],
+        "rationale": "Deep dive into the ethics and sourcing of the collection, appealing to the conscious luxury buyer interested in circular fashion principles."
+      },
+      {
+        "heading": "Preserving Your Investment: Wool Coat Care Guide",
+        "kind": "new",
+        "rationale": "Offers actionable, premium advice that extends the garment's life, reinforcing the investment quality of the piece.",
+        "sourcingHint": "Write a 200-word de-de care-guide fragment covering \"Wool coat care instructions\", applying sustainability-voice and premium-tone and inclusive-language."
+      }
+    ]
+  }
+}
