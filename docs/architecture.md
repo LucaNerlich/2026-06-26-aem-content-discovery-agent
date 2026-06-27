@@ -16,9 +16,11 @@ page outline — using a local content corpus and a local LLM.
   - [analyseGaps](#3-analysegaps)
   - [compose](#4-compose)
 - [Seeding flow](#seeding-flow)
+- [Chunking strategy](#chunking-strategy)
 - [Retrieval and scoring](#retrieval-and-scoring)
 - [Vector store: sqlite-vec](#vector-store-sqlite-vec)
 - [LLM stack](#llm-stack)
+- [Embedding model](#embedding-model)
 - [Schema validation](#schema-validation)
 - [Optional AEM source mode](#optional-aem-source-mode)
 - [Prompt logging](#prompt-logging)
@@ -259,6 +261,39 @@ reads. Re-embed cost is therefore paid once per `--seed`, not per agent
 invocation. The locked canonical corpus is produced by
 `npm run seed -- --seed=20260626 --count=40` and is committed.
 
+## Chunking strategy
+
+In a typical RAG retriever, **chunking** is how source documents are
+split into the atomic units that get embedded and later returned by
+retrieval. Generic approaches include fixed-size or sliding-window token
+chunks and sentence-or-paragraph splitting; the chunk size and any
+overlap are tuning knobs of the retriever.
+
+This agent does not use any of those. Its chunking strategy is
+**fragment-as-chunk**: each AEM Content Fragment (~150–250 words of
+authored prose) is exactly one chunk, embedded once by the seeder and
+stored as a single 768-d vector in `data/embeddings.db`. There is no
+sub-fragment splitting and no chunk-overlap parameter.
+
+**Why fragment-as-chunk fits this corpus.**
+
+- A Content Fragment is already the atomic reusable authoring unit in
+  AEM; authors think and publish in fragments.
+- The composer's contract is that any `reuse` section cites a **whole
+  fragment id** present in `matchedFragments`, enforced via Zod
+  `superRefine` (see [compose](#4-compose)). Sub-fragment chunking
+  would return halves and paragraphs the composer cannot cite as an
+  id, and would force the author to manually reassemble pieces back
+  into the fragment they came from.
+- Body length (~150–250 words) fits comfortably in one embedding
+  without the information loss that motivates chunking long documents
+  in the first place.
+
+Fixed-size / sliding-window token chunks and sentence-or-paragraph
+splitting are the deliberate alternatives rejected here — both break
+the "reuse a whole fragment by id" contract that ties retrieval to the
+output schema.
+
 ## Retrieval and scoring
 
 ```mermaid
@@ -289,6 +324,36 @@ relaxation is recorded as a structural gap.
 retriever honest on exact-match signals (locale codes, brand tags, proper
 nouns). Freshness gets a small thumb-on-the-scale so equally relevant
 fragments are ranked recent-first.
+
+### Score components explained
+
+Each component of `fused = 0.6 · cosine + 0.3 · BM25 + 0.1 · freshness`
+is normalised to `[0, 1]` and combined as a linear sum. In plain terms:
+
+- **cosine similarity** — semantic closeness of the topic embedding to
+  the fragment embedding (cosine of the angle between the two 768-d
+  vectors), already in `[0, 1]` for non-negative embeddings. The
+  dominant 0.6 weight catches paraphrase, which matters because the
+  corpus is LLM-paraphrased marketing copy where the brief and the
+  fragment rarely share the same surface wording.
+- **BM25** — a classic lexical ranking function from the
+  term-frequency × inverse-document-frequency family that rewards
+  exact term overlap weighted by how rare a term is across the corpus.
+  Raw BM25 scores are unbounded, so the retriever divides by the
+  per-query max to normalise into `[0, 1]`. The 0.3 weight makes BM25
+  the proper-noun backstop — brand names and material terms like
+  "merino" need exact lexical match that a 300M-parameter embedder
+  cannot guarantee.
+- **freshness** — `clamp(1 − age_months / 18, 0, 1)`, so a brand-new
+  fragment scores `1` and an 18-month-old fragment scores `0`. The
+  small 0.1 weight makes it a tiebreaker only between otherwise
+  equally relevant fragments; it never overturns a strong semantic or
+  lexical hit.
+
+The weights are hand-picked constants, not learned. Learning them from
+an 8-brief eval would overfit; Reciprocal Rank Fusion was rejected for
+the same reason (extra `k` to tune, no measurable benefit at this
+corpus size). See `docs/why.md` for the full alternatives considered.
 
 ## Vector store: `sqlite-vec`
 
@@ -345,6 +410,39 @@ Defaults in `config/models.json` (see `docs/why.md` for the picks):
 |---|---|
 | chat.default / parseBrief / analyseGaps / compose / seeder | `google/gemma-4-e4b` |
 | embedding.default | `embeddinggemma-300m` |
+
+## Embedding model
+
+The agent uses `text-embedding-embeddinggemma-300m` (referenced as
+`embeddinggemma-300m` in `config/models.json`) to embed both the seeded
+fragment bodies and the per-topic retrieval queries.
+
+**Why this model for this corpus.**
+
+- **Multilingual by construction.** `embeddinggemma` covers 100+
+  languages, so the seeded `fr-fr` and `de-de` fragments produce
+  genuine semantic signal rather than English embeddings with locale
+  tags bolted on. The eval harness exercises this end-to-end
+  (`fr-fr-knitwear`, `de-de-workwear-tech`, …).
+- **Shared Gemma lineage with the chat model.** The chat default
+  (`google/gemma-4-e4b`) and the embedder come from the same research
+  family, giving a single-stack narrative rather than mixing unrelated
+  vendors.
+- **768-d native output.** The full vector is what the seeder writes
+  to `data/embeddings.db`; the retriever queries against it without
+  any dimensionality coercion. See
+  [Vector store: sqlite-vec](#vector-store-sqlite-vec) for how the
+  index is shaped and how `embeddinggemma`'s **Matryoshka** property
+  enables truncation to 512 / 256 / 128 dimensions as the corpus
+  scales — no model swap required.
+- **Local and zero-cost.** Served by the same LM Studio instance as
+  the chat model at `:1234`, so a fresh clone needs no API keys or
+  quotas to run the agent.
+
+Per the decision log in `docs/why.md`, the rejected alternatives were
+`nomic-embed-text` (English-mostly), hosted OpenAI embeddings (cost
+and rate limits, and the brief favours local), and reusing the chat
+model as an embedder (chat models are not embedders).
 
 ## Schema validation
 

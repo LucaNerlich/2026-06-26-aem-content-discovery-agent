@@ -25,6 +25,8 @@ fr-fr/de-de. Hosted OpenAI embeddings — cost, rate limits, and the brief
 favours local. Reusing the chat model as an embedder — chat models are not
 embedders.
 
+**Details:** see [Embedding model](docs/architecture.md#embedding-model) in the architecture doc.
+
 ## 2. Chunking strategy — fragment-as-chunk
 
 **Choice.** One chunk per AEM Content Fragment; no sub-fragment splitting.
@@ -41,6 +43,8 @@ could not act on without manual reassembly.
 sentence-or-paragraph splitting — both produce chunks that are not
 addressable by fragment id and therefore cannot be re-assembled into a
 "reuse this whole fragment" suggestion.
+
+**Details:** see [Chunking strategy](docs/architecture.md#chunking-strategy) in the architecture doc.
 
 ## 3. Retrieval method — hybrid fused score `0.6 · cosine + 0.3 · BM25 + 0.1 · freshness`
 
@@ -63,6 +67,8 @@ overfit an 8-brief eval set.
 
 **Trade-off.** Weights are constants. A substantially different corpus
 character (e.g. long-form technical docs) would warrant re-tuning.
+
+**Details:** see [Retrieval and scoring](docs/architecture.md#retrieval-and-scoring) — and the [Score components explained](docs/architecture.md#score-components-explained) subsection — in the architecture doc.
 
 ## 4. Why agentic + the orchestration pattern — sequential typed multi-stage pipeline
 
@@ -94,6 +100,8 @@ bad section blocks all output. Autonomous tool-loop agent —
 non-deterministic call patterns, harder to audit against the locked
 `AgentOutput` schema. RAG framework — extra abstraction layers obscure
 the seams the contract depends on.
+
+**Details:** see [Why agentic](docs/architecture.md#why-agentic) in the architecture doc.
 
 ## Other notable decisions
 
