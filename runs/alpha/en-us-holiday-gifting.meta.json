@@ -2,13 +2,22 @@
   "slug": "en-us-holiday-gifting",
   "brief": "We're launching a US holiday gifting landing page for our accessories range. Audience: US gift shoppers (men and women, 30+) looking for premium, timeless gift ideas during the holiday season. The pag",
   "locale": "en-us",
-  "startedAt": "2026-06-27T00:33:55.231Z",
-  "finishedAt": "2026-06-27T00:49:55.092Z",
-  "durationMs": 959861,
-  "stageDurations": {},
-  "chatModel": "gemma4:26b",
-  "embeddingModel": "embeddinggemma:300m",
-  "status": "error",
-  "error": "[\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"array\",\n    \"received\": \"string\",\n    \"path\": [\n      \"requiredTopics\"\n    ],\n    \"message\": \"Expected array, received string\"\n  },\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"string\",\n    \"received\": \"undefined\",\n    \"path\": [\n      \"pathHint\"\n    ],\n    \"message\": \"Required\"\n  }\n]",
-  "retryCount": 1
+  "startedAt": "2026-06-27T10:23:47.778Z",
+  "finishedAt": "2026-06-27T10:26:23.367Z",
+  "durationMs": 155589,
+  "stageDurations": {
+    "parseBrief": 19884,
+    "retrieve": 74,
+    "analyseGaps": 76321,
+    "compose": 59310
+  },
+  "chatModel": "google/gemma-4-e4b",
+  "embeddingModel": "embeddinggemma-300m",
+  "matchedFragmentCount": 3,
+  "gapCounts": {
+    "none": 0,
+    "partial": 4
+  },
+  "status": "ok",
+  "retryCount": 0
 }

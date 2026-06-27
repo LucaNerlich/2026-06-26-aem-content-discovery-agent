@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "1.0",
+  "brief": {
+    "audience": "Urban clients, 35-55 years old (French market)",
+    "locale": "fr-fr",
+    "tone": "premium",
+    "brandGuidelines": [
+      "premium-tone"
+    ],
+    "requiredTopics": [
+      "fibers provenance",
+      "partner houses and certifications",
+      "care instructions",
+      "small-batch production"
+    ],
+    "pathHint": "/fr-fr/collections/loungewear-premium"
+  },
+  "matchedFragments": [
+    {
+      "id": "frag_069",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_069",
+      "score": 0.47916895568976503,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone; fresh content"
+    },
+    {
+      "id": "frag_051",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_051",
+      "score": 0.3693025684176051,
+      "reason": "Strong keyword overlap; brand: premium-tone"
+    },
+    {
+      "id": "frag_062",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_062",
+      "score": 0.2653036051130526,
+      "reason": "Brand: premium-tone; fresh content"
+    }
+  ],
+  "gaps": [
+    {
+      "topic": "fibers provenance",
+      "coverage": "partial",
+      "description": "The fragments successfully detail the journey and heritage of materials like leather and cashmere, tying them to traditional workshops. However, a dedicated origin story detailing the specific fields or regions of fiber sourcing is not explicitly present.",
+      "partialMatches": [
+        "frag_062",
+        "frag_047",
+        "frag_069"
+      ],
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"fibers provenance\", applying premium-tone."
+    },
+    {
+      "topic": "partner houses and certifications",
+      "coverage": "none",
+      "description": "No fragments explicitly mention external partner houses, collaborating entities, or detailed accreditation/certification schemes beyond general brand philosophy.",
+      "partialMatches": [],
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"partner houses and certifications\", applying premium-tone."
+    },
+    {
+      "topic": "care instructions",
+      "coverage": "partial",
+      "description": "Comprehensive care guides are available for specific high-value items (like cashmere and leather goods), offering deep maintenance advice. However, a single definitive resource covering the care of every product line remains undefined.",
+      "partialMatches": [
+        "frag_069",
+        "frag_048",
+        "frag_079",
+        "frag_054"
+      ],
+      "suggestedAction": "Write a 200-word fr-fr care-guide fragment covering \"care instructions\", applying premium-tone."
+    },
+    {
+      "topic": "small-batch production",
+      "coverage": "partial",
+      "description": "The available content strongly conveys the artisanal nature and slow, tradition-based creation process implied by 'small batch.' However, explicit usage of terms related to production volume or limited runs is not consistently present.",
+      "partialMatches": [
+        "frag_062",
+        "frag_047"
+      ],
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"small-batch production\", applying premium-tone."
+    }
+  ],
+  "draftOutline": {
+    "title": "L'Art de vivre Premium : Collection Loungewear",
+    "pathHint": "/fr-fr/collections/loungewear-premium",
+    "sections": [
+      {
+        "heading": "Le Savoir-faire au Service de l'Exceptionnel",
+        "kind": "new",
+        "rationale": "Introduction to the brand's commitment to high quality and slow production methods.",
+        "sourcingHint": "Write a 200-word fr-fr product-story fragment covering \"small-batch production\", applying premium-tone."
+      },
+      {
+        "heading": "Le Voyage Sacré de Nos Fibres",
+        "kind": "new",
+        "rationale": "Dedicated origin story detailing the unique sourcing regions and materials.",
+        "sourcingHint": "Write a 200-word fr-fr product-story fragment covering \"fibers provenance\", applying premium-tone."
+      },
+      {
+        "heading": "Prendre Soin de Votre Pièce Maîtresse",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_069"
+        ],
+        "rationale": "Providing essential and detailed maintenance advice relevant to premium materials like cashmere."
+      },
+      {
+        "heading": "Une Alchimie d'Hommages et de Savoir-Faire",
+        "kind": "new",
+        "rationale": "Establishing brand credibility by detailing collaborations and quality accreditations.",
+        "sourcingHint": "Write a 200-word fr-fr product-story fragment covering \"partner houses and certifications\", applying premium-tone."
+      },
+      {
+        "heading": "Guide de l'Entretien Ultime",
+        "kind": "new",
+        "rationale": "Offering a definitive, comprehensive maintenance resource for all product lines.",
+        "sourcingHint": "Write a 200-word fr-fr care-guide fragment covering \"care instructions\", applying premium-tone."
+      }
+    ]
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "1.0",
+  "brief": {
+    "audience": "Women interested in conscious fashion (France)",
+    "locale": "fr-fr",
+    "tone": "premium",
+    "brandGuidelines": [
+      "sustainability-voice",
+      "premium-tone"
+    ],
+    "requiredTopics": [
+      "sustainable knits",
+      "natural fibers",
+      "winter layering",
+      "material commitment"
+    ],
+    "pathHint": "/fr-fr/collections/tricots-naturels-hiver"
+  },
+  "matchedFragments": [
+    {
+      "id": "frag_041",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_041",
+      "score": 0.6154624768989204,
+      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice; fresh content"
+    },
+    {
+      "id": "frag_045",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_045",
+      "score": 0.614282815893977,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone+sustainability-voice"
+    },
+    {
+      "id": "frag_046",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_046",
+      "score": 0.5669467823053651,
+      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice"
+    }
+  ],
+  "gaps": [
+    {
+      "topic": "sustainable knits",
+      "coverage": "partial",
+      "description": "The collection notes regarding sustainable knitwear are present and align with the brand voice, but more depth on the knitting process or fiber origin could enhance the narrative.",
+      "partialMatches": [
+        "frag_041"
+      ],
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"sustainable knits\", applying sustainability-voice and premium-tone."
+    },
+    {
+      "topic": "natural fibers",
+      "coverage": "partial",
+      "description": "Multiple fragments discuss natural fibers in the context of layering and seasonality, providing good breadth across various uses.",
+      "partialMatches": [
+        "frag_041",
+        "frag_045"
+      ],
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"natural fibers\", applying sustainability-voice and premium-tone."
+    },
+    {
+      "topic": "winter layering",
+      "coverage": "partial",
+      "description": "The pool offers context on winter coats and colder weather materials, which supports the layering narrative through collection notes.",
+      "partialMatches": [
+        "frag_041",
+        "frag_045",
+        "frag_046"
+      ],
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"winter layering\", applying sustainability-voice and premium-tone."
+    },
+    {
+      "topic": "material commitment",
+      "coverage": "partial",
+      "description": "The concept of material choice is addressed through fragments detailing circular fashion and recycled materials, grounding the brand's commitment.",
+      "partialMatches": [
+        "frag_044",
+        "frag_069"
+      ],
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"material commitment\", applying sustainability-voice and premium-tone."
+    }
+  ],
+  "draftOutline": {
+    "title": "La Mode Consciente d'Hiver : Tricots Naturels et Engagement",
+    "pathHint": "/fr-fr/collections/tricots-naturels-hiver",
+    "sections": [
+      {
+        "heading": "Le Choix d'une Philosophie Vestimentaire",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_041"
+        ],
+        "rationale": "Donner le ton en reliant l'achat à une démarche éthique globale."
+      },
+      {
+        "heading": "L'Essence des Tricots Durables",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_041"
+        ],
+        "rationale": "Détailler la rencontre entre l'art du tricot et les fibres naturelles pour le froid."
+      },
+      {
+        "heading": "L'Art de la Superposition : Les Bases Naturelles",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_045"
+        ],
+        "rationale": "Expliquer comment les pièces s'intègrent dans une garde-robe hivernale pensée."
+      },
+      {
+        "heading": "Au Cœur de Notre Engagement Matériau",
+        "kind": "new",
+        "rationale": "Approfondir la transparence de la marque concernant les sources et le cycle de vie des matériaux.",
+        "sourcingHint": "Rédiger un fragment produit-histoire de 200 mots en fr-fr sur l'engagement matière, avec application du ton premium et de la voix durable."
+      },
+      {
+        "heading": "L'Élégance Face au Froid Hivernal",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_046"
+        ],
+        "rationale": "Poser le cadre haut de gamme et la résilience des pièces face au froid extrême."
+      }
+    ]
+  }
+}
