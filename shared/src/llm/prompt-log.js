@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import { truncateHead } from "./errors.js";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const DEFAULT_LOG_PATH = resolve(HERE, "../../../prompt-log.md");
+const DEFAULT_LOG_PATH = resolve(HERE, "../../../docs/runtime-prompt-log.md");
 const HEADER = "# Prompt Log\n\n";
 
 export function getPromptLogPath() {
