@@ -74,21 +74,22 @@ allowed list, so the evaluator can still exercise that code path.
 | Env var | Default | Effect |
 |---|---|---|
 | `EVAL_F1_THRESHOLD` | `0.6` | Exit non-zero if aggregate gap-F1 falls below this. |
-| `EVAL_CHAT_MODEL` | `gemma4:26b` | Override the chat model used by the harness only (the agent's runtime default is untouched). Useful on hardware where the default model is impractically slow. |
+| `EVAL_CHAT_MODEL` | _(uses `config/models.json` default — currently `qwen3.5:9b`)_ | Override the chat model used by the harness only (the agent's runtime default is untouched). Useful on hardware where the default model is impractically slow. |
+| `CHAT_TIMEOUT_MS` | `120000` | Override the per-call chat timeout. Raise this when running with `gemma4:26b` or any model that struggles to finish within 2 minutes on your hardware. |
 | `LOG_LEVEL` | `error` | Pipeline pino logger verbosity. |
 | `OLLAMA_HOST` | `http://localhost:11434` | Inherited from `@aemdisc/shared`. |
 
 ### Model variance
 
-Expectations are calibrated against `gemma4:26b` — the model the agent's
-runtime uses. Smaller chat models will fluctuate on:
+Expectations were originally calibrated against `gemma4:26b`; the shipped
+default is now `qwen3.5:9b`. Smaller chat models will fluctuate on:
 
 - whether a topic verdict comes back as `partial` vs `none`,
 - the exact wording the LLM returns for each `topic` (semantic match still
   passes if cosine ≥ 0.7),
 - and whether `parseBrief` correctly extracts every brand guideline.
 
-A typical run with `gemma4:26b` clears the 0.6 threshold; runs with a
-fallback like `EVAL_CHAT_MODEL=qwen2.5-coder:1.5b` may dip below it and exit
-non-zero. Either way `eval/latest.json` records exactly what was returned so
-the discrepancy is auditable.
+A typical run with `qwen3.5:9b` or `gemma4:26b` clears the 0.6 threshold;
+runs with a fallback like `EVAL_CHAT_MODEL=qwen2.5-coder:1.5b` may dip below
+it and exit non-zero. Either way `eval/latest.json` records exactly what was
+returned so the discrepancy is auditable.

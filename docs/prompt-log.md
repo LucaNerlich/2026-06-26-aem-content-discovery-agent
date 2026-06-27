@@ -9,7 +9,8 @@ it is appended to by `shared/src/llm/prompt-log.js` on every chat invocation.
 
 The agent calls one chat model and one embedding model:
 
-- Chat: `gemma4:26b` (default, configurable per stage via `config/models.json`)
+- Chat: `qwen3.5:9b` (default, configurable per stage via `config/models.json`;
+  `gemma4:26b` is supported as a premium alternative when hardware permits)
 - Embeddings: `embeddinggemma:300m` (768-d, Matryoshka-truncatable)
 
 All chat calls run with Ollama options `{ temperature: 1.0, top_p: 0.95,

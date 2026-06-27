@@ -84,7 +84,7 @@ test("OllamaJsonParseError on invalid JSON, no internal retry, logs ok=false", a
     (err) => {
       assert.ok(err instanceof OllamaJsonParseError);
       assert.ok(err instanceof OllamaError);
-      assert.equal(err.model, "gemma4:26b");
+      assert.equal(err.model, "qwen3.5:9b");
       assert.equal(err.responseHead, "not json {");
       assert.ok(err.cause);
       return true;
@@ -173,12 +173,12 @@ test("OllamaTimeoutError on AbortError, does NOT retry", async () => {
 });
 
 test("OllamaModelNotFoundError on 404 with pull hint", async () => {
-  global.fetch = async () => textResponse("model 'gemma4:26b' not found, try pulling it", 404);
+  global.fetch = async () => textResponse("model 'qwen3.5:9b' not found, try pulling it", 404);
   await assert.rejects(
     () => chat({ user: "x" }),
     (err) => {
       assert.ok(err instanceof OllamaModelNotFoundError);
-      assert.match(err.message, /ollama pull gemma4:26b/);
+      assert.match(err.message, /ollama pull qwen3\.5:9b/);
       return true;
     },
   );

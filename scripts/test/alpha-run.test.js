@@ -10,6 +10,8 @@ import {
   instrumentStages,
   localeFromSlug,
   buildSeedSummary,
+  inferLocale,
+  corpusPrecheck,
 } from "../alpha-run.js";
 
 const brief = {
@@ -238,6 +240,121 @@ test("buildSeedSummary: missing corpus returns not-seeded note", async () => {
     const summary = await buildSeedSummary(join(dir, "missing.json"));
     assert.equal(summary.status, "not-seeded");
     assert.match(summary.note, /npm run seed/);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("inferLocale: falls back to expectations localeOverride when slug has no prefix", async () => {
+  const dir = await newTmp();
+  try {
+    await writeFile(
+      join(dir, "winter-sustainable.json"),
+      JSON.stringify({ localeOverride: "en-gb" }),
+    );
+    const locale = await inferLocale("winter-sustainable", "no locale token here", dir);
+    assert.equal(locale, "en-gb");
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("inferLocale: falls back to text scan when no prefix and no override", async () => {
+  const dir = await newTmp();
+  try {
+    const locale = await inferLocale(
+      "winter-sustainable",
+      "The page will sit under /en-gb/collections/winter-sustainable",
+      dir,
+    );
+    assert.equal(locale, "en-gb");
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("inferLocale: returns n/a when nothing matches", async () => {
+  const dir = await newTmp();
+  try {
+    const locale = await inferLocale("no-prefix", "plain text with no locale token", dir);
+    assert.equal(locale, "n/a");
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("inferLocale: prefers slug prefix over text scan", async () => {
+  const locale = await inferLocale("fr-fr-loungewear", "mentions /en-gb/somewhere", "/nope");
+  assert.equal(locale, "fr-fr");
+});
+
+test("corpusPrecheck: fails when corpus is missing", async () => {
+  const dir = await newTmp();
+  try {
+    const res = await corpusPrecheck(join(dir, "missing.json"));
+    assert.equal(res.ok, false);
+    assert.match(res.reason, /missing/);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("corpusPrecheck: fails when locales are incomplete", async () => {
+  const dir = await newTmp();
+  try {
+    const path = join(dir, "corpus.json");
+    const fragments = [];
+    for (let i = 0; i < 24; i += 1) fragments.push({ id: `f${i}`, locale: "en-gb" });
+    await writeFile(path, JSON.stringify({ fragments }));
+    const res = await corpusPrecheck(path);
+    assert.equal(res.ok, false);
+    assert.match(res.reason, /missing locales/);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("corpusPrecheck: ok when 24+ fragments cover required locales", async () => {
+  const dir = await newTmp();
+  try {
+    const path = join(dir, "corpus.json");
+    const fragments = [];
+    for (let i = 0; i < 8; i += 1) fragments.push({ id: `e${i}`, locale: "en-gb" });
+    for (let i = 0; i < 8; i += 1) fragments.push({ id: `f${i}`, locale: "fr-fr" });
+    for (let i = 0; i < 8; i += 1) fragments.push({ id: `d${i}`, locale: "de-de" });
+    await writeFile(path, JSON.stringify({ fragments }));
+    const res = await corpusPrecheck(path);
+    assert.equal(res.ok, true);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("runBriefWithRetry: error meta carries partial stageDurations from instrumented run", async () => {
+  const dir = await newTmp();
+  try {
+    const partialPipeline = async (_text, _opts, deps) => {
+      const b = await deps.parseBrief(_text);
+      await deps.retrieve(b, {});
+      throw new Error("boom after retrieve");
+    };
+    const meta = await runBriefWithRetry(
+      { slug: "fixture-partial", text: "brief" },
+      {
+        source: { kind: "stub" },
+        runPipeline: partialPipeline,
+        stages,
+        render: renderStub,
+        runsDir: dir,
+        chatModel: "qwen3.5:9b",
+        embeddingModel: "embeddinggemma:300m",
+        now: () => Date.now(),
+      },
+    );
+    assert.equal(meta.status, "error");
+    assert.ok(typeof meta.stageDurations.parseBrief === "number");
+    assert.ok(typeof meta.stageDurations.retrieve === "number");
+    assert.equal(meta.stageDurations.analyseGaps, undefined);
   } finally {
     await rm(dir, { recursive: true, force: true });
   }

@@ -206,10 +206,14 @@ changing any pipeline stage.
 - Configured by `config/models.json`. The loader
   (`shared/src/config/models.js`) is referenced by every stage through
   `getChatModel(stage)` / `getEmbeddingModel()`.
-- Defaults: chat `gemma4:26b`, embeddings `embeddinggemma:300m`. Both served by
-  local Ollama at `http://localhost:11434`.
+- Defaults: chat `qwen3.5:9b`, embeddings `embeddinggemma:300m`. Both served
+  by local Ollama at `http://localhost:11434`. `gemma4:26b` is a supported
+  premium alternative — drop it into `config/models.json` if the hardware
+  can sustain it.
 - Per-stage overrides allow swapping a smaller model into `parseBrief` or
   `analyseGaps` without touching code.
+- The chat timeout defaults to 120 s and can be raised for slow hardware via
+  the `CHAT_TIMEOUT_MS` env var (the alpha-run script pre-sets 300 000 ms).
 - The eval harness additionally honours an `EVAL_CHAT_MODEL` env var so graders
   on constrained hardware can pick a fallback without editing config.
 - `appendPromptLog()` (`shared/src/llm/prompt-log.js`) writes every chat

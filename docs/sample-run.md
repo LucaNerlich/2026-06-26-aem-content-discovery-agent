@@ -31,10 +31,11 @@ analyseGaps → compose`. The corpus is `data/corpus.json` (seed `20260626`,
 > and the structural locale / brand gaps are deterministic.
 >
 > The transcript below was captured with chat model `qwen2.5-coder:1.5b`
-> (the locked default is `gemma4:26b` — swap it via `config/models.json` if
-> your hardware can handle the 120 s timeout). The JSON block was captured in
-> a single invocation; the Markdown block is the canonical render of that same
-> JSON via `discovery-agent/src/render/markdown.js`.
+> (the shipped default is `qwen3.5:9b`, with `gemma4:26b` available as a
+> premium alternative for hardware that can sustain it — swap either via
+> `config/models.json`). The JSON block was captured in a single invocation;
+> the Markdown block is the canonical render of that same JSON via
+> `discovery-agent/src/render/markdown.js`.
 
 ## Output — `--json` (canonical `AgentOutput`)
 

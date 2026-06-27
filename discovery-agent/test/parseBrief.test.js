@@ -102,15 +102,25 @@ test("parseBrief: retries once on OllamaJsonParseError then succeeds", async () 
   assert.equal(chat.calls.length, 2);
 });
 
-test("parseBrief: hard fails after second bad-shape try", async () => {
+test("parseBrief: succeeds on second retry after two bad-shape attempts", async () => {
   const badShape = { ...VALID };
   delete badShape.audience;
-  const chat = makeChat([badShape, badShape]);
+  const chat = makeChat([badShape, badShape, VALID]);
+  const result = await parseBrief(BRIEF_TEXT, { chat });
+  assert.equal(result.audience, VALID.audience);
+  assert.equal(chat.calls.length, 3);
+  assert.match(chat.calls[2].system, /Return ONLY valid JSON\. No prose, no markdown fences, no comments\./);
+});
+
+test("parseBrief: hard fails after two bad-shape retries (three attempts total)", async () => {
+  const badShape = { ...VALID };
+  delete badShape.audience;
+  const chat = makeChat([badShape, badShape, badShape]);
   await assert.rejects(
     () => parseBrief(BRIEF_TEXT, { chat }),
     (err) => err?.name === "ZodError",
   );
-  assert.equal(chat.calls.length, 2);
+  assert.equal(chat.calls.length, 3);
 });
 
 test("parseBrief: non-shape errors propagate immediately without retry", async () => {

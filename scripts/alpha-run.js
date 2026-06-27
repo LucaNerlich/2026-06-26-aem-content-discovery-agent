@@ -14,9 +14,14 @@ import {
   getEmbeddingModel,
 } from "@aemdisc/shared";
 
+// 5min default per chat call — gemma-class 9b models still need >120s under
+// load on consumer hardware. User can override via env.
+process.env.CHAT_TIMEOUT_MS ??= "300000";
+
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, "..");
 const BRIEFS_DIR = join(ROOT, "eval", "briefs");
+const EXPECTATIONS_DIR = join(ROOT, "eval", "expectations");
 const RUNS_DIR = join(ROOT, "runs", "alpha");
 const CORPUS_PATH = join(ROOT, "data", "corpus.json");
 
@@ -25,10 +30,61 @@ const CORPUS_PATH = join(ROOT, "data", "corpus.json");
 export const DEMO_SEED = 20260626;
 
 const LOCALE_RE = /^(en-gb|en-us|fr-fr|de-de)-/;
+const KNOWN_LOCALES = new Set(["en-gb", "en-us", "fr-fr", "de-de"]);
+const TEXT_LOCALE_RE = /\b(en-gb|en-us|fr-fr|de-de)\b/i;
 
 export function localeFromSlug(slug) {
   const m = LOCALE_RE.exec(slug);
   return m ? m[1] : "n/a";
+}
+
+// Locale inference order: slug prefix → eval/expectations/<slug>.json
+// localeOverride → first locale token in the brief text → "n/a".
+export async function inferLocale(slug, briefText, expectationsDir = EXPECTATIONS_DIR) {
+  const fromSlug = LOCALE_RE.exec(slug);
+  if (fromSlug) return fromSlug[1];
+  const expPath = join(expectationsDir, `${slug}.json`);
+  if (existsSync(expPath)) {
+    try {
+      const exp = JSON.parse(await readFile(expPath, "utf8"));
+      if (typeof exp?.localeOverride === "string" && KNOWN_LOCALES.has(exp.localeOverride)) {
+        return exp.localeOverride;
+      }
+    } catch {
+      // fall through to text scan
+    }
+  }
+  if (typeof briefText === "string") {
+    const m = briefText.match(TEXT_LOCALE_RE);
+    if (m) return m[1].toLowerCase();
+  }
+  return "n/a";
+}
+
+// Validates that data/corpus.json was seeded and covers all three locales.
+// Returns { ok: true } on success or { ok: false, reason } with an actionable
+// message on failure.
+export async function corpusPrecheck(corpusPath = CORPUS_PATH) {
+  if (!existsSync(corpusPath)) {
+    return { ok: false, reason: `data/corpus.json missing at ${corpusPath}` };
+  }
+  let corpus;
+  try {
+    corpus = JSON.parse(await readFile(corpusPath, "utf8"));
+  } catch (err) {
+    return { ok: false, reason: `data/corpus.json is not valid JSON: ${err.message}` };
+  }
+  const fragments = Array.isArray(corpus?.fragments) ? corpus.fragments : [];
+  if (fragments.length < 24) {
+    return { ok: false, reason: `expected >= 24 fragments, got ${fragments.length}` };
+  }
+  const have = new Set(fragments.map((f) => f.locale));
+  const required = ["en-gb", "fr-fr", "de-de"];
+  const missing = required.filter((l) => !have.has(l));
+  if (missing.length > 0) {
+    return { ok: false, reason: `missing locales: ${missing.join(", ")}` };
+  }
+  return { ok: true };
 }
 
 export async function listBriefs(dir = BRIEFS_DIR) {
@@ -72,13 +128,23 @@ function gapCounts(gaps) {
 }
 
 // Single brief, no retry. Validates the AgentOutput before rendering so a
-// schema drift surfaces as a thrown error the caller can retry on.
+// schema drift surfaces as a thrown error the caller can retry on. On
+// failure the partial stageDurations are attached to the thrown error so
+// the retry wrapper can persist whatever timing was captured before the
+// stage threw.
 export async function runBriefOnce({ slug, text, source, runPipeline, stages, render, now = () => Date.now() }) {
   const { deps, stageDurations } = instrumentStages(stages, now);
-  const output = await runPipeline(text, { source, k: 3 }, deps);
-  AgentOutput.parse(output);
-  const md = render(output);
-  return { slug, output, md, stageDurations };
+  try {
+    const output = await runPipeline(text, { source, k: 3 }, deps);
+    AgentOutput.parse(output);
+    const md = render(output);
+    return { slug, output, md, stageDurations };
+  } catch (err) {
+    if (err && typeof err === "object") {
+      try { err.stageDurations = stageDurations; } catch { /* frozen */ }
+    }
+    throw err;
+  }
 }
 
 export async function writeBriefArtifacts(runsDir, slug, { output, md }) {
@@ -119,7 +185,7 @@ export async function runBriefWithRetry(briefRec, ctx) {
       const meta = {
         slug: briefRec.slug,
         brief: briefText.slice(0, 200),
-        locale: localeFromSlug(briefRec.slug),
+        locale: briefRec.locale ?? localeFromSlug(briefRec.slug),
         startedAt,
         finishedAt,
         durationMs,
@@ -135,7 +201,9 @@ export async function runBriefWithRetry(briefRec, ctx) {
       return meta;
     } catch (err) {
       lastError = err;
-      lastStageDurations = ctx.stageDurations ?? lastStageDurations;
+      if (err && typeof err === "object" && err.stageDurations) {
+        lastStageDurations = err.stageDurations;
+      }
     }
   }
   const finishedAt = new Date(now()).toISOString();
@@ -145,7 +213,7 @@ export async function runBriefWithRetry(briefRec, ctx) {
   const meta = {
     slug: briefRec.slug,
     brief: briefText.slice(0, 200),
-    locale: localeFromSlug(briefRec.slug),
+    locale: briefRec.locale ?? localeFromSlug(briefRec.slug),
     startedAt,
     finishedAt,
     durationMs,
@@ -220,12 +288,22 @@ export async function main({ now = () => Date.now() } = {}) {
   if (!process.env.LOG_LEVEL) process.env.LOG_LEVEL = "error";
   await mkdir(RUNS_DIR, { recursive: true });
 
+  const precheck = await corpusPrecheck(CORPUS_PATH);
+  if (!precheck.ok) {
+    process.stderr.write(
+      `alpha-run: corpus precheck failed (${precheck.reason}). Run \`npm run seed -- --seed=${DEMO_SEED}\` first.\n`,
+    );
+    return 1;
+  }
+
   const chatModel = getChatModel("default");
   const embeddingModel = getEmbeddingModel();
   const briefFiles = await listBriefs();
   const briefs = [];
   for (const b of briefFiles) {
-    briefs.push({ ...b, text: await readFile(b.file, "utf8") });
+    const text = await readFile(b.file, "utf8");
+    const locale = await inferLocale(b.slug, text, EXPECTATIONS_DIR);
+    briefs.push({ ...b, text, locale });
   }
 
   const source = new JsonFragmentSource(CORPUS_PATH);
