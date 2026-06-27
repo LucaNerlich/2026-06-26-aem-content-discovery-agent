@@ -11,8 +11,9 @@ test("parseArgs applies defaults and parses seed deterministically", () => {
   assert.equal(a.count, 8);
   assert.deepEqual(a.locales, ["en-gb", "fr-fr", "de-de"]);
   assert.equal(a.variation, "medium");
-  assert.equal(a.skipEmbeddings, false);
-  assert.equal(a.aemPush, false);
+  assert.equal(a.skipEmbeddings, true, "skip-embeddings defaults to true (embed is a separate step)");
+  assert.equal(a.concurrency, 4, "default concurrency is 4");
+  assert.equal(a.aemPush, undefined, "aemPush removed — use aem-push.js directly if needed");
 });
 
 test("parseArgs default --count is 8 per locale (24 total across en-gb,fr-fr,de-de)", () => {
@@ -30,12 +31,20 @@ test("parseArgs rejects bad variation", () => {
   assert.throws(() => parseArgs(["--variation=extreme"]), /--variation/);
 });
 
-test("parseArgs accepts skip-embeddings + dry-run + aem-push flags", () => {
-  const a = parseArgs(["--skip-embeddings", "--dry-run", "--aem-push", "--reset"]);
+test("parseArgs accepts skip-embeddings and dry-run flags", () => {
+  const a = parseArgs(["--skip-embeddings", "--dry-run"]);
   assert.equal(a.skipEmbeddings, true);
   assert.equal(a.dryRun, true);
-  assert.equal(a.aemPush, true);
-  assert.equal(a.reset, true);
+});
+
+test("parseArgs accepts --concurrency override", () => {
+  const a = parseArgs(["--concurrency=8"]);
+  assert.equal(a.concurrency, 8);
+});
+
+test("parseArgs rejects concurrency out of range", () => {
+  assert.throws(() => parseArgs(["--concurrency=0"]), /--concurrency/);
+  assert.throws(() => parseArgs(["--concurrency=17"]), /--concurrency/);
 });
 
 test("parseArgs returns absolute outputPath even on --dry-run (summary contract)", () => {

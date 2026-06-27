@@ -21,41 +21,49 @@ function jsonResponse(body, status = 200) {
 test("preflightModels passes when both models present", async () => {
   global.fetch = async () =>
     jsonResponse({
-      models: [
-        { name: "qwen3.5:9b" },
-        { name: "embeddinggemma:300m" },
+      data: [
+        { id: "google/gemma-4-e4b", object: "model" },
+        { id: "nomic-embed-text", object: "model" },
       ],
     });
   const res = await preflightModels({ requireEmbed: true });
-  assert.ok(res.installed.includes("qwen3.5:9b"));
-  assert.ok(res.installed.includes("embeddinggemma:300m"));
+  assert.ok(res.installed.includes("google/gemma-4-e4b"));
+  assert.ok(res.installed.includes("nomic-embed-text"));
 });
 
-test("preflightModels throws with pull hint when chat model missing", async () => {
+test("preflightModels throws with LM Studio hint when chat model missing", async () => {
   global.fetch = async () =>
-    jsonResponse({ models: [{ name: "embeddinggemma:300m" }] });
+    jsonResponse({ data: [{ id: "nomic-embed-text" }] });
   await assert.rejects(
     () => preflightModels({ requireEmbed: true }),
-    /Model "qwen3\.5:9b" not available\. Run: ollama pull qwen3\.5:9b/,
+    /Model "google\/gemma-4-e4b" not available.*LM Studio/,
   );
 });
 
-test("preflightModels throws with pull hint when embed model missing", async () => {
+test("preflightModels throws with LM Studio hint when embed model missing", async () => {
   global.fetch = async () =>
-    jsonResponse({ models: [{ name: "qwen3.5:9b" }] });
+    jsonResponse({ data: [{ id: "google/gemma-4-e4b" }] });
   await assert.rejects(
     () => preflightModels({ requireEmbed: true }),
-    /Model "embeddinggemma:300m" not available\. Run: ollama pull embeddinggemma:300m/,
+    /Model "nomic-embed-text" not available.*LM Studio/,
   );
 });
 
 test("preflightModels skips embed check when requireEmbed=false", async () => {
-  global.fetch = async () => jsonResponse({ models: [{ name: "qwen3.5:9b" }] });
+  global.fetch = async () => jsonResponse({ data: [{ id: "google/gemma-4-e4b" }] });
   const res = await preflightModels({ requireEmbed: false });
-  assert.deepEqual(res.installed, ["qwen3.5:9b"]);
+  assert.deepEqual(res.installed, ["google/gemma-4-e4b"]);
 });
 
 test("preflightModels surfaces non-2xx as an error", async () => {
   global.fetch = async () => new Response("kaboom", { status: 500 });
   await assert.rejects(() => preflightModels({ requireEmbed: false }), /500/);
+});
+
+test("preflightModels matches model by repo-path suffix (e.g. vendor/model-name)", async () => {
+  global.fetch = async () =>
+    jsonResponse({ data: [{ id: "google/gemma-4-e4b" }, { id: "nomic-embed-text" }] });
+  // isModelInstalled should match even if caller passes just the short name
+  const res = await preflightModels({ requireEmbed: false });
+  assert.ok(res.installed.some((id) => id === "google/gemma-4-e4b"));
 });

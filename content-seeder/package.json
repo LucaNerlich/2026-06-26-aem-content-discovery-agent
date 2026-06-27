@@ -6,7 +6,8 @@
     "aemdisc-seed": "src/seed.js"
   },
   "scripts": {
-    "seed": "node src/seed.js"
+    "seed": "node src/seed.js",
+    "embed": "node src/embed-cli.js"
   },
   "dependencies": {
     "@aemdisc/shared": "*",

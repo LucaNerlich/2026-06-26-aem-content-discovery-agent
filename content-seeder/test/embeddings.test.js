@@ -25,7 +25,8 @@ test("buildEmbeddingsDb writes both tables with the expected row count", async (
     const fakeEmbed = async (text) => fixedVector(text.length);
     const res = await buildEmbeddingsDb({ path, fragments: sampleFragments, embedImpl: fakeEmbed });
     assert.equal(res.count, 2);
-    assert.equal(res.embeddingModel, "embeddinggemma:300m");
+    assert.equal(res.dims, 768, "detected dims must equal fixedVector size");
+    assert.equal(typeof res.embeddingModel, "string", "embeddingModel must be a string");
 
     const db = new Database(path);
     sqliteVec.load(db);
@@ -45,14 +46,16 @@ test("buildEmbeddingsDb writes both tables with the expected row count", async (
   }
 });
 
-test("buildEmbeddingsDb rejects wrong-dimension vectors", async () => {
+test("buildEmbeddingsDb rejects inconsistent embedding dimensions across fragments", async () => {
   const dir = await mkdtemp(join(tmpdir(), "embed-test-"));
   const path = join(dir, "embeddings.db");
   try {
-    const badEmbed = async () => new Float32Array(384);
+    // First fragment returns 384 dims, second returns 512 — mismatch must be caught.
+    let call = 0;
+    const inconsistentEmbed = async () => new Float32Array(call++ === 0 ? 384 : 512);
     await assert.rejects(
-      () => buildEmbeddingsDb({ path, fragments: sampleFragments, embedImpl: badEmbed }),
-      /has 384 dims, expected 768/,
+      () => buildEmbeddingsDb({ path, fragments: sampleFragments, embedImpl: inconsistentEmbed }),
+      /dimension mismatch/i,
     );
   } finally {
     await rm(dir, { recursive: true, force: true });

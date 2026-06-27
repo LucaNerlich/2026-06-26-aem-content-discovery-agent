@@ -58,7 +58,7 @@ test("truncateHead trims to 200 chars with ellipsis", () => {
 
 test("chat happy path returns text and logs ok=true to prompt-log", async () => {
   global.fetch = async () =>
-    jsonResponse({ message: { role: "assistant", content: "hello back" }, prompt_eval_count: 3, eval_count: 4 });
+    jsonResponse({ choices: [{ message: { role: "assistant", content: "hello back" } }], usage: { prompt_tokens: 3, completion_tokens: 4 } });
   const result = await chat({ user: "hi" });
   assert.equal(result, "hello back");
   const log = await readFile(logPath, "utf8");
@@ -68,7 +68,7 @@ test("chat happy path returns text and logs ok=true to prompt-log", async () => 
 });
 
 test("chat json mode parses object response", async () => {
-  global.fetch = async () => jsonResponse({ message: { content: '{"a":1}' } });
+  global.fetch = async () => jsonResponse({ choices: [{ message: { content: '{"a":1}' } }] });
   const result = await chat({ user: "give me json", json: true });
   assert.deepEqual(result, { a: 1 });
 });
@@ -77,14 +77,14 @@ test("OllamaJsonParseError on invalid JSON, no internal retry, logs ok=false", a
   let calls = 0;
   global.fetch = async () => {
     calls += 1;
-    return jsonResponse({ message: { content: "not json {" } });
+    return jsonResponse({ choices: [{ message: { content: "not json {" } }] });
   };
   await assert.rejects(
     () => chat({ user: "x", json: true }),
     (err) => {
       assert.ok(err instanceof OllamaJsonParseError);
       assert.ok(err instanceof OllamaError);
-      assert.equal(err.model, "qwen3.5:9b");
+      assert.equal(err.model, "google/gemma-4-e4b");
       assert.equal(err.responseHead, "not json {");
       assert.ok(err.cause);
       return true;
@@ -97,14 +97,14 @@ test("OllamaJsonParseError on invalid JSON, no internal retry, logs ok=false", a
 });
 
 test("OllamaInvariantError on empty content", async () => {
-  global.fetch = async () => jsonResponse({ message: { content: "" } });
+  global.fetch = async () => jsonResponse({ choices: [{ message: { content: "" } }] });
   await assert.rejects(
     () => chat({ user: "x" }),
     (err) => err instanceof OllamaInvariantError,
   );
 });
 
-test("OllamaInvariantError on missing message field", async () => {
+test("OllamaInvariantError on missing choices field", async () => {
   global.fetch = async () => jsonResponse({});
   await assert.rejects(
     () => chat({ user: "x" }),
@@ -164,7 +164,7 @@ test("OllamaTimeoutError on AbortError, does NOT retry", async () => {
     () => embed("hello"),
     (err) => {
       assert.ok(err instanceof OllamaTimeoutError);
-      assert.equal(err.model, "embeddinggemma:300m");
+      assert.equal(err.model, "nomic-embed-text");
       assert.ok(err.cause);
       return true;
     },
@@ -172,13 +172,14 @@ test("OllamaTimeoutError on AbortError, does NOT retry", async () => {
   assert.equal(calls, 1, "timeout must not retry");
 });
 
-test("OllamaModelNotFoundError on 404 with pull hint", async () => {
-  global.fetch = async () => textResponse("model 'qwen3.5:9b' not found, try pulling it", 404);
+test("OllamaModelNotFoundError on 404 with model hint", async () => {
+  global.fetch = async () => textResponse("model 'google/gemma-4-e4b' not found", 404);
   await assert.rejects(
     () => chat({ user: "x" }),
     (err) => {
       assert.ok(err instanceof OllamaModelNotFoundError);
-      assert.match(err.message, /ollama pull qwen3\.5:9b/);
+      assert.match(err.message, /google\/gemma-4-e4b/);
+      assert.match(err.message, /LM Studio/);
       return true;
     },
   );
@@ -192,9 +193,9 @@ test("OllamaContextOverflowError on context-length error body", async () => {
   );
 });
 
-test("embed happy path returns 768-length Float32Array for single input", async () => {
+test("embed happy path returns Float32Array for single input", async () => {
   const vec = Array.from({ length: 768 }, (_v, i) => i / 768);
-  global.fetch = async () => jsonResponse({ model: "embeddinggemma:300m", embeddings: [vec] });
+  global.fetch = async () => jsonResponse({ data: [{ object: "embedding", index: 0, embedding: vec }] });
   const result = await embed("hello");
   assert.ok(result instanceof Float32Array);
   assert.equal(result.length, 768);
@@ -203,14 +204,14 @@ test("embed happy path returns 768-length Float32Array for single input", async 
 
 test("embed batch returns array of Float32Array", async () => {
   global.fetch = async () =>
-    jsonResponse({ embeddings: [[0.1, 0.2], [0.3, 0.4]] });
+    jsonResponse({ data: [{ embedding: [0.1, 0.2] }, { embedding: [0.3, 0.4] }] });
   const result = await embed(["a", "b"]);
   assert.ok(Array.isArray(result));
   assert.equal(result.length, 2);
   assert.ok(result[0] instanceof Float32Array);
 });
 
-test("embed throws OllamaInvariantError on missing embeddings", async () => {
+test("embed throws OllamaInvariantError on missing data array", async () => {
   global.fetch = async () => jsonResponse({});
   await assert.rejects(
     () => embed("x"),
@@ -236,7 +237,7 @@ test("appendPromptLog creates file and writes failure entry", async () => {
 });
 
 test("prompt-log truncates long fields to 200 chars", async () => {
-  global.fetch = async () => jsonResponse({ message: { content: "ok" } });
+  global.fetch = async () => jsonResponse({ choices: [{ message: { content: "ok" } }] });
   const long = "x".repeat(500);
   await chat({ user: long });
   const log = await readFile(logPath, "utf8");
@@ -245,27 +246,28 @@ test("prompt-log truncates long fields to 200 chars", async () => {
   assert.ok(userLine.length <= "- user: ".length + 201);
 });
 
-test("chat forwards options.num_predict into body.options", async () => {
+test("chat forwards options.num_predict as top-level max_tokens", async () => {
   let captured;
   global.fetch = async (_url, init) => {
     captured = JSON.parse(init.body);
-    return jsonResponse({ message: { content: "ok" } });
+    return jsonResponse({ choices: [{ message: { content: "ok" } }] });
   };
   await chat({ user: "hi", options: { num_predict: 1234 } });
-  assert.equal(captured.options.num_predict, 1234);
-  assert.equal(captured.options.temperature, 1.0, "default temperature preserved");
+  assert.equal(captured.max_tokens, 1234);
+  assert.equal(captured.temperature, 1.0, "default temperature preserved");
+  assert.equal(captured.options, undefined, "no nested options object in OpenAI-compat body");
 });
 
 test("think-stripper removes leading <think>...</think> block", async () => {
   global.fetch = async () =>
-    jsonResponse({ message: { content: "<think>internal reasoning here</think>actual content" } });
+    jsonResponse({ choices: [{ message: { content: "<think>internal reasoning here</think>actual content" } }] });
   const result = await chat({ user: "hi" });
   assert.equal(result, "actual content");
 });
 
 test("truncated mid-think throws OllamaInvariantError with diagnostic message", async () => {
   global.fetch = async () =>
-    jsonResponse({ message: { content: "<think>partial reasoning never closed..." } });
+    jsonResponse({ choices: [{ message: { content: "<think>partial reasoning never closed..." } }] });
   await assert.rejects(
     () => chat({ user: "hi" }),
     (err) => {
@@ -276,28 +278,13 @@ test("truncated mid-think throws OllamaInvariantError with diagnostic message", 
   );
 });
 
-test("DISABLE_THINKING_MODE=true sets body.think=false for qwen3 models", async () => {
-  process.env.DISABLE_THINKING_MODE = "true";
+test("OpenAI-compat body uses response_format for json mode", async () => {
   let captured;
   global.fetch = async (_url, init) => {
     captured = JSON.parse(init.body);
-    return jsonResponse({ message: { content: "ok" } });
+    return jsonResponse({ choices: [{ message: { content: '{"x":1}' } }] });
   };
-  try {
-    await chat({ user: "hi", model: "qwen3.5:9b" });
-    assert.equal(captured.think, false);
-  } finally {
-    delete process.env.DISABLE_THINKING_MODE;
-  }
-});
-
-test("DISABLE_THINKING_MODE unset leaves body.think undefined", async () => {
-  delete process.env.DISABLE_THINKING_MODE;
-  let captured;
-  global.fetch = async (_url, init) => {
-    captured = JSON.parse(init.body);
-    return jsonResponse({ message: { content: "ok" } });
-  };
-  await chat({ user: "hi", model: "qwen3.5:9b" });
-  assert.equal(captured.think, undefined);
+  await chat({ user: "hi", json: true });
+  assert.deepEqual(captured.response_format, { type: "json_object" });
+  assert.equal(captured.format, undefined, "Ollama format field must not be set");
 });
