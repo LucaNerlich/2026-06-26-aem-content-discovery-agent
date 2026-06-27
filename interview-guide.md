@@ -34,7 +34,7 @@ Two architectural moves keep it reviewer-friendly and honest:
 | Synthetic content library, 15–20 JSON fragments, locked schema (`id`, `title`, `category`, `targetAudience`, `brandGuidelinesApplied`, `locale`, `lastModified`, `content`) | `data/corpus.json` (seeded by `content-seeder/`); schema in `shared/src/schema/fragment.js`; CF Model XML in `aemcontentdisc/ui.content/` | Seeded with 40/locale × 3 locales = 120 fragments (above the 15–20 floor) to give meaningful retrieval signal. Same shape on both sides of the JSON ↔ AEM boundary. |
 | Runnable agent script — single command, prints all three outputs | `npm run agent -- eval/briefs/winter-sustainable.txt` (Markdown) and `… --json` (canonical `AgentOutput`); entry point `discovery-agent/src/cli.js` | No AEM dependency on the default path. |
 | Architecture doc — one page, justifies (a) embedding model, (b) chunking, (c) retrieval method, (d) why agentic | [`architecture.md`](architecture.md) at the repo root + deep-dive [`docs/architecture.md`](docs/architecture.md); rationale recorded per-decision in [`why.md`](why.md) | All four required questions answered with citations to source files. |
-| Prompt logs | [`prompt-log.md`](prompt-log.md) (auto-appended on every chat call) + curated templates in [`docs/prompt-log.md`](docs/prompt-log.md) | Every call — success or failure — is logged with `{ ts, model, mode, ok, errorClass?, elapsedMs, promptHead, responseHead }`. |
+| Prompt logs | [`prompt-log.md`](prompt-log.md) (auto-appended on every chat call) + curated templates in [`docs/prompt-log.md`](docs/prompt-log.md) | Every call — success or failure — is logged with `{ ts, model, ok, durationMs, system, user, response }` on success or `{ ts, model, ok, durationMs, system, user, errorClass, errorMessageHead }` on failure; `system`/`user`/`response`/`errorMessageHead` are truncated to 200 chars. |
 | Sample run for the example brief in the README | [`docs/sample-run.md`](docs/sample-run.md) — captured JSON + Markdown render | The brief is reproduced verbatim from the PDF (winter-sustainable). |
 | Three output blocks: top matches, gaps, outline | `shared/src/schema/output.js` — `AgentOutput` (`schemaVersion: "1.0"`, `matchedFragments[0..3]`, `gaps[]`, `draftOutline.sections[1..8]`) | Markdown renderer is a pure view over the same object — no parallel implementation. |
 | Submission: code + prompt logs + corpus JSON + README + arch doc | Repo root holds all of them; corpus is committed | A grader can clone and run without re-seeding. |
@@ -75,9 +75,11 @@ The full reasoning per decision lives in [`why.md`](why.md). Headline calls:
   ids in `partialMatches` are dropped; `partial` with empty matches is
   downgraded to `none`; structural locale/brand gaps are synthesised
   independently of the LLM so they always appear when retrieval demands them.
-- **Schema validation = Zod everywhere, fail-loud with one retry** — every
-  stage validates its output; `JsonParseError`/`ZodError` triggers one
-  re-prompt with the error appended to the system prompt, then propagates.
+- **Schema validation = Zod everywhere, fail-loud with bounded retry** — every
+  stage validates its output; `JsonParseError`/`ZodError` triggers a re-prompt
+  with the error appended to the system prompt, then propagates. `parseBrief`
+  retries up to twice (one extra retry with a stricter "JSON only" reminder);
+  `analyseGaps` and `compose` retry exactly once.
   Composer enforces orphan-id rejection via `superRefine` so reuse sections
   can only cite ids present in `matchedFragments`.
 - **Prompt logging = every call, success or failure** — `prompt-log.md` is
@@ -122,7 +124,8 @@ Talking points to hit as it runs:
   precision@3 ≈ **0.42**, recall@3 ≈ **0.42**, gap-F1 ≈ **0.75** (above the
   0.6 floor). Per-brief breakdown is honest — `de-de-workwear-tech` and
   `fr-fr-loungewear-premium` currently score 0 on precision/recall while
-  still landing 0.8+ on gap-F1, which is the trade-off the next round of
+  still landing gap-F1 of 0.8 (`de-de-workwear-tech`) and a perfect 1.0
+  (`fr-fr-loungewear-premium`), which is the trade-off the next round of
   corpus tuning would attack.
 - Open `architecture.md` — point to the four required-by-PDF justifications.
 - Open `why.md` — show that every non-trivial choice has a dated entry with
