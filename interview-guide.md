@@ -27,6 +27,40 @@ Two architectural moves keep it reviewer-friendly and honest:
    non-zero below the 0.6 gap-F1 threshold. Latest aggregate: **gap-F1 ≈ 0.75**
    (above the floor) on the locked seed ([`eval/latest.json`](eval/latest.json)).
 
+### Where the RAG happens
+
+RAG is the whole `parseBrief → retrieve → analyseGaps → compose` pipeline, not a
+single step — that's why retrieval and generation are split across four typed
+stages instead of a one-shot prompt.
+
+- **`parseBrief()`** turns the free-form brief into a `StructuredBrief`
+  (topics, audience, locale, brand-guidelines flag). This is what makes
+  retrieval queryable — topics become embedding inputs and filter predicates.
+- **`retrieve()`** is the retrieval layer (`discovery-agent/src/pipeline/retrieve.js`).
+  Per topic it embeds the query with `embeddinggemma-300m`, runs a `sqlite-vec`
+  cosine search, fuses with in-memory BM25 (`wink-bm25-text-search`) and a
+  freshness signal at `0.6 · cosine + 0.3 · BM25 + 0.1 · freshness`, then
+  applies the locale ladder (exact → `en-*` → any) and an optional brand-guidelines
+  filter. Output is a `RetrievalResult` with the top fragments **and** the
+  structural gaps that fall out of locale/brand relaxation, each carrying a
+  deterministic, human-readable `reason` string.
+- **`analyseGaps()`** is the first augmentation step: it receives the
+  structured brief plus the retrieved fragments and asks a single batched
+  LLM judge to label per-topic `coverage` (`full | partial | none`), then
+  merges in the structural gaps and applies post-LLM invariants
+  (orphan-id drop, `partial`→`none` downgrade on empty matches).
+- **`compose()`** is the second augmentation step (`discovery-agent/src/pipeline/compose.js`):
+  it receives the brief, the retrieved fragments, and the merged gaps, and
+  generates the `draftOutline` constrained to a per-call Zod schema whose
+  `superRefine` rejects any reuse section citing a fragment id not in
+  `matchedFragments`.
+
+This is RAG rather than plain search because the retrieved fragments are
+both **augmenting** downstream prompts and **constraining** generation:
+the composer cannot invent ids, the gap analyser cannot claim coverage
+without retrieved evidence, and every transformation is Zod-validated with
+a bounded re-prompt on failure.
+
 ## 2. Mapping the PDF requirements to the repo
 
 | PDF requirement | Where it lives | Notes |
