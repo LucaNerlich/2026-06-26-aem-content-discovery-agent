@@ -4,6 +4,7 @@ node_modules/
 *.jar
 /author
 /.idea
+/.augment
 shared/.cache/
 .DS_Store
 *.log
