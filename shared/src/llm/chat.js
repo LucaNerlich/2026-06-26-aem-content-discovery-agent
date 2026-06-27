@@ -1,4 +1,4 @@
-import { llmFetch, logger } from "./ollama.js";
+import { llmFetch, logger } from "./llm.js";
 import { appendPromptLog } from "./prompt-log.js";
 import {
   LlmInvariantError,

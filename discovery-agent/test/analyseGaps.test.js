@@ -192,10 +192,10 @@ test("propagates non-retryable errors immediately", async () => {
   await assert.rejects(analyseGaps(briefBase, retrieval, { chat }), TypeError);
 });
 
-// Regression: Ollama `format: "json"` mode forces a top-level JSON object, so
-// the gap-analyser asks the model for `{ "verdicts": [...] }`. Verify that
-// shape parses correctly and yields the right Gap[].
-test("accepts wrapped {verdicts: [...]} response (Ollama JSON mode)", async () => {
+// Regression: JSON-mode chat backends force a top-level JSON object, so the
+// gap-analyser asks the model for `{ "verdicts": [...] }`. Verify that shape
+// parses correctly and yields the right Gap[].
+test("accepts wrapped {verdicts: [...]} response (JSON-object mode)", async () => {
   const f = frag({ id: "frag_090", title: "Recycled winter coats" });
   const retrieval = {
     matches: [match(f)],

@@ -1,4 +1,4 @@
-import { llmFetch, logger } from "./ollama.js";
+import { llmFetch, logger } from "./llm.js";
 import { LlmInvariantError } from "./errors.js";
 import { getEmbeddingModel } from "../config/models.js";
 

@@ -34,9 +34,6 @@ export async function listLlmModels() {
   }
 }
 
-// Backwards-compatible alias; same function identity.
-export const listOllamaModels = listLlmModels;
-
 function isModelInstalled(installed, wanted) {
   // LM Studio model IDs are full repo-style paths (e.g. "google/gemma-4-e4b").
   return installed.some((id) => id === wanted || id.endsWith(`/${wanted}`));

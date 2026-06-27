@@ -191,9 +191,9 @@ Talking points to hit as it runs:
   if still bad, the typed error propagates with a clear JSON path.
 
 **What if the model returns malformed JSON?**
-- Uniform retry pattern: catch `OllamaJsonParseError` / `ZodError` exactly
+- Uniform retry pattern: catch `LlmJsonParseError` / `ZodError` exactly
   once, append the error message to the system prompt, retry. Transient 5xx
-  / connection failures are retried inside `ollamaFetch` with backoff.
+  / connection failures are retried inside `llmFetch` with backoff.
   Everything else propagates as a typed error.
 
 **Multilingual — really, or just `en-gb` with locale tags?**

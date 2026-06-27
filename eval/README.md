@@ -78,7 +78,7 @@ allowed list, so the evaluator can still exercise that code path.
 | `EVAL_CHAT_MODEL` | _(uses `config/models.json` default — currently `google/gemma-4-e4b` via LM Studio)_ | Override the chat model used by the harness only (the agent's runtime default is untouched). Useful on hardware where the default model is impractically slow. |
 | `CHAT_TIMEOUT_MS` | `120000` | Override the per-call chat timeout. Raise this when running with a larger model that struggles to finish within 2 minutes on your hardware. |
 | `LOG_LEVEL` | `error` | Pipeline pino logger verbosity. |
-| `OLLAMA_HOST` | `http://localhost:1234` | Base URL of the LM Studio server. The env var name is retained from an earlier Ollama-backed implementation. |
+| `LLM_HOST` | `http://localhost:1234` | Base URL of the LM Studio server. |
 
 ### Model variance
 

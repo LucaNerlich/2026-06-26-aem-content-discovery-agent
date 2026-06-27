@@ -29,16 +29,3 @@ export class LlmModelNotFoundError extends LlmError {}
 export class LlmJsonParseError extends LlmError {}
 export class LlmContextOverflowError extends LlmError {}
 export class LlmInvariantError extends LlmError {}
-
-// Backwards-compatible aliases. Same class identity, so `instanceof` checks
-// against either the Ollama* or Llm* name continue to work for any caller
-// that has not yet migrated. See Stage 1 of the legacy Ollama identifier
-// rename plan for context.
-export const OllamaError = LlmError;
-export const OllamaUnavailableError = LlmUnavailableError;
-export const OllamaServerError = LlmServerError;
-export const OllamaTimeoutError = LlmTimeoutError;
-export const OllamaModelNotFoundError = LlmModelNotFoundError;
-export const OllamaJsonParseError = LlmJsonParseError;
-export const OllamaContextOverflowError = LlmContextOverflowError;
-export const OllamaInvariantError = LlmInvariantError;

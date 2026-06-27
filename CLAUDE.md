@@ -37,7 +37,7 @@ There is **no lint or format step** — the project uses `node --check` only for
 | Var | Default | Purpose |
 |-----|---------|---------|
 | `CHAT_TIMEOUT_MS` | `120000` | Per-call chat timeout (ms) |
-| `OLLAMA_HOST` | `http://localhost:1234` | Base URL of the LM Studio server (env var name kept for backwards compatibility) |
+| `LLM_HOST` | `http://localhost:1234` | Base URL of the LM Studio server |
 | `EVAL_CHAT_MODEL` | value in `config/models.json` | Override chat model for eval runs |
 | `DISABLE_THINKING_MODE` | unset | Set truthy to send `think: false` to qwen3 models |
 | `LOG_LEVEL` | info | Pino log level; `silent` suppresses all pino output |
@@ -80,8 +80,8 @@ Two implementations behind the `FragmentSource` interface:
 
 - `chat.js` — posts to the OpenAI-compatible `/v1/chat/completions` endpoint served by LM Studio. Strips `<think>...</think>` blocks. Every call (success or failure) is appended to `prompt-log.md`.
 - `embed.js` — posts to LM Studio's OpenAI-compatible `/v1/embeddings` endpoint.
-- `ollama.js` — host resolution and shared `ollamaFetch` helper. The `Ollama*` naming is retained from an earlier Ollama-backed implementation; today the client talks to LM Studio at `http://localhost:1234` (override with `OLLAMA_HOST`).
-- `errors.js` — 7 typed error classes (`OllamaUnavailableError`, `OllamaServerError`, `OllamaTimeoutError`, `OllamaModelNotFoundError`, `OllamaJsonParseError`, `OllamaContextOverflowError`, `OllamaInvariantError`). Only `Unavailable` and `Server` are retried inside `ollamaFetch`. `JsonParseError` retry is the caller's responsibility (re-prompt with error context).
+- `llm.js` — host resolution and shared `llmFetch` helper. The client talks to LM Studio at `http://localhost:1234` (override with `LLM_HOST`).
+- `errors.js` — 7 typed error classes (`LlmUnavailableError`, `LlmServerError`, `LlmTimeoutError`, `LlmModelNotFoundError`, `LlmJsonParseError`, `LlmContextOverflowError`, `LlmInvariantError`). Only `Unavailable` and `Server` are retried inside `llmFetch`. `JsonParseError` retry is the caller's responsibility (re-prompt with error context).
 
 ### Output contract
 

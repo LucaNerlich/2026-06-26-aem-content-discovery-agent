@@ -13,18 +13,18 @@ The agent calls one chat model and one embedding model:
   `gemma4:26b` is supported as a premium alternative when hardware permits)
 - Embeddings: `embeddinggemma:300m` (768-d, Matryoshka-truncatable)
 
-All chat calls run with Ollama options `{ temperature: 1.0, top_p: 0.95,
-top_k: 64 }` and `format: "json"` when the stage expects JSON. The full body
-construction is in `shared/src/llm/chat.js`.
+All chat calls run with sampling options `{ temperature: 1.0, top_p: 0.95,
+top_k: 64 }` and prompt-driven JSON instructions when the stage expects JSON.
+The full body construction is in `shared/src/llm/chat.js`.
 
 ## Common patterns
 
-- **JSON mode.** Every stage that consumes structured output asks Ollama for
-  `format: "json"` and parses with `JSON.parse`. On parse failure
-  (`OllamaJsonParseError`) the wrapper throws and the stage's retry logic kicks
+- **JSON mode.** Every stage that consumes structured output asks the model
+  for a JSON object and parses with `JSON.parse`. On parse failure
+  (`LlmJsonParseError`) the wrapper throws and the stage's retry logic kicks
   in.
 - **Retry-once-with-error-hint.** Every stage that calls the model wraps the
-  call in a retry helper that, on the first `OllamaJsonParseError` or
+  call in a retry helper that, on the first `LlmJsonParseError` or
   `z.ZodError`, appends the exact validation message to the system prompt and
   calls again. Two failures bubble up.
 - **Schema-coupled prompts.** Every JSON prompt explicitly enumerates the
@@ -148,8 +148,8 @@ schema; do not include prose around the JSON.
 
 ### Tuning notes
 
-- **Start:** prompt asked for `[ ... ]` (bare array). Ollama's `format: "json"`
-  mode requires a top-level object, so every call failed JSON parse before
+- **Start:** prompt asked for `[ ... ]` (bare array). JSON-object mode
+  requires a top-level object, so every call failed JSON parse before
   retry. Changed to `{ "verdicts": [...] }`; the legacy bare-array shape is
   still accepted in the Zod union for back-compat with test fixtures.
 - **`partialMatches` discipline.** Early outputs frequently returned

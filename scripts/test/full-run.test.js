@@ -160,7 +160,7 @@ test("runBriefWithRetry: error path writes ONLY .meta.json with status=error", a
 test("runBriefWithRetry: timeout path is classified as status=timeout", async () => {
   const dir = await newTmp();
   try {
-    const timeoutPipeline = async () => { throw new Error("Ollama request timed out after 120000ms"); };
+    const timeoutPipeline = async () => { throw new Error("LLM request timed out after 120000ms"); };
     const meta = await runBriefWithRetry(
       { slug: "fixture-timeout", text: "slow brief" },
       {

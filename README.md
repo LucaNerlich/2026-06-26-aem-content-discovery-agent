@@ -107,7 +107,7 @@ handles this automatically:
 - **Fence stripper is always on.** `shared/src/llm/chat.js` strips leading`__CODE_BLOCK_7__` or `__CODE_BLOCK_8__`
   wrappers before `JSON.parse`, so downstreamconsumers always receive clean JSON.
 - **Think-block stripper is always on.** A leading `<think>…</think>` block(emitted by qwen3-family models) is also
-  stripped unconditionally. A replythat opens `<think>` without a closing tag throws `OllamaInvariantError`.
+  stripped unconditionally. A replythat opens `<think>` without a closing tag throws `LlmInvariantError`.
 - **Per-stage **`num_predict`** caps** give the model enough headroom. The seederuses 3000; `parseBrief` 2500;
   `analyseGaps` 4000; `compose` 6000.
 - `DISABLE_THINKING_MODE`** escape hatch.** Set to anything truthy with a`qwen3*` model to pass `think: false` — only
