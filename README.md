@@ -160,19 +160,22 @@ JSON.
 
 ## Eval results
 
-[`npm run eval`](./eval/README.md) runs the pipeline against five hand-written
-briefs and scores `precision@3 / recall@3 / gap-F1`. The latest run is
-committed at [`eval/latest.json`](./eval/latest.json). At time of writing
-(seed `20260626`, chat model `google/gemma-4-e4b` via LM Studio):
+[`npm run eval`](./eval/README.md) runs the pipeline against all eight
+hand-written briefs and scores `precision@3 / recall@3 / gap-F1`. The latest
+run is committed at [`eval/latest.json`](./eval/latest.json). At time of
+writing (seed `20260626`, chat model `google/gemma-4-e4b` via LM Studio):
 
-| Brief                     | precision@3 | recall@3 | gap-F1     |
-|---------------------------|-------------|----------|------------|
-| de-de-berlin-street       | 1.00        | 1.00     | 0.86       |
-| en-gb-technical-outerwear | 1.00        | 1.00     | 0.89       |
-| en-us-holiday-gifting     | 1.00        | 1.00     | 0.75       |
-| fr-fr-knitwear            | 0.33        | 0.33     | 0.86       |
-| winter-sustainable        | 1.00        | 1.00     | 1.00       |
-| **aggregate**             | **0.87**    | **0.87** | **0.87** ✅ |
+| Brief                       | precision@3 | recall@3 | gap-F1 |
+|-----------------------------|-------------|----------|--------|
+| de-de-berlin-street         | 0.67        | 0.67     | 1.00   |
+| de-de-workwear-tech         | 0.00        | 0.00     | 0.80   |
+| en-gb-spring-rewear         | 0.33        | 0.33     | 0.50   |
+| en-gb-technical-outerwear   | 0.33        | 0.33     | 0.89   |
+| en-us-holiday-gifting       | 0.67        | 0.67     | 0.89   |
+| fr-fr-knitwear              | 0.67        | 0.67     | 0.29   |
+| fr-fr-loungewear-premium    | 0.00        | 0.00     | 1.00   |
+| winter-sustainable          | 0.67        | 0.67     | 0.67   |
+| **aggregate**               | **0.42**    | **0.42** | **0.75** ✅ |
 
 Threshold: gap-F1 ≥ 0.6 → **PASS**. Gap cosine matching uses a 0.5 threshold
 to accommodate LLM paraphrase variation and cross-lingual topic labels.
