@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "@aemdisc/shared": "*",
-    "@faker-js/faker": "^9.3.0",
-    "better-sqlite3": "^11.7.0",
+    "@faker-js/faker": "^10.5.0",
+    "better-sqlite3": "^12.11.1",
     "mri": "^1.2.0",
-    "pino": "^9.5.0",
-    "sqlite-vec": "^0.1.6"
+    "pino": "^10.3.1",
+    "sqlite-vec": "^0.1.9"
   }
 }
