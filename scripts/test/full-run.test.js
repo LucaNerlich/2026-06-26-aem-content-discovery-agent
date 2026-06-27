@@ -114,12 +114,31 @@ test("runBriefWithRetry: ok path writes .json, .md, and .meta.json with correct 
     assert.deepEqual(meta.gapCounts, { none: 1, partial: 1 });
 
     const files = (await readdir(dir)).sort();
-    assert.deepEqual(files, ["fixture-ok.json", "fixture-ok.md", "fixture-ok.meta.json"]);
+    // Aggregate latest-overwriting artifacts must still exist alongside the
+    // new accumulating timestamped per-brief artifacts.
+    assert.ok(files.includes("fixture-ok.json"));
+    assert.ok(files.includes("fixture-ok.md"));
+    assert.ok(files.includes("fixture-ok.meta.json"));
+    const timestamped = files.filter((f) => /^\d{4}-\d{2}-\d{2}T.*Z-fixture-ok\.(json|md)$/.test(f));
+    assert.equal(timestamped.length, 2, `expected 2 timestamped artifacts, got ${timestamped.join(", ")}`);
+    assert.ok(timestamped.some((f) => f.endsWith(".json")));
+    assert.ok(timestamped.some((f) => f.endsWith(".md")));
 
     const written = JSON.parse(await readFile(join(dir, "fixture-ok.json"), "utf8"));
     assert.equal(written.schemaVersion, "1.0");
     const md = await readFile(join(dir, "fixture-ok.md"), "utf8");
     assert.match(md, /MD for en-gb/);
+    // Timestamped artifacts have the same body bytes as the aggregates.
+    const tsJsonName = timestamped.find((f) => f.endsWith(".json"));
+    const tsMdName = timestamped.find((f) => f.endsWith(".md"));
+    assert.equal(
+      await readFile(join(dir, tsJsonName), "utf8"),
+      await readFile(join(dir, "fixture-ok.json"), "utf8"),
+    );
+    assert.equal(
+      await readFile(join(dir, tsMdName), "utf8"),
+      await readFile(join(dir, "fixture-ok.md"), "utf8"),
+    );
     const writtenMeta = JSON.parse(await readFile(join(dir, "fixture-ok.meta.json"), "utf8"));
     assert.equal(writtenMeta.slug, "fixture-ok");
     assert.equal(writtenMeta.chatModel, "gemma4:26b");

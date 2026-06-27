@@ -1,12 +1,19 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { mkdtemp, writeFile, rm } from "node:fs/promises";
+import { mkdtemp, readdir, readFile, writeFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { Readable, Writable } from "node:stream";
 
 import { AgentOutput } from "@aemdisc/shared";
 import { parseArgs, runPipeline, main } from "../src/cli.js";
+import {
+  buildArtifactFilename,
+  persistAgentArtifact,
+  slugFromBriefPath,
+  slugify,
+  timestampForFilename,
+} from "../src/persistResult.js";
 
 function makeWritable() {
   let buf = "";
@@ -155,4 +162,186 @@ test("main: --help prints usage and exits 0", async () => {
   });
   assert.equal(code, 0);
   assert.match(stdout.text, /Usage: aemdisc-agent/);
+  assert.match(stdout.text, /--results-dir/);
+});
+
+test("timestampForFilename: replaces colons and dots so the result is fs-safe", () => {
+  const fixed = Date.UTC(2026, 5, 27, 14, 20, 58, 461);
+  assert.equal(timestampForFilename(fixed), "2026-06-27T14-20-58-461Z");
+});
+
+test("slugify: collapses unsafe characters and clamps length", () => {
+  assert.equal(slugify("winter-sustainable"), "winter-sustainable");
+  assert.equal(slugify("a b/c?d"), "a-b-c-d");
+  assert.equal(slugify(""), "stdin");
+  assert.equal(slugify(undefined), "stdin");
+  assert.equal(slugify("a".repeat(200)).length, 80);
+});
+
+test("slugFromBriefPath: strips directory and extension", () => {
+  assert.equal(slugFromBriefPath("eval/briefs/winter-sustainable.txt"), "winter-sustainable");
+  assert.equal(slugFromBriefPath("/abs/path/de-de-workwear-tech.txt"), "de-de-workwear-tech");
+  assert.equal(slugFromBriefPath(undefined), "stdin");
+});
+
+test("buildArtifactFilename: composes <iso>-<slug>.<ext>", () => {
+  const fixed = Date.UTC(2026, 5, 27, 14, 20, 58, 461);
+  assert.equal(
+    buildArtifactFilename({ slug: "winter-sustainable", ext: "md", now: fixed }),
+    "2026-06-27T14-20-58-461Z-winter-sustainable.md",
+  );
+  assert.throws(() => buildArtifactFilename({ slug: "x", ext: "txt" }));
+});
+
+test("persistAgentArtifact: writes Markdown content with .md extension", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "persist-md-"));
+  try {
+    const fixed = Date.UTC(2026, 5, 27, 14, 20, 58, 461);
+    const path = await persistAgentArtifact({
+      dir,
+      slug: "winter-sustainable",
+      format: "md",
+      content: "# Hello\n",
+      now: fixed,
+    });
+    assert.match(path, /2026-06-27T14-20-58-461Z-winter-sustainable\.md$/);
+    assert.equal(await readFile(path, "utf8"), "# Hello\n");
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("persistAgentArtifact: writes JSON content with .json extension", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "persist-json-"));
+  try {
+    const fixed = Date.UTC(2026, 5, 27, 14, 20, 58, 461);
+    const body = `${JSON.stringify({ ok: true }, null, 2)}\n`;
+    const path = await persistAgentArtifact({
+      dir,
+      slug: "winter-sustainable",
+      format: "json",
+      content: body,
+      now: fixed,
+    });
+    assert.match(path, /2026-06-27T14-20-58-461Z-winter-sustainable\.json$/);
+    assert.equal(await readFile(path, "utf8"), body);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("persistAgentArtifact: rejects unknown format", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "persist-bad-"));
+  try {
+    await assert.rejects(
+      persistAgentArtifact({ dir, slug: "x", format: "txt", content: "" }),
+      /format must be/,
+    );
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("main: --json writes the same JSON to stdout and to a timestamped artifact", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "cli-persist-json-"));
+  const briefDir = await mkdtemp(join(tmpdir(), "cli-brief-"));
+  try {
+    const briefPath = join(briefDir, "winter-sustainable.txt");
+    await writeFile(briefPath, "any brief text");
+    const stdout = makeWritable();
+    const stderr = makeWritable();
+    const code = await main({
+      argv: [briefPath, "--json", "--quiet", `--results-dir=${dir}`],
+      stdin: ttyReadable(),
+      stdout,
+      stderr,
+      deps: mockDeps,
+    });
+    assert.equal(code, 0);
+    const parsed = JSON.parse(stdout.text);
+    assert.equal(parsed.schemaVersion, "1.0");
+
+    const files = await readdir(dir);
+    assert.equal(files.length, 1, `expected one artifact, got ${files.join(", ")}`);
+    const [name] = files;
+    assert.match(name, /-winter-sustainable\.json$/);
+    assert.equal(await readFile(join(dir, name), "utf8"), stdout.text);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+    await rm(briefDir, { recursive: true, force: true });
+  }
+});
+
+test("main: default Markdown writes the same Markdown to stdout and to a timestamped .md artifact", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "cli-persist-md-"));
+  const briefDir = await mkdtemp(join(tmpdir(), "cli-brief-"));
+  try {
+    const briefPath = join(briefDir, "winter-sustainable.txt");
+    await writeFile(briefPath, "any brief text");
+    const stdout = makeWritable();
+    const stderr = makeWritable();
+    const code = await main({
+      argv: [briefPath, "--quiet", `--results-dir=${dir}`],
+      stdin: ttyReadable(),
+      stdout,
+      stderr,
+      deps: mockDeps,
+    });
+    assert.equal(code, 0);
+    const files = await readdir(dir);
+    assert.equal(files.length, 1);
+    const [name] = files;
+    assert.match(name, /-winter-sustainable\.md$/);
+    assert.equal(await readFile(join(dir, name), "utf8"), stdout.text);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+    await rm(briefDir, { recursive: true, force: true });
+  }
+});
+
+test("main: pipeline failure does NOT write an artifact", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "cli-persist-fail-"));
+  const briefDir = await mkdtemp(join(tmpdir(), "cli-brief-"));
+  try {
+    const briefPath = join(briefDir, "broken.txt");
+    await writeFile(briefPath, "broken brief");
+    const failDeps = {
+      ...mockDeps,
+      compose: async () => { throw new Error("compose blew up"); },
+    };
+    const stderr = makeWritable();
+    const code = await main({
+      argv: [briefPath, "--quiet", `--results-dir=${dir}`],
+      stdin: ttyReadable(),
+      stdout: makeWritable(),
+      stderr,
+      deps: failDeps,
+    });
+    assert.equal(code, 1);
+    const files = await readdir(dir).catch(() => []);
+    assert.equal(files.length, 0, `expected no artifacts on failure, got ${files.join(", ")}`);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+    await rm(briefDir, { recursive: true, force: true });
+  }
+});
+
+test("main: stdin brief uses 'stdin' slug for the artifact filename", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "cli-persist-stdin-"));
+  try {
+    const stdout = makeWritable();
+    const code = await main({
+      argv: ["--json", "--quiet", `--results-dir=${dir}`],
+      stdin: stdinFromString("some piped brief\n"),
+      stdout,
+      stderr: makeWritable(),
+      deps: mockDeps,
+    });
+    assert.equal(code, 0);
+    const files = await readdir(dir);
+    assert.equal(files.length, 1);
+    assert.match(files[0], /-stdin\.json$/);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
 });

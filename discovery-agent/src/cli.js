@@ -2,6 +2,7 @@
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import mri from "mri";
+import { persistAgentArtifact, slugFromBriefPath } from "./persistResult.js";
 
 // When run via `npm run -w discovery-agent`, process.cwd() is discovery-agent/.
 // INIT_CWD is set by npm to the directory where the root `npm run` was invoked.
@@ -17,20 +18,24 @@ Reads a content brief (file arg or stdin), runs the discovery pipeline, and
 renders the result. Defaults to Markdown; use --json for the raw AgentOutput.
 
 Options:
-  --json               Emit canonical AgentOutput JSON instead of Markdown
-  --locale=<code>      Override the locale auto-detected from the brief
-  --quiet              Suppress pino progress logs on stderr
-  --top=<n>            Debug override of matched-fragments k (default 3, max 10)
-  --source=json|aem    Fragment source (default: json)
-  --corpus=<path>      Corpus JSON path when --source=json (default: data/corpus.json)
-  -h, --help           Show this help
+  --json                 Emit canonical AgentOutput JSON instead of Markdown
+  --locale=<code>        Override the locale auto-detected from the brief
+  --quiet                Suppress pino progress logs on stderr
+  --top=<n>              Debug override of matched-fragments k (default 3, max 10)
+  --source=json|aem      Fragment source (default: json)
+  --corpus=<path>        Corpus JSON path when --source=json (default: data/corpus.json)
+  --results-dir=<path>   Directory for timestamped result artifacts (default: runs/agent)
+  -h, --help             Show this help
+
+On success the rendered output is also written to a timestamped file under
+the results directory: <ISO-timestamp>-<brief-slug>.<md|json>.
 
 Exit codes: 0 success; 1 pipeline/validation error; 2 input error.`;
 
 export function parseArgs(argv) {
   return mri(argv, {
     boolean: ["json", "quiet", "help"],
-    string: ["locale", "source", "corpus"],
+    string: ["locale", "source", "corpus", "results-dir"],
     alias: { h: "help" },
     default: { source: "json", corpus: "data/corpus.json" },
   });
@@ -114,6 +119,8 @@ export async function main({
   stdin = process.stdin,
   stdout = process.stdout,
   stderr = process.stderr,
+  deps,
+  now = () => Date.now(),
 } = {}) {
   const args = parseArgs(argv);
   if (args.help) {
@@ -140,19 +147,46 @@ export async function main({
 
   let output;
   try {
-    output = await runPipeline(briefRes.text, { source, k, localeOverride: args.locale, vectorDbPath: resolveFromRoot("data/embeddings.db") });
+    output = await runPipeline(
+      briefRes.text,
+      { source, k, localeOverride: args.locale, vectorDbPath: resolveFromRoot("data/embeddings.db") },
+      deps,
+    );
   } catch (err) {
     stderr.write(`pipeline error: ${err?.message ?? err}\n`);
     if (process.env.LOG_LEVEL !== "silent" && err?.stack) stderr.write(`${err.stack}\n`);
     return 1;
   }
 
+  let rendered;
   if (args.json) {
-    stdout.write(`${JSON.stringify(output, null, 2)}\n`);
+    rendered = `${JSON.stringify(output, null, 2)}\n`;
   } else {
     const { render } = await import("./render/markdown.js");
-    stdout.write(`${render(output)}\n`);
+    rendered = `${render(output)}\n`;
   }
+  stdout.write(rendered);
+
+  const format = args.json ? "json" : "md";
+  const resultsDir = args["results-dir"]
+    ? resolve(process.env.INIT_CWD ?? process.cwd(), String(args["results-dir"]))
+    : resolveFromRoot("runs/agent");
+  const slug = slugFromBriefPath(args._[0]);
+  try {
+    const written = await persistAgentArtifact({
+      dir: resultsDir,
+      slug,
+      format,
+      content: rendered,
+      now: now(),
+    });
+    if (!args.quiet && process.env.LOG_LEVEL !== "silent") {
+      stderr.write(`saved: ${written}\n`);
+    }
+  } catch (err) {
+    stderr.write(`warning: failed to persist result artifact: ${err?.message ?? err}\n`);
+  }
+
   return 0;
 }
 

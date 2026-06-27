@@ -9,3 +9,9 @@ shared/.cache/
 *.log
 data/corpus.json
 data/embeddings.db
+# Timestamped per-run artifacts (see docs/why.md 2026-06-27).
+# The aggregate runs/full-run/<slug>.{json,md,meta.json} files are committed;
+# the timestamped accumulating files are not.
+runs/agent/
+runs/full-run/[0-9]*-*.json
+runs/full-run/[0-9]*-*.md

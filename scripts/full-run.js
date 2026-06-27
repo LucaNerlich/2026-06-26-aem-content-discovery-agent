@@ -13,6 +13,7 @@ import {
   getChatModel,
   getEmbeddingModel,
 } from "@aemdisc/shared";
+import { buildArtifactFilename, slugify } from "../discovery-agent/src/persistResult.js";
 
 // 5min default per chat call — gemma-class 9b models still need >120s under
 // load on consumer hardware. User can override via env.
@@ -147,10 +148,21 @@ export async function runBriefOnce({ slug, text, source, runPipeline, stages, re
   }
 }
 
-export async function writeBriefArtifacts(runsDir, slug, { output, md }) {
+export async function writeBriefArtifacts(runsDir, slug, { output, md }, { now = Date.now() } = {}) {
   await mkdir(runsDir, { recursive: true });
-  await writeFile(join(runsDir, `${slug}.json`), `${JSON.stringify(output, null, 2)}\n`, "utf8");
-  await writeFile(join(runsDir, `${slug}.md`), `${md}\n`, "utf8");
+  const jsonBody = `${JSON.stringify(output, null, 2)}\n`;
+  const mdBody = `${md}\n`;
+  await writeFile(join(runsDir, `${slug}.json`), jsonBody, "utf8");
+  await writeFile(join(runsDir, `${slug}.md`), mdBody, "utf8");
+  // Timestamped per-brief artifacts accumulate run-to-run history alongside
+  // the latest-overwriting aggregates above.
+  const ts = typeof now === "function" ? now() : now;
+  const safeSlug = slugify(slug);
+  const jsonName = buildArtifactFilename({ slug: safeSlug, ext: "json", now: ts });
+  const mdName = buildArtifactFilename({ slug: safeSlug, ext: "md", now: ts });
+  await writeFile(join(runsDir, jsonName), jsonBody, "utf8");
+  await writeFile(join(runsDir, mdName), mdBody, "utf8");
+  return { jsonName, mdName };
 }
 
 export async function writeMeta(runsDir, slug, meta) {
@@ -181,7 +193,7 @@ export async function runBriefWithRetry(briefRec, ctx) {
       });
       const finishedAt = new Date(now()).toISOString();
       const durationMs = (now() - t0) | 0;
-      await writeBriefArtifacts(runsDir, briefRec.slug, { output, md });
+      await writeBriefArtifacts(runsDir, briefRec.slug, { output, md }, { now: now() });
       const meta = {
         slug: briefRec.slug,
         brief: briefText.slice(0, 200),

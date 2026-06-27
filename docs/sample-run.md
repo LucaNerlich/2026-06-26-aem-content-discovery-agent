@@ -26,6 +26,10 @@ Both invocations exercise the full pipeline: `parseBrief → retrieve →
 analyseGaps → compose`. The corpus is `data/corpus.json` (seed `20260626`,
 72 fragments across `en-gb`, `fr-fr`, `de-de`).
 
+Each successful run also persists the rendered output to
+`runs/agent/<ISO-timestamp>-winter-sustainable.<md|json>` (override with
+`--results-dir=<path>`); the saved bytes match stdout exactly.
+
 > **Note.** Body text (gap descriptions, outline rationale) is LLM-generated
 > and therefore drifts run-to-run. The schema, the `matchedFragments` block,
 > and the structural locale / brand gaps are deterministic.
