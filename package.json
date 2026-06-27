@@ -12,8 +12,8 @@
     "discovery-agent"
   ],
   "scripts": {
-    "seed": "npm run -w content-seeder seed",
-    "embed": "npm run -w content-seeder embed",
+    "seed": "npm run -w content-seeder seed --",
+    "embed": "npm run -w content-seeder embed --",
     "agent": "npm run -w discovery-agent start",
     "eval": "node eval/run.js",
     "alpha": "node scripts/alpha-run.js",
