@@ -2,7 +2,7 @@
 
 Offline evaluator for the AEM Content Discovery Agent. Runs the full pipeline
 (`parseBrief → retrieve → analyseGaps → compose`) against the committed
-`data/corpus.json` for 5 hand-labeled briefs and prints retrieval
+`data/corpus.json` for 8 hand-labeled briefs and prints retrieval
 **precision@3 / recall@3** plus a semantic **gap-F1**.
 
 ```
@@ -49,11 +49,12 @@ eval/
 - **precision@3 / recall@3** — set intersection of returned
   `matchedFragments[].id` with `expectedMatchIds`. Order-insensitive.
 - **gap-F1** — for every expected gap, greedy-match the best returned gap
-  with the same `coverage` enum and a topic-label cosine similarity ≥ 0.7.
-  Cosine uses `embeddinggemma:300m` so paraphrases are not penalised.
-- **aggregate** — unweighted mean of per-brief metrics over the 5 briefs.
+  with the same `coverage` enum and a topic-label cosine similarity ≥ 0.5.
+  Cosine uses the configured embedding model (`text-embedding-embeddinggemma-300m`
+  by default) so paraphrases and cross-lingual variants are not penalised.
+- **aggregate** — unweighted mean of per-brief metrics over the 8 briefs.
 
-Briefs in `eval/briefs/` without a matching `eval/expectations/` file are skipped (with a `warn:` line on stderr) rather than aborting the run — additional alpha-runner briefs live alongside the eval set, but un-calibrated expectations would skew aggregate metrics.
+Briefs in `eval/briefs/` without a matching `eval/expectations/` file are skipped (with a `warn:` line on stderr) rather than aborting the run — additional full-run briefs live alongside the eval set, but un-calibrated expectations would skew aggregate metrics.
 
 ## Per-brief scenarios
 
@@ -74,22 +75,22 @@ allowed list, so the evaluator can still exercise that code path.
 | Env var | Default | Effect |
 |---|---|---|
 | `EVAL_F1_THRESHOLD` | `0.6` | Exit non-zero if aggregate gap-F1 falls below this. |
-| `EVAL_CHAT_MODEL` | _(uses `config/models.json` default — currently `qwen3.5:9b`)_ | Override the chat model used by the harness only (the agent's runtime default is untouched). Useful on hardware where the default model is impractically slow. |
-| `CHAT_TIMEOUT_MS` | `120000` | Override the per-call chat timeout. Raise this when running with `gemma4:26b` or any model that struggles to finish within 2 minutes on your hardware. |
+| `EVAL_CHAT_MODEL` | _(uses `config/models.json` default — currently `google/gemma-4-e4b` via LM Studio)_ | Override the chat model used by the harness only (the agent's runtime default is untouched). Useful on hardware where the default model is impractically slow. |
+| `CHAT_TIMEOUT_MS` | `120000` | Override the per-call chat timeout. Raise this when running with a larger model that struggles to finish within 2 minutes on your hardware. |
 | `LOG_LEVEL` | `error` | Pipeline pino logger verbosity. |
-| `OLLAMA_HOST` | `http://localhost:11434` | Inherited from `@aemdisc/shared`. |
+| `OLLAMA_HOST` | `http://localhost:1234` | Base URL of the LM Studio server. The env var name is retained from an earlier Ollama-backed implementation. |
 
 ### Model variance
 
-Expectations were originally calibrated against `gemma4:26b`; the shipped
-default is now `qwen3.5:9b`. Smaller chat models will fluctuate on:
+The shipped default is `google/gemma-4-e4b` loaded in LM Studio. Smaller or
+differently-tuned chat models will fluctuate on:
 
 - whether a topic verdict comes back as `partial` vs `none`,
 - the exact wording the LLM returns for each `topic` (semantic match still
-  passes if cosine ≥ 0.7),
+  passes if cosine ≥ 0.5),
 - and whether `parseBrief` correctly extracts every brand guideline.
 
-A typical run with `qwen3.5:9b` or `gemma4:26b` clears the 0.6 threshold;
-runs with a fallback like `EVAL_CHAT_MODEL=qwen2.5-coder:1.5b` may dip below
-it and exit non-zero. Either way `eval/latest.json` records exactly what was
-returned so the discrepancy is auditable.
+A typical run with `google/gemma-4-e4b` clears the 0.6 threshold; runs with a
+smaller fallback model set via `EVAL_CHAT_MODEL` may dip below it and exit
+non-zero. Either way `eval/latest.json` records exactly what was returned so
+the discrepancy is auditable.

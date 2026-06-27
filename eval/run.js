@@ -140,7 +140,7 @@ async function loadBriefSet() {
     try {
       expect = JSON.parse(await readFile(expectFile, "utf8"));
     } catch (err) {
-      // Briefs without matching expectations are reusable by the alpha runner
+      // Briefs without matching expectations are reusable by the full-run harness
       // but cannot be scored here; warn and skip rather than aborting the eval.
       if (err.code === "ENOENT") {
         skipped.push(b.name);
