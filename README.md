@@ -2,7 +2,7 @@
 
 An Adobe AI Engineering interview deliverable: a Node CLI that ingests afree-form content brief, retrieves relevant
 fragments from a local corpus usinghybrid vector + BM25 search, asks a local LLM to judge content gaps, andreturns a
-strict three-block `AgentOutput` (top matches, gaps, draft outline).The original brief PDF lives at
+strict three-block `AgentOutput` (top matches, gaps, draft outline). The original brief PDF lives at
 the[repo root](AEM_Content_Discovery_Agent_Brief.pdf); the decision log is in`why.md`.
 
 ## How to Use
@@ -40,7 +40,7 @@ npm run embed
 ```
 
 The embed step calls the LM Studio embeddings endpoint(`/v1/embeddings`). Both `data/` files are committed so you can
-skip steps 2–3and run the agent immediately with the locked corpus (`DEMO_SEED=20260626`).
+skip steps 2–3 and run the agent immediately with the locked corpus (`DEMO_SEED=20260626`).
 
 ### 4 — Run the discovery agent
 
@@ -90,7 +90,7 @@ precision/recall/gap-F1.
 
 ### Tuning the chat model and timeout
 
-The shipped default is `google/gemma-4-e4b` via LM Studio — fast enough forthe alpha-run harness on consumer hardware.
+The shipped default is `google/gemma-4-e4b` via LM Studio — fast enough for the alpha-run harness on consumer hardware.
 To swap models edit`config/models.json` (one file, no rebuild). Thedefault chat timeout is 120 s; override it for
 long-running stages via`CHAT_TIMEOUT_MS`. The eval harness additionally honours `EVAL_CHAT_MODEL`:
 
@@ -140,19 +140,13 @@ The full pipeline walkthrough, schema definitions, and the Adobe MCP /sqlite-vec
 AgentOutput = {
   schemaVersion: "1.0",
   brief: StructuredBrief,
-  matchedFragments: MatchedFragment[0..3
-],   // id, path, score [0..1], reason ≤140 chars
-gaps: Gap[],                               // topic, coverage, description, partialMatches[], suggestedAction
-  draftOutline
-:
-{
-  title, pathHint,
-    sections
-:
-  SectionUnion[1.
-  .8
-]             // ReuseSection | NewSection
-}
+  matchedFragments: MatchedFragment[0..3], // id, path, score [0..1], reason ≤140 chars
+  gaps: Gap[], // topic, coverage, description, partialMatches[], suggestedAction
+  draftOutline: {
+    title,
+    pathHint,
+    sections: SectionUnion[1..8] // ReuseSection | NewSection
+  }
 }
 ```
 
