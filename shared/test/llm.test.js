@@ -244,3 +244,60 @@ test("prompt-log truncates long fields to 200 chars", async () => {
   assert.ok(userLine.endsWith("…"));
   assert.ok(userLine.length <= "- user: ".length + 201);
 });
+
+test("chat forwards options.num_predict into body.options", async () => {
+  let captured;
+  global.fetch = async (_url, init) => {
+    captured = JSON.parse(init.body);
+    return jsonResponse({ message: { content: "ok" } });
+  };
+  await chat({ user: "hi", options: { num_predict: 1234 } });
+  assert.equal(captured.options.num_predict, 1234);
+  assert.equal(captured.options.temperature, 1.0, "default temperature preserved");
+});
+
+test("think-stripper removes leading <think>...</think> block", async () => {
+  global.fetch = async () =>
+    jsonResponse({ message: { content: "<think>internal reasoning here</think>actual content" } });
+  const result = await chat({ user: "hi" });
+  assert.equal(result, "actual content");
+});
+
+test("truncated mid-think throws OllamaInvariantError with diagnostic message", async () => {
+  global.fetch = async () =>
+    jsonResponse({ message: { content: "<think>partial reasoning never closed..." } });
+  await assert.rejects(
+    () => chat({ user: "hi" }),
+    (err) => {
+      assert.ok(err instanceof OllamaInvariantError);
+      assert.match(err.message, /truncated mid-think/);
+      return true;
+    },
+  );
+});
+
+test("DISABLE_THINKING_MODE=true sets body.think=false for qwen3 models", async () => {
+  process.env.DISABLE_THINKING_MODE = "true";
+  let captured;
+  global.fetch = async (_url, init) => {
+    captured = JSON.parse(init.body);
+    return jsonResponse({ message: { content: "ok" } });
+  };
+  try {
+    await chat({ user: "hi", model: "qwen3.5:9b" });
+    assert.equal(captured.think, false);
+  } finally {
+    delete process.env.DISABLE_THINKING_MODE;
+  }
+});
+
+test("DISABLE_THINKING_MODE unset leaves body.think undefined", async () => {
+  delete process.env.DISABLE_THINKING_MODE;
+  let captured;
+  global.fetch = async (_url, init) => {
+    captured = JSON.parse(init.body);
+    return jsonResponse({ message: { content: "ok" } });
+  };
+  await chat({ user: "hi", model: "qwen3.5:9b" });
+  assert.equal(captured.think, undefined);
+});

@@ -1,0 +1,14 @@
+{
+  "slug": "de-de-workwear-tech",
+  "brief": "Wir veröffentlichen eine technische Workwear-Kollektionsseite für den deutschen Markt, zugeschnitten auf Handwerker und Außendienstmitarbeiter, die Kleidung mit messbarer Leistung erwarten. Zielgruppe",
+  "locale": "de-de",
+  "startedAt": "2026-06-26T23:23:38.608Z",
+  "finishedAt": "2026-06-26T23:49:16.877Z",
+  "durationMs": 1538269,
+  "stageDurations": {},
+  "chatModel": "gemma4:26b",
+  "embeddingModel": "embeddinggemma:300m",
+  "status": "timeout",
+  "error": "Ollama /api/chat timed out after 120000ms",
+  "retryCount": 1
+}

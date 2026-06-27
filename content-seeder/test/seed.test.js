@@ -8,11 +8,16 @@ import { resolveVariation, TEMPLATE_POOL } from "../src/templates.js";
 test("parseArgs applies defaults and parses seed deterministically", () => {
   const a = parseArgs(["--seed=42"]);
   assert.equal(a.seed, 42);
-  assert.equal(a.count, 40);
+  assert.equal(a.count, 8);
   assert.deepEqual(a.locales, ["en-gb", "fr-fr", "de-de"]);
   assert.equal(a.variation, "medium");
   assert.equal(a.skipEmbeddings, false);
   assert.equal(a.aemPush, false);
+});
+
+test("parseArgs default --count is 8 per locale (24 total across en-gb,fr-fr,de-de)", () => {
+  const a = parseArgs([]);
+  assert.equal(a.count, 8, "default --count must be 8 per locale");
 });
 
 test("parseArgs rejects bad count", () => {
