@@ -23,17 +23,17 @@ test("preflightModels passes when both models present", async () => {
     jsonResponse({
       data: [
         { id: "google/gemma-4-e4b", object: "model" },
-        { id: "nomic-embed-text", object: "model" },
+        { id: "embeddinggemma-300m", object: "model" },
       ],
     });
   const res = await preflightModels({ requireEmbed: true });
   assert.ok(res.installed.includes("google/gemma-4-e4b"));
-  assert.ok(res.installed.includes("nomic-embed-text"));
+  assert.ok(res.installed.includes("embeddinggemma-300m"));
 });
 
 test("preflightModels throws with LM Studio hint when chat model missing", async () => {
   global.fetch = async () =>
-    jsonResponse({ data: [{ id: "nomic-embed-text" }] });
+    jsonResponse({ data: [{ id: "embeddinggemma-300m" }] });
   await assert.rejects(
     () => preflightModels({ requireEmbed: true }),
     /Model "google\/gemma-4-e4b" not available.*LM Studio/,
@@ -45,7 +45,7 @@ test("preflightModels throws with LM Studio hint when embed model missing", asyn
     jsonResponse({ data: [{ id: "google/gemma-4-e4b" }] });
   await assert.rejects(
     () => preflightModels({ requireEmbed: true }),
-    /Model "nomic-embed-text" not available.*LM Studio/,
+    /Model "embeddinggemma-300m" not available.*LM Studio/,
   );
 });
 
@@ -62,7 +62,7 @@ test("preflightModels surfaces non-2xx as an error", async () => {
 
 test("preflightModels matches model by repo-path suffix (e.g. vendor/model-name)", async () => {
   global.fetch = async () =>
-    jsonResponse({ data: [{ id: "google/gemma-4-e4b" }, { id: "nomic-embed-text" }] });
+    jsonResponse({ data: [{ id: "google/gemma-4-e4b" }, { id: "embeddinggemma-300m" }] });
   // isModelInstalled should match even if caller passes just the short name
   const res = await preflightModels({ requireEmbed: false });
   assert.ok(res.installed.some((id) => id === "google/gemma-4-e4b"));

@@ -164,7 +164,7 @@ test("OllamaTimeoutError on AbortError, does NOT retry", async () => {
     () => embed("hello"),
     (err) => {
       assert.ok(err instanceof OllamaTimeoutError);
-      assert.equal(err.model, "nomic-embed-text");
+      assert.equal(err.model, "embeddinggemma-300m");
       assert.ok(err.cause);
       return true;
     },
