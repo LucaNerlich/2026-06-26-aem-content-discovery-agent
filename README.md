@@ -152,11 +152,81 @@ AgentOutput = {
 
 Zod schemas: `shared/src/schema/` — `brief.js`,`corpus.js`, `fragment.js`, `output.js`.
 
-## Sample run
+## Example result
 
-A real end-to-end output for `eval/briefs/winter-sustainable.txt` (Markdownplus the corresponding canonical JSON) lives
-in`docs/sample-run.md`. The Markdown render's `**NEW**`marker on outline sections corresponds to `kind: "new"` in the
-JSON.
+**Input brief**
+
+```
+I'm writing a landing page for our new sustainable winter collection.
+
+Target audience is eco-conscious women aged 25-40 in the UK market.
+
+The page needs to cover: our recycled materials sourcing story,
+care instructions that extend garment life, and seasonal styling
+tips. Tone should match our premium brand voice. The page will sit
+under /en-gb/collections/winter-sustainable.
+```
+
+**Command**
+
+```bash
+npm run agent -- eval/briefs/winter-sustainable.txt
+```
+
+**Output**
+
+---
+
+### Top 3 Matching Content Fragments
+
+| # | id | path | score | reason |
+|---|----|------|-------|--------|
+| 1 | `frag_003` | `/content/dam/aemcontentdisc/en-gb/frag_003` | 0.702 | Partial semantic match; strong keyword overlap; brand: premium-tone; fresh content |
+| 2 | `frag_038` | `/content/dam/aemcontentdisc/en-gb/frag_038` | 0.622 | Partial semantic match; strong keyword overlap; brand: premium-tone |
+| 3 | `frag_032` | `/content/dam/aemcontentdisc/en-gb/frag_032` | 0.622 | Partial semantic match; strong keyword overlap; brand: premium-tone |
+
+### Gap Analysis
+
+#### Recycled material sourcing — *partial*
+While both the use of recycled wool and general circular fashion are covered, the fragments introduce the concepts rather than providing deep supply chain transparency on sourcing.
+- Partial matches: `frag_001`, `frag_005`
+- **Suggested action:** Write a 200-word en-gb product-story fragment covering "Recycled material sourcing", applying sustainability-voice and premium-tone.
+
+#### Garment longevity and care — *partial*
+Extensive maintenance guides are available for various items (cashmere, coats, accessories), allowing users to care for their investment pieces.
+- Partial matches: `frag_003`, `frag_038`, `frag_026`
+- **Suggested action:** Write a 200-word en-gb care-guide fragment covering "Garment longevity and care", applying sustainability-voice and premium-tone.
+
+#### Winter styling guides — *none*
+The pool contains foundational pieces on layering and seasonal shifts, but no dedicated editorial guide for executing specific winter outfits that meets all brief criteria.
+- **Suggested action:** Write a 200-word en-gb product-story fragment covering "Winter styling guides", applying sustainability-voice and premium-tone.
+
+#### Brand guideline coverage: sustainability-voice — *partial*
+No top match applies the `sustainability-voice` brand guideline required by the brief. Some candidates exist but lacked any required brand guideline and were filtered out.
+- **Suggested action:** Add fragments tagged `sustainability-voice` (alongside premium-tone) for the en-gb corpus so this brand voice is represented in the top matches.
+
+### Draft Outline
+
+**Title:** The Sustainable Winter Collection: A Guide for the Conscious Wardrobe
+**Path hint:** `/en-gb/collections/winter-sustainable`
+
+1. **Introducing Enduring Style: Our Commitment to Circular Fashion** — **NEW**
+   - Sourcing hint: Develop an introductory product story that frames the winter collection within a sustainability-first, premium lifestyle context.
+
+2. **Deep Dive: The Art of Recycled Material Sourcing** — **NEW**
+   - Sourcing hint: Write a 200-word en-gb product-story fragment detailing the sourcing and journey of our recycled fibres.
+
+3. **Preserving Your Investment: Garment Care and Longevity** — reuse `frag_003`, `frag_038`
+   - Provides valuable, actionable maintenance and care advice, enhancing the perceived value of the garments.
+
+4. **Styling Sustainably: Building Your Perfect Winter Capsule** — **NEW**
+   - Sourcing hint: Develop a dedicated 200-word en-gb editorial guide offering actionable styling ideas for diverse winter outfits.
+
+---
+
+The `--json` flag returns the same result as a structured `AgentOutput` object
+(schema at [`shared/src/schema/output.js`](./shared/src/schema/output.js)),
+suitable for downstream automation.
 
 ## Eval results
 
