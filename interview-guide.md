@@ -34,20 +34,21 @@ single step — that's why retrieval and generation are split across four typed
 stages instead of a one-shot prompt.
 
 - **`parseBrief()`** turns the free-form brief into a `StructuredBrief`
-  (topics, audience, locale, brand-guidelines flag). This is what makes
+  (topics, audience, locale, brand-guidelines list). This is what makes
   retrieval queryable — topics become embedding inputs and filter predicates.
 - **`retrieve()`** is the retrieval layer (`discovery-agent/src/pipeline/retrieve.js`).
-  Per topic it embeds the query with `embeddinggemma-300m`, runs a `sqlite-vec`
-  cosine search, fuses with in-memory BM25 (`wink-bm25-text-search`) and a
-  freshness signal at `0.6 · cosine + 0.3 · BM25 + 0.1 · freshness`, then
-  applies the locale ladder (exact → `en-*` → any) and an optional brand-guidelines
-  filter. Output is a `RetrievalResult` with the top fragments **and** the
-  structural gaps that fall out of locale/brand relaxation, each carrying a
-  deterministic, human-readable `reason` string.
+  Per topic it first narrows the candidate pool via the locale ladder
+  (exact → `en-*` → any), embeds the query with `embeddinggemma-300m`, runs a
+  `sqlite-vec` cosine search, fuses with in-memory BM25 (`wink-bm25-text-search`)
+  and a freshness signal at `0.6 · cosine + 0.3 · BM25 + 0.1 · freshness`, then
+  applies an optional brand-guidelines filter. Output is a `RetrievalResult`
+  with the top fragments plus locale/brand relaxation signals (`localeRelaxed`,
+  `droppedByBrandFilter`) that `analyseGaps` synthesises into structural gaps;
+  each match carries a deterministic, human-readable `reason` string.
 - **`analyseGaps()`** is the first augmentation step: it receives the
   structured brief plus the retrieved fragments and asks a single batched
-  LLM judge to label per-topic `coverage` (`full | partial | none`), then
-  merges in the structural gaps and applies post-LLM invariants
+  LLM judge to label per-topic `coverage` (`none | partial`), then
+  synthesises the structural gaps and applies post-LLM invariants
   (orphan-id drop, `partial`→`none` downgrade on empty matches).
 - **`compose()`** is the second augmentation step (`discovery-agent/src/pipeline/compose.js`):
   it receives the brief, the retrieved fragments, and the merged gaps, and
