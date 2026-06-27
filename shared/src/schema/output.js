@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { StructuredBrief } from "./brief.js";
+import { Fragment } from "./fragment.js";
 
 export const MatchedFragment = z.object({
   id: z.string().min(1),
@@ -50,6 +51,7 @@ export const AgentOutput = z.object({
   matchedFragments: z.array(MatchedFragment).max(3),
   gaps: z.array(Gap),
   draftOutline: DraftOutline,
+  reusedFragments: z.array(Fragment).default([]),
 });
 
 export function parseAgentOutput(value) {

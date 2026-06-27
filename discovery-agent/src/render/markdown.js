@@ -70,13 +70,34 @@ function renderOutline(draft) {
   return lines.join("\n");
 }
 
+function renderReusedFragments(reusedFragments) {
+  if (!reusedFragments || reusedFragments.length === 0) return "";
+  const lines = ["## Reused Fragments", ""];
+  reusedFragments.forEach((f) => {
+    lines.push(`### \`${f.id}\` — ${f.title}`);
+    lines.push(`<a id="appendix-${f.id}"></a>`);
+    if (f.path) lines.push(`- Path: \`${f.path}\``);
+    lines.push(`- Category: ${f.category}`);
+    lines.push(`- Locale: ${f.locale}`);
+    lines.push(`- Brand guidelines: ${f.brandGuidelinesApplied.join(", ")}`);
+    lines.push(`- Last modified: ${f.lastModified}`);
+    lines.push("");
+    lines.push(f.content);
+    lines.push("");
+  });
+  return lines.join("\n");
+}
+
 export function render(agentOutput) {
   if (!agentOutput || typeof agentOutput !== "object") {
     throw new TypeError("render(agentOutput) requires an AgentOutput object");
   }
-  return [
+  const parts = [
     renderMatches(agentOutput.matchedFragments),
     renderGaps(agentOutput.gaps),
     renderOutline(agentOutput.draftOutline),
-  ].join("\n");
+  ];
+  const appendix = renderReusedFragments(agentOutput.reusedFragments);
+  if (appendix) parts.push(appendix);
+  return parts.join("\n");
 }

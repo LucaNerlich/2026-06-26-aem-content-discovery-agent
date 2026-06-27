@@ -214,10 +214,14 @@ Source: `discovery-agent/src/pipeline/compose.js`.
   section whose `fragmentIds` are not in `matchedFragments` — preventing
   the model from hallucinating fragment ids.
 - The final `AgentOutput.parse({ schemaVersion: "1.0", brief,
-  matchedFragments, gaps, draftOutline })` is the only authoritative
-  source of the agent's output shape.
+  matchedFragments, gaps, draftOutline, reusedFragments })` is the only
+  authoritative source of the agent's output shape.
 - `pathHint` is overwritten from the brief if present, so the outline
   always agrees with the brief's URL intent.
+- `reusedFragments` is the appendix: full `Fragment` objects for every
+  id cited by a `reuse` section, de-duplicated and ordered by first
+  appearance in the outline. The Markdown renderer surfaces it as a
+  `## Reused Fragments` section after the Draft Outline.
 
 **Output composition:**
 

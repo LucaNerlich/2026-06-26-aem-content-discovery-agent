@@ -121,3 +121,44 @@ test("render: mixed outline interleaves reuse + new without bleeding fields", ()
   assert.match(md, /1\. \*\*Intro\*\*\n\s+- Reuse: \[`frag_001`\]\(#frag_001\)/);
   assert.match(md, /2\. \*\*Materials\*\* \*\*NEW\*\*/);
 });
+
+const sampleFragment = (id, title) => ({
+  id,
+  title,
+  category: "product-story",
+  targetAudience: "uk-shoppers",
+  brandGuidelinesApplied: ["premium-tone", "sustainability-voice"],
+  locale: "en-gb",
+  lastModified: "2026-01-15T10:00:00.000Z",
+  content: `${title} body copy describing the topic in depth.`,
+  path: `/content/dam/aemcontentdisc/en-gb/${id}`,
+});
+
+test("render: appends Reused Fragments appendix with stable per-id anchor", () => {
+  const out = AgentOutput.parse({
+    ...mixed,
+    reusedFragments: [sampleFragment("frag_001", "Sustainable Merino"), sampleFragment("frag_002", "Winter Care Guide")],
+  });
+  const md = render(out);
+  assert.match(md, /## Reused Fragments/);
+  assert.match(md, /### `frag_001` — Sustainable Merino/);
+  assert.match(md, /<a id="appendix-frag_001"><\/a>/);
+  assert.match(md, /<a id="appendix-frag_002"><\/a>/);
+  assert.match(md, /- Path: `\/content\/dam\/aemcontentdisc\/en-gb\/frag_001`/);
+  assert.match(md, /- Category: product-story/);
+  assert.match(md, /- Locale: en-gb/);
+  assert.match(md, /- Brand guidelines: premium-tone, sustainability-voice/);
+  assert.match(md, /- Last modified: 2026-01-15T10:00:00\.000Z/);
+  assert.match(md, /Sustainable Merino body copy/);
+  const draftIdx = md.indexOf("## Draft Outline");
+  const appendixIdx = md.indexOf("## Reused Fragments");
+  assert.ok(appendixIdx > draftIdx, "appendix must come after Draft Outline");
+  assert.match(md, /<a id="frag_001"><\/a>`frag_001`/, "top-match anchor stays intact");
+});
+
+test("render: omits Reused Fragments appendix when there are no reuse sections", () => {
+  const out = AgentOutput.parse({ ...allNew, reusedFragments: [] });
+  const md = render(out);
+  assert.doesNotMatch(md, /## Reused Fragments/);
+  assert.doesNotMatch(md, /<a id="appendix-/);
+});

@@ -146,7 +146,9 @@ AgentOutput = {
     title,
     pathHint,
     sections: SectionUnion[1..8] // ReuseSection | NewSection
-  }
+  },
+  reusedFragments: Fragment[] // full content for every id cited by reuse sections,
+                              // de-duplicated, ordered by first appearance in the outline
 }
 ```
 

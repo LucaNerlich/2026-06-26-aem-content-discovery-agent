@@ -225,3 +225,25 @@ test("AgentOutput: rejects draftOutline with zero sections", () => {
   assert.equal(result.success, false);
   assert.ok(result.error.issues.some((i) => i.path.join(".") === "draftOutline.sections"));
 });
+
+test("AgentOutput: reusedFragments defaults to empty array when omitted", () => {
+  const parsed = AgentOutput.parse(validOutput);
+  assert.deepEqual(parsed.reusedFragments, []);
+});
+
+test("AgentOutput: reusedFragments accepts full Fragment objects", () => {
+  const parsed = AgentOutput.parse({ ...validOutput, reusedFragments: [validFragment] });
+  assert.equal(parsed.reusedFragments.length, 1);
+  assert.equal(parsed.reusedFragments[0].id, "frag_001");
+  assert.equal(parsed.reusedFragments[0].title, "Recycled Wool Story");
+});
+
+test("AgentOutput: reusedFragments rejects malformed fragment entry", () => {
+  const bad = { ...validFragment, locale: "xx-zz" };
+  const result = AgentOutput.safeParse({ ...validOutput, reusedFragments: [bad] });
+  assert.equal(result.success, false);
+  assert.ok(
+    result.error.issues.some((i) => i.path.join(".").startsWith("reusedFragments.0.locale")),
+    `expected an issue on reusedFragments.0.locale; got ${JSON.stringify(result.error.issues)}`,
+  );
+});

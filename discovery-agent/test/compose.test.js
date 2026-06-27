@@ -151,6 +151,43 @@ test("compose: orphan fragmentId triggers retry, then succeeds", async () => {
   assert.equal(calls, 2);
 });
 
+test("compose: reusedFragments dedupes and preserves first-use order from outline", async () => {
+  const chat = async () => ({
+    title: "Mixed",
+    pathHint: "/x",
+    sections: [
+      reuseSection("A", ["frag_002"]),
+      newSection("B"),
+      reuseSection("C", ["frag_001", "frag_002"]),
+      reuseSection("D", ["frag_003", "frag_001"]),
+    ],
+  });
+  const out = await compose(makeBrief(), makeRetrievalResult(), makeGaps(), { chat });
+  assert.deepEqual(
+    out.reusedFragments.map((f) => f.id),
+    ["frag_002", "frag_001", "frag_003"],
+    "ids appear once each, ordered by first appearance",
+  );
+  for (const f of out.reusedFragments) {
+    assert.ok(f.title);
+    assert.ok(f.content);
+    assert.ok(f.brandGuidelinesApplied);
+    assert.ok(f.lastModified);
+    assert.ok(f.category);
+    assert.ok(f.locale);
+  }
+});
+
+test("compose: reusedFragments is empty when outline has no reuse sections", async () => {
+  const chat = async () => ({
+    title: "All new",
+    pathHint: "/x",
+    sections: [newSection("A"), newSection("B"), newSection("C"), newSection("D")],
+  });
+  const out = await compose(makeBrief(), makeRetrievalResult(), makeGaps(), { chat });
+  assert.deepEqual(out.reusedFragments, []);
+});
+
 test("compose: throws ZodError after second consecutive bad shape", async () => {
   const originalError = console.error;
   console.error = () => {};

@@ -130,11 +130,34 @@ export async function compose(
     draftOutline = { ...draftOutline, pathHint: structuredBrief.pathHint };
   }
 
+  const reusedFragments = collectReusedFragments(draftOutline, matches);
+
   return AgentOutput.parse({
     schemaVersion: "1.0",
     brief: structuredBrief,
     matchedFragments,
     gaps,
     draftOutline,
+    reusedFragments,
   });
+}
+
+function collectReusedFragments(draftOutline, matches) {
+  const fragmentById = new Map();
+  for (const m of matches) {
+    const f = m?.fragment;
+    if (f?.id && !fragmentById.has(f.id)) fragmentById.set(f.id, f);
+  }
+  const seen = new Set();
+  const out = [];
+  for (const section of draftOutline.sections) {
+    if (section.kind !== "reuse") continue;
+    for (const fid of section.fragmentIds) {
+      if (seen.has(fid)) continue;
+      seen.add(fid);
+      const f = fragmentById.get(fid);
+      if (f) out.push(f);
+    }
+  }
+  return out;
 }
