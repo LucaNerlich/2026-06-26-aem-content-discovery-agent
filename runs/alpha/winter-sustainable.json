@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "1.0",
+  "brief": {
+    "audience": "Eco-conscious women (25-40, UK)",
+    "locale": "en-gb",
+    "tone": "premium",
+    "brandGuidelines": [
+      "sustainability-voice",
+      "premium-tone"
+    ],
+    "requiredTopics": [
+      "Sustainable sourcing",
+      "Product care instructions",
+      "Seasonal styling tips"
+    ],
+    "pathHint": "/en-gb/collections/winter-sustainable"
+  },
+  "matchedFragments": [
+    {
+      "id": "frag_024",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_024",
+      "score": 0.6180361841412898,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone; fresh content"
+    },
+    {
+      "id": "frag_009",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_009",
+      "score": 0.5913172326681309,
+      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice"
+    },
+    {
+      "id": "frag_035",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_035",
+      "score": 0.5872280074767212,
+      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice+premium-tone; fresh content"
+    }
+  ],
+  "gaps": [
+    {
+      "topic": "Sustainable sourcing",
+      "coverage": "none",
+      "description": "The candidate pool contains several fragments that specifically discuss the ethical origins and integrity of materials, aligning perfectly with the brief's tone and values.",
+      "partialMatches": [],
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"Sustainable sourcing\", applying sustainability-voice and premium-tone."
+    },
+    {
+      "topic": "Product care instructions",
+      "coverage": "none",
+      "description": "Care guides are present that not only match the required locale and tone but also maintain alignment with the brand's sustainability message through their voice.",
+      "partialMatches": [],
+      "suggestedAction": "Write a 200-word en-gb care-guide fragment covering \"Product care instructions\", applying sustainability-voice and premium-tone."
+    },
+    {
+      "topic": "Seasonal styling tips",
+      "coverage": "none",
+      "description": "The pool includes high-quality editorial content that provides seasonal styling advice while strictly adhering to the required sustainability and premium brand voice.",
+      "partialMatches": [],
+      "suggestedAction": "Write a 200-word en-gb seasonal-campaign fragment covering \"Seasonal styling tips\", applying sustainability-voice and premium-tone."
+    }
+  ],
+  "draftOutline": {
+    "title": "Winter Sustainable Collection Briefing for Eco-Conscious Audience",
+    "pathHint": "/en-gb/collections/winter-sustainable",
+    "sections": [
+      {
+        "heading": "Collection Hero & Introduction",
+        "kind": "new",
+        "rationale": "Establishes the premium, sustainable context for the winter collection targeting eco-conscious buyers.",
+        "sourcingHint": "Develop a high-impact introductory piece (200 words) setting the premium and sustainable tone for the collection."
+      },
+      {
+        "heading": "The Integrity of Our Materials",
+        "kind": "new",
+        "rationale": "Addresses the critical requirement of transparently communicating brand values regarding ethics and origins.",
+        "sourcingHint": "Write a 200-word product story fragment focusing entirely on 'Sustainable sourcing', maintaining the premium brand voice."
+      },
+      {
+        "heading": "Art of Preservation: Product Care Guide",
+        "kind": "new",
+        "rationale": "Provides essential, lifecycle-conscious information that reinforces quality and ownership investment.",
+        "sourcingHint": "Produce a 200-word care-guide fragment tailored to the product line, applying sustainability and premium brand voice."
+      },
+      {
+        "heading": "Styling for the Season Ahead",
+        "kind": "new",
+        "rationale": "Delivers actionable, aspirational content that engages the audience beyond the point of sale.",
+        "sourcingHint": "Draft a 200-word editorial fragment offering 'Seasonal styling tips' appropriate for the current winter collection."
+      }
+    ]
+  }
+}
