@@ -1,0 +1,14 @@
+{
+  "slug": "fr-fr-knitwear",
+  "brief": "Nous lançons une page de collection pour notre gamme de tricots durables et de pièces de superposition en fibres naturelles pour l'hiver. Cible: femmes attentives à la qualité, en France, intéressées ",
+  "locale": "fr-fr",
+  "startedAt": "2026-06-27T00:49:55.094Z",
+  "finishedAt": "2026-06-27T01:10:24.074Z",
+  "durationMs": 1228980,
+  "stageDurations": {},
+  "chatModel": "gemma4:26b",
+  "embeddingModel": "embeddinggemma:300m",
+  "status": "error",
+  "error": "Ollama chat response is not valid JSON: Expected ',' or '}' after property value in JSON at position 801 (line 28 column 1)",
+  "retryCount": 1
+}

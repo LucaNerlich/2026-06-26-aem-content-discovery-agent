@@ -1,13 +1,20 @@
 # Alpha run
 
-_This is a placeholder._ Run `npm run alpha` to populate this directory.
+- generatedAt: `2026-06-26T22:51:32.748Z`
+- chatModel: `gemma4:26b`
+- embeddingModel: `embeddinggemma:300m`
+- seed: `20260626`
+- totalDurationMs: `11617169`
+- ok / timeout / error: **0** / **6** / **2**
 
-Requires:
+| slug | locale | matched | gaps (none/partial) | status | duration (ms) | output |
+|------|--------|---------|---------------------|--------|---------------|--------|
+| `de-de-berlin-street` | de-de |  |  | timeout | 1925858 | — |
+| `de-de-workwear-tech` | de-de |  |  | timeout | 1538269 | — |
+| `en-gb-spring-rewear` | en-gb |  |  | timeout | 1910554 | — |
+| `en-gb-technical-outerwear` | en-gb |  |  | timeout | 767795 | — |
+| `en-us-holiday-gifting` | en-us |  |  | error | 959861 | — |
+| `fr-fr-knitwear` | fr-fr |  |  | error | 1228980 | — |
+| `fr-fr-loungewear-premium` | fr-fr |  |  | timeout | 1330307 | — |
+| `winter-sustainable` | n/a |  |  | timeout | 1955533 | — |
 
-- `data/corpus.json` — produce it with `npm run seed -- --seed=20260626`.
-- A warm Ollama serving the locked chat model (gemma4:26b takes minutes
-  to load cold; pre-warm with
-  `OLLAMA_KEEP_ALIVE=30m ollama run gemma4:26b ""`).
-
-The first successful run overwrites this file with the index of captured
-outputs (one row per brief in `eval/briefs/`).

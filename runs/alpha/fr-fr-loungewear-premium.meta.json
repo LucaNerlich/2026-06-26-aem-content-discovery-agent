@@ -1,0 +1,14 @@
+{
+  "slug": "fr-fr-loungewear-premium",
+  "brief": "Nous lançons une page de collection loungewear premium pour le marché français, positionnée nettement au-dessus de notre gamme loungewear actuelle. Cible: clientes urbaines, 35-55 ans, qui recherchent",
+  "locale": "fr-fr",
+  "startedAt": "2026-06-27T01:10:24.076Z",
+  "finishedAt": "2026-06-27T01:32:34.383Z",
+  "durationMs": 1330307,
+  "stageDurations": {},
+  "chatModel": "gemma4:26b",
+  "embeddingModel": "embeddinggemma:300m",
+  "status": "timeout",
+  "error": "Ollama /api/chat timed out after 120000ms",
+  "retryCount": 1
+}

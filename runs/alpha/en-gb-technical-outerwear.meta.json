@@ -1,0 +1,14 @@
+{
+  "slug": "en-gb-technical-outerwear",
+  "brief": "We're publishing a technical specification page for our new performance outerwear range. Audience: detail-oriented UK shoppers who want to understand fabric performance before purchasing. The page mus",
+  "locale": "en-gb",
+  "startedAt": "2026-06-27T00:21:07.434Z",
+  "finishedAt": "2026-06-27T00:33:55.229Z",
+  "durationMs": 767795,
+  "stageDurations": {},
+  "chatModel": "gemma4:26b",
+  "embeddingModel": "embeddinggemma:300m",
+  "status": "timeout",
+  "error": "Ollama /api/chat timed out after 120000ms",
+  "retryCount": 1
+}

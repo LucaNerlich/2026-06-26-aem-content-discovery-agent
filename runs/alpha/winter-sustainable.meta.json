@@ -1,0 +1,14 @@
+{
+  "slug": "winter-sustainable",
+  "brief": "I'm writing a landing page for our new sustainable winter collection. Target audience is eco-conscious women aged 25–40 in the UK market. The page needs to cover: our recycled materials sourcing story",
+  "locale": "n/a",
+  "startedAt": "2026-06-27T01:32:34.384Z",
+  "finishedAt": "2026-06-27T02:05:09.917Z",
+  "durationMs": 1955533,
+  "stageDurations": {},
+  "chatModel": "gemma4:26b",
+  "embeddingModel": "embeddinggemma:300m",
+  "status": "timeout",
+  "error": "Ollama /api/chat timed out after 120000ms",
+  "retryCount": 1
+}
