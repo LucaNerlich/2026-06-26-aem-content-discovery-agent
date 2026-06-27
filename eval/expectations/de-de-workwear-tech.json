@@ -1,0 +1,10 @@
+{
+  "expectedMatchIds": ["frag_097", "frag_085", "frag_118"],
+  "expectedGaps": [
+    { "topicLabel": "Technical performance specs", "coverage": "none" },
+    { "topicLabel": "Closed-loop recycling process", "coverage": "partial" },
+    { "topicLabel": "Product repair service", "coverage": "none" },
+    { "topicLabel": "End-of-life takeback program", "coverage": "none" },
+    { "topicLabel": "Brand guideline coverage: technical-precision", "coverage": "partial" }
+  ]
+}

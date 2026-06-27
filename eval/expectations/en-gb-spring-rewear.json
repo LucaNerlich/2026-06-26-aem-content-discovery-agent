@@ -1,0 +1,9 @@
+{
+  "expectedMatchIds": ["frag_021", "frag_003", "frag_024"],
+  "expectedGaps": [
+    { "topicLabel": "Spring capsule fabrics", "coverage": "partial" },
+    { "topicLabel": "Wardrobe extension styling", "coverage": "partial" },
+    { "topicLabel": "Sustainable sourcing notes", "coverage": "partial" },
+    { "topicLabel": "Cotton jersey care guide", "coverage": "none" }
+  ]
+}
