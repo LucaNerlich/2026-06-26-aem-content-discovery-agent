@@ -1,9 +1,9 @@
 # AEM Content Discovery Agent
 
-An Adobe AI Engineering interview deliverable: a Node CLI that ingests afree-form content brief, retrieves relevant
-fragments from a local corpus usinghybrid vector + BM25 search, asks a local LLM to judge content gaps, andreturns a
+An Adobe AI Engineering interview deliverable: a Node CLI that ingests a free-form content brief, retrieves relevant
+fragments from a local corpus using hybrid vector + BM25 search, asks a local LLM to judge content gaps, and returns a
 strict three-block `AgentOutput` (top matches, gaps, draft outline). The original brief PDF lives at
-the [repo root](AEM_Content_Discovery_Agent_Brief.pdf); the decision log is in`docs/why.md`.
+the [repo root](AEM_Content_Discovery_Agent_Brief.pdf); the decision log is in `docs/why.md`.
 
 ## How to Use
 
@@ -16,7 +16,7 @@ Download [LM Studio](https://lmstudio.ai/) and load two models:
 | Chat       | google/gemma-4-e4b                 | Used by parseBrief, analyseGaps, compose and the seeder |
 | Embeddings | text-embedding-embeddinggemma-300m | Used by npm run embed                                   |
 
-Start the **local server** in LM Studio (default `http://localhost:1234`).`config/models.json` already points at these
+Start the **local server** in LM Studio (default `http://localhost:1234`). `config/models.json` already points at these
 model IDs — no changes needed.
 
 ### 2 — Seed the corpus
@@ -29,8 +29,8 @@ npm run seed -- --seed=20260626 --count=40
 # → writes data/corpus.json  (~120 fragments, ~45 KB)
 ```
 
-Or omit `--seed` for a fresh random corpus. Increase `--count` for richercoverage (max 200). The seeder calls LM Studio
-via the OpenAI-compatible`/v1/chat/completions` endpoint — make sure the chat model is loaded first.
+Or omit `--seed` for a fresh random corpus. Increase `--count` for richer coverage (max 200). The seeder calls LM Studio
+via the OpenAI-compatible `/v1/chat/completions` endpoint — make sure the chat model is loaded first.
 
 ### 3 — Build the vector index
 
@@ -39,7 +39,7 @@ npm run embed
 # → writes data/embeddings.db  (768-d vectors, ~3 MB for 120 fragments)
 ```
 
-The embed step calls the LM Studio embeddings endpoint(`/v1/embeddings`). Both `data/` files are committed so you can
+The embed step calls the LM Studio embeddings endpoint (`/v1/embeddings`). Both `data/` files are committed so you can
 skip steps 2–3 and run the agent immediately with the locked corpus (`DEMO_SEED=20260626`).
 
 ### 4 — Run the discovery agent
@@ -51,6 +51,14 @@ npm run agent -- eval/briefs/winter-sustainable.txt
 # Canonical JSON (AgentOutput schema)
 npm run agent -- eval/briefs/winter-sustainable.txt --json
 ```
+
+Every successful single-agent run is also written to a timestamped file under
+`runs/agent/` as `<ISO-timestamp>-<brief-slug>.<md|json>` (the extension
+matches the chosen output mode). Override the directory with
+`--results-dir=<path>`. The full-run harness (`npm run full-run`) writes the
+same timestamped `.json` + `.md` per brief into `runs/full-run/` alongside the
+existing latest-overwriting `<slug>.json` / `<slug>.md` / `<slug>.meta.json`
+aggregates, accumulating a run-to-run history.
 
 ### 5 — Evaluate
 
@@ -66,7 +74,7 @@ npm test        # unit tests across all workspaces
     - `google/gemma-4-e4b` (chat)
     - `text-embedding-embeddinggemma-300m` (embeddings, 768-d)
 - **sqlite3** native toolchain (`better-sqlite3` + `sqlite-vec` build on install).
-- *(Optional, for the AEM round-trip only)* JDK 21, Maven 3.9, AEM Cloud SDK2026.6 at `http://localhost:4502` with
+- *(Optional, for the AEM round-trip only)* JDK 21, Maven 3.9, AEM Cloud SDK 2026.6 at `http://localhost:4502` with
   `admin:admin`.
 
 ## Quickstart (JSON-primary path)
@@ -84,15 +92,15 @@ npm run eval                                # full evaluation harness
 npm test                                    # unit tests across all workspaces
 ```
 
-`data/corpus.json` and `data/embeddings.db` are committed, so the agent isrunnable without running the seeder if you
-accept the locked corpus seed(`DEMO_SEED=20260626`). See `eval/README.md` for how theharness scores
+`data/corpus.json` and `data/embeddings.db` are committed, so the agent is runnable without running the seeder if you
+accept the locked corpus seed (`DEMO_SEED=20260626`). See `eval/README.md` for how the harness scores
 precision/recall/gap-F1.
 
 ### Tuning the chat model and timeout
 
 The shipped default is `google/gemma-4-e4b` via LM Studio — fast enough for the full-run harness on consumer hardware.
-To swap models edit`config/models.json` (one file, no rebuild). Thedefault chat timeout is 120 s; override it for
-long-running stages via`CHAT_TIMEOUT_MS`. The eval harness additionally honours `EVAL_CHAT_MODEL`:
+To swap models edit `config/models.json` (one file, no rebuild). The default chat timeout is 120 s; override it for
+long-running stages via `CHAT_TIMEOUT_MS`. The eval harness additionally honours `EVAL_CHAT_MODEL`:
 
 ```bash
 EVAL_CHAT_MODEL=some-other-model npm run eval
@@ -101,17 +109,17 @@ CHAT_TIMEOUT_MS=300000 npm run full-run   # 5 min per chat call
 
 ### Thinking-mode and Markdown fence stripping
 
-Some models (including `gemma-4-e4b`) wrap JSON responses in Markdown codefences (`__CODE_BLOCK_6__`). The pipeline
+Some models (including `gemma-4-e4b`) wrap JSON responses in Markdown code fences (```` ```json … ``` ````). The pipeline
 handles this automatically:
 
-- **Fence stripper is always on.** `shared/src/llm/chat.js` strips leading`__CODE_BLOCK_7__` or `__CODE_BLOCK_8__`
-  wrappers before `JSON.parse`, so downstreamconsumers always receive clean JSON.
-- **Think-block stripper is always on.** A leading `<think>…</think>` block(emitted by qwen3-family models) is also
-  stripped unconditionally. A replythat opens `<think>` without a closing tag throws `LlmInvariantError`.
-- **Per-stage **`num_predict`** caps** give the model enough headroom. The seederuses 3000; `parseBrief` 2500;
+- **Fence stripper is always on.** `shared/src/llm/chat.js` strips leading ```` ```json ```` or ```` ``` ````
+  wrappers before `JSON.parse`, so downstream consumers always receive clean JSON.
+- **Think-block stripper is always on.** A leading `<think>…</think>` block (emitted by qwen3-family models) is also
+  stripped unconditionally. A reply that opens `<think>` without a closing tag throws `LlmInvariantError`.
+- **Per-stage **`num_predict`** caps** give the model enough headroom. The seeder uses 3000; `parseBrief` 2500;
   `analyseGaps` 4000; `compose` 6000.
-- `DISABLE_THINKING_MODE`** escape hatch.** Set to anything truthy with a`qwen3*` model to pass `think: false` — only
-  matched for qwen3-family:`DISABLE_THINKING_MODE=true npm run full-run`
+- `DISABLE_THINKING_MODE`** escape hatch.** Set to anything truthy with a `qwen3*` model to pass `think: false` — only
+  matched for qwen3-family: `DISABLE_THINKING_MODE=true npm run full-run`
 
 ## Architecture
 
@@ -122,16 +130,16 @@ brief.txt  ──► parseBrief ──► retrieve ──► analyseGaps ──�
                                 freshness)
 ```
 
-- `parseBrief` — LLM extracts `StructuredBrief` (audience, locale, tone,brand-guideline enum, required topics, path
-  hint). Locale auto-detected fromany `/locale/` path in the brief.
-- `retrieve` — Locale ladder (exact → language prefix → any) feeds a fusedscore `0.6·cosine + 0.3·bm25 + 0.1·freshness`
-  over the candidate fragments.Returns `matches` (top-3), `nearMisses`, and `droppedByBrandFilter`.
-- `analyseGaps` — LLM judge verdicts each required topic as `none|partial`against the candidate pool; structural
-  locale + brand-coverage gaps areappended deterministically.
-- `compose` — LLM drafts a 4–6 section outline; each section is strictly`kind: "reuse"` (with ids from `matches` only)
-  or `kind: "new"` (with a`sourcingHint`). Schema rejects orphan ids; retries once on validation error.
+- `parseBrief` — LLM extracts `StructuredBrief` (audience, locale, tone, brand-guideline enum, required topics, path
+  hint). Locale auto-detected from any `/locale/` path in the brief.
+- `retrieve` — Locale ladder (exact → language prefix → any) feeds a fused score `0.6·cosine + 0.3·bm25 + 0.1·freshness`
+  over the candidate fragments. Returns `matches` (top-3), `nearMisses`, and `droppedByBrandFilter`.
+- `analyseGaps` — LLM judge verdicts each required topic as `none|partial` against the candidate pool; structural
+  locale + brand-coverage gaps are appended deterministically.
+- `compose` — LLM drafts a 4–6 section outline; each section is strictly `kind: "reuse"` (with ids from `matches` only)
+  or `kind: "new"` (with a `sourcingHint`). Schema rejects orphan ids; retries once on validation error.
 
-The full pipeline walkthrough, schema definitions, and the Adobe MCP /sqlite-vec / Matryoshka discussion live in
+The full pipeline walkthrough, schema definitions, and the Adobe MCP / sqlite-vec / Matryoshka discussion live in
 `docs/architecture.md`.
 
 ## Output contract
@@ -152,7 +160,7 @@ AgentOutput = {
 }
 ```
 
-Zod schemas: `shared/src/schema/` — `brief.js`,`corpus.js`, `fragment.js`, `output.js`.
+Zod schemas: `shared/src/schema/` — `brief.js`, `corpus.js`, `fragment.js`, `output.js`.
 
 ## Example result
 
@@ -323,15 +331,15 @@ precision/recall rose from ~0.13 to 0.42 and gap-F1 from 0.46 to 0.75.
 
 To exercise the AEM code path end-to-end against the local AEM SDK:
 
-1. Start the AEM SDK at `http://localhost:4502` (admin:admin) and install theproject package:
+1. Start the AEM SDK at `http://localhost:4502` (admin:admin) and install the project package:
    `cd aemcontentdisc && mvn clean install -PautoInstallPackage`
-2. Push the corpus into AEM as Content Fragments:`npm run seed -- --aem-push --reset --seed=20260626``--reset` removes
-   any prior `/content/dam/aemcontentdisc/{locale}/` treefirst; the seeder then creates one CF per fragment using the
-   Sling POSTservlet against the `discovery-fragment` CF Model.
-3. Run the agent against the live AEM instance:`npm run agent eval/briefs/winter-sustainable.txt -- --source=aem`
+2. Push the corpus into AEM as Content Fragments: `npm run seed -- --aem-push --reset --seed=20260626`. `--reset` removes
+   any prior `/content/dam/aemcontentdisc/{locale}/` tree first; the seeder then creates one CF per fragment using the
+   Sling POST servlet against the `discovery-fragment` CF Model.
+3. Run the agent against the live AEM instance: `npm run agent eval/briefs/winter-sustainable.txt -- --source=aem`
 
-In `--source=aem` mode the agent reads fragments live via the Assets HTTP APIand skips the precomputed vector index —
-BM25 alone scores retrieval. TheJSON-primary path is the supported default for graders; the AEM path is hereto
+In `--source=aem` mode the agent reads fragments live via the Assets HTTP API and skips the precomputed vector index —
+BM25 alone scores retrieval. The JSON-primary path is the supported default for graders; the AEM path is here to
 demonstrate the read/write round-trip without making AEM a prerequisite.
 
 ## Repo layout
@@ -359,23 +367,28 @@ demonstrate the read/write round-trip without making AEM a prerequisite.
 └── AEM_Content_Discovery_Agent_Brief.pdf
 ```
 
+### Subpackage documentation
+
+- [`content-seeder/README.md`](./content-seeder/README.md) — Deterministic corpus + vector-index generator.
+- [`discovery-agent/README.md`](./discovery-agent/README.md) — Runtime 4-stage discovery pipeline CLI.
+
 ## Design notes (short form)
 
-- **JSON-primary, AEM-optional.** `data/corpus.json` is the canonical source oftruth; AEM is a code path behind two
-  flags (`seed --aem-push`,`agent --source=aem`). A reviewer without local AEM can still run the agent.
-- `sqlite-vec`** over in-memory cosine.** At 120 fragments either would work;sqlite-vec gives persistent vectors,
-  SQL-inspectability, and a clean scalepath to 40k+ fragments without changing the retrieval API.
-- `google/gemma-4-e4b`** for chat (via LM Studio).** Strong JSON-modediscipline and multilingual coverage (matters for
-  fr-fr / de-de briefs).Runs via LM Studio's OpenAI-compatible endpoint (`/v1/chat/completions`).Model selection lives
-  in `config/models.json` — swap freely withoutrebuilding.
-- `text-embedding-embeddinggemma-300m`** for embeddings.** 768-d default,**Matryoshka**-truncatable to 512/256/128
-  dimensions, 100+ languages,~600 MB RAM. Same Gemma research lineage as the chat model.
-- **Locale ladder.** Exact `brief.locale` → language prefix (`en-*` for`en-gb`) → all locales. Each relaxation surfaces
-  as a structural gap, sograders see when the agent fell back instead of finding exact-locale content.
+- **JSON-primary, AEM-optional.** `data/corpus.json` is the canonical source of truth; AEM is a code path behind two
+  flags (`seed --aem-push`, `agent --source=aem`). A reviewer without local AEM can still run the agent.
+- `sqlite-vec`** over in-memory cosine.** At 120 fragments either would work; sqlite-vec gives persistent vectors,
+  SQL-inspectability, and a clean scale path to 40k+ fragments without changing the retrieval API.
+- `google/gemma-4-e4b`** for chat (via LM Studio).** Strong JSON-mode discipline and multilingual coverage (matters for
+  fr-fr / de-de briefs). Runs via LM Studio's OpenAI-compatible endpoint (`/v1/chat/completions`). Model selection lives
+  in `config/models.json` — swap freely without rebuilding.
+- `text-embedding-embeddinggemma-300m`** for embeddings.** 768-d default, **Matryoshka**-truncatable to 512/256/128
+  dimensions, 100+ languages, ~600 MB RAM. Same Gemma research lineage as the chat model.
+- **Locale ladder.** Exact `brief.locale` → language prefix (`en-*` for `en-gb`) → all locales. Each relaxation surfaces
+  as a structural gap, so graders see when the agent fell back instead of finding exact-locale content.
 - **No linter, no formatter.** `node --check` only. Single-author 8h exercise; config files trade poorly against pipeline
   depth.
 
-The detailed rationale for every non-trivial choice is in`docs/why.md`.
+The detailed rationale for every non-trivial choice is in `docs/why.md`.
 
 ## External documentation
 
