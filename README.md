@@ -376,5 +376,6 @@ The detailed rationale for every non-trivial choice is in`why.md`.
 
 - [https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/ai-in-aem/local-development-with-ai-tools](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/ai-in-aem/local-development-with-ai-tools)
 - [https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/ai-in-aem/mcp-support/using-mcp-with-aem-as-a-cloud-service](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/ai-in-aem/mcp-support/using-mcp-with-aem-as-a-cloud-service)
-- [https://ollama.com/library/gemma4](https://ollama.com/library/gemma4)
-- [https://ollama.com/library/embeddinggemma](https://ollama.com/library/embeddinggemma)
+- [LM Studio — Local LLM server](https://lmstudio.ai/)
+- [LM Studio model catalogue (search for `google/gemma-4-e4b` and `text-embedding-embeddinggemma-300m`)](https://lmstudio.ai/models)
+- [LM Studio OpenAI-compatible API reference](https://lmstudio.ai/docs/app/api/endpoints/openai)
