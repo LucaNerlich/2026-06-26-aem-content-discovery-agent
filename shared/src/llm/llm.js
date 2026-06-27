@@ -19,10 +19,9 @@ export const logger = pino({
   level: process.env.LOG_LEVEL ?? "info",
 });
 
-// LLM_HOST is the canonical name; OLLAMA_HOST is retained as a backwards-
-// compatible fallback so existing environments keep working without change.
+// LM Studio host base URL. Override with the LLM_HOST env var.
 export function getHost() {
-  return process.env.LLM_HOST ?? process.env.OLLAMA_HOST ?? DEFAULT_HOST;
+  return process.env.LLM_HOST ?? DEFAULT_HOST;
 }
 
 function sleep(ms) {
@@ -128,6 +127,3 @@ export async function llmFetch(path, body, opts = {}) {
   }
   throw lastErr;
 }
-
-// Backwards-compatible alias; same function identity.
-export const ollamaFetch = llmFetch;

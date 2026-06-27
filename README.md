@@ -3,7 +3,7 @@
 An Adobe AI Engineering interview deliverable: a Node CLI that ingests afree-form content brief, retrieves relevant
 fragments from a local corpus usinghybrid vector + BM25 search, asks a local LLM to judge content gaps, andreturns a
 strict three-block `AgentOutput` (top matches, gaps, draft outline). The original brief PDF lives at
-the[repo root](AEM_Content_Discovery_Agent_Brief.pdf); the decision log is in`docs/why.md`.
+the [repo root](AEM_Content_Discovery_Agent_Brief.pdf); the decision log is in`docs/why.md`.
 
 ## How to Use
 
@@ -370,7 +370,7 @@ demonstrate the read/write round-trip without making AEM a prerequisite.
   dimensions, 100+ languages,~600 MB RAM. Same Gemma research lineage as the chat model.
 - **Locale ladder.** Exact `brief.locale` → language prefix (`en-*` for`en-gb`) → all locales. Each relaxation surfaces
   as a structural gap, sograders see when the agent fell back instead of finding exact-locale content.
-- **No linter, no formatter.** `node --check` only. Single-author 8h exercise;config files trade poorly against pipeline
+- **No linter, no formatter.** `node --check` only. Single-author 8h exercise; config files trade poorly against pipeline
   depth.
 
 The detailed rationale for every non-trivial choice is in`docs/why.md`.
