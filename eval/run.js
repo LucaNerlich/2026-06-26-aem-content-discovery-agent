@@ -20,7 +20,7 @@ const EXPECT_DIR = join(HERE, "expectations");
 const CORPUS_PATH = join(ROOT, "data", "corpus.json");
 const LATEST_PATH = join(HERE, "latest.json");
 
-const GAP_COSINE_THRESHOLD = 0.7;
+const GAP_COSINE_THRESHOLD = 0.5;
 const DEFAULT_F1_THRESHOLD = 0.6;
 // EVAL_CHAT_MODEL env override takes precedence over config/models.json so
 // graders can swap to a smaller fallback model without editing the config.

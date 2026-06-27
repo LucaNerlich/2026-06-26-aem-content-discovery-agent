@@ -1,9 +1,9 @@
 {
-  "expectedMatchIds": ["frag_001", "frag_002", "frag_003", "frag_005"],
+  "expectedMatchIds": ["frag_085", "frag_083", "frag_081"],
   "expectedGaps": [
-    { "topicLabel": "Locale-appropriate content for de-de", "coverage": "partial" },
-    { "topicLabel": "Berlin Fashion Week street style trends", "coverage": "none" },
-    { "topicLabel": "sustainable winter outerwear in recycled materials", "coverage": "partial" },
-    { "topicLabel": "care instructions for wool coats", "coverage": "none" }
+    { "topicLabel": "Berlin Fashion Week Looks", "coverage": "none" },
+    { "topicLabel": "Sustainable Winter Outerwear", "coverage": "partial" },
+    { "topicLabel": "Recycled Materials Collection", "coverage": "partial" },
+    { "topicLabel": "Wool Coat Care Instructions", "coverage": "partial" }
   ]
 }

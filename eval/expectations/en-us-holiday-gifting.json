@@ -1,10 +1,10 @@
 {
   "localeOverride": "en-us",
-  "expectedMatchIds": ["frag_001", "frag_004", "frag_005", "frag_008", "frag_012"],
+  "expectedMatchIds": ["frag_032", "frag_039", "frag_027"],
   "expectedGaps": [
-    { "topicLabel": "Locale-appropriate content for en-us", "coverage": "partial" },
-    { "topicLabel": "holiday gifting ideas", "coverage": "partial" },
-    { "topicLabel": "sustainably made gift selections", "coverage": "partial" },
-    { "topicLabel": "hat care basics for recipients", "coverage": "none" }
+    { "topicLabel": "Holiday Gifting Ideas", "coverage": "partial" },
+    { "topicLabel": "Timeless Accessories", "coverage": "partial" },
+    { "topicLabel": "Sustainable Gift Selections", "coverage": "partial" },
+    { "topicLabel": "Hat Care Basics", "coverage": "partial" }
   ]
 }

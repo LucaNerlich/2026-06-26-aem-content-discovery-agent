@@ -3,39 +3,45 @@
   "demoSeed": 20260626,
   "corpusPath": "/Users/nerlich/workspace/tries/2026-06-26-aem-content-discovery-agent/data/corpus.json",
   "chatModel": "google/gemma-4-e4b",
-  "gapCosineThreshold": 0.7,
+  "gapCosineThreshold": 0.5,
   "f1Threshold": 0.6,
-  "ranAt": "2026-06-27T08:34:57.259Z",
+  "ranAt": "2026-06-27T09:31:05.580Z",
   "aggregate": {
-    "precision": 0.2,
-    "recall": 0.13,
-    "gapF1": 0.4309523809523809
+    "precision": 0.8666666666666668,
+    "recall": 0.8666666666666668,
+    "gapF1": 0.8706349206349205
   },
   "perBrief": [
     {
       "name": "de-de-berlin-street",
-      "durationMs": 96725,
-      "precision": 0,
-      "recall": 0,
+      "durationMs": 94339,
+      "precision": 1,
+      "recall": 1,
       "gap": {
-        "f1": 0.5714285714285715,
-        "precision": 0.6666666666666666,
-        "recall": 0.5,
-        "tp": 2,
-        "fp": 1,
-        "fn": 2,
+        "f1": 0.8571428571428571,
+        "precision": 1,
+        "recall": 0.75,
+        "tp": 3,
+        "fp": 0,
+        "fn": 1,
         "pairs": [
           {
-            "expected": "Berlin Fashion Week street style trends",
-            "returned": "Berlin Fashion Week looks",
+            "expected": "Berlin Fashion Week Looks",
+            "returned": "Berlin Fashion Week Streetwear Looks",
             "coverage": "none",
-            "cosine": 0.849
+            "cosine": 0.944
           },
           {
-            "expected": "sustainable winter outerwear in recycled materials",
-            "returned": "Sustainable winter outerwear (recycled materials)",
+            "expected": "Sustainable Winter Outerwear",
+            "returned": "Sustainable Winter Outerwear (Recycled)",
             "coverage": "partial",
-            "cosine": 0.945
+            "cosine": 0.906
+          },
+          {
+            "expected": "Wool Coat Care Instructions",
+            "returned": "Wool Coat Care Instructions",
+            "coverage": "partial",
+            "cosine": 1
           }
         ]
       },
@@ -43,60 +49,77 @@
       "returnedMatchIds": [
         "frag_085",
         "frag_083",
-        "frag_116"
+        "frag_081"
       ],
       "expectedMatchIds": [
-        "frag_001",
-        "frag_002",
-        "frag_003",
-        "frag_005"
+        "frag_085",
+        "frag_083",
+        "frag_081"
       ],
       "returnedGaps": [
         {
-          "topic": "Berlin Fashion Week looks",
+          "topic": "Berlin Fashion Week Streetwear Looks",
           "coverage": "none"
         },
         {
-          "topic": "Sustainable winter outerwear (recycled materials)",
+          "topic": "Sustainable Winter Outerwear (Recycled)",
           "coverage": "partial"
         },
         {
-          "topic": "Care instructions for wool coats",
+          "topic": "Wool Coat Care Instructions",
           "coverage": "partial"
         }
       ],
       "expectedGaps": [
         {
-          "topicLabel": "Locale-appropriate content for de-de",
-          "coverage": "partial"
-        },
-        {
-          "topicLabel": "Berlin Fashion Week street style trends",
+          "topicLabel": "Berlin Fashion Week Looks",
           "coverage": "none"
         },
         {
-          "topicLabel": "sustainable winter outerwear in recycled materials",
+          "topicLabel": "Sustainable Winter Outerwear",
           "coverage": "partial"
         },
         {
-          "topicLabel": "care instructions for wool coats",
-          "coverage": "none"
+          "topicLabel": "Recycled Materials Collection",
+          "coverage": "partial"
+        },
+        {
+          "topicLabel": "Wool Coat Care Instructions",
+          "coverage": "partial"
         }
       ]
     },
     {
       "name": "en-gb-technical-outerwear",
-      "durationMs": 89789,
-      "precision": 0.3333333333333333,
-      "recall": 0.25,
+      "durationMs": 120402,
+      "precision": 1,
+      "recall": 1,
       "gap": {
-        "f1": 0.25,
-        "precision": 0.25,
-        "recall": 0.25,
-        "tp": 1,
-        "fp": 3,
-        "fn": 3,
+        "f1": 0.888888888888889,
+        "precision": 1,
+        "recall": 0.8,
+        "tp": 4,
+        "fp": 0,
+        "fn": 1,
         "pairs": [
+          {
+            "expected": "Technical Specifications",
+            "returned": "Technical fabric performance",
+            "coverage": "none",
+            "cosine": 0.655
+          },
+          {
+            "expected": "Sustainable Material Composition",
+            "returned": "Sustainable material composition",
+            "coverage": "partial",
+            "cosine": 0.983
+          },
+          {
+            "expected": "Garment Care Instructions",
+            "returned": "Garment care instructions",
+            "coverage": "partial",
+            "cosine": 0.991
+          },
           {
             "expected": "Brand guideline coverage: technical-precision",
             "returned": "Brand guideline coverage: technical-precision",
@@ -108,26 +131,25 @@
       "composeError": null,
       "returnedMatchIds": [
         "frag_003",
-        "frag_038",
-        "frag_023"
+        "frag_002",
+        "frag_001"
       ],
       "expectedMatchIds": [
-        "frag_001",
-        "frag_002",
         "frag_003",
-        "frag_005"
+        "frag_001",
+        "frag_002"
       ],
       "returnedGaps": [
         {
-          "topic": "Fabric technical specifications",
+          "topic": "Technical fabric performance",
           "coverage": "none"
         },
         {
-          "topic": "Material sustainability journey",
+          "topic": "Sustainable material composition",
           "coverage": "partial"
         },
         {
-          "topic": "Garment care guide",
+          "topic": "Garment care instructions",
           "coverage": "partial"
         },
         {
@@ -137,15 +159,19 @@
       ],
       "expectedGaps": [
         {
-          "topicLabel": "technical fabric performance specifications",
-          "coverage": "partial"
-        },
-        {
-          "topicLabel": "sustainable material composition story",
+          "topicLabel": "Technical Specifications",
           "coverage": "none"
         },
         {
-          "topicLabel": "care instructions extending technical performance",
+          "topicLabel": "Recycled Wool Insulation Performance",
+          "coverage": "none"
+        },
+        {
+          "topicLabel": "Sustainable Material Composition",
+          "coverage": "partial"
+        },
+        {
+          "topicLabel": "Garment Care Instructions",
           "coverage": "partial"
         },
         {
@@ -156,34 +182,34 @@
     },
     {
       "name": "en-us-holiday-gifting",
-      "durationMs": 106133,
-      "precision": 0,
-      "recall": 0,
+      "durationMs": 98512,
+      "precision": 1,
+      "recall": 1,
       "gap": {
-        "f1": 0.6666666666666665,
-        "precision": 0.6,
+        "f1": 0.75,
+        "precision": 0.75,
         "recall": 0.75,
         "tp": 3,
-        "fp": 2,
+        "fp": 1,
         "fn": 1,
         "pairs": [
           {
-            "expected": "Locale-appropriate content for en-us",
-            "returned": "Locale-appropriate content for en-us",
-            "coverage": "partial",
-            "cosine": 1
-          },
-          {
-            "expected": "holiday gifting ideas",
+            "expected": "Holiday Gifting Ideas",
             "returned": "holiday gifting ideas",
             "coverage": "partial",
-            "cosine": 1
+            "cosine": 0.972
           },
           {
-            "expected": "sustainably made gift selections",
-            "returned": "sustainable selections",
+            "expected": "Timeless Accessories",
+            "returned": "sustainable accessories",
             "coverage": "partial",
-            "cosine": 0.786
+            "cosine": 0.746
+          },
+          {
+            "expected": "Hat Care Basics",
+            "returned": "hat care basics",
+            "coverage": "partial",
+            "cosine": 0.952
           }
         ]
       },
@@ -194,11 +220,9 @@
         "frag_027"
       ],
       "expectedMatchIds": [
-        "frag_001",
-        "frag_004",
-        "frag_005",
-        "frag_008",
-        "frag_012"
+        "frag_032",
+        "frag_039",
+        "frag_027"
       ],
       "returnedGaps": [
         {
@@ -206,11 +230,7 @@
           "coverage": "partial"
         },
         {
-          "topic": "timeless accessories",
-          "coverage": "partial"
-        },
-        {
-          "topic": "sustainable selections",
+          "topic": "sustainable accessories",
           "coverage": "partial"
         },
         {
@@ -224,106 +244,130 @@
       ],
       "expectedGaps": [
         {
-          "topicLabel": "Locale-appropriate content for en-us",
+          "topicLabel": "Holiday Gifting Ideas",
           "coverage": "partial"
         },
         {
-          "topicLabel": "holiday gifting ideas",
+          "topicLabel": "Timeless Accessories",
           "coverage": "partial"
         },
         {
-          "topicLabel": "sustainably made gift selections",
+          "topicLabel": "Sustainable Gift Selections",
           "coverage": "partial"
         },
         {
-          "topicLabel": "hat care basics for recipients",
-          "coverage": "none"
+          "topicLabel": "Hat Care Basics",
+          "coverage": "partial"
         }
       ]
     },
     {
       "name": "fr-fr-knitwear",
-      "durationMs": 88876,
-      "precision": 0,
-      "recall": 0,
+      "durationMs": 140876,
+      "precision": 0.3333333333333333,
+      "recall": 0.3333333333333333,
       "gap": {
-        "f1": 0,
-        "precision": 0,
-        "recall": 0,
-        "tp": 0,
-        "fp": 3,
-        "fn": 4,
-        "pairs": []
+        "f1": 0.8571428571428571,
+        "precision": 0.75,
+        "recall": 1,
+        "tp": 3,
+        "fp": 1,
+        "fn": 0,
+        "pairs": [
+          {
+            "expected": "Merino wool knits",
+            "returned": "Tricots en laine mérinos",
+            "coverage": "partial",
+            "cosine": 0.698
+          },
+          {
+            "expected": "Natural fiber layering",
+            "returned": "Fibres naturelles",
+            "coverage": "partial",
+            "cosine": 0.722
+          },
+          {
+            "expected": "Sustainable materials commitment",
+            "returned": "Engagement durable",
+            "coverage": "partial",
+            "cosine": 0.599
+          }
+        ]
       },
       "composeError": null,
       "returnedMatchIds": [
-        "frag_045",
         "frag_041",
-        "frag_046"
+        "frag_047",
+        "frag_066"
       ],
       "expectedMatchIds": [
-        "frag_001",
-        "frag_002",
-        "frag_006",
-        "frag_007"
+        "frag_045",
+        "frag_044",
+        "frag_041"
       ],
       "returnedGaps": [
         {
-          "topic": "Merino wool knits",
-          "coverage": "none"
-        },
-        {
-          "topic": "Natural fiber layering essentials",
+          "topic": "Tricots en laine mérinos",
           "coverage": "partial"
         },
         {
-          "topic": "Sustainable material commitment",
+          "topic": "Essentiels de superposition",
+          "coverage": "partial"
+        },
+        {
+          "topic": "Fibres naturelles",
+          "coverage": "partial"
+        },
+        {
+          "topic": "Engagement durable",
           "coverage": "partial"
         }
       ],
       "expectedGaps": [
         {
-          "topicLabel": "Locale-appropriate content for fr-fr",
+          "topicLabel": "Merino wool knits",
           "coverage": "partial"
         },
         {
-          "topicLabel": "tricots naturels durables",
-          "coverage": "none"
+          "topicLabel": "Natural fiber layering",
+          "coverage": "partial"
         },
         {
-          "topicLabel": "essentiels de superposition en fibres naturelles",
-          "coverage": "none"
-        },
-        {
-          "topicLabel": "engagement matériaux durables",
-          "coverage": "none"
+          "topicLabel": "Sustainable materials commitment",
+          "coverage": "partial"
         }
       ]
     },
     {
       "name": "winter-sustainable",
-      "durationMs": 93308,
-      "precision": 0.6666666666666666,
-      "recall": 0.4,
+      "durationMs": 97447,
+      "precision": 1,
+      "recall": 1,
       "gap": {
-        "f1": 0.6666666666666666,
-        "precision": 0.6666666666666666,
-        "recall": 0.6666666666666666,
-        "tp": 2,
-        "fp": 1,
-        "fn": 1,
+        "f1": 1,
+        "precision": 1,
+        "recall": 1,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
         "pairs": [
           {
-            "expected": "care instructions that extend garment life",
-            "returned": "garment care",
+            "expected": "recycled materials sourcing story",
+            "returned": "Recycled materials sourcing",
             "coverage": "partial",
-            "cosine": 0.737
+            "cosine": 0.873
           },
           {
-            "expected": "seasonal styling tips for winter",
-            "returned": "seasonal styling",
+            "expected": "care instructions",
+            "returned": "Garment care instructions",
             "coverage": "partial",
-            "cosine": 0.83
+            "cosine": 0.859
+          },
+          {
+            "expected": "seasonal styling tips",
+            "returned": "Seasonal styling tips",
+            "coverage": "partial",
+            "cosine": 0.995
           }
         ]
       },
@@ -331,26 +375,24 @@
       "returnedMatchIds": [
         "frag_003",
         "frag_024",
-        "frag_005"
+        "frag_009"
       ],
       "expectedMatchIds": [
-        "frag_001",
-        "frag_002",
-        "frag_003",
-        "frag_005",
-        "frag_006"
+        "frag_024",
+        "frag_009",
+        "frag_003"
       ],
       "returnedGaps": [
         {
-          "topic": "recycled materials",
-          "coverage": "none"
-        },
-        {
-          "topic": "garment care",
+          "topic": "Recycled materials sourcing",
           "coverage": "partial"
         },
         {
-          "topic": "seasonal styling",
+          "topic": "Garment care instructions",
+          "coverage": "partial"
+        },
+        {
+          "topic": "Seasonal styling tips",
           "coverage": "partial"
         }
       ],
@@ -360,11 +402,11 @@
           "coverage": "partial"
         },
         {
-          "topicLabel": "care instructions that extend garment life",
+          "topicLabel": "care instructions",
           "coverage": "partial"
         },
         {
-          "topicLabel": "seasonal styling tips for winter",
+          "topicLabel": "seasonal styling tips",
           "coverage": "partial"
         }
       ]

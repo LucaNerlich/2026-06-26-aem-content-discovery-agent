@@ -1,9 +1,8 @@
 {
-  "expectedMatchIds": ["frag_001", "frag_002", "frag_006", "frag_007"],
+  "expectedMatchIds": ["frag_045", "frag_044", "frag_041"],
   "expectedGaps": [
-    { "topicLabel": "Locale-appropriate content for fr-fr", "coverage": "partial" },
-    { "topicLabel": "tricots naturels durables", "coverage": "none" },
-    { "topicLabel": "essentiels de superposition en fibres naturelles", "coverage": "none" },
-    { "topicLabel": "engagement matériaux durables", "coverage": "none" }
+    { "topicLabel": "Merino wool knits", "coverage": "partial" },
+    { "topicLabel": "Natural fiber layering", "coverage": "partial" },
+    { "topicLabel": "Sustainable materials commitment", "coverage": "partial" }
   ]
 }

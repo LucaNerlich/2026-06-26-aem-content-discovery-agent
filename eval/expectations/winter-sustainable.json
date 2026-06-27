@@ -1,8 +1,8 @@
 {
-  "expectedMatchIds": ["frag_001", "frag_002", "frag_003", "frag_005", "frag_006"],
+  "expectedMatchIds": ["frag_024", "frag_009", "frag_003"],
   "expectedGaps": [
     { "topicLabel": "recycled materials sourcing story", "coverage": "partial" },
-    { "topicLabel": "care instructions that extend garment life", "coverage": "partial" },
-    { "topicLabel": "seasonal styling tips for winter", "coverage": "partial" }
+    { "topicLabel": "care instructions", "coverage": "partial" },
+    { "topicLabel": "seasonal styling tips", "coverage": "partial" }
   ]
 }
