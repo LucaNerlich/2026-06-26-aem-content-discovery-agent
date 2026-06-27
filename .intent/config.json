@@ -1,0 +1,40 @@
+{
+  "scripts": [
+    {
+      "name": "seed",
+      "command": "pnpm seed",
+      "mode": "command",
+      "category": "other"
+    },
+    {
+      "name": "embed",
+      "command": "pnpm embed",
+      "mode": "command",
+      "category": "other"
+    },
+    {
+      "name": "agent",
+      "command": "pnpm agent",
+      "mode": "command",
+      "category": "other"
+    },
+    {
+      "name": "eval",
+      "command": "pnpm eval",
+      "mode": "command",
+      "category": "other"
+    },
+    {
+      "name": "full-run",
+      "command": "pnpm full-run",
+      "mode": "command",
+      "category": "other"
+    },
+    {
+      "name": "test",
+      "command": "pnpm test",
+      "mode": "command",
+      "category": "test"
+    }
+  ]
+}
