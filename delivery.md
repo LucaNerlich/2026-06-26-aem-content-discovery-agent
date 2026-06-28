@@ -1,5 +1,8 @@
 # Delivery: Decision Rationale
 
+> An AI-powered discovery layer for AEM Content Fragments: give it a campaign brief and it returns ranked fragments, identified gaps, and a ready-to-use outline.
+> Built to run entirely on local models, it keeps sensitive content and editorial strategy inside your infrastructure.
+
 This document justifies the significant design choices behind the AEM Content
 Discovery Agent. It does not describe what was built — for that, see
 [`README.md`](README.md) and [`architecture.md`](architecture.md).
