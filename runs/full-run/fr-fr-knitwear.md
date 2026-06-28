@@ -2,97 +2,73 @@
 
 | # | id | path | score | reason |
 |---|----|------|-------|--------|
-| 1 | <a id="frag_041"></a>`frag_041` | `/content/dam/aemcontentdisc/fr-fr/frag_041` | 0.622 | Partial semantic match; strong keyword overlap; brand: sustainability-voice; fresh content |
-| 2 | <a id="frag_045"></a>`frag_045` | `/content/dam/aemcontentdisc/fr-fr/frag_045` | 0.589 | Partial semantic match; strong keyword overlap; brand: premium-tone+sustainability-voice |
-| 3 | <a id="frag_069"></a>`frag_069` | `/content/dam/aemcontentdisc/fr-fr/frag_069` | 0.562 | Strong keyword overlap; brand: sustainability-voice+premium-tone; fresh content |
+| 1 | <a id="frag_201"></a>`frag_201` | `/content/dam/aemcontentdisc/fr-fr/frag_201` | 0.616 | Partial semantic match; strong keyword overlap; brand: premium-tone+sustainability-voice |
+| 2 | <a id="frag_341"></a>`frag_341` | `/content/dam/aemcontentdisc/fr-fr/frag_341` | 0.531 | Strong keyword overlap; brand: sustainability-voice+premium-tone; fresh content |
+| 3 | <a id="frag_204"></a>`frag_204` | `/content/dam/aemcontentdisc/fr-fr/frag_204` | 0.509 | Partial semantic match; strong keyword overlap; brand: sustainability-voice; older content |
 
 ## Gap Analysis
 
 ### Coverage: partial
 
-#### tricots laine mérinos
-The pool covers knitwear and natural fibers in cold weather, but none of the fragments specifically mention or focus on merino wool.
-- Partial matches: [`frag_041`](#frag_041)
-- Suggested action: Write a 200-word fr-fr product-story fragment covering "tricots laine mérinos", applying sustainability-voice and premium-tone.
+#### Tricots en laine mérinos
+Bien que 'frag_201' couvre le tricot durable, il ne mentionne pas explicitement la laine Mérinos (Merino), qui est une spécificité importante pour cette audience haut de gamme.
+- Partial matches: [`frag_201`](#frag_201)
+- Suggested action: Write a 200-word fr-fr product-story fragment covering "Tricots en laine mérinos", applying sustainability-voice and premium-tone.
 
-#### superposition fibres naturelles
-While there are multiple pieces on layering and natural fibers, the coverage might be segmented across seasons or clothing types, requiring a more comprehensive guide.
-- Partial matches: [`frag_045`](#frag_045), [`frag_064`](#frag_064)
-- Suggested action: Write a 200-word fr-fr product-story fragment covering "superposition fibres naturelles", applying sustainability-voice and premium-tone.
+#### Pièces de superposition naturelles
+Aucun seul fragment ne combine les trois éléments requis (superposition + fibres naturelles + adhésion aux guidelines premium/durables) de manière parfaite, car des incohérences de ton ou de focus matière existent.
+- Partial matches: [`frag_311`](#frag_311), [`frag_205`](#frag_205), [`frag_341`](#frag_341)
+- Suggested action: Write a 200-word fr-fr product-story fragment covering "Pièces de superposition naturelles", applying sustainability-voice and premium-tone.
 
-#### matériaux durables
-The concept is well-covered across different garment types (knitwear, outerwear), but there is no dedicated or comprehensive guide detailing a wide variety of innovative sustainable materials.
-- Partial matches: [`frag_044`](#frag_044), [`frag_041`](#frag_041)
-- Suggested action: Write a 200-word fr-fr product-story fragment covering "matériaux durables", applying sustainability-voice and premium-tone.
+#### Matériaux durables et engagement éthique
+Le fragment 'frag_204' couvre très bien les matériaux recyclés, mais son champ d'application est strictement limité aux vêtements d'extérieur (outerwear), ce qui pourrait être trop restrictif pour un contenu général sur l'éthique et les matériaux durables.
+- Partial matches: [`frag_204`](#frag_204)
+- Suggested action: Write a 200-word fr-fr product-story fragment covering "Matériaux durables et engagement éthique", applying sustainability-voice and premium-tone.
 
 ## Draft Outline
 
-**Title:** Tricots Naturels d'Hiver : L'alliance de la qualité et de la mode durable
+**Title:** Tricots et Superpositions Naturelles : L'Élégance Durable Hivernale
 **Path hint:** `/fr-fr/collections/tricots-naturels-hiver`
 
-1. **Sustainable knitwear and natural fibres for cold weather — collection notes**
-   - Reuse: [`frag_041`](#frag_041)
-   - Rationale: Set the initial tone by establishing the link between high-quality knitwear, sustainability, and the concept of thoughtful winter dressing.
+1. **L'Art de la Superposition en Saison Transitoire**
+   - Reuse: [`frag_341`](#frag_341)
+   - Rationale: Établit le ton premium et saisonnier, préparant l'audience à adopter une approche réfléchie du vestiaire pour les transitions climatiques.
 
-2. **L'excellence des tricots en laine mérinos** **NEW**
-   - Rationale: Focus on a key product material (Merino wool) to appeal directly to customers seeking specific, luxurious natural fibers.
-   - Sourcing hint: Write a 200-word fr-fr product-story fragment covering "tricots laine mérinos", applying sustainability-voice and premium-tone.
+2. **Laine Mérinos : Le Luxe Doux et Éthique des Tricots** **NEW**
+   - Rationale: Aborde la spécificité de la laine mérinos, un point crucial pour l'audience haut de gamme, en insistant sur le confort durable et la finesse.
+   - Sourcing hint: Write a 200-word fr-fr product-story fragment covering "Tricots en laine mérinos", applying sustainability-voice and premium-tone.
 
-3. **L'art de la superposition des fibres naturelles** **NEW**
-   - Rationale: Provide a comprehensive, educational guide on building versatile winter wardrobes through strategic layering techniques.
-   - Sourcing hint: Write a 200-word fr-fr product-story fragment covering "superposition fibres naturelles", applying sustainability-voice and premium-tone.
+3. **Des Pièces Naturelles pour un Vestiaire Polyvalent** **NEW**
+   - Rationale: Guide la cliente dans l'art de superposer des matières naturelles, valorisant la polyvalence et l'allure intemporelle plutôt que les tendances éphémères.
+   - Sourcing hint: Write a 200-word fr-fr product-story fragment covering "Pièces de superposition naturelles", applying sustainability-voice and premium-tone.
 
-4. **Layering essentials with natural fibres**
-   - Reuse: [`frag_045`](#frag_045)
-   - Rationale: Reinforce the core concept of smart dressing and versatility using diverse natural fibers.
+4. **Engagement Matières : Le Choix de l'Éthique et de la Pérennité** **NEW**
+   - Rationale: Ancre le contenu dans les valeurs fondamentales du luxe durable en détaillant notre engagement envers des matériaux traçables et une production éthique.
+   - Sourcing hint: Write a 200-word fr-fr product-story fragment covering "Matériaux durables et engagement éthique", applying sustainability-voice and premium-tone.
 
-5. **Au cœur de nos matériaux durables et innovants** **NEW**
-   - Rationale: Offer a dedicated section to detail the brand's commitment to ethical sourcing and innovative materials, fulfilling the required topic gap.
-   - Sourcing hint: Write a 200-word fr-fr product-story fragment covering "matériaux durables", applying sustainability-voice and premium-tone.
-
-6. **Prendre soin de vos pièces : un geste d'éternité**
-   - Reuse: [`frag_069`](#frag_069)
-   - Rationale: Conclude the page by promoting longevity and proper garment care, reinforcing the brand's commitment to lasting quality over fast fashion.
+5. **Porter une Histoire : L'Engagement Durable au Quotidien**
+   - Reuse: [`frag_204`](#frag_204)
+   - Rationale: Offre un message de conclusion puissant et émotionnel, réaffirmant l'engagement de la marque pour une mode circulaire qui dépasse le simple achat.
 
 ## Reused Fragments
 
-### `frag_041` — Sustainable knitwear and natural fibres for cold weather — collection notes
-<a id="appendix-frag_041"></a>
-- Path: `/content/dam/aemcontentdisc/fr-fr/frag_041`
+### `frag_341` — Pre-fall edit: between-season layering pieces — collection notes
+<a id="appendix-frag_341"></a>
+- Path: `/content/dam/aemcontentdisc/fr-fr/frag_341`
+- Category: seasonal-campaign
+- Locale: fr-fr
+- Brand guidelines: sustainability-voice, premium-tone
+- Last modified: 2026-04-13T10:40:33.240Z
+
+L'approche de l'automne exige une attention particulière à la subtilité du vestiaire. Ce temps entre deux saisons n’est pas une simple transition climatique, mais un moment où le raffinement des matières et la précision d'une coupe révèlent tout leur sens. Notre sélection capsule est pensée pour accompagner les jours qui modulent leurs tempéraments, offrant des pièces de superposition essentielles qui traverseront aisément ces périodes délicates. Chaque vêtement est une réponse à cet équilibre précaire : le parfait équilibre entre l’aisance printanière et la structure automnale. Nous avons puisé l'inspiration dans les savoir-faire ancestraux, privilégiant des techniques de tissage durables et des fibres qui racontent leur provenance, garantissant ainsi une allégeance au temps qui passe plutôt qu'à la mode éphémère. Adopter ces pièces superposables, c’est choisir un garde-robe pensé pour l'homme éclairé, capable d'apprécier la beauté de l'évolution stylistique. Il s'agit d'un art de vivre où le luxe réside dans la pérennité et le récit de chaque fil. Découvrez comment notre engagement envers l'artisanat intemporel vous permettra de composer un vestiaire non seulement adapté, mais riche de sens pour les mois à venir.
+
+### `frag_204` — Recycled materials and circular fashion in outerwear
+<a id="appendix-frag_204"></a>
+- Path: `/content/dam/aemcontentdisc/fr-fr/frag_204`
 - Category: product-story
 - Locale: fr-fr
 - Brand guidelines: sustainability-voice
-- Last modified: 2026-04-05T21:15:18.943Z
+- Last modified: 2025-03-22T13:13:12.825Z
 
-L'art de se couvrir pour l’hiver ne saurait être un simple acte de nécessité ; il est une extension du respect que l’on porte à soi et au vivant. Dans la tradition ancestrale du savoir-faire textile, le vêtement d'extérieur a toujours été un récit de provenance et d'adaptation au climat. C’est dans cette lignée que nous avons réinventé le concept même du confort durable, en sélectionnant rigoureusement les fibres qui ont fait leurs preuves au fil des saisons. Nos créations hivernales sont l'alliance parfaite entre une esthétique intemporelle et un engagement profond envers la planète. Nous privilégions les *natural fibres*, celles dont l’origine raconte une histoire de terre et d'artisanat respectueux. Découvrez notamment le mérinos, dont la finesse exceptionnelle confère chaleur et souplesse incomparable à chaque maille, idéal pour composer vos pièces de *cold-weather knitwear*. Parallèlement, l'utilisation du coton biologique offre un équilibre respirant, apportant une robustesse naturelle et un toucher doux. Choisir ces matériaux, c’est investir dans un patrimoine textile où la durabilité n’est pas une option, mais le fondement même de notre savoir-faire. C’est une démarche qui honore à la fois l'excellence artisanale et les cycles respectueux de la nature.
-
-### `frag_045` — Layering essentials with natural fibres
-<a id="appendix-frag_045"></a>
-- Path: `/content/dam/aemcontentdisc/fr-fr/frag_045`
-- Category: product-story
-- Locale: fr-fr
-- Brand guidelines: inclusive-language, premium-tone, sustainability-voice
-- Last modified: 2025-09-18T07:48:30.719Z
-
-L’art subtil de l’habillement réside dans sa capacité à suivre le rythme des saisons et des imprévus. Plutôt que d’accumuler, il s’agit de composer avec intention, de construire une garde-robe qui respire la pérennité. L’astuce ultime est de maîtriser le jeu du *layering* : superposer les matières pour créer une seconde peau sophistiquée et fonctionnelle.
-
-Nos essentiels d'hiver sont pensés autour de cette philosophie. Au cœur de chaque tenue se trouvent nos mailles intemporelles en laine mérinos, idéales comme base invisible. Ces *merino base layers* offrent une chaleur régulée et un confort inégalé, sans jamais sacrifier la finesse du mouvement. Pour les pièces qui nécessitent plus de structure ou de respirabilité au quotidien, nous privilégions le coton biologique (*organic cotton*), dont le choix témoigne d'un engagement profond envers la planète.
-
-Combiner ces fibres nobles – laine mérinos et coton organique – c'est composer un système de *winter essentials* qui transcende les tendances éphémères. Il s’agit moins d’acheter des vêtements que d’investir dans une autonomie stylistique. Adopter cette approche, c’est choisir le luxe discret du savoir-faire, pour une élégance qui dure au-delà du seul temps froid.
-
-### `frag_069` — Caring for cashmere through the seasons — guide
-<a id="appendix-frag_069"></a>
-- Path: `/content/dam/aemcontentdisc/fr-fr/frag_069`
-- Category: care-guide
-- Locale: fr-fr
-- Brand guidelines: sustainability-voice, inclusive-language, premium-tone
-- Last modified: 2026-03-24T16:28:12.578Z
-
-Le véritable luxe réside dans la durée, et votre cachemire en est le témoin silencieux de ce passage du temps. Ces fils délicats racontent l'histoire des saisons, un murmure chaud qui mérite une attention égale à sa beauté initiale. Pour que cette douce matière perdure au fil des hivers et des étés, adopter une approche vraiment saisonnière est essentiel.
-
-Quand les premières fraîcheurs de l’automne invitent la laine à retrouver ses piédestaux, rappelez-vous que le secret réside dans la douceur du geste. Un entretien attentif pour vos tricots permet non seulement d'assurer leur confort immédiat, mais de préserver aussi leur éclat sur le long terme.
-
-L’hiver exige une protection douce contre les variations de température et l'humidité ; privilégiez des lavages délicats, préférablement en main ou à la vapeur, car ce type de soin spécifique est crucial pour conserver la fibre intacte. Au printemps, avant même que le soleil n'envoie sa lumière vive caresser vos pièces, un léger rafraîchissement permet aux fibres de se ressourcer.
-
-Enfin, pendant l’été, lorsque le cachemire sera mis au repos, il doit respirer. Ne jamais stocker ces précieux tricots dans l'obscurité totale ; laissez-les s'acclimater à une lumière tamisée et fraîche, loin des sources de chaleur directe. Ce cycle d’amour saisonnier est la plus belle des pratiques de soin des tricots : un respect qui garantit que chaque fil continuera d’envelopper vos moments les plus précieux pour des années à venir.
+Le véritable luxe réside dans l'histoire que nous portons. Nos pièces d'outerwear ne sont pas de simples vêtements ; elles sont le résultat d'un engagement profond envers la pérennité et une réinterprétation respectueuse du savoir-faire des matériaux. Au cœur de cette philosophie se trouve notre approche de la circularité, un cycle qui redéfinit la valeur tout en préservant l'excellence. Nous avons méticuleusement sélectionné des alternatives novatrices, notamment le polyester recyclé (recycled polyester), qui offre une résistance et une légèreté remarquables. Il s'agit d'un geste de couture au sens le plus noble du terme : celui de donner une seconde vie à ce qui était jeté. Cette démarche nous ancre solidement dans les principes de la mode circulaire (circular fashion). En privilégiant des systèmes en boucle fermée (closed-loop), chaque matière est traçable, valorisant ainsi non seulement sa provenance mais aussi l'énergie économisée tout au long de son cycle. Nos experts veillent à ce que ces nouveaux matériaux d'outerwear ne fassent aucun compromis sur la performance ou l'esthétique. Elles incarnent un engagement réfléchi, une élégance qui respecte le temps et les ressources, vous permettant ainsi d’adopter des pièces intemporelles avec une conscience aiguisée du monde.
 

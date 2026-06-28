@@ -2,20 +2,20 @@
   "slug": "fr-fr-loungewear-premium",
   "brief": "Nous lançons une page de collection loungewear premium pour le marché français, positionnée nettement au-dessus de notre gamme loungewear actuelle. Cible: clientes urbaines, 35-55 ans, qui recherchent",
   "locale": "fr-fr",
-  "startedAt": "2026-06-28T13:19:25.348Z",
-  "finishedAt": "2026-06-28T13:19:49.792Z",
-  "durationMs": 24444,
+  "startedAt": "2026-06-28T14:23:12.385Z",
+  "finishedAt": "2026-06-28T14:23:35.083Z",
+  "durationMs": 22698,
   "stageDurations": {
-    "parseBrief": 4228,
-    "retrieve": 36,
-    "analyseGaps": 16312,
-    "compose": 3868
+    "parseBrief": 5734,
+    "retrieve": 69,
+    "analyseGaps": 13363,
+    "compose": 3532
   },
   "chatModel": "google/gemma-4-e4b",
   "embeddingModel": "embeddinggemma-300m",
   "matchedFragmentCount": 3,
   "gapCounts": {
-    "none": 0,
+    "none": 2,
     "partial": 3
   },
   "status": "ok",

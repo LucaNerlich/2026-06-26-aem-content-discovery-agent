@@ -2,14 +2,14 @@
   "slug": "winter-sustainable",
   "brief": "I'm writing a landing page for our new sustainable winter collection. Target audience is eco-conscious women aged 25–40 in the UK market. The page needs to cover: our recycled materials sourcing story",
   "locale": "en-gb",
-  "startedAt": "2026-06-28T13:19:49.793Z",
-  "finishedAt": "2026-06-28T13:20:18.480Z",
-  "durationMs": 28687,
+  "startedAt": "2026-06-28T14:24:30.829Z",
+  "finishedAt": "2026-06-28T14:24:48.464Z",
+  "durationMs": 17635,
   "stageDurations": {
-    "parseBrief": 4930,
-    "retrieve": 34,
-    "analyseGaps": 13002,
-    "compose": 10721
+    "parseBrief": 858,
+    "retrieve": 65,
+    "analyseGaps": 13724,
+    "compose": 2988
   },
   "chatModel": "google/gemma-4-e4b",
   "embeddingModel": "embeddinggemma-300m",

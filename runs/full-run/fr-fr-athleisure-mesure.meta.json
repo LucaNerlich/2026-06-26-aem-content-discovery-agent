@@ -1,0 +1,23 @@
+{
+  "slug": "fr-fr-athleisure-mesure",
+  "brief": "Nous lançons une page de collection athleisure pour le marché français, pensée avec retenue et sobriété. Cible: clientèle urbaine, 28-45 ans, qui veut des pièces confortables et minimalistes, loin du ",
+  "locale": "fr-fr",
+  "startedAt": "2026-06-28T14:21:43.348Z",
+  "finishedAt": "2026-06-28T14:22:05.753Z",
+  "durationMs": 22405,
+  "stageDurations": {
+    "parseBrief": 5914,
+    "retrieve": 55,
+    "analyseGaps": 12525,
+    "compose": 3911
+  },
+  "chatModel": "google/gemma-4-e4b",
+  "embeddingModel": "embeddinggemma-300m",
+  "matchedFragmentCount": 3,
+  "gapCounts": {
+    "none": 1,
+    "partial": 3
+  },
+  "status": "ok",
+  "retryCount": 0
+}

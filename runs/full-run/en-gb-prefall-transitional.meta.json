@@ -1,0 +1,23 @@
+{
+  "slug": "en-gb-prefall-transitional",
+  "brief": "We're building a pre-fall capsule landing page for the UK, focused on the awkward between-season window when it's too warm for winter coats but too cool for summer pieces. Audience: existing customers",
+  "locale": "en-gb",
+  "startedAt": "2026-06-28T14:18:59.355Z",
+  "finishedAt": "2026-06-28T14:19:32.397Z",
+  "durationMs": 33042,
+  "stageDurations": {
+    "parseBrief": 2956,
+    "retrieve": 71,
+    "analyseGaps": 17018,
+    "compose": 12997
+  },
+  "chatModel": "google/gemma-4-e4b",
+  "embeddingModel": "embeddinggemma-300m",
+  "matchedFragmentCount": 3,
+  "gapCounts": {
+    "none": 0,
+    "partial": 4
+  },
+  "status": "ok",
+  "retryCount": 0
+}

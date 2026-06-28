@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "1.0",
+  "brief": {
+    "audience": "shoppers aged 22-40 (all genders)",
+    "locale": "en-gb",
+    "tone": "premium",
+    "brandGuidelines": [
+      "inclusive-language",
+      "premium-tone"
+    ],
+    "requiredTopics": [
+      "denim fits and fabrics for daily wear",
+      "supporting a considered wardrobe",
+      "basic denim care"
+    ],
+    "pathHint": "/en-gb/collections/everyday-denim"
+  },
+  "matchedFragments": [
+    {
+      "id": "frag_064",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_064",
+      "score": 0.7234702756272754,
+      "reason": "Strong semantic match; strong keyword overlap; brand: premium-tone"
+    },
+    {
+      "id": "frag_096",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_096",
+      "score": 0.6935155758305874,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone+inclusive-language"
+    },
+    {
+      "id": "frag_079",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_079",
+      "score": 0.6828207379557089,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone+inclusive-language; fresh content"
+    }
+  ],
+  "gaps": [
+    {
+      "topic": "denim fits and fabrics for daily wear",
+      "coverage": "partial",
+      "description": "While multiple fragments address the general topic, none provide an exhaustive technical guide detailing every fabric composition or specific fit profile (e.g., rise depth, inseam length) needed for a complete shopper resource.",
+      "partialMatches": [
+        "frag_096",
+        "frag_079",
+        "frag_133"
+      ],
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"denim fits and fabrics for daily wear\", applying inclusive-language and premium-tone."
+    },
+    {
+      "topic": "supporting a considered wardrobe",
+      "coverage": "partial",
+      "description": "The conceptual understanding is very strong, but there lacks a high-level editorial guide that links the theory of 'considered dressing' to actionable general shopping advice beyond seasonal capsule collections.",
+      "partialMatches": [
+        "frag_091",
+        "frag_085",
+        "frag_052",
+        "frag_025"
+      ],
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"supporting a considered wardrobe\", applying inclusive-language and premium-tone."
+    },
+    {
+      "topic": "basic denim care",
+      "coverage": "none",
+      "description": "No fragment in the provided pool discusses practical, actionable instructions related to washing, stain removal, or general upkeep specifically for denim garments.",
+      "partialMatches": [],
+      "suggestedAction": "Write a 200-word en-gb care-guide fragment covering \"basic denim care\", applying inclusive-language and premium-tone."
+    }
+  ],
+  "draftOutline": {
+    "title": "The Ultimate Guide to Everyday Denim | Elevated Fits & Fabrics",
+    "pathHint": "/en-gb/collections/everyday-denim",
+    "sections": [
+      {
+        "heading": "Denim: An Effortless Dialogue Between Style and Life",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_096",
+          "frag_079"
+        ],
+        "rationale": "Uses existing premium content to establish the foundational, enduring appeal of denim, setting a high-end tone for the shopper."
+      },
+      {
+        "heading": "Decoding Your Perfect Denim Fit and Fabric Composition",
+        "kind": "new",
+        "rationale": "While general fit guidance is present, shoppers require an exhaustive, technical guide detailing specific fabric compositions (e.g., stretch percentages) and detailed fit profiles to select the right pair.",
+        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"denim fits and fabrics for daily wear\", applying inclusive-language and premium-tone."
+      },
+      {
+        "heading": "Building a Considered Wardrobe: Denim as the Foundation",
+        "kind": "new",
+        "rationale": "This section moves beyond product pages to offer high-level editorial advice, linking the concept of 'considered dressing' into actionable shopping theory.",
+        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"supporting a considered wardrobe\", applying inclusive-language and premium-tone."
+      },
+      {
+        "heading": "Caring for Denim: Keeping Your Investment Looking Pristine",
+        "kind": "new",
+        "rationale": "A critical gap exists in providing practical, actionable post-purchase care instructions (washing, stain removal) needed to maintain the quality of premium denim.",
+        "sourcingHint": "Write a 200-word en-gb care-guide fragment covering \"basic denim care\", applying inclusive-language and premium-tone."
+      }
+    ]
+  },
+  "reusedFragments": [
+    {
+      "id": "frag_096",
+      "title": "Daily-wear denim: fits and fabrics",
+      "category": "seasonal-campaign",
+      "targetAudience": "Brand-engaged shoppers (all genders, 25-37), Mexico, browsing seasonal collections.",
+      "brandGuidelinesApplied": [
+        "premium-tone",
+        "sustainability-voice",
+        "inclusive-language"
+      ],
+      "locale": "en-gb",
+      "lastModified": "2026-01-01T05:12:01.675Z",
+      "content": "True style is never about trends; it is an effortless dialogue between superior fabrication and the rhythm of your daily life. At the heart of this timeless conversation lies denim—a fabric elevated beyond mere utility into a foundational statement piece. We understand that the perfect garment should adapt seamlessly, moving with you through every chapter of your day, whether navigating the urban sprawl or gathering for a quiet moment of reflection. That is why our approach to every pair of jeans begins with an uncompromising dedication to both silhouette and conscience.\n\nOur meticulous fit guide is built upon years of mastering the most flattering cuts, ensuring that exceptional comfort never sacrifices impeccable structure. We champion denim crafted from the finest sustainable materials, selecting blends that reduce environmental impact while enhancing resilience, guaranteeing pieces that feel as good on the first wear as they do many seasons later. Discover how consciously designed washes and innovative weaves combine to create a wash of unparalleled depth and character. Embrace the versatility of beautifully cut denim, pieces engineered to be your trusted companion for every everyday adventure, adding an enduring element of refinement to your modern wardrobe.",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_096"
+    },
+    {
+      "id": "frag_079",
+      "title": "Daily-wear denim: fits and fabrics — collection notes",
+      "category": "product-story",
+      "targetAudience": "Quality-led shoppers (women, 35-46), Djibouti, interested in considered fashion.",
+      "brandGuidelinesApplied": [
+        "premium-tone",
+        "inclusive-language"
+      ],
+      "locale": "en-gb",
+      "lastModified": "2026-05-31T05:05:24.622Z",
+      "content": "The enduring romance of denim lies not just in its timeless structure, but in the way it adapts to your most considered moments. We understand that true style is effortless; it should move with you from dawn until dusk. This is why every piece of denim we craft is engineered for the rhythm of your everyday life, ensuring that comfort and impeccable tailoring are never mutually exclusive.\n\nMastering the perfect pair begins with understanding both fabric and form. Our comprehensive fit guide has been developed precisely to navigate the nuances of modern silhouette—whether you favour a streamlined straight leg or a more relaxed wide cut, there is an ideal shape awaiting you. Equally important is the composition: we focus on premium blends that enhance durability without sacrificing breathability, guaranteeing that your favourite denim feels as exquisite today as it will years from now.\n\nWearing beautiful denim should feel like slipping into a second skin—confident and utterly natural. We invite you to explore our collection, designed not merely for dressing, but for living life fully in pieces crafted to elevate the everyday routine into an art form.",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_079"
+    }
+  ]
+}

@@ -2,68 +2,93 @@
 
 | # | id | path | score | reason |
 |---|----|------|-------|--------|
-| 1 | <a id="frag_039"></a>`frag_039` | `/content/dam/aemcontentdisc/en-gb/frag_039` | 0.650 | Partial semantic match; strong keyword overlap; brand: sustainability-voice |
-| 2 | <a id="frag_027"></a>`frag_027` | `/content/dam/aemcontentdisc/en-gb/frag_027` | 0.625 | Partial semantic match; strong keyword overlap; brand: premium-tone; older content |
-| 3 | <a id="frag_032"></a>`frag_032` | `/content/dam/aemcontentdisc/en-gb/frag_032` | 0.593 | Partial semantic match; strong keyword overlap; brand: premium-tone |
+| 1 | <a id="frag_077"></a>`frag_077` | `/content/dam/aemcontentdisc/en-gb/frag_077` | 0.754 | Strong semantic match; strong keyword overlap; brand: sustainability-voice |
+| 2 | <a id="frag_129"></a>`frag_129` | `/content/dam/aemcontentdisc/en-gb/frag_129` | 0.742 | Strong semantic match; strong keyword overlap; brand: premium-tone; fresh content |
+| 3 | <a id="frag_158"></a>`frag_158` | `/content/dam/aemcontentdisc/en-gb/frag_158` | 0.726 | Strong semantic match; strong keyword overlap; brand: premium-tone; fresh content |
 
 ## Gap Analysis
+
+### Coverage: none
+
+#### sustainable gifts
+There are no dedicated content fragments that address 'sustainable gifts' specifically; sustainability mentions are always tied to product care or seasonal gifting.
+- Suggested action: Write a 200-word en-gb product-story fragment covering "sustainable gifts", applying premium-tone and sustainability-voice.
 
 ### Coverage: partial
 
 #### holiday gifting ideas
-While several fragments reference 'Holiday gifting', they are highly specific to accessories rather than offering general gift inspiration. Additionally, the ideal fragment needs to combine all required brand guidelines (premium tone and sustainability voice).
-- Partial matches: [`frag_039`](#frag_039), [`frag_027`](#frag_027)
+Several fragments address holiday gifting in relation to accessories, but coverage is inconsistent as they fail to maintain the required combination of premium and sustainability voices simultaneously.
+- Partial matches: [`frag_162`](#frag_162), [`frag_180`](#frag_180), [`frag_147`](#frag_147)
 - Suggested action: Write a 200-word en-gb seasonal-campaign fragment covering "holiday gifting ideas", applying premium-tone and sustainability-voice.
 
 #### timeless accessories
-The existing content focuses strongly on 'timeless' items via specific articles (e.g., hats, footwear) but lacks a comprehensive piece that captures the breadth of all accessory types while integrating the full set of brand guidelines.
-- Partial matches: [`frag_039`](#frag_039), [`frag_027`](#frag_027)
+All available content relating to 'timeless accessories' is contextually framed within 'holiday gifting,' preventing the creation of general, evergreen material on this topic.
+- Partial matches: [`frag_162`](#frag_162), [`frag_132`](#frag_132), [`frag_180`](#frag_180)
 - Suggested action: Write a 200-word en-gb product-story fragment covering "timeless accessories", applying premium-tone and sustainability-voice.
 
-#### sustainable gift selections
-Fragments exist covering 'gifting' or 'sustainable materials', but there is no single content piece that effectively bridges the concepts of making a curated, thoughtful selection *and* ensuring it meets sustainability criteria.
-- Partial matches: [`frag_039`](#frag_039), [`frag_002`](#frag_002)
-- Suggested action: Write a 200-word en-gb product-story fragment covering "sustainable gift selections", applying premium-tone and sustainability-voice.
-
-#### accessory care basics
-Several fragments cover specific types of care (e.g., leather, footwear, hats), but there is no single comprehensive 'basics' guide that addresses the breadth of accessories while adhering to all required brand guidelines.
-- Partial matches: [`frag_035`](#frag_035), [`frag_029`](#frag_029), [`frag_032`](#frag_032)
-- Suggested action: Write a 200-word en-gb care-guide fragment covering "accessory care basics", applying premium-tone and sustainability-voice.
+#### hat care basics
+While several fragments cover the topic, no single resource serves as a definitive 'basics' guide that consistently integrates both premium and sustainability voices across all necessary detail levels.
+- Partial matches: [`frag_188`](#frag_188), [`frag_086`](#frag_086), [`frag_158`](#frag_158)
+- Suggested action: Write a 200-word en-gb care-guide fragment covering "hat care basics", applying premium-tone and sustainability-voice.
 
 ## Draft Outline
 
-**Title:** Thoughtful Holiday Gifts: Discover Timeless & Sustainable Style
-**Path hint:** `/en-us/collections/holiday-gifts-us`
+**Title:** Premium Holiday Gifting & Timeless Accessories
+**Path hint:** `/en-gb/collections/holiday-gifts-us`
 
-1. **Find the Perfect Thoughtful Gift This Season** **NEW**
-   - Rationale: Sets a premium and values-driven tone, addressing general gift inspiration while integrating brand guidelines (sustainability).
+1. **Finding the Perfect Sustainable Gift for Them** **NEW**
+   - Rationale: The introductory section must capture the seasonal intent (holiday gifting) while immediately establishing the premium, sustainable brand voice.
    - Sourcing hint: Write a 200-word en-gb seasonal-campaign fragment covering "holiday gifting ideas", applying premium-tone and sustainability-voice.
 
-2. **Timeless Accessories for Every Character**
-   - Reuse: [`frag_027`](#frag_027)
-   - Rationale: Leverages existing editorial content to focus on the core product message: enduring style over fleeting trends.
+2. **Invest in Timeless Pieces** **NEW**
+   - Rationale: This section establishes the core brand value of longevity and enduring style, moving beyond seasonal trends.
+   - Sourcing hint: Write a 200-word en-gb product-story fragment covering "timeless accessories", applying premium-tone and sustainability-voice.
 
-3. **Curated Gift Selections with a Sustainable Heart** **NEW**
-   - Rationale: Highlights the ethical purchasing criteria, linking premium gifts directly to sustainability practices.
-   - Sourcing hint: Write a 200-word en-gb product-story fragment covering "sustainable gift selections", applying premium-tone and sustainability-voice.
+3. **Meaningful Gifts: Sustainability in Focus** **NEW**
+   - Rationale: This addresses the critical need for content dedicated solely to the ethical purchase journey, reinforcing the sustainable brand promise.
+   - Sourcing hint: Write a 200-word en-gb product-story fragment covering "sustainable gifts", applying premium-tone and sustainability-voice.
 
-4. **Caring for Your Investment Pieces** **NEW**
-   - Rationale: Provides essential utility content to increase perceived value and encourage long-term investment in the brand's products.
-   - Sourcing hint: Write a 200-word en-gb care-guide fragment covering "accessory care basics", applying premium-tone and sustainability-voice.
+4. **Caring for Your Craftsmanship: Hat Care Basics**
+   - Reuse: [`frag_077`](#frag_077), [`frag_129`](#frag_129), [`frag_158`](#frag_158)
+   - Rationale: Using available expert fragments to guide the customer on maintaining accessories, reinforcing product quality and longevity.
 
 ## Reused Fragments
 
-### `frag_027` — Holiday gifting: timeless accessories — editorial
-<a id="appendix-frag_027"></a>
-- Path: `/content/dam/aemcontentdisc/en-gb/frag_027`
+### `frag_077` — Hat care: shaping, brushing, storage
+<a id="appendix-frag_077"></a>
+- Path: `/content/dam/aemcontentdisc/en-gb/frag_077`
+- Category: care-guide
+- Locale: en-gb
+- Brand guidelines: sustainability-voice
+- Last modified: 2026-01-13T10:42:53.430Z
+
+The journey a hat undertakes—from the initial fitting to decades of cherished wear—is a testament to its enduring craftsmanship. To honour that history and ensure its continued life, mindful care is essential. Proper upkeep means treating your headwear not as a fleeting fashion statement, but as a valuable companion piece destined for longevity.
+
+When you return indoors after wearing your hats, the first step in their care routine involves brushing. Using a soft-bristle brush, gently lift any accumulated dust and help restore the natural nap of the fabric. This simple action prevents material build-up and maintains the garment's structure. For deep creases or changes in form, gentle shaping is key; allowing the hat to settle gradually rather than forcing it into immediate use will preserve its crown and brim integrity.
+
+Equally crucial is proper storage. Never leave hats pressed haphazardly together or exposed to direct sunlight, which can fade fibres and weaken natural materials over time. Ideally, allow the felt or straw to breathe fully before placing it in a dedicated container. For optimum preservation, ensure adequate spacing within your hat box, allowing each piece room to retain its natural shape and structure for years to come. These small acts of care safeguard tradition, ensuring that every brim and crease remains ready for countless seasons ahead.
+
+### `frag_129` — Hat care: shaping, brushing, storage
+<a id="appendix-frag_129"></a>
+- Path: `/content/dam/aemcontentdisc/en-gb/frag_129`
 - Category: seasonal-campaign
 - Locale: en-gb
-- Brand guidelines: inclusive-language, premium-tone
-- Last modified: 2025-04-12T09:01:24.898Z
+- Brand guidelines: premium-tone
+- Last modified: 2026-02-26T19:33:29.189Z
 
-This season, true elegance lies not in fleeting trends, but in enduring craftsmanship. For the discerning individual who understands that style is an extension of character, the thoughtful gift remains a profoundly powerful gesture. We believe the art of giving should be as refined as the recipient’s taste, moving beyond the ephemeral novelty toward pieces imbued with lasting significance.
+The enduring beauty of a perfectly crafted hat demands nothing less than exacting care. These pieces are not merely accessories; they are wearable works of art, imbued with history and the passage of time. To preserve their delicate integrity for seasons yet to come, understanding proper aftercare is essential. Whilst your favoured hats bring colour and elegance to any ensemble, routine attention ensures that their form remains impeccable. After wearing, gently brushing the crown and band—never using abrasive materials—will lift dust and maintain the original finish of the fibre. Should you notice any subtle creasing or distortion in the silhouette, allow the hat to rest naturally, avoiding direct heat sources which can cause irreparable damage. For long-term preservation, proper storage is paramount. The ideal location involves a spacious receptacle, ensuring that each piece has room to breathe and maintain its natural shape; never compress them together. By treating the careful shaping of your collection as part of your enjoyment, and by providing thoughtful seasonal storage, you ensure that the patina earned from years of wearing only serves to enhance the profound lineage of each magnificent hat.
 
-The perfect holiday present resides within our curated collection of timeless accessories—items designed not just for a season, but for a lifetime. Whether selecting a distinguished leather goods piece to complement his daily ritual or an exquisitely detailed timepiece that captures the passing moment, these are investments in style and memory. They speak volumes without saying a word, offering tangible proof of consideration.
+### `frag_158` — Hat care: shaping, brushing, storage — collection notes
+<a id="appendix-frag_158"></a>
+- Path: `/content/dam/aemcontentdisc/en-gb/frag_158`
+- Category: care-guide
+- Locale: en-gb
+- Brand guidelines: premium-tone, inclusive-language
+- Last modified: 2026-01-29T14:31:00.317Z
 
-Exploring our new arrivals makes finding the ideal gesture effortless. Each accessory has been conceived with precision, blending heritage techniques with modern sensibility, ensuring it remains relevant year after year. This is more than simply gifting; it is curating an heirloom experience. Discover the perfect complement to his wardrobe this holiday season and select a piece of enduring sophistication that will be cherished long after the festive lights fade.
+The enduring beauty of a finely crafted hat is intrinsically linked to the care it receives over time. These pieces are not merely accessories, but objects imbued with history and artistry, deserving of stewardship that reflects their provenance. To ensure your cherished millinery remains a vibrant part of your wardrobe for seasons to come, adopting mindful habits in maintenance is paramount.
+
+Before setting aside your hats, a gentle brushing is necessary to lift accumulated dust and preserve the integrity of the natural fibres. This light grooming ensures the surface retains its original texture and brilliance. Following this initial cleansing ritual, proper shaping is crucial. If you notice any subtle creases or loss of form, allowing the hat to rest gently over a dedicated mannequin head, rather than a flat surface, helps restore its intended silhouette and inherent structure.
+
+Finally, consider the discipline of storage. For optimal longevity, your hats must reside in a dry, cool, and dimly lit environment. We recommend individual protective coverings or dedicated hat stands that allow for ample airflow, preventing moisture build-up which can lead to mould. By following these thoughtful steps—brushing, shaping, and appropriate storage—you honour the skilled hands that created this piece, allowing your hats to continue narrating their personal story with unwavering grace.
 

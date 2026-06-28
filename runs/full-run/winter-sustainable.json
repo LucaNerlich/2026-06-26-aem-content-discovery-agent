@@ -1,12 +1,11 @@
 {
   "schemaVersion": "1.0",
   "brief": {
-    "audience": "Eco-conscious women aged 25–40 in the UK.",
+    "audience": "eco-conscious women aged 25–40",
     "locale": "en-gb",
     "tone": "premium",
     "brandGuidelines": [
-      "sustainability-voice",
-      "premium-tone"
+      "sustainability-voice"
     ],
     "requiredTopics": [
       "recycled materials sourcing",
@@ -17,104 +16,106 @@
   },
   "matchedFragments": [
     {
-      "id": "frag_003",
-      "path": "/content/dam/aemcontentdisc/en-gb/frag_003",
-      "score": 0.6750588126885225,
-      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone; fresh content"
+      "id": "frag_039",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_039",
+      "score": 0.6354499851411876,
+      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice; fresh content"
     },
     {
-      "id": "frag_024",
-      "path": "/content/dam/aemcontentdisc/en-gb/frag_024",
-      "score": 0.6364639970798315,
-      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone; fresh content"
+      "id": "frag_146",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_146",
+      "score": 0.5867140064526652,
+      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice; older content"
     },
     {
-      "id": "frag_021",
-      "path": "/content/dam/aemcontentdisc/en-gb/frag_021",
-      "score": 0.623791913681023,
-      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice"
+      "id": "frag_001",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_001",
+      "score": 0.5700661455171542,
+      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice; fresh content"
     }
   ],
   "gaps": [
     {
       "topic": "recycled materials sourcing",
       "coverage": "partial",
-      "description": "While the content highlights recycled materials, coverage appears limited to outerwear and specific collection launches. Expanding this topic would broaden its scope to cover different product categories (e.g., accessories, knitwear) using sustainable fibers.",
+      "description": "While specific fragments mention recycled items and circular fashion, the content lacks a comprehensive guide detailing the entire sustainable material sourcing process from initial procurement to final garment use.",
       "partialMatches": [
-        "frag_005",
-        "frag_001"
+        "frag_001",
+        "frag_005"
       ],
-      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"recycled materials sourcing\", applying sustainability-voice and premium-tone."
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"recycled materials sourcing\", applying sustainability-voice."
     },
     {
       "topic": "garment care instructions",
       "coverage": "partial",
-      "description": "The content provides excellent guides for stain removal from delicate fabrics, but a gap exists regarding general maintenance advice for various garment types (e.g., basic mending, specialized cleaning tips beyond stains).",
+      "description": "Multiple fragments address stains and general garment longevity (especially for delicate items), but the pool lacks a comprehensive 'all-purpose' guide covering the full range of clothing types, including washing techniques for common materials like denim or silk.",
       "partialMatches": [
-        "frag_026",
-        "frag_023"
+        "frag_146",
+        "frag_197",
+        "frag_167",
+        "frag_003"
       ],
-      "suggestedAction": "Write a 200-word en-gb care-guide fragment covering \"garment care instructions\", applying sustainability-voice and premium-tone."
+      "suggestedAction": "Write a 200-word en-gb care-guide fragment covering \"garment care instructions\", applying sustainability-voice."
     },
     {
       "topic": "seasonal styling tips",
       "coverage": "partial",
-      "description": "Multiple fragments address seasonal transitions (spring, pre-fall) and capsule wardrobes. However, dedicated content linking specific sustainable sourcing narratives (e.g., 'how to style recycled wool') directly into actionable styling guides would enhance relevance.",
+      "description": "There is strong coverage for seasonal transitions and specific event styling (like garden parties), yet the content lacks general, actionable 'How-To' guides covering broad wardrobe concepts or how to style outfits throughout all four seasons.",
       "partialMatches": [
-        "frag_024",
-        "frag_033",
-        "frag_028",
-        "frag_019",
-        "frag_009"
+        "frag_151",
+        "frag_039",
+        "frag_156",
+        "frag_135"
       ],
-      "suggestedAction": "Write a 200-word en-gb seasonal-campaign fragment covering \"seasonal styling tips\", applying sustainability-voice and premium-tone."
+      "suggestedAction": "Write a 200-word en-gb seasonal-campaign fragment covering \"seasonal styling tips\", applying sustainability-voice."
     }
   ],
   "draftOutline": {
-    "title": "Sustainable Winter Wardrobe Guide",
+    "title": "Sustainable Winter Outerwear for the Eco-Conscious Woman",
     "pathHint": "/en-gb/collections/winter-sustainable",
     "sections": [
       {
-        "heading": "Building an Enduring, Sustainable Style",
+        "heading": "Crafted with Conscience: Our Recycled Materials Story",
         "kind": "new",
-        "rationale": "This serves as the opening hook for the collection page, establishing a premium and eco-conscious narrative tailored to the UK audience.",
-        "sourcingHint": "Write a 200-word en-gb introductory fragment covering 'sustainable wardrobe philosophy', applying sustainability-voice and premium-tone."
+        "rationale": "Addressing the need for a comprehensive guide detailing sustainable material sourcing, fulfilling a required topic and gap.",
+        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"recycled materials sourcing\", applying sustainability-voice."
       },
       {
-        "heading": "The Power of Recycled Materials",
-        "kind": "new",
-        "rationale": "Addresses the primary required topic (recycled materials) by giving depth beyond just outerwear, fulfilling a key gap identified in the brief.",
-        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"recycled materials sourcing\", applying sustainability-voice and premium-tone."
-      },
-      {
-        "heading": "Maintaining Your Investment Pieces",
+        "heading": "Explore Our Latest Winter Outerwear Collection",
         "kind": "reuse",
         "fragmentIds": [
-          "frag_003"
+          "frag_001"
         ],
-        "rationale": "The matched fragment 'Care guide: extending the life...' is perfectly aligned with general garment maintenance and longevity advice for winter items."
+        "rationale": "Uses the most relevant fragment discussing sustainable outerwear (recycled wool/insulation) to introduce the collection."
       },
       {
-        "heading": "Seasonal Styling Tips for Winter",
+        "heading": "Seasonal Styling: Tips for Year-Round Wardrobe Magic",
         "kind": "new",
-        "rationale": "Provides actionable, highly relevant style guidance specific to seasonal dressing while maintaining a sustainability focus.",
-        "sourcingHint": "Write a 200-word en-gb seasonal-campaign fragment covering \"seasonal styling tips\", applying sustainability-voice and premium-tone."
+        "rationale": "Fulfilling the required topic of general styling tips, which is currently lacking broad 'How-To' coverage.",
+        "sourcingHint": "Write a 200-word en-gb seasonal-campaign fragment covering \"seasonal styling tips\", applying sustainability-voice."
+      },
+      {
+        "heading": "Maintaining Your Wardrobe: Expert Care Guides",
+        "kind": "new",
+        "rationale": "Providing an actionable 'all-purpose' guide on garment care, which is a critical gap despite existing fragments on stains.",
+        "sourcingHint": "Write a 200-word en-gb care-guide fragment covering \"garment care instructions\", applying sustainability-voice."
       }
     ]
   },
   "reusedFragments": [
     {
-      "id": "frag_003",
-      "title": "Care guide: extending the life of winter garments — collection notes",
-      "category": "care-guide",
-      "targetAudience": "Existing customers (men, 27-44), Antarctica, seeking guidance on garment longevity.",
+      "id": "frag_001",
+      "title": "Women's winter coats — recycled wool and sustainable insulation",
+      "category": "product-story",
+      "targetAudience": "Quality-led shoppers (women, 25-34), Denmark, interested in considered fashion.",
       "brandGuidelinesApplied": [
-        "premium-tone"
+        "sustainability-voice",
+        "inclusive-language"
       ],
       "locale": "en-gb",
-      "lastModified": "2026-02-10T08:48:07.823Z",
-      "content": "True style is defined not by fleeting trends, but by enduring quality. Your winter wardrobe comprises investments—pieces crafted for seasons of adventure and years of life. Extending the impeccable character of these garments requires a thoughtful approach to care, transforming maintenance into an act of preservation. Approach every season with intention, remembering that true luxury lies in longevity.\n\nFor materials such as fine wool, never overlook the specific ritual of washing; gentle hand-washing or professional dry cleaning is always preferable to machine agitation. Furthermore, viewing minor imperfections not as flaws but as signs of a life well-lived encourages the philosophy of repair. A skilled tailor can breathe new life into cuffs, mend a tear in tweed, and restore structural integrity, ensuring that your outerwear remains as formidable years from now.\n\nMastering effective winter garment care is an understated art. By following these principles—from mindful storage to diligent upkeep—you ensure that every stitch endures. This meticulous attention not only preserves the exceptional quality of your clothing but reinforces a commitment to enduring elegance that transcends seasonal cycles.",
-      "path": "/content/dam/aemcontentdisc/en-gb/frag_003"
+      "lastModified": "2026-04-29T06:19:40.946Z",
+      "content": "The enduring elegance of true craftsmanship lies in its commitment to both form and conscience. Our latest collection of women's outerwear reflects this philosophy, offering exceptional warmth without compromise. We have meticulously reimagined the traditional silhouette of the winter coat, paying homage to centuries of durable tailoring while embracing modern material science. At the core of these pieces is a beautiful blend of premium recycled wool; a conscious choice that not only diverts valuable fibres from waste streams but also retains the rich texture and inherent strength for which natural wool is celebrated. This careful use of recycled wool ensures that every coat carries forward a renewed story of resilience. Complementing this exquisite textile are linings utilising responsibly sourced insulation, materials selected after rigorous vetting to minimise environmental impact. These sustainable fillings provide superior thermal performance, ensuring warmth travels with you through the harshest Nordic winters. More than merely functional garments, these women's winter coats are considered investments—pieces built for longevity, designed to become cherished staples of a thoughtful wardrobe for years to come.",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_001"
     }
   ]
 }

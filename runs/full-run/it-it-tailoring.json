@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "1.0",
+  "brief": {
+    "audience": "Professionals (30-50 years old) seeking versatile smart-casual wear",
+    "locale": "en-gb",
+    "tone": "premium",
+    "brandGuidelines": [
+      "sustainability-voice",
+      "premium-tone"
+    ],
+    "requiredTopics": [
+      "smart-casual tailoring for the office",
+      "natural fibers and longevity",
+      "garment care advice"
+    ],
+    "pathHint": "/it-it/collections/tailoring-smart-casual",
+    "uncertain": [
+      "locale \"it-it\" not in {en-gb,fr-fr,de-de}; defaulted to \"en-gb\""
+    ]
+  },
+  "matchedFragments": [
+    {
+      "id": "frag_028",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_028",
+      "score": 0.7133000080122387,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone; fresh content"
+    },
+    {
+      "id": "frag_154",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_154",
+      "score": 0.7054237379722113,
+      "reason": "Strong semantic match; strong keyword overlap; brand: premium-tone"
+    },
+    {
+      "id": "frag_082",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_082",
+      "score": 0.7047098503799986,
+      "reason": "Strong semantic match; strong keyword overlap; brand: sustainability-voice"
+    }
+  ],
+  "gaps": [
+    {
+      "topic": "smart-casual tailoring for the office",
+      "coverage": "partial",
+      "description": "Multiple fragments address the topic, but no single fragment successfully applies both the required sustainability and premium brand guidelines simultaneously.",
+      "partialMatches": [
+        "frag_028",
+        "frag_154",
+        "frag_082",
+        "frag_088",
+        "frag_040"
+      ],
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"smart-casual tailoring for the office\", applying sustainability-voice and premium-tone."
+    },
+    {
+      "topic": "natural fibers and longevity",
+      "coverage": "partial",
+      "description": "Content exists around specific material care (e.g., cashmere), but a piece that broadly discusses the longevity of natural fibers while adhering to both brand guidelines is missing.",
+      "partialMatches": [
+        "frag_146",
+        "frag_116"
+      ],
+      "suggestedAction": "Write a 200-word en-gb care-guide fragment covering \"natural fibers and longevity\", applying sustainability-voice and premium-tone."
+    },
+    {
+      "topic": "garment care advice",
+      "coverage": "partial",
+      "description": "The best matches address stains or specific items (like shirts), but a generalized guide offering holistic garment upkeep while maintaining both the premium and sustainability tones is absent.",
+      "partialMatches": [
+        "frag_146",
+        "frag_197",
+        "frag_059"
+      ],
+      "suggestedAction": "Write a 200-word en-gb care-guide fragment covering \"garment care advice\", applying sustainability-voice and premium-tone."
+    }
+  ],
+  "draftOutline": {
+    "title": "Smart-Casual Tailoring Guide for Modern Professionals",
+    "pathHint": "/it-it/collections/tailoring-smart-casual",
+    "sections": [
+      {
+        "heading": "The Evolution of Office Style: Smart-Casual Tailoring",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_028"
+        ],
+        "rationale": "Using an existing guide fragment to set the foundational understanding of smart-casual wear for the modern workplace."
+      },
+      {
+        "heading": "Mastering Versatile Style with Sustainable Luxury",
+        "kind": "new",
+        "rationale": "To build upon core styling concepts by integrating sustainability and premium tone, addressing the gap where current fragments lack combined brand alignment.",
+        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"smart-casual tailoring for the office\", applying sustainability-voice and premium-tone."
+      },
+      {
+        "heading": "Investing in Endurance: Natural Fibers and Longevity",
+        "kind": "new",
+        "rationale": "This section establishes the brand's commitment to quality materials, emphasizing investment pieces that last beyond seasonal trends.",
+        "sourcingHint": "Write a 200-word en-gb care-guide fragment covering \"natural fibers and longevity\", applying sustainability-voice and premium-tone."
+      },
+      {
+        "heading": "Caring for Your Wardrobe: Tips for Optimal Garment Life",
+        "kind": "new",
+        "rationale": "Providing holistic, practical advice to guide the customer on maintaining their investment pieces while reinforcing sustainability values.",
+        "sourcingHint": "Write a 200-word en-gb care-guide fragment covering \"garment care advice\", applying sustainability-voice and premium-tone."
+      }
+    ]
+  },
+  "reusedFragments": [
+    {
+      "id": "frag_028",
+      "title": "Smart-casual tailoring for the modern workplace — guide",
+      "category": "product-story",
+      "targetAudience": "Quality-led shoppers (all genders, 33-43), Senegal, interested in considered fashion.",
+      "brandGuidelinesApplied": [
+        "inclusive-language",
+        "premium-tone"
+      ],
+      "locale": "en-gb",
+      "lastModified": "2026-02-16T00:35:25.787Z",
+      "content": "The modern professional understands that style should never feel like a compromise to capability. The rigid structures of traditional corporate attire no longer speak to the fluid nature of today’s ambition; what is required is an elevated ease—a sense of polish that moves with you through every agenda, whether board room or creative space. Our approach to contemporary workwear reimagines the art of tailoring, ensuring every piece retains its sharp silhouette without ever restricting thought.\n\nConsider the perfect blazer: a foundational element designed not just for structure, but for effortless versatility. It is the anchor point around which your most considered looks are built. We have sourced luxurious fabrics and perfected the drape, resulting in garments that feel as impeccable as they look. This collection celebrates smart-casual dressing, offering exquisite tailoring that transitions seamlessly across diverse environments. Invest in pieces designed to last beyond a season—investment staples that define quiet confidence. These are not mere outfits; they are components of your evolving narrative, crafted for those who demand both distinction and comfort in equal measure.",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_028"
+    }
+  ]
+}

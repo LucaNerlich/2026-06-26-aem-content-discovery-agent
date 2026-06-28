@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "1.0",
+  "brief": {
+    "audience": "Bewusste Konsumentinnen und Konsumenten 28-45",
+    "locale": "de-de",
+    "tone": "sustainable and credible",
+    "brandGuidelines": [
+      "sustainability-voice",
+      "inclusive-language",
+      "premium-tone"
+    ],
+    "requiredTopics": [
+      "Capsule-Garderobe Konzept",
+      "Layering-Essentials aus natürlichen Fasern",
+      "Langlebige, nachhaltige Materialien"
+    ],
+    "pathHint": "/de-de/collections/capsule-garderobe"
+  },
+  "matchedFragments": [
+    {
+      "id": "frag_404",
+      "path": "/content/dam/aemcontentdisc/de-de/frag_404",
+      "score": 0.6885460031398949,
+      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice; fresh content"
+    },
+    {
+      "id": "frag_405",
+      "path": "/content/dam/aemcontentdisc/de-de/frag_405",
+      "score": 0.6047464552456948,
+      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice; fresh content"
+    },
+    {
+      "id": "frag_515",
+      "path": "/content/dam/aemcontentdisc/de-de/frag_515",
+      "score": 0.5342960693270026,
+      "reason": "Partial semantic match; strong keyword overlap; brand: inclusive-language+premium-tone"
+    }
+  ],
+  "gaps": [
+    {
+      "topic": "Capsule-Garderobe Konzept",
+      "coverage": "partial",
+      "description": "The most relevant fragments lack the required 'inclusive-language' guideline, making them incomplete for a full brand representation.",
+      "partialMatches": [
+        "frag_506",
+        "frag_452"
+      ],
+      "suggestedAction": "Write a 200-word de-de product-story fragment covering \"Capsule-Garderobe Konzept\", applying sustainability-voice and inclusive-language and premium-tone."
+    },
+    {
+      "topic": "Layering-Essentials aus natürlichen Fasern",
+      "coverage": "partial",
+      "description": "The primary fragment covering natural fibers fails to apply both 'premium-tone' and 'inclusive-language', resulting in incomplete tonal coverage.",
+      "partialMatches": [
+        "frag_404"
+      ],
+      "suggestedAction": "Write a 200-word de-de product-story fragment covering \"Layering-Essentials aus natürlichen Fasern\", applying sustainability-voice and inclusive-language and premium-tone."
+    },
+    {
+      "topic": "Langlebige, nachhaltige Materialien",
+      "coverage": "partial",
+      "description": "Although strong fragments exist focusing on durable craftsmanship (e.g., leather goods), the scope is too narrow and fails to generalize sustainable materials knowledge beyond a single product category.",
+      "partialMatches": [
+        "frag_598"
+      ],
+      "suggestedAction": "Write a 200-word de-de product-story fragment covering \"Langlebige, nachhaltige Materialien\", applying sustainability-voice and inclusive-language and premium-tone."
+    }
+  ],
+  "draftOutline": {
+    "title": "Die bewusste Capsule Garderobe: Nachhaltige Basics für jeden Moment",
+    "pathHint": "/de-de/collections/capsule-garderobe",
+    "sections": [
+      {
+        "heading": "Das Prinzip der Capsule Garderobe verstehen",
+        "kind": "new",
+        "rationale": "Einleitung, die das Konzept einer minimalistischen, langlebigen und vielseitig kombinierbaren Kleiderwahl vorstellt, um Konsumenten zu ermutigen, bewusster einzukaufen.",
+        "sourcingHint": "Write a 200-word de-de product-story fragment covering \"Capsule-Garderobe Konzept\", applying sustainability-voice and inclusive-language and premium-tone."
+      },
+      {
+        "heading": "Layering mit natürlichen, langlebigen Materialien",
+        "kind": "new",
+        "rationale": "Vertiefung des Themas der Materialwahl und saisonalen Anpassung. Fokus auf die Vorteile von Naturfasern für das Tragegefühl und die Umwelt.",
+        "sourcingHint": "Write a 200-word de-de product-story fragment covering \"Layering-Essentials aus natürlichen Fasern\", applying sustainability-voice and inclusive-language and premium-tone."
+      },
+      {
+        "heading": "Investitionen in die Zukunft der Mode",
+        "kind": "new",
+        "rationale": "Bildungsinhalt, der über spezifische Produkte hinausgeht und den Wert langlebiger Verarbeitung sowie ethischer Materialien erklärt.",
+        "sourcingHint": "Write a 200-word de-de product-story fragment covering \"Langlebige, nachhaltige Materialien\", applying sustainability-voice and inclusive-language and premium-tone."
+      },
+      {
+        "heading": "Style-Inspiration: Layering Essentials für den Übergang",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_404"
+        ],
+        "rationale": "Visuelle und textliche Unterstützung, die konkrete Anwendungsbeispiele für natürlichen Fasern im Übergangszeitraum liefert."
+      },
+      {
+        "heading": "Outerwear Statement: Zeitlose Eleganz für die kühle Saison",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_405"
+        ],
+        "rationale": "Praxisbeispiel für ein langlebiges, hochwertiges Teil (Mantel), das die 'Investment Piece'-Idee der Capsule Wardrobe unterstreicht."
+      }
+    ]
+  },
+  "reusedFragments": [
+    {
+      "id": "frag_404",
+      "title": "Layering essentials with natural fibres — guide",
+      "category": "product-story",
+      "targetAudience": "Quality-led shoppers (all genders, 23-37), Dänemark, interested in considered fashion.",
+      "brandGuidelinesApplied": [
+        "sustainability-voice"
+      ],
+      "locale": "de-de",
+      "lastModified": "2026-02-20T20:33:10.354Z",
+      "content": "Die Tage werden kürzer und die Luft trägt eine kühle, erdige Kühle, die uns dazu einlädt, das Tempo zu drosseln und bewusster zu werden. In diesen Übergangszeiten ist das richtige Gefühl auf der Haut das wichtigste Luxusgut. Es geht nicht darum, sich einzukapseln, sondern darum, sich flexibel anzupassen – einem Prinzip, das wir beim Schichten an Kleidung perfektioniert haben.\n\nWir glauben fest daran, dass wahre Qualität im Einklang mit der Natur liegt. Deshalb setzen unsere *Winteressentials* auf die Kraft von natürlichen Fasern. Die feuchtigkeitsregulierenden Eigenschaften unserer Merinowolle dienen als ideale Grundlage; sie hält warm, ohne dabei zu beschweren oder zu überhitzen, selbst an aktiven Tagen durch den Frost. Darauf kombinieren wir das vertraute Wohlgefühl der Bio-Baumwolle, deren natürliche Atmungsaktivität für Komfort sorgt,",
+      "path": "/content/dam/aemcontentdisc/de-de/frag_404"
+    },
+    {
+      "id": "frag_405",
+      "title": "Women's winter coats — recycled wool and sustainable insulation — collection notes",
+      "category": "product-story",
+      "targetAudience": "Quality-led shoppers (all genders, 28-36), Bahamas, interested in considered fashion.",
+      "brandGuidelinesApplied": [
+        "sustainability-voice"
+      ],
+      "locale": "de-de",
+      "lastModified": "2026-02-08T13:00:30.248Z",
+      "content": "Wenn die kalte Jahreszeit naht, wird ein Mantel mehr als nur Schutz; er ist eine Verlängerung des Selbst, ein Statement von zeitloser Eleganz. Unsere Damen-Outerwear für den Winter verbindet dieses Bedürfnis nach Beständigkeit mit einem tiefen Respekt vor unserem Planeten. Wir haben die Kunst der Nachhaltigkeit in jedes Detail gewoben – beginnend mit der luxuriösen Textur unserer recycelten Wolle. Diese edlen Materialien wurden nicht nur wiederverwertet, sondern zu einer neuen Form von Schönheit veredelt, die atemberaubenden Tragekomfort ohne Kompromisse bei der Qualität garantiert.\n\nIm Kern dieses Mantels liegt das Versprechen ethisch einwandfreier Isolation. Wir setzen ausschließlich auf nachhaltig bezogene Füllungen, denn wahre Luxusgüter dürfen keine Schatten im Gewissen werfen. Jeder Wintermantel, den Sie anziehen, erzählt eine Geschichte von Verantwortung und handwerklicher Perfektion zugleich. Es ist die Verbindung von kompromissloser Ästhetik und einem tief verwurzelten Engagement für Kreislaufwirtschaft. Dieses Kleidungsstück ist kein saisonaler Trend, sondern ein fundamentales Statement: dass wahre Eleganz und nachhaltige Verantwortung perfekt harmonieren können. Ein Mantel, der Sie durch viele Winter begleiten wird – mit Stil und Gewissen.",
+      "path": "/content/dam/aemcontentdisc/de-de/frag_405"
+    }
+  ]
+}

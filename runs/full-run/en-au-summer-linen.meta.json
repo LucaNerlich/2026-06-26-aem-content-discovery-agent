@@ -1,0 +1,23 @@
+{
+  "slug": "en-au-summer-linen",
+  "brief": "We're launching a summer linen landing page for the Australian market, timed to the southern-hemisphere summer (December–February). Audience: warm-climate shoppers, 25–50, who want lightweight pieces ",
+  "locale": "n/a",
+  "startedAt": "2026-06-28T14:17:42.467Z",
+  "finishedAt": "2026-06-28T14:18:04.668Z",
+  "durationMs": 22201,
+  "stageDurations": {
+    "parseBrief": 3705,
+    "retrieve": 56,
+    "analyseGaps": 15366,
+    "compose": 3074
+  },
+  "chatModel": "google/gemma-4-e4b",
+  "embeddingModel": "embeddinggemma-300m",
+  "matchedFragmentCount": 3,
+  "gapCounts": {
+    "none": 0,
+    "partial": 3
+  },
+  "status": "ok",
+  "retryCount": 0
+}

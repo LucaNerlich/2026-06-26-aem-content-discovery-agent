@@ -1,160 +1,151 @@
 {
   "schemaVersion": "1.0",
   "brief": {
-    "audience": "Clientèle urbaine féminine, 35-55 ans",
+    "audience": "Femmes urbaines, 35-55 ans, recherchant l'élégance et les matières nobles à domicile",
     "locale": "fr-fr",
-    "tone": "refined",
+    "tone": "premium",
     "brandGuidelines": [
-      "sustainability-voice",
-      "premium-tone"
+      "technical-precision",
+      "premium-tone",
+      "sustainability-voice"
     ],
     "requiredTopics": [
-      "Provenance des fibres nobles (cachemire, soie, coton)",
-      "Engagement de production en petites séries",
-      "Art du soin à domicile pour matières premium"
+      "provenance des fibres (Écosse, Côme, Égypte)",
+      "partenariats et certifications",
+      "art du soin des matières nobles",
+      "production en petites séries"
     ],
     "pathHint": "/fr-fr/collections/loungewear-premium"
   },
   "matchedFragments": [
     {
-      "id": "frag_041",
-      "path": "/content/dam/aemcontentdisc/fr-fr/frag_041",
-      "score": 0.6664140095182213,
+      "id": "frag_400",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_400",
+      "score": 0.6442835274381339,
       "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice; fresh content"
     },
     {
-      "id": "frag_072",
-      "path": "/content/dam/aemcontentdisc/fr-fr/frag_072",
-      "score": 0.5393948083836039,
+      "id": "frag_292",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_292",
+      "score": 0.6215405404559785,
       "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice"
     },
     {
-      "id": "frag_043",
-      "path": "/content/dam/aemcontentdisc/fr-fr/frag_043",
-      "score": 0.5232791239593896,
-      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice+premium-tone; older content"
+      "id": "frag_313",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_313",
+      "score": 0.6038841955972086,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone"
     }
   ],
   "gaps": [
     {
-      "topic": "Provenance des fibres nobles (cachemire, soie, coton)",
-      "coverage": "partial",
-      "description": "The pool contains focused content on caring for cashmere and general luxury craftsmanship, but lacks a comprehensive narrative detailing the origins and provenance of all three specified fibers: cashmere, silk, and cotton.",
-      "partialMatches": [
-        "frag_069",
-        "frag_048",
-        "frag_072",
-        "frag_074"
-      ],
-      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"Provenance des fibres nobles (cachemire, soie, coton)\", applying sustainability-voice and premium-tone."
+      "topic": "provenance des fibres (Écosse, Côme, Égypte)",
+      "coverage": "none",
+      "description": "Aucun fragment ne mentionne explicitement la provenance géographique spécifique des fibres comme l'Écosse, le Côme ou l'Égypte.",
+      "partialMatches": [],
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"provenance des fibres (Écosse, Côme, Égypte)\", applying technical-precision and premium-tone and sustainability-voice."
     },
     {
-      "topic": "Engagement de production en petites séries",
-      "coverage": "partial",
-      "description": "The concept of limited, curated collections exists across various guides (e.g., capsule wardrobes), but there is no dedicated, overarching narrative commitment to small-batch production that spans all material categories and product lines.",
-      "partialMatches": [
-        "frag_053",
-        "frag_080",
-        "frag_047",
-        "frag_062"
-      ],
-      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"Engagement de production en petites séries\", applying sustainability-voice and premium-tone."
+      "topic": "partenariats et certifications",
+      "coverage": "none",
+      "description": "Les fragments abordent l'artisanat d'héritage mais n'incluent aucune mention de partenariats commerciaux, ni de certifications externes reconnues (ex: Oeko-Tex, labels spécifiques).",
+      "partialMatches": [],
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"partenariats et certifications\", applying technical-precision and premium-tone and sustainability-voice."
     },
     {
-      "topic": "Art du soin à domicile pour matières premium",
+      "topic": "art du soin des matières nobles",
       "coverage": "partial",
-      "description": "While specific care routines are provided for textiles (cashmere) and accessories (footwear), there is no unified, high-level 'art guide' that synthesizes all at-home maintenance tips into one refined ritual for the consumer.",
+      "description": "Bien que plusieurs guides existent pour le soin (cuir, chaussures, taches), ils sont très segmentés et ne constituent pas un guide unique et omnicommuniquant sur l'approche premium de la pérennité des matières.",
       "partialMatches": [
-        "frag_069",
-        "frag_048",
-        "frag_072",
-        "frag_063"
+        "frag_379",
+        "frag_244",
+        "frag_368",
+        "frag_307"
       ],
-      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"Art du soin à domicile pour matières premium\", applying sustainability-voice and premium-tone."
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"art du soin des matières nobles\", applying technical-precision and premium-tone and sustainability-voice."
+    },
+    {
+      "topic": "production en petites séries",
+      "coverage": "partial",
+      "description": "Plusieurs fragments font allusion à l'héritage ('heritage workshops'), ce qui est lié, mais il n'existe pas de contenu dédié expliquant le concept ou les bénéfices d'une production intentionnellement limitée (small batch).",
+      "partialMatches": [
+        "frag_267",
+        "frag_285"
+      ],
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"production en petites séries\", applying technical-precision and premium-tone and sustainability-voice."
+    },
+    {
+      "topic": "Brand guideline coverage: technical-precision",
+      "coverage": "partial",
+      "description": "No top match applies the `technical-precision` brand guideline required by the brief. Some candidates exist but lacked any required brand guideline and were filtered out.",
+      "partialMatches": [
+        "frag_232",
+        "frag_268",
+        "frag_271",
+        "frag_281",
+        "frag_249",
+        "frag_310",
+        "frag_352",
+        "frag_386",
+        "frag_317",
+        "frag_229",
+        "frag_387",
+        "frag_330",
+        "frag_291",
+        "frag_285",
+        "frag_393",
+        "frag_308",
+        "frag_277"
+      ],
+      "suggestedAction": "Add fragments tagged `technical-precision` (alongside premium-tone, sustainability-voice) for the fr-fr corpus so this brand voice is represented in the top matches."
     }
   ],
   "draftOutline": {
-    "title": "Le luxe des fibres nobles : Guide de la garde-robe capsule",
+    "title": "Loungewear Premium : L'art de vivre avec des matières nobles",
     "pathHint": "/fr-fr/collections/loungewear-premium",
     "sections": [
       {
-        "heading": "L'éloge des matières et leur provenance",
+        "heading": "Nos Fibres, l'Histoire du Luxe",
         "kind": "new",
-        "rationale": "Introduction du contenu en développant la traçabilité des matériaux pour capter l'attention de la cliente urbaine.",
-        "sourcingHint": "Write a 200-word fr-fr product-story fragment covering \"Provenance des fibres nobles (cachemire, soie, coton)\", applying sustainability-voice and premium-tone."
+        "rationale": "Mettre en avant la traçabilité et l'origine géographique des matières pour établir un socle premium.",
+        "sourcingHint": "Write a 200-word fr-fr product-story fragment covering \"provenance des fibres (Écosse, Côme, Égypte)\", applying technical-precision and premium-tone and sustainability-voice."
       },
       {
-        "heading": "Un engagement au savoir-faire : l'art du petit lot",
+        "heading": "Un Savoir-Faire qui Dure : Partenariats et Artisanat",
         "kind": "new",
-        "rationale": "Positionner la marque comme un acteur responsable en mettant en avant sa méthode de production limitée et réfléchie.",
-        "sourcingHint": "Write a 200-word fr-fr product-story fragment covering \"Engagement de production en petites séries\", applying sustainability-voice and premium-tone."
+        "rationale": "Structurer la crédibilité en mentionnant les certifications et partenariats, un pilier du luxe durable.",
+        "sourcingHint": "Write a 200-word fr-fr product-story fragment covering \"partenariats et certifications\", applying technical-precision and premium-tone and sustainability-voice."
       },
       {
-        "heading": "L'art du soin à la maison",
-        "kind": "new",
-        "rationale": "Créer un guide ritualisé et raffiné qui transforme l'entretien des vêtements en moment de plaisir pour la cliente.",
-        "sourcingHint": "Write a 200-word fr-fr product-story fragment covering \"Art du soin à domicile pour matières premium\", applying sustainability-voice and premium-tone."
-      },
-      {
-        "heading": "L'évasion textile",
+        "heading": "L'Art du Soin des Matières Nobles",
         "kind": "reuse",
         "fragmentIds": [
-          "frag_043",
-          "frag_041"
+          "frag_313"
         ],
-        "rationale": "Utiliser le storytelling saisonnier et les notes de collection pour ancrer le contexte hivernal et la qualité des matières."
+        "rationale": "Reprendre l'approche de la pérennité et du soin des matières, en se concentrant sur le guide général plutôt que les taches spécifiques."
       },
       {
-        "heading": "Prendre soin de vos pièces maîtresses",
-        "kind": "reuse",
-        "fragmentIds": [
-          "frag_072"
-        ],
-        "rationale": "Inclure un contenu précis sur l'entretien des tissus délicats pour soutenir le thème du soin à domicile."
+        "heading": "Production Limitée : L'Exclusivité au Cœur de Votre Maison",
+        "kind": "new",
+        "rationale": "Valoriser l'aspect émotionnel et rare lié à la 'small batch production', aligné avec le premium-tone.",
+        "sourcingHint": "Write a 200-word fr-fr product-story fragment covering \"production en petites séries\", applying technical-precision and premium-tone and sustainability-voice."
       }
     ]
   },
   "reusedFragments": [
     {
-      "id": "frag_043",
-      "title": "Seasonal collection story: autumn / winter campaign — collection notes",
-      "category": "seasonal-campaign",
-      "targetAudience": "Brand-engaged shoppers (all genders, 29-37), Sénégal, browsing seasonal collections.",
+      "id": "frag_313",
+      "title": "Removing common stains from delicate fabrics — guide",
+      "category": "care-guide",
+      "targetAudience": "Existing customers (women, 25-31), Danemark, seeking guidance on garment longevity.",
       "brandGuidelinesApplied": [
-        "sustainability-voice",
+        "inclusive-language",
         "premium-tone"
       ],
       "locale": "fr-fr",
-      "lastModified": "2025-01-26T14:19:19.675Z",
-      "content": "L’arrivée de l'automne et, par extension, le murmure de l’hiver ne constituent pas une simple transition climatique ; ils sont un cycle qui appelle à la profondeur, au réconfort des matières nobles et à la beauté résiliente du temps long. C'est dans cette cadence que notre nouvelle saison prend forme, tissant plus qu'un vêtement : elle bâtit un récit de campagne, une histoire où chaque pièce est le fruit d’une attention méticuleuse et respectueuse.\n\nNous avons consacré ce cycle au retour aux fondamentaux de l'excellence artisanale. Chaque fil, sélectionné avec la plus grande exigence, porte l'empreinte d’un savoir-faire qui traverse les générations, nous engageant ainsi dans une démarche intrinsèquement durable. Il ne s’agit pas seulement de suivre une mode passagère, mais de perpétuer un patrimoine de qualité et de provenance.\n\nCette collection automne hiver est notre déclaration de ce nouvel engagement : une assemblée de pièces pensées pour traverser le temps et les saisons. Chaque coupe a été élaborée avec la précision d'un maître tailleur, conférant à cette sélection premium non seulement une élégance intemporelle, mais également une légèreté éthique. Nous vous invitons à parcourir ce lancement saisonnier qui est un hommage au voyage, que ce soit celui de nos mains expertes ou celui du cœur face à la beauté d'un paysage en mutation. Découvrez le luxe discret qui ne s’éteint jamais.",
-      "path": "/content/dam/aemcontentdisc/fr-fr/frag_043"
-    },
-    {
-      "id": "frag_041",
-      "title": "Sustainable knitwear and natural fibres for cold weather — collection notes",
-      "category": "product-story",
-      "targetAudience": "Quality-led shoppers (men, 22-34), Fidji, interested in considered fashion.",
-      "brandGuidelinesApplied": [
-        "sustainability-voice"
-      ],
-      "locale": "fr-fr",
-      "lastModified": "2026-04-05T21:15:18.943Z",
-      "content": "L'art de se couvrir pour l’hiver ne saurait être un simple acte de nécessité ; il est une extension du respect que l’on porte à soi et au vivant. Dans la tradition ancestrale du savoir-faire textile, le vêtement d'extérieur a toujours été un récit de provenance et d'adaptation au climat. C’est dans cette lignée que nous avons réinventé le concept même du confort durable, en sélectionnant rigoureusement les fibres qui ont fait leurs preuves au fil des saisons. Nos créations hivernales sont l'alliance parfaite entre une esthétique intemporelle et un engagement profond envers la planète. Nous privilégions les *natural fibres*, celles dont l’origine raconte une histoire de terre et d'artisanat respectueux. Découvrez notamment le mérinos, dont la finesse exceptionnelle confère chaleur et souplesse incomparable à chaque maille, idéal pour composer vos pièces de *cold-weather knitwear*. Parallèlement, l'utilisation du coton biologique offre un équilibre respirant, apportant une robustesse naturelle et un toucher doux. Choisir ces matériaux, c’est investir dans un patrimoine textile où la durabilité n’est pas une option, mais le fondement même de notre savoir-faire. C’est une démarche qui honore à la fois l'excellence artisanale et les cycles respectueux de la nature.",
-      "path": "/content/dam/aemcontentdisc/fr-fr/frag_041"
-    },
-    {
-      "id": "frag_072",
-      "title": "Removing common stains from delicate fabrics — collection notes",
-      "category": "care-guide",
-      "targetAudience": "Existing customers (women, 30-37), Slovénie, seeking guidance on garment longevity.",
-      "brandGuidelinesApplied": [
-        "inclusive-language",
-        "sustainability-voice"
-      ],
-      "locale": "fr-fr",
-      "lastModified": "2025-05-09T18:49:59.873Z",
-      "content": "Chaque pièce que vous portez est bien plus qu’un simple vêtement ; elle est un fragment de savoir-faire, le dépositaire d'une histoire et d'un artisanat qui traversent les générations. Honorer cette provenance exige une approche méticuleuse et empreinte de respect. Le temps et la beauté des articles précieux sont fragiles, et même les accidents du quotidien appellent à une intervention douce. L’art véritable de la garde réside dans la prévention et le retrait délicat des taches. Lorsque l'incident survient sur des textiles aussi sensibles que nos pièces en soie ou d’autres étoffes considérées comme des articles délicats, il faut aborder le soin avec la plus grande retenue. Nul besoin de gestes trop brusques ou de produits agressifs qui altéreraient les fibres au fil du temps. Pour un retrait efficace et respectueux, privilégiez toujours l'action immédiate sur une zone isolée, en utilisant uniquement des savons neutres et une eau tiède. Laissez la nature même du tissu guider votre geste : tamponnez sans jamais frotter, car le frottement est l'ennemi silencieux de la fibre. En adoptant cette sobriété dans vos pratiques de soin, vous ne faites pas qu’enlever un défaut ; vous perpétuez une tradition de conservation et d'appréciation qui assure à chaque pièce sa pérennité, son héritage pour les décennies futures.",
-      "path": "/content/dam/aemcontentdisc/fr-fr/frag_072"
+      "lastModified": "2025-09-11T19:48:30.295Z",
+      "content": "La véritable élégance réside dans la pérennité. Nos pièces sont conçues pour raconter votre histoire au fil des saisons, exigeant un soin qui est à la hauteur de leur beauté intrinsèque. Face aux imprévus quotidiens, l'art de l'enlèvement de taches nécessite une approche empreinte de douceur et de précision. Pour les matières les plus nobles, telles que la soie, où chaque fibre mérite respect, le geste compte autant que le produit utilisé.\n\nLorsque vous traitez vos articles délicats, rappelez-vous qu’une intervention précoce est toujours votre alliée. Il est préférable de réagir immédiatement à une marque incrustée plutôt que d'attendre qu'elle prenne racine dans le tissu. Privilégiez systématiquement des méthodes localisées et des nettoyants au pH neutre. Laissez-nous vous guider : pour un simple accident, un peu de savon doux appliqué avec la paume est souvent suffisant avant même de penser à l’eau courante.\n\nLe secret d'une garde-robe intemporelle ne réside pas seulement dans le choix des étoffes, mais dans la dévotion que vous leur témoignez au quotidien. Nous vous invitons ainsi à considérer chaque entretien non pas comme une corvée, mais comme un rituel de préservation. Ainsi, votre soie et tous vos articles délicats continueront de rayonner avec autant de grâce aujourd'hui qu'au premier jour où ils ont été créés pour vous.",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_313"
     }
   ]
 }

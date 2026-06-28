@@ -1,0 +1,23 @@
+{
+  "slug": "fr-fr-cuir-maroquinerie",
+  "brief": "Nous publions une page de collection pour notre maroquinerie en cuir, fabriquée dans des ateliers d'héritage. Cible: clientèle française, 30-55 ans, qui investit dans des accessoires durables et trans",
+  "locale": "fr-fr",
+  "startedAt": "2026-06-28T14:22:05.754Z",
+  "finishedAt": "2026-06-28T14:22:40.298Z",
+  "durationMs": 34544,
+  "stageDurations": {
+    "parseBrief": 5288,
+    "retrieve": 85,
+    "analyseGaps": 14729,
+    "compose": 14442
+  },
+  "chatModel": "google/gemma-4-e4b",
+  "embeddingModel": "embeddinggemma-300m",
+  "matchedFragmentCount": 3,
+  "gapCounts": {
+    "none": 2,
+    "partial": 2
+  },
+  "status": "ok",
+  "retryCount": 0
+}

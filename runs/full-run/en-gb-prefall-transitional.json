@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "1.0",
+  "brief": {
+    "audience": "Existing customers (28–45) seeking transitional wardrobe pieces",
+    "locale": "en-gb",
+    "tone": "premium",
+    "brandGuidelines": [
+      "sustainability-voice",
+      "premium-tone"
+    ],
+    "requiredTopics": [
+      "pre-fall edit",
+      "transitional layering pieces",
+      "natural fibres for autumn",
+      "circular fashion commitment"
+    ],
+    "pathHint": "/en-gb/collections/pre-fall-transitional"
+  },
+  "matchedFragments": [
+    {
+      "id": "frag_102",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_102",
+      "score": 0.6537551839380608,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone; fresh content"
+    },
+    {
+      "id": "frag_029",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_029",
+      "score": 0.6480571736855452,
+      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice+premium-tone; fresh content"
+    },
+    {
+      "id": "frag_090",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_090",
+      "score": 0.6417182613739265,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone; fresh content"
+    }
+  ],
+  "gaps": [
+    {
+      "topic": "pre-fall edit",
+      "coverage": "partial",
+      "description": "While multiple guides address the pre-fall period and align with brand guidelines, a single, cohesive piece that utilizes all these elements holistically is required for optimal coverage.",
+      "partialMatches": [
+        "frag_029",
+        "frag_045",
+        "frag_030",
+        "frag_051"
+      ],
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"pre-fall edit\", applying sustainability-voice and premium-tone."
+    },
+    {
+      "topic": "transitional layering pieces",
+      "coverage": "partial",
+      "description": "Multiple guides provide excellent, guideline-aligned content on layering and transition; however, a single unified article combining these elements would create a stronger user experience.",
+      "partialMatches": [
+        "frag_029",
+        "frag_030",
+        "frag_045",
+        "frag_102"
+      ],
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"transitional layering pieces\", applying sustainability-voice and premium-tone."
+    },
+    {
+      "topic": "natural fibres for autumn",
+      "coverage": "partial",
+      "description": "Several fragments mention natural fibers (like cashmere or general knits), but few successfully combine this specific material focus with the necessary premium brand tone in a dedicated guide.",
+      "partialMatches": [
+        "frag_023",
+        "frag_006",
+        "frag_002"
+      ],
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"natural fibres for autumn\", applying sustainability-voice and premium-tone."
+    },
+    {
+      "topic": "circular fashion commitment",
+      "coverage": "partial",
+      "description": "Although a fragment addresses recycled materials and circular fashion, it lacks the depth or supporting narrative needed to establish a robust, comprehensive brand commitment story.",
+      "partialMatches": [
+        "frag_005"
+      ],
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"circular fashion commitment\", applying sustainability-voice and premium-tone."
+    }
+  ],
+  "draftOutline": {
+    "title": "The Ultimate Guide to Transitional Pre-Fall Wardrobes",
+    "pathHint": "/en-gb/collections/pre-fall-transitional",
+    "sections": [
+      {
+        "heading": "Embracing the Transitional Pause: The Pre-Fall Edit",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_090",
+          "frag_029"
+        ],
+        "rationale": "Sets a premium, atmospheric tone by defining the 'between season' period and introducing the concept of thoughtful dressing."
+      },
+      {
+        "heading": "Mastering Transitional Layering Pieces",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_102"
+        ],
+        "rationale": "Provides immediate, practical styling guidance by leveraging existing content focused specifically on layering techniques for seasonal shifts."
+      },
+      {
+        "heading": "Investing in Natural Fibres: Autumn Materials",
+        "kind": "new",
+        "rationale": "Dedicates space to the required material focus, guiding customers toward luxurious and sustainable natural fibres.",
+        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"natural fibres for autumn\", applying sustainability-voice and premium-tone."
+      },
+      {
+        "heading": "Our Commitment to Circular Fashion",
+        "kind": "new",
+        "rationale": "Builds brand trust by establishing a robust narrative around circularity, linking style choices to responsible consumption.",
+        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"circular fashion commitment\", applying sustainability-voice and premium-tone."
+      }
+    ]
+  },
+  "reusedFragments": [
+    {
+      "id": "frag_090",
+      "title": "Pre-fall edit: between-season layering pieces — collection notes",
+      "category": "seasonal-campaign",
+      "targetAudience": "Brand-engaged shoppers (all genders, 24-33), Moldova, browsing seasonal collections.",
+      "brandGuidelinesApplied": [
+        "premium-tone"
+      ],
+      "locale": "en-gb",
+      "lastModified": "2026-02-17T01:09:37.287Z",
+      "content": "The shift in light is subtle, yet profound. We are suspended in that beautiful space between seasons—a time of gentle deceleration where days carry the crispness of autumn mornings but hold the warmth of lingering sun. This capsule collection has been curated for those moments of exquisite transition; pieces designed to move seamlessly through changing conditions. Embrace the art of dressing across degrees, knowing your wardrobe can adapt as effortlessly as you do.\n\nDiscover foundational silhouettes built around luxurious layering. Think soft cashmere paired with structured wools, or crisp cotton elevated by a touch of rich tweed. These transitional pieces are imbued with muted hues—deep olive greens, smoky charcoals, and rust tones—that capture the complex palette of late summer meeting early autumn. Our goal has been to provide staples that offer both depth and lightness, ensuring you remain perfectly attired whether navigating a bustling afternoon market or enjoying an evening walk under the cooling sky. This pre-fall edit is your blueprint for sophisticated seasonal dressing; garments designed not just for today's weather, but for weeks of evolving style.",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_090"
+    },
+    {
+      "id": "frag_029",
+      "title": "Pre-fall edit: between-season layering pieces — guide",
+      "category": "care-guide",
+      "targetAudience": "Existing customers (women, 22-36), Bhutan, seeking guidance on garment longevity.",
+      "brandGuidelinesApplied": [
+        "sustainability-voice",
+        "premium-tone"
+      ],
+      "locale": "en-gb",
+      "lastModified": "2026-06-04T14:41:15.817Z",
+      "content": "As the seasons gracefully shift, we find ourselves in one of fashion's most beautiful moments: the truly transitional pause. This is where true style emerges, rooted not in fleeting trends, but in masterful construction and mindful dressing. Our latest pre-fall edit has been curated specifically for those subtle shifts, offering pieces designed around the art of sophisticated layering.\n\nTo dress intentionally at this time of year requires a thoughtful approach to your wardrobe. We encourage you to explore how our core staples—a cashmere wrap over tailored trousers, or silk blouses beneath structured jackets—can work together in unexpected harmony. This method of building outfits allows you to adapt effortlessly to fluctuating temperatures and mood, ensuring your look remains impeccable from dawn till dusk.\n\nCrucially, embracing quality means caring for it. To maintain the integrity and lasting elegance of these investment pieces, always consider the garment's lifecycle. When assembling your seasonal capsule wardrobe, remember that proper care—gentle washing techniques and mindful storage—is integral to its longevity. By treating each piece with intention, you deepen its character and ensure that the beauty of our craftsmanship remains vibrant for seasons yet to come. This is dressing with permanence; this is true style.",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_029"
+    },
+    {
+      "id": "frag_102",
+      "title": "Pre-fall edit: between-season layering pieces",
+      "category": "seasonal-campaign",
+      "targetAudience": "Brand-engaged shoppers (women, 34-46), Liberia, browsing seasonal collections.",
+      "brandGuidelinesApplied": [
+        "premium-tone"
+      ],
+      "locale": "en-gb",
+      "lastModified": "2026-04-05T23:01:37.843Z",
+      "content": "The season shifts subtly; the bright blaze of summer yields to a softer, more nuanced light that stretches across the landscape. This beautiful interlude demands an approach to dressing as thoughtful and fluid as the air itself. Our curated collection has been edited for those moments—the breezy morning walk, the late afternoon gathering, or an evening when the day's warmth begins its gentle retreat. It is a time best celebrated through masterful layering.\n\nWe invite you into the elegance of transitional pieces designed to adapt effortlessly from one moment to the next. Think luxurious knits in washed linen blends, fine merino cardigans draped over silk dresses, and structured jackets cut from breathable wool twill. These are not merely garments; they are anchors for your style through this beautiful pre-fall interval.\n\nEmbrace the art of the overlap. A simple slip dress paired with a finely woven jacket, or lightweight trousers topped with a delicate shawl—each piece is intended to be mixed, matched, and worn in countless combinations. Discover foundational silhouettes built upon textural depth, ensuring that your wardrobe moves with you through every change of weather, maintaining an undeniable sense of effortless polish until the season fully embraces autumn's rich hues.",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_102"
+    }
+  ]
+}

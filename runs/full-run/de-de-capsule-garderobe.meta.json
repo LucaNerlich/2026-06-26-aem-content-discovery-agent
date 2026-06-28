@@ -1,0 +1,23 @@
+{
+  "slug": "de-de-capsule-garderobe",
+  "brief": "Wir bauen eine Landing Page für eine Capsule-Garderobe für den deutschen Markt. Zielgruppe: bewusste Konsumentinnen und Konsumenten, 28-45, die weniger, aber besser kaufen möchten. Die Seite muss abde",
+  "locale": "de-de",
+  "startedAt": "2026-06-28T14:16:14.598Z",
+  "finishedAt": "2026-06-28T14:16:44.921Z",
+  "durationMs": 30323,
+  "stageDurations": {
+    "parseBrief": 4303,
+    "retrieve": 76,
+    "analyseGaps": 13427,
+    "compose": 12517
+  },
+  "chatModel": "google/gemma-4-e4b",
+  "embeddingModel": "embeddinggemma-300m",
+  "matchedFragmentCount": 3,
+  "gapCounts": {
+    "none": 0,
+    "partial": 3
+  },
+  "status": "ok",
+  "retryCount": 0
+}

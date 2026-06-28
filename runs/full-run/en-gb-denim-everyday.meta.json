@@ -1,0 +1,23 @@
+{
+  "slug": "en-gb-denim-everyday",
+  "brief": "I'm writing a product-story page for our everyday denim collection in the UK market. Audience: shoppers of all genders, 22–40, who want one pair of jeans that fits well and lasts, not a wardrobe of di",
+  "locale": "en-gb",
+  "startedAt": "2026-06-28T14:18:34.417Z",
+  "finishedAt": "2026-06-28T14:18:59.354Z",
+  "durationMs": 24937,
+  "stageDurations": {
+    "parseBrief": 947,
+    "retrieve": 64,
+    "analyseGaps": 14977,
+    "compose": 8949
+  },
+  "chatModel": "google/gemma-4-e4b",
+  "embeddingModel": "embeddinggemma-300m",
+  "matchedFragmentCount": 3,
+  "gapCounts": {
+    "none": 1,
+    "partial": 2
+  },
+  "status": "ok",
+  "retryCount": 0
+}

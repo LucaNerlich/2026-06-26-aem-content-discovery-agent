@@ -1,0 +1,23 @@
+{
+  "slug": "fr-fr-soie-heritage",
+  "brief": "Nous lançons une page de collection consacrée à nos foulards en soie pour le marché français. Cible: clientes attentives au savoir-faire, 35-60 ans, sensibles à l'origine et aux techniques de fabricat",
+  "locale": "fr-fr",
+  "startedAt": "2026-06-28T14:23:35.084Z",
+  "finishedAt": "2026-06-28T14:24:03.905Z",
+  "durationMs": 28821,
+  "stageDurations": {
+    "parseBrief": 3563,
+    "retrieve": 77,
+    "analyseGaps": 15716,
+    "compose": 9465
+  },
+  "chatModel": "google/gemma-4-e4b",
+  "embeddingModel": "embeddinggemma-300m",
+  "matchedFragmentCount": 3,
+  "gapCounts": {
+    "none": 1,
+    "partial": 3
+  },
+  "status": "ok",
+  "retryCount": 0
+}

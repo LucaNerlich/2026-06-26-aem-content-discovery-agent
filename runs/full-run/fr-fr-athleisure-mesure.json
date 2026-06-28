@@ -1,0 +1,163 @@
+{
+  "schemaVersion": "1.0",
+  "brief": {
+    "audience": "Clientèle urbaine (28-45 ans)",
+    "locale": "fr-fr",
+    "tone": "Premium",
+    "brandGuidelines": [
+      "sustainability-voice",
+      "premium-tone",
+      "inclusive-language",
+      "technical-precision"
+    ],
+    "requiredTopics": [
+      "Athleisure minimaliste et mesuré",
+      "Confort des fibres naturelles",
+      "Engagement matériaux durables"
+    ],
+    "pathHint": "/fr-fr/collections/athleisure-mesure"
+  },
+  "matchedFragments": [
+    {
+      "id": "frag_396",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_396",
+      "score": 0.6707310943162589,
+      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice+inclusive-language+premium-tone"
+    },
+    {
+      "id": "frag_201",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_201",
+      "score": 0.6088889271763875,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone+sustainability-voice"
+    },
+    {
+      "id": "frag_249",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_249",
+      "score": 0.607778631573696,
+      "reason": "Partial semantic match; strong keyword overlap; brand: inclusive-language; fresh content"
+    }
+  ],
+  "gaps": [
+    {
+      "topic": "Athleisure minimaliste et mesuré",
+      "coverage": "partial",
+      "description": "Although several fragments address athleisure and restraint, none fully integrate all brand guidelines, specifically failing to provide comprehensive coverage across technical precision or consistent premium tone.",
+      "partialMatches": [
+        "frag_365"
+      ],
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"Athleisure minimaliste et mesuré\", applying sustainability-voice and premium-tone and inclusive-language and technical-precision."
+    },
+    {
+      "topic": "Confort des fibres naturelles",
+      "coverage": "partial",
+      "description": "While specific articles mention linen or knitwear, the coverage is limited to seasonal contexts rather than offering a comprehensive guide on the general comfort benefits of various natural fibers.",
+      "partialMatches": [
+        "frag_201",
+        "frag_321"
+      ],
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"Confort des fibres naturelles\", applying sustainability-voice and premium-tone and inclusive-language and technical-precision."
+    },
+    {
+      "topic": "Engagement matériaux durables",
+      "coverage": "partial",
+      "description": "While sustainability is mentioned frequently, only one fragment directly addresses advanced concepts like recycled materials and circular fashion, falling short on meeting all required tone guidelines.",
+      "partialMatches": [
+        "frag_204"
+      ],
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"Engagement matériaux durables\", applying sustainability-voice and premium-tone and inclusive-language and technical-precision."
+    },
+    {
+      "topic": "Brand guideline coverage: technical-precision",
+      "coverage": "none",
+      "description": "No top match applies the `technical-precision` brand guideline required by the brief.",
+      "partialMatches": [],
+      "suggestedAction": "Add fragments tagged `technical-precision` (alongside sustainability-voice, premium-tone, inclusive-language) for the fr-fr corpus so this brand voice is represented in the top matches."
+    }
+  ],
+  "draftOutline": {
+    "title": "Athleisure minimaliste : L'alliance de la durabilité et du raffinement pour une clientèle urbaine",
+    "pathHint": "/fr-fr/collections/athleisure-mesure",
+    "sections": [
+      {
+        "heading": "L’élégance mesurée et le luxe discret de l'athlétisme revisité",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_396"
+        ],
+        "rationale": "Ce fragment capture bien l'idée d'un style fluide et raffiné, essentiel pour un athleisure premium."
+      },
+      {
+        "heading": "Le confort supérieur des fibres naturelles : une seconde peau",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_249"
+        ],
+        "rationale": "Ce fragment illustre la légèreté et le confort associés aux matières naturelles, crucial pour un usage quotidien premium."
+      },
+      {
+        "heading": "Les fibres naturelles au cœur de votre bien-être",
+        "kind": "new",
+        "rationale": "Synthétiser l'importance du confort des fibres naturelles en profondeur, allant au-delà de simples descriptions saisonnières.",
+        "sourcingHint": "Écrire un fragment produit de 200 mots sur \"Confort des fibres naturelles\", appliquant sustainability-voice et premium-tone et inclusive-language et technical-precision."
+      },
+      {
+        "heading": "Nos engagements : des matériaux durables au service de votre style",
+        "kind": "new",
+        "rationale": "Aborder l'aspect engagement durable et la traçabilité des matériaux pour répondre aux préoccupations éthiques de l'audience urbaine.",
+        "sourcingHint": "Écrire un fragment produit de 200 mots sur \"Engagement matériaux durables\", appliquant sustainability-voice et premium-tone et inclusive-language et technical-precision."
+      },
+      {
+        "heading": "Adapter le vêtement au rythme changeant des saisons",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_201"
+        ],
+        "rationale": "Ce fragment offre une perspective saisonnière (automne/froid) et peut être utilisé pour montrer la polyvalence de l'offre athleisure."
+      }
+    ]
+  },
+  "reusedFragments": [
+    {
+      "id": "frag_396",
+      "title": "Athleisure done with restraint",
+      "category": "product-story",
+      "targetAudience": "Quality-led shoppers (men, 28-41), Saint-Vincent-et-les-Grenadines, interested in considered fashion.",
+      "brandGuidelinesApplied": [
+        "sustainability-voice",
+        "inclusive-language",
+        "premium-tone"
+      ],
+      "locale": "fr-fr",
+      "lastModified": "2025-08-12T04:10:10.785Z",
+      "content": "Sous le ciel lumineux des Grenadines, où l’air est chargé du sel et de la chaleur tropicale, certaines pièces sont plus que jamais synonymes de fluidité. Nous croyons au luxe discret, à cette élégance qui ne crie pas mais murmure sa présence avec chaque mouvement. Loin du superflu, nous avons conçu des essentiels pensés pour le rythme décontracté, qu'il s’agisse d’une matinée sur la plage ou d'un dîner improvisé en bord de mer. C’est l’art d’intégrer le sportswear sophistiqué dans votre quotidien, une approche que nous appelons un chic minimaliste.\n\nL’athleisure ne doit jamais compromettre le raffinement. Il s'agit plutôt de réinventer le confort pour qu'il devienne une seconde peau. Nos coupes sont pensées pour épouser la silhouette sans contraindre, utilisant des matières naturelles et durables qui respirent au rythme du soleil. Le résultat est un vestiaire restreint mais profondément réfléchi : des pièces minimalistes par essence, capables de vous accompagner avec aisance, peu importe le changement d'ambiance de votre journée. Ce confort subtil n'est pas une concession ; c'est la fondation même d'une garde-robe mature et intentionnelle. Redécouvrir l’équilibre parfait entre performance et allure, c'est retrouver sa sérénité dans le mouvement.",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_396"
+    },
+    {
+      "id": "frag_249",
+      "title": "Summer linen essentials for warm climates — collection notes",
+      "category": "product-story",
+      "targetAudience": "Quality-led shoppers (men, 37-44), Guinée, interested in considered fashion.",
+      "brandGuidelinesApplied": [
+        "inclusive-language"
+      ],
+      "locale": "fr-fr",
+      "lastModified": "2026-06-05T23:28:29.858Z",
+      "content": "Quand la chaleur de l'été équatorial s’installe, seule la légèreté véritable est un réconfort. Les après-midi guinéens appellent à une élégance décontractée, où chaque mouvement doit être fluide et apaisé par la brise qui caresse la peau. C’est le moment de se reconnecter aux matières premières nobles, celles qui respirent avec le rythme du climat.\n\nLe lin est cette réponse intemporelle. Sa texture légèrement froissée n'est pas un défaut, mais la signature même d'un confort vécu, d'une matière qui s'adapte à l'humidité sans jamais compromettre l'allure. On y retrouve une fraîcheur immédiate, un drapé qui offre cette sensation de respirer. Il est parfait pour ces longues journées en bord de mer ou lors des rencontres sous le soleil ardent, lorsque les étoffes plus lourdes deviennent un fardeau.\n\nChoisir des pièces au lin, c’est investir dans la saison elle-même. C'est adopter une garde-robe qui dialogue avec l'environnement, alliant la robustesse du savoir-faire à la délicatesse d'un souffle tiède. Laissez les fibres naturelles guider votre quotidien estival : un confort si naturel qu'il semble venir du vent même.",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_249"
+    },
+    {
+      "id": "frag_201",
+      "title": "Sustainable knitwear and natural fibres for cold weather",
+      "category": "product-story",
+      "targetAudience": "Quality-led shoppers (men, 34-47), Islande, interested in considered fashion.",
+      "brandGuidelinesApplied": [
+        "premium-tone",
+        "sustainability-voice"
+      ],
+      "locale": "fr-fr",
+      "lastModified": "2025-09-06T06:53:33.903Z",
+      "content": "Face aux embruns et au souffle vif de l’automne qui s’installe, le vêtement ne doit pas être un simple rempart contre le froid, mais une seconde peau empreinte d’élégance discrète. Nous avons réinventé l'art des tricots d'hiver autour d’une quête incessante de noblesse matérielle et de respect pour la terre. Notre sélection repose sur le savoir-faire transmis à travers les générations et l'excellence intrinsèque des fibres naturelles.\n\nAu cœur de cette collection, vous retrouverez la douceur incomparable de la laine mérinos. Renommée pour sa régulation thermique exceptionnelle et son toucher aérien, elle enveloppe avec une chaleur délicate qui dure au-delà du crépuscule. Nous avons également intégré le coton biologique, alliant une résistance durable à un confort inégalé, parfait en association avec des mélanges de fibres naturelles plus structurantes.\n\nChoisir nos pièces, c’est opter pour une capsule de garde-robe réfléchie. Ce sont des essentiels conçus non seulement pour traverser les saisons froides mais aussi pour défier le temps. Chaque maille raconte une histoire de traçabilité et d'éthique, vous permettant d'adopter un luxe mesuré qui ne fait aucun compromis entre l’esthétique pointue et la conscience écologique. C'est l’incarnation du chic intemporel, porté avec sérénité.",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_201"
+    }
+  ]
+}

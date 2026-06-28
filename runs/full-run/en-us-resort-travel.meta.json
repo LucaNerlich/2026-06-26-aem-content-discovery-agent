@@ -1,0 +1,23 @@
+{
+  "slug": "en-us-resort-travel",
+  "brief": "We're launching a resort and travel landing page for the US market ahead of the winter-getaway season. Audience: US travellers (men and women, 30+) packing for warm-weather trips who want versatile, r",
+  "locale": "en-us",
+  "startedAt": "2026-06-28T14:21:08.097Z",
+  "finishedAt": "2026-06-28T14:21:43.347Z",
+  "durationMs": 35250,
+  "stageDurations": {
+    "parseBrief": 4818,
+    "retrieve": 73,
+    "analyseGaps": 18457,
+    "compose": 11902
+  },
+  "chatModel": "google/gemma-4-e4b",
+  "embeddingModel": "embeddinggemma-300m",
+  "matchedFragmentCount": 3,
+  "gapCounts": {
+    "none": 0,
+    "partial": 4
+  },
+  "status": "ok",
+  "retryCount": 0
+}

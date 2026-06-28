@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "1.0",
+  "brief": {
+    "audience": "French consumers investing in durable goods",
+    "locale": "fr-fr",
+    "tone": "premium",
+    "brandGuidelines": [
+      "sustainability-voice",
+      "premium-tone"
+    ],
+    "requiredTopics": [
+      "handcrafted leather pieces",
+      "heritage workshop expertise",
+      "leather maintenance and care",
+      "responsible material sourcing"
+    ],
+    "pathHint": "/fr-fr/collections/maroquinerie-cuir"
+  },
+  "matchedFragments": [
+    {
+      "id": "frag_286",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_286",
+      "score": 0.6672295641112317,
+      "reason": "Strong semantic match; strong keyword overlap; brand: premium-tone"
+    },
+    {
+      "id": "frag_361",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_361",
+      "score": 0.6598350640171207,
+      "reason": "Strong semantic match; strong keyword overlap; brand: sustainability-voice; fresh content"
+    },
+    {
+      "id": "frag_223",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_223",
+      "score": 0.6456727486740045,
+      "reason": "Strong semantic match; strong keyword overlap; brand: premium-tone"
+    }
+  ],
+  "gaps": [
+    {
+      "topic": "handcrafted leather pieces",
+      "coverage": "partial",
+      "description": "While multiple fragments showcase handcrafted goods, only one (frag_399) successfully combines all required brand guidelines while discussing these pieces.",
+      "partialMatches": [
+        "frag_228",
+        "frag_267",
+        "frag_399"
+      ],
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"handcrafted leather pieces\", applying sustainability-voice and premium-tone."
+    },
+    {
+      "topic": "heritage workshop expertise",
+      "coverage": "partial",
+      "description": "The best dedicated coverage (frag_399) successfully hits all brand guidelines but does not represent a comprehensive view of the depth required for this critical topic.",
+      "partialMatches": [
+        "frag_228",
+        "frag_267",
+        "frag_399"
+      ],
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"heritage workshop expertise\", applying sustainability-voice and premium-tone."
+    },
+    {
+      "topic": "leather maintenance and care",
+      "coverage": "none",
+      "description": "While several fragments cover leather storage or general care (e.g., frag_358), none successfully combine both the mandatory premium tone and sustainability voice in a dedicated guide.",
+      "partialMatches": [],
+      "suggestedAction": "Write a 200-word fr-fr care-guide fragment covering \"leather maintenance and care\", applying sustainability-voice and premium-tone."
+    },
+    {
+      "topic": "responsible material sourcing",
+      "coverage": "none",
+      "description": "None of the candidate fragments explicitly discuss the origin or traceability of materials (i.e., responsible sourcing) while adhering to both premium tone and sustainability voice.",
+      "partialMatches": [],
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"responsible material sourcing\", applying sustainability-voice and premium-tone."
+    }
+  ],
+  "draftOutline": {
+    "title": "L'Art du Cuir : Pièces Héritage et Savoir-Faire Français",
+    "pathHint": "/fr-fr/collections/maroquinerie-cuir",
+    "sections": [
+      {
+        "heading": "Le savoir-faire artisanal au cœur de nos créations",
+        "kind": "new",
+        "rationale": "Engage the premium audience by immediately highlighting the human element and dedication behind each piece.",
+        "sourcingHint": "Write a 200-word fr-fr product-story fragment covering \"handcrafted leather pieces\", applying sustainability-voice and premium-tone."
+      },
+      {
+        "heading": "L'héritage de nos ateliers : Un savoir-faire transmis",
+        "kind": "new",
+        "rationale": "Establish credibility by detailing the deep, generational knowledge of the workshop.",
+        "sourcingHint": "Write a 200-word fr-fr product-story fragment covering \"heritage workshop expertise\", applying sustainability-voice and premium-tone."
+      },
+      {
+        "heading": "Un engagement responsable : Nos sources de matériaux",
+        "kind": "new",
+        "rationale": "Build trust with the eco-conscious consumer by explicitly addressing material origin.",
+        "sourcingHint": "Write a 200-word fr-fr product-story fragment covering \"responsible material sourcing\", applying sustainability-voice and premium-tone."
+      },
+      {
+        "heading": "Entretenir votre cuir : Un art de la préservation",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_223"
+        ],
+        "rationale": "Provide practical, expert advice on caring for the investment, using existing editorial content that speaks to longevity and history."
+      }
+    ]
+  },
+  "reusedFragments": [
+    {
+      "id": "frag_223",
+      "title": "How to store leather accessories",
+      "category": "care-guide",
+      "targetAudience": "Existing customers (women, 28-41), Russie, seeking guidance on garment longevity.",
+      "brandGuidelinesApplied": [
+        "premium-tone"
+      ],
+      "locale": "fr-fr",
+      "lastModified": "2025-11-25T19:30:13.955Z",
+      "content": "Le cuir n'est pas qu'un matériau ; il est le témoin silencieux d'histoires et de mains qui l'ont porté au fil des saisons. Pour que ces pièces maîtresses conservent la noblesse de leur origine, elles exigent une attention constante, un véritable rituel de conservation. La pérennité de vos accessoires dépend en grande partie de la manière dont ils sont entreposés. Il est impératif d'assurer une ventilation optimale, éloignant les cuirs des sources d'humidité et de chaleur excessive qui peuvent altérer leurs fibres délicates. Pour le stockage à long terme, privilégiez toujours des housses respirantes, en cuir ou en coton non traité, plutôt que des sacs synthétiques hermétiques.\n\nAu-delà du simple rangement, la véritable *leather care* réside dans l'anticipation. Ne laissez jamais vos pièces se retrouver empilées sans espace ; chaque article doit pouvoir 'respirer'. Lorsque vous constatez les premiers signes de sécheresse ou d'opacité, n'attendez pas qu'un problème survienne. L’étape du *conditioning* régulier est essentielle : elle nourrit le cuir en profondeur, lui redonnant son souplesse initiale et préservant l'éclat de sa patine unique. Un entretien préventif, respectueux des traditions d'artisanat, garantira que vos précieux accessoires continueront à raconter votre histoire avec une splendeur intemporelle.",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_223"
+    }
+  ]
+}

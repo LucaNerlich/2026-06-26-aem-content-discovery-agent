@@ -1,0 +1,23 @@
+{
+  "slug": "en-us-evening-occasion",
+  "brief": "We're publishing an occasion-wear landing page for the US holiday party season. Audience: US shoppers (all genders, 28–50) dressing for evening events and celebrations. The page must cover: our evenin",
+  "locale": "en-us",
+  "startedAt": "2026-06-28T14:20:15.818Z",
+  "finishedAt": "2026-06-28T14:20:35.641Z",
+  "durationMs": 19823,
+  "stageDurations": {
+    "parseBrief": 923,
+    "retrieve": 59,
+    "analyseGaps": 15666,
+    "compose": 3175
+  },
+  "chatModel": "google/gemma-4-e4b",
+  "embeddingModel": "embeddinggemma-300m",
+  "matchedFragmentCount": 3,
+  "gapCounts": {
+    "none": 0,
+    "partial": 4
+  },
+  "status": "ok",
+  "retryCount": 0
+}

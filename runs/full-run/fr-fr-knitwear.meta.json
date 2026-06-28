@@ -2,14 +2,14 @@
   "slug": "fr-fr-knitwear",
   "brief": "Nous lançons une page de collection pour notre gamme de tricots durables et de pièces de superposition en fibres naturelles pour l'hiver. Cible: femmes attentives à la qualité, en France, intéressées ",
   "locale": "fr-fr",
-  "startedAt": "2026-06-28T13:18:27.614Z",
-  "finishedAt": "2026-06-28T13:19:25.347Z",
-  "durationMs": 57733,
+  "startedAt": "2026-06-28T14:22:40.298Z",
+  "finishedAt": "2026-06-28T14:23:12.384Z",
+  "durationMs": 32086,
   "stageDurations": {
-    "parseBrief": 4754,
-    "retrieve": 32,
-    "analyseGaps": 11629,
-    "compose": 13062
+    "parseBrief": 3091,
+    "retrieve": 55,
+    "analyseGaps": 15667,
+    "compose": 13273
   },
   "chatModel": "google/gemma-4-e4b",
   "embeddingModel": "embeddinggemma-300m",
@@ -19,5 +19,5 @@
     "partial": 3
   },
   "status": "ok",
-  "retryCount": 1
+  "retryCount": 0
 }

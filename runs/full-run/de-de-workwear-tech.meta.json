@@ -2,21 +2,21 @@
   "slug": "de-de-workwear-tech",
   "brief": "Wir veröffentlichen eine technische Workwear-Kollektionsseite für den deutschen Markt, zugeschnitten auf Handwerker und Außendienstmitarbeiter, die Kleidung mit messbarer Leistung erwarten. Zielgruppe",
   "locale": "de-de",
-  "startedAt": "2026-06-28T13:16:44.273Z",
-  "finishedAt": "2026-06-28T13:17:16.246Z",
-  "durationMs": 31973,
+  "startedAt": "2026-06-28T14:17:12.940Z",
+  "finishedAt": "2026-06-28T14:17:42.465Z",
+  "durationMs": 29525,
   "stageDurations": {
-    "parseBrief": 3737,
-    "retrieve": 55,
-    "analyseGaps": 12754,
-    "compose": 15427
+    "parseBrief": 4458,
+    "retrieve": 87,
+    "analyseGaps": 12258,
+    "compose": 12722
   },
   "chatModel": "google/gemma-4-e4b",
   "embeddingModel": "embeddinggemma-300m",
   "matchedFragmentCount": 3,
   "gapCounts": {
     "none": 3,
-    "partial": 4
+    "partial": 2
   },
   "status": "ok",
   "retryCount": 0

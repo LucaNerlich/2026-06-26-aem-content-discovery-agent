@@ -2,86 +2,83 @@
 
 | # | id | path | score | reason |
 |---|----|------|-------|--------|
-| 1 | <a id="frag_002"></a>`frag_002` | `/content/dam/aemcontentdisc/en-gb/frag_002` | 0.638 | Partial semantic match; strong keyword overlap; brand: sustainability-voice; fresh content |
-| 2 | <a id="frag_035"></a>`frag_035` | `/content/dam/aemcontentdisc/en-gb/frag_035` | 0.536 | Partial semantic match; strong keyword overlap; brand: sustainability-voice; fresh content |
-| 3 | <a id="frag_020"></a>`frag_020` | `/content/dam/aemcontentdisc/en-gb/frag_020` | 0.495 | Partial semantic match; strong keyword overlap; brand: sustainability-voice |
+| 1 | <a id="frag_001"></a>`frag_001` | `/content/dam/aemcontentdisc/en-gb/frag_001` | 0.691 | Partial semantic match; strong keyword overlap; brand: sustainability-voice; fresh content |
+| 2 | <a id="frag_146"></a>`frag_146` | `/content/dam/aemcontentdisc/en-gb/frag_146` | 0.590 | Partial semantic match; strong keyword overlap; brand: sustainability-voice+premium-tone; older content |
+| 3 | <a id="frag_006"></a>`frag_006` | `/content/dam/aemcontentdisc/en-gb/frag_006` | 0.568 | Partial semantic match; strong keyword overlap; brand: sustainability-voice; fresh content |
 
 ## Gap Analysis
 
+### Coverage: none
+
+#### Garment care instructions
+While several fragments address specific types of garment care (hats, stains), there is no comprehensive 'Outerwear Care Guide' that addresses cleaning, storage, and longevity for the entire category.
+- Suggested action: Write a 200-word en-gb care-guide fragment covering "Garment care instructions", applying sustainability-voice and premium-tone and technical-precision.
+
 ### Coverage: partial
 
-#### recycled wool insulation specs
-Only one fragment mentions recycled wool, but it appears to be a high-level editorial piece rather than providing technical specifications or detailed performance data for the product.
+#### Technical specifications (recycled wool)
+The existing content mentions recycled wool but does not provide deep, quantifiable technical data, such as fiber weight, tensile strength, or performance ratings required for a detail-oriented audience.
 - Partial matches: [`frag_001`](#frag_001)
-- Suggested action: Write a 200-word en-gb product-story fragment covering "recycled wool insulation specs", applying technical-precision and sustainability-voice.
+- Suggested action: Write a 200-word en-gb product-story fragment covering "Technical specifications (recycled wool)", applying sustainability-voice and premium-tone and technical-precision.
 
-#### sustainable material composition
-Multiple fragments touch on sustainability and recycled materials across various items. However, there is no single, comprehensive guide detailing the sustainable composition methodology for all product types.
+#### Sustainable material composition
+While comprehensive, the content focuses more on general circular fashion concepts rather than providing precise technical breakdowns of how different materials are sustainably processed (e.g., water usage reduction statistics).
 - Partial matches: [`frag_005`](#frag_005)
-- Suggested action: Write a 200-word en-gb product-story fragment covering "sustainable material composition", applying technical-precision and sustainability-voice.
-
-#### care instructions
-While specific items have dedicated care guides (e.g., cashmere, hats, stains), the overall coverage is highly fragmented and lacks a single, overarching index for all garment types.
-- Partial matches: [`frag_035`](#frag_035), [`frag_023`](#frag_023), [`frag_038`](#frag_038), [`frag_011`](#frag_011)
-- Suggested action: Write a 200-word en-gb care-guide fragment covering "care instructions", applying technical-precision and sustainability-voice.
+- Suggested action: Write a 200-word en-gb product-story fragment covering "Sustainable material composition", applying sustainability-voice and premium-tone and technical-precision.
 
 #### Brand guideline coverage: technical-precision
 No top match applies the `technical-precision` brand guideline required by the brief. Some candidates exist but lacked any required brand guideline and were filtered out.
-- Partial matches: [`frag_003`](#frag_003), [`frag_001`](#frag_001), [`frag_011`](#frag_011), [`frag_032`](#frag_032), [`frag_008`](#frag_008), [`frag_029`](#frag_029), [`frag_014`](#frag_014), [`frag_038`](#frag_038), [`frag_017`](#frag_017), [`frag_028`](#frag_028), [`frag_037`](#frag_037), [`frag_004`](#frag_004), [`frag_019`](#frag_019), [`frag_007`](#frag_007)
-- Suggested action: Add fragments tagged `technical-precision` (alongside sustainability-voice) for the en-gb corpus so this brand voice is represented in the top matches.
+- Partial matches: [`frag_003`](#frag_003), [`frag_140`](#frag_140), [`frag_149`](#frag_149), [`frag_008`](#frag_008)
+- Suggested action: Add fragments tagged `technical-precision` (alongside sustainability-voice, premium-tone) for the en-gb corpus so this brand voice is represented in the top matches.
 
 ## Draft Outline
 
-**Title:** Technical Outerwear Specifications: Sustainable Craftsmanship for the UK Shopper
+**Title:** Technical Outerwear Specifications and Sustainable Care Guide
 **Path hint:** `/en-gb/collections/technical-outerwear-specifications`
 
-1. **The Foundation of Style: Sustainable Cold Weather Design**
-   - Reuse: [`frag_002`](#frag_002)
-   - Rationale: Establishes the premium, sustainability-focused tone and connects technical design to material poetry before diving into product specs.
+1. **Craftsmanship Meets Conscience: Our Outerwear Philosophy**
+   - Reuse: [`frag_001`](#frag_001)
+   - Rationale: Uses existing content to set a premium, sustainable tone immediately and introduces the core themes (recycled wool/insulation) for outerwear buyers.
 
-2. **Performance Specifications: Recycled Wool Insulation** **NEW**
-   - Rationale: Addresses the core product requirement of detailing recycled wool insulation performance data.
-   - Sourcing hint: Write a 200-word en-gb product-story fragment covering "recycled wool insulation specs", applying technical-precision and sustainability-voice.
+2. **Advanced Technical Specifications: Recycled Wool Performance** **NEW**
+   - Rationale: Crucial deep-dive section to satisfy detail-oriented buyers by providing quantifiable data, moving beyond general mention of materials.
+   - Sourcing hint: Write a 200-word en-gb product-story fragment covering "Technical specifications (recycled wool)", applying sustainability-voice and premium-tone and technical-precision.
 
-3. **Our Commitment to Sustainable Material Composition** **NEW**
-   - Rationale: Provides comprehensive context on the sourcing and methodology behind all sustainable materials used in the collection.
-   - Sourcing hint: Write a 200-word en-gb product-story fragment covering "sustainable material composition", applying technical-precision and sustainability-voice.
+3. **Material Science: Sustainable Composition Breakdown** **NEW**
+   - Rationale: Addresses the required topic of sustainable materials, shifting focus from general circular concepts to precise metrics (e.g., water usage reduction) necessary for a technical audience.
+   - Sourcing hint: Write a 200-word en-gb product-story fragment covering "Sustainable material composition", applying sustainability-voice and premium-tone and technical-precision.
 
-4. **Extending Longevity: Comprehensive Garment Care Guide** **NEW**
-   - Rationale: Offers necessary, overarching care instructions to support the product's premium price point and durability.
-   - Sourcing hint: Write a 200-word en-gb care-guide fragment covering "care instructions", applying technical-precision and sustainability-voice.
+4. **Building the Perfect Ensemble: Layering Essentials Guide**
+   - Reuse: [`frag_006`](#frag_006)
+   - Rationale: Provides general style guidance and context, elevating the page above a mere product spec sheet and speaking to high-end buyer aesthetics.
 
-5. **Caring for Enduring Quality**
-   - Reuse: [`frag_035`](#frag_035)
-   - Rationale: Uses the theme of meticulous care (originally from footwear) to wrap up the page, emphasizing that technical wear is an investment requiring ongoing attention.
+5. **Maintaining Longevity: Outerwear Care Instructions** **NEW**
+   - Rationale: A necessary closure section for premium buyers that addresses maintenance, ensuring the lifecycle of the garment is considered, aligning with sustainability voice.
+   - Sourcing hint: Write a 200-word en-gb care-guide fragment covering "Garment care instructions", applying sustainability-voice and premium-tone and technical-precision.
 
 ## Reused Fragments
 
-### `frag_002` — Sustainable knitwear and natural fibres for cold weather — editorial
-<a id="appendix-frag_002"></a>
-- Path: `/content/dam/aemcontentdisc/en-gb/frag_002`
+### `frag_001` — Women's winter coats — recycled wool and sustainable insulation
+<a id="appendix-frag_001"></a>
+- Path: `/content/dam/aemcontentdisc/en-gb/frag_001`
 - Category: product-story
 - Locale: en-gb
-- Brand guidelines: premium-tone, sustainability-voice, inclusive-language
-- Last modified: 2026-06-14T00:35:01.343Z
+- Brand guidelines: sustainability-voice, inclusive-language
+- Last modified: 2026-04-29T06:19:40.946Z
 
-In the pursuit of enduring style, one cannot overlook the foundational poetry of material science. Our approach to cold-weather knitwear is rooted not merely in seasonal necessity, but in a profound respect for the source—the animal, the earth, and the meticulous hands that transform raw fibre into wearable art. We have curated a collection where sustainability is woven into every single stitch, ensuring that true luxury never comes at the expense of planetary stewardship.
+The enduring elegance of true craftsmanship lies in its commitment to both form and conscience. Our latest collection of women's outerwear reflects this philosophy, offering exceptional warmth without compromise. We have meticulously reimagined the traditional silhouette of the winter coat, paying homage to centuries of durable tailoring while embracing modern material science. At the core of these pieces is a beautiful blend of premium recycled wool; a conscious choice that not only diverts valuable fibres from waste streams but also retains the rich texture and inherent strength for which natural wool is celebrated. This careful use of recycled wool ensures that every coat carries forward a renewed story of resilience. Complementing this exquisite textile are linings utilising responsibly sourced insulation, materials selected after rigorous vetting to minimise environmental impact. These sustainable fillings provide superior thermal performance, ensuring warmth travels with you through the harshest Nordic winters. More than merely functional garments, these women's winter coats are considered investments—pieces built for longevity, designed to become cherished staples of a thoughtful wardrobe for years to come.
 
-The hallmark of this season’s line is its dedication to exceptional natural fibres. Consider the remarkable drape and unparalleled warmth provided by fine merino wool, prized for its breathability and gentle nature against the skin. Complementing this versatility is organic cotton, offering a durable structure with a minimal environmental footprint. These materials are not simply alternatives; they represent a return to proven, time-honoured craftsmanship.
-
-To wear these garments is to connect with a lineage of textile excellence—a narrative that stretches back generations. Each piece of cold-weather knitwear speaks to the commitment inherent in slow fashion: superior quality designed to transcend fleeting trends and become a cherished component of your enduring wardrobe. We invite you to explore this confluence of heritage craftsmanship and conscientious design, where impeccable style meets ethical provenance.
-
-### `frag_035` — Polishing and protecting fine footwear — editorial
-<a id="appendix-frag_035"></a>
-- Path: `/content/dam/aemcontentdisc/en-gb/frag_035`
-- Category: care-guide
+### `frag_006` — Layering essentials with natural fibres — guide
+<a id="appendix-frag_006"></a>
+- Path: `/content/dam/aemcontentdisc/en-gb/frag_006`
+- Category: product-story
 - Locale: en-gb
-- Brand guidelines: sustainability-voice, premium-tone
-- Last modified: 2026-04-26T14:45:30.346Z
+- Brand guidelines: inclusive-language, sustainability-voice
+- Last modified: 2026-01-23T16:55:52.155Z
 
-The enduring beauty of finely crafted footwear is not solely defined by the moment it leaves our workshop, but rather by the diligent care afforded to it over decades to come. True luxury resides in longevity, and mastering proper maintenance is an act of stewardship—a quiet commitment to preserving craftsmanship for generations. The meticulous routine of polishing your finest leather shoes transcends mere upkeep; it is a ritual that acknowledges the provenance of the materials and respects the skill inherent in their creation.
+True elegance is seldom a matter of singular statement; rather, it resides in the considered harmony achieved through thoughtful layering. At the heart of enduring style lies an understanding of the provenance and inherent qualities of natural fibres—materials that not only endure changing climates but also honour their source. For those seasons when the air turns crisp, building a foundational wardrobe requires discerning pieces built to last generations.
 
-For optimal footwear care, one must approach the task with patience. Before any application of polish, gently cleansing the surface removes accumulated grit and ensures the restorative properties can penetrate fully. This preparation allows the rich tannins within the leather to breathe and revitalise naturally. When it comes to polishing, a quality cream or balm acts not merely as a cosmetic finish, but as a protective sealant. It replenishes the natural oils, mitigating the drying effects of time and varying climates—a crucial consideration for pieces intended to last through many seasons.
+Our approach begins with the core: exquisite merino base layers. These remarkable garments are prized for their exceptional breathability, temperature regulating capacity, and innate resistance to odour—qualities that allow comfort to persist from dawn until dusk. Pairing this natural foundation with thoughtfully sourced organic cotton elevates the entire composition, providing breathable structure that speaks to a deeper commitment to sustainability.
 
-By integrating these steps into your routine, you are participating in the enduring lineage of fine shoemaking. This commitment ensures that the patina built upon your shoes is a narrative of quality passage, confirming their status as treasured assets rather than fleeting items of fashion. Such dedicated care guarantees that your investment remains impeccable for years to come.
+Mastering the art of layering means selecting textiles that complement each other’s narratives. By combining these natural staples—the luxurious softness of merino with the crisp purity of organic cotton—you curate more than just a set of winter essentials; you construct an archive of wearable comfort. It is this respect for superior craftsmanship and the cyclical nature of the materials, rooted in traditions refined over time, that allows your wardrobe to remain both timelessly chic and profoundly responsible.
 

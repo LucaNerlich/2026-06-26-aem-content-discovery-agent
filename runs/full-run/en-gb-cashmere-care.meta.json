@@ -1,0 +1,23 @@
+{
+  "slug": "en-gb-cashmere-care",
+  "brief": "We're building a care-focused landing page for our cashmere knitwear range in the UK. Audience: quality-led shoppers aged 30–55 who have invested in cashmere and want it to last for years. The page mu",
+  "locale": "en-gb",
+  "startedAt": "2026-06-28T14:18:04.668Z",
+  "finishedAt": "2026-06-28T14:18:34.416Z",
+  "durationMs": 29748,
+  "stageDurations": {
+    "parseBrief": 953,
+    "retrieve": 63,
+    "analyseGaps": 12934,
+    "compose": 15798
+  },
+  "chatModel": "google/gemma-4-e4b",
+  "embeddingModel": "embeddinggemma-300m",
+  "matchedFragmentCount": 3,
+  "gapCounts": {
+    "none": 0,
+    "partial": 4
+  },
+  "status": "ok",
+  "retryCount": 0
+}

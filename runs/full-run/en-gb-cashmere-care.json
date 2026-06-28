@@ -1,0 +1,166 @@
+{
+  "schemaVersion": "1.0",
+  "brief": {
+    "audience": "Quality-led shoppers (30–55) who invest in cashmere",
+    "locale": "en-gb",
+    "tone": "premium",
+    "brandGuidelines": [
+      "sustainability-voice",
+      "technical-precision"
+    ],
+    "requiredTopics": [
+      "cashmere washing and drying instructions",
+      "natural fibre care benefits",
+      "garment longevity"
+    ],
+    "pathHint": "/en-gb/collections/cashmere-care"
+  },
+  "matchedFragments": [
+    {
+      "id": "frag_134",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_134",
+      "score": 0.647204297384546,
+      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice; older content"
+    },
+    {
+      "id": "frag_161",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_161",
+      "score": 0.6434399113265957,
+      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice"
+    },
+    {
+      "id": "frag_023",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_023",
+      "score": 0.6374982446474633,
+      "reason": "Strong semantic match; strong keyword overlap; brand: sustainability-voice"
+    }
+  ],
+  "gaps": [
+    {
+      "topic": "cashmere washing and drying instructions",
+      "coverage": "partial",
+      "description": "While several fragments discuss cashmere care generally (e.g., seasonal changes), none provide the specific, technical steps required for actual washing machine use or detailed drying protocols.",
+      "partialMatches": [
+        "frag_134",
+        "frag_027"
+      ],
+      "suggestedAction": "Write a 200-word en-gb care-guide fragment covering \"cashmere washing and drying instructions\", applying sustainability-voice and technical-precision."
+    },
+    {
+      "topic": "natural fibre care benefits",
+      "coverage": "partial",
+      "description": "Multiple fragments address the general maintenance of delicate textiles (stains, lustre), but they do not systematically outline the unique intrinsic scientific or ecological 'benefits' of caring for natural fibres themselves.",
+      "partialMatches": [
+        "frag_146",
+        "frag_032"
+      ],
+      "suggestedAction": "Write a 200-word en-gb care-guide fragment covering \"natural fibre care benefits\", applying sustainability-voice and technical-precision."
+    },
+    {
+      "topic": "garment longevity",
+      "coverage": "partial",
+      "description": "Although many fragments touch upon durability (e.g., tailored pieces, winter coats), there is no single, authoritative guide synthesizing advice for *all* garment types to maximize their lifespan.",
+      "partialMatches": [
+        "frag_161",
+        "frag_086"
+      ],
+      "suggestedAction": "Write a 200-word en-gb care-guide fragment covering \"garment longevity\", applying sustainability-voice and technical-precision."
+    },
+    {
+      "topic": "Brand guideline coverage: technical-precision",
+      "coverage": "partial",
+      "description": "No top match applies the `technical-precision` brand guideline required by the brief. Some candidates exist but lacked any required brand guideline and were filtered out.",
+      "partialMatches": [
+        "frag_131",
+        "frag_095",
+        "frag_116",
+        "frag_008",
+        "frag_003",
+        "frag_026",
+        "frag_129",
+        "frag_092",
+        "frag_152",
+        "frag_011",
+        "frag_064",
+        "frag_032",
+        "frag_107",
+        "frag_101",
+        "frag_022",
+        "frag_178",
+        "frag_074",
+        "frag_155",
+        "frag_149",
+        "frag_044"
+      ],
+      "suggestedAction": "Add fragments tagged `technical-precision` (alongside sustainability-voice) for the en-gb corpus so this brand voice is represented in the top matches."
+    }
+  ],
+  "draftOutline": {
+    "title": "The Art of Cashmere Care | Investing in Timeless Style",
+    "pathHint": "/en-gb/collections/cashmere-care",
+    "sections": [
+      {
+        "heading": "Caring for Cashmere Through the Seasons",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_134"
+        ],
+        "rationale": "Sets a premium tone and establishes the long-term value proposition of caring for quality investment pieces."
+      },
+      {
+        "heading": "Mastering Cashmere Care: Washing and Drying Instructions",
+        "kind": "new",
+        "rationale": "Provides essential, actionable technical steps necessary for customers to properly maintain their premium cashmere.",
+        "sourcingHint": "Write a 200-word en-gb care-guide fragment covering \"cashmere washing and drying instructions\", applying sustainability-voice and technical-precision."
+      },
+      {
+        "heading": "The Natural Fibre Advantage: Why Proper Care Matters",
+        "kind": "new",
+        "rationale": "Educates the customer on the intrinsic value of natural materials, reinforcing the quality investment decision.",
+        "sourcingHint": "Write a 200-word en-gb care-guide fragment covering \"natural fibre care benefits\", applying sustainability-voice and technical-precision."
+      },
+      {
+        "heading": "Maximizing Investment: Tips for Garment Longevity",
+        "kind": "new",
+        "rationale": "Offers holistic advice on minimizing wear over time, shifting focus from seasonal consumption to lifelong investment.",
+        "sourcingHint": "Write a 200-word en-gb care-guide fragment covering \"garment longevity\", applying sustainability-voice and technical-precision."
+      },
+      {
+        "heading": "Travel Tips for Tailored Pieces",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_161"
+        ],
+        "rationale": "Provides relevant, high-quality supplementary care tips applicable to all luxury investment textiles."
+      }
+    ]
+  },
+  "reusedFragments": [
+    {
+      "id": "frag_134",
+      "title": "Caring for cashmere through the seasons — guide",
+      "category": "care-guide",
+      "targetAudience": "Existing customers (men, 29-41), Botswana, seeking guidance on garment longevity.",
+      "brandGuidelinesApplied": [
+        "sustainability-voice"
+      ],
+      "locale": "en-gb",
+      "lastModified": "2025-03-08T18:59:05.016Z",
+      "content": "The true measure of fine craftsmanship is not only in its creation but in its enduring life. Cashmere, a material steeped in tradition and refined by time, deserves nothing less than meticulous custodianship throughout the changing seasons. To ensure your investment remains as impeccable today as when it was first donned, adopting consistent knitwear care practices is paramount.\n\nAs you transition through Botswana’s diverse climate cycles, adapting your approach to maintenance will extend its exquisite lifespan. When preparing your cherished pieces for seasonal storage—be it a summer reprieve or the turn towards cooler climes—it is crucial that they are spotlessly clean and completely dry, preventing any mildew or stale odour from settling into the delicate fibres.\n\nFor daily wear, remember that gentle handling is key. Never subject the luxurious drape of fine cashmere to aggressive washing cycles; professional dry cleaning, specifically trained in caring for natural animal fibers, remains the gold standard. Furthermore, avoid harsh detergents and abrasive brushes, which can compromise the integrity of the weave. A simple hand wash with pH-neutral soap, followed by careful lay-flat drying, is often all that is required.\n\nBy treating your cashmere not merely as an article of clothing, but as a piece of wearable history, you honour the skill and provenance embedded within its every thread. Proper seasonal care ensures that the unparalleled comfort and unmistakable quality of these timeless garments will endure for generations to come.",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_134"
+    },
+    {
+      "id": "frag_161",
+      "title": "How to fold and travel with tailored shirts",
+      "category": "care-guide",
+      "targetAudience": "Existing customers (women, 22-28), Grenada, seeking guidance on garment longevity.",
+      "brandGuidelinesApplied": [
+        "sustainability-voice"
+      ],
+      "locale": "en-gb",
+      "lastModified": "2025-12-05T23:12:17.511Z",
+      "content": "When curating your wardrobe for journeying through Grenada or beyond, remember that the longevity of truly tailored pieces is not merely about their intrinsic quality, but how respectfully they are handled in transit. To ensure your finely cut shirts retain their impeccable drape and crisp appearance upon arrival, meticulous attention must be paid to packing methods. While traditional steaming offers a delightful finish, sustainable travel demands thoughtful consideration for the garment’s structure. Mastering efficient travel folding is key; rather than crumpling or hanging garments which can induce shoulder strain or deep creases, gently fold the shirt into thirds. This technique minimises stress points and allows the fabric's natural integrity to endure the rigours of packing. By adopting these simple habits of mindful handling, you significantly extend the life of your investment pieces. Remembering proper shirt care before any trip—a gentle brushing or airing out—will complement this careful folding process. Ultimately, treating each journey as an opportunity to preserve the craftsmanship within reinforces our commitment to enduring style and responsible consumption.",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_161"
+    }
+  ]
+}

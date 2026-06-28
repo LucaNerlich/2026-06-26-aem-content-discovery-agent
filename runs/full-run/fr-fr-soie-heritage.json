@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "1.0",
+  "brief": {
+    "audience": "Clientes françaises (35-60 ans) attentives au savoir-faire",
+    "locale": "fr-fr",
+    "tone": "premium",
+    "brandGuidelines": [
+      "premium-tone"
+    ],
+    "requiredTopics": [
+      "foulards en soie",
+      "techniques de tissage traditionnelles",
+      "provenance et noble caractère de la soie",
+      "entretien à domicile des foulards en soie"
+    ],
+    "pathHint": "/fr-fr/collections/foulards-soie"
+  },
+  "matchedFragments": [
+    {
+      "id": "frag_369",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_369",
+      "score": 0.6605875348700492,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone"
+    },
+    {
+      "id": "frag_207",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_207",
+      "score": 0.6596797747930653,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone"
+    },
+    {
+      "id": "frag_339",
+      "path": "/content/dam/aemcontentdisc/fr-fr/frag_339",
+      "score": 0.6454162441342237,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone; fresh content"
+    }
+  ],
+  "gaps": [
+    {
+      "topic": "foulards en soie",
+      "coverage": "partial",
+      "description": "While many fragments mention silk scarves, most are dedicated to techniques or care. A single, comprehensive product overview page for the collection itself is missing.",
+      "partialMatches": [
+        "frag_369",
+        "frag_207",
+        "frag_339",
+        "frag_217",
+        "frag_342",
+        "frag_270",
+        "frag_288",
+        "frag_345",
+        "frag_234"
+      ],
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"foulards en soie\", applying premium-tone."
+    },
+    {
+      "topic": "techniques de tissage traditionnelles",
+      "coverage": "partial",
+      "description": "There are many fragments covering this topic, but they are fragmented across various guides and editorials. A single definitive pillar page synthesizing all techniques would enhance the user experience.",
+      "partialMatches": [
+        "frag_369",
+        "frag_207",
+        "frag_339",
+        "frag_217",
+        "frag_342",
+        "frag_270",
+        "frag_288",
+        "frag_345",
+        "frag_234"
+      ],
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"techniques de tissage traditionnelles\", applying premium-tone."
+    },
+    {
+      "topic": "provenance et noble caractère de la soie",
+      "coverage": "none",
+      "description": "While the premium tone implies luxury, there is no dedicated content discussing the geographical provenance (origin) or specific noble material properties of raw silk itself.",
+      "partialMatches": [],
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"provenance et noble caractère de la soie\", applying premium-tone."
+    },
+    {
+      "topic": "entretien à domicile des foulards en soie",
+      "coverage": "partial",
+      "description": "Care advice is abundant, but many fragments address 'delicate fabrics' generally rather than specifying care instructions tailored to silk scarves, requiring the user to infer product specificity.",
+      "partialMatches": [
+        "frag_379",
+        "frag_313",
+        "frag_334",
+        "frag_268",
+        "frag_244",
+        "frag_400",
+        "frag_355"
+      ],
+      "suggestedAction": "Write a 200-word fr-fr product-story fragment covering \"entretien à domicile des foulards en soie\", applying premium-tone."
+    }
+  ],
+  "draftOutline": {
+    "title": "Foulards en Soie : L'Héritage d'un Savoir-Faire Exceptionnel",
+    "pathHint": "/fr-fr/collections/foulards-soie",
+    "sections": [
+      {
+        "heading": "Découvrez la Collection Foulards de Soie",
+        "kind": "new",
+        "rationale": "Introduction engageante et globale au produit, positionnant les foulards comme des pièces incontournables du luxe français.",
+        "sourcingHint": "Write a 200-word fr-fr product-story fragment covering \"foulards en soie\", applying premium-tone."
+      },
+      {
+        "heading": "L'Âme de la Soie : Origine et Noble Caractère",
+        "kind": "new",
+        "rationale": "Établir la valeur intrinsèque du produit en détaillant son origine géographique et ses propriétés nobles pour renforcer l'attractivité premium.",
+        "sourcingHint": "Write a 200-word fr-fr product-story fragment covering \"provenance et noble caractère de la soie\", applying premium-tone."
+      },
+      {
+        "heading": "Le Tissage : Quand l'Art Devient Patrimoine",
+        "kind": "new",
+        "rationale": "Synthétiser le savoir-faire artisanal en profondeur pour transformer un sujet fragmenté en une page pilier unique et mémorable.",
+        "sourcingHint": "Write a 200-word fr-fr product-story fragment covering \"techniques de tissage traditionnelles\", applying premium-tone."
+      },
+      {
+        "heading": "Entretenir votre Soie : Conseils pour la Longévité",
+        "kind": "new",
+        "rationale": "Fournir des instructions de soins précises et haut de gamme, rassurant le client sur l'entretien spécifique au foulard en soie.",
+        "sourcingHint": "Write a 200-word fr-fr product-story fragment covering \"entretien à domicile des foulards en soie\", applying premium-tone."
+      }
+    ]
+  },
+  "reusedFragments": []
+}

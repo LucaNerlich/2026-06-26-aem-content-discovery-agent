@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "1.0",
+  "brief": {
+    "audience": "Warm-climate shoppers, 25–50 (Australia)",
+    "locale": "en-gb",
+    "tone": "premium",
+    "brandGuidelines": [
+      "premium-tone",
+      "sustainability-voice"
+    ],
+    "requiredTopics": [
+      "summer linen essentials for warm climates",
+      "high-summer suiting for events",
+      "natural fibres and cooling comfort"
+    ],
+    "pathHint": "/en-au/collections/summer-linen"
+  },
+  "matchedFragments": [
+    {
+      "id": "frag_067",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_067",
+      "score": 0.764753373327745,
+      "reason": "Strong semantic match; strong keyword overlap; brand: premium-tone; fresh content"
+    },
+    {
+      "id": "frag_061",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_061",
+      "score": 0.7607002557996215,
+      "reason": "Strong semantic match; strong keyword overlap; brand: sustainability-voice"
+    },
+    {
+      "id": "frag_031",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_031",
+      "score": 0.7292127108209542,
+      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice; fresh content"
+    }
+  ],
+  "gaps": [
+    {
+      "topic": "summer linen essentials for warm climates",
+      "coverage": "partial",
+      "description": "While multiple fragments address seasonal linens, none perfectly combine all three brand requirements (premium tone, sustainability voice) in a single piece. Additionally, the content lacks specific focus on Australian shopping considerations.",
+      "partialMatches": [
+        "frag_019",
+        "frag_067",
+        "frag_061"
+      ],
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"summer linen essentials for warm climates\", applying premium-tone and sustainability-voice."
+    },
+    {
+      "topic": "high-summer suiting for events",
+      "coverage": "partial",
+      "description": "There are strong candidates that match the topic and apply multiple brand voices (e.g., frag_042). However, all existing content is written for a general 'British' high summer setting, neglecting specific Australian event considerations.",
+      "partialMatches": [
+        "frag_042",
+        "frag_159",
+        "frag_060"
+      ],
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"high-summer suiting for events\", applying premium-tone and sustainability-voice."
+    },
+    {
+      "topic": "natural fibres and cooling comfort",
+      "coverage": "partial",
+      "description": "Fragment frag_006 addresses natural fibres and layering effectively but fails to apply the required premium tone. A piece combining this educational focus with luxury positioning is needed.",
+      "partialMatches": [
+        "frag_006",
+        "frag_178"
+      ],
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"natural fibres and cooling comfort\", applying premium-tone and sustainability-voice."
+    }
+  ],
+  "draftOutline": {
+    "title": "Summer Linen Essentials: Elevated Comfort for Australian Warm Climates",
+    "pathHint": "/en-au/collections/summer-linen",
+    "sections": [
+      {
+        "heading": "Summer linen essentials for warm climates",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_067",
+          "frag_061"
+        ],
+        "rationale": "These fragments provide general foundational content on the need for breathability and seasonal shifts, establishing an elegant, necessary tone."
+      },
+      {
+        "heading": "Elevated Summer Suiting for Australian Events",
+        "kind": "new",
+        "rationale": "Addresses the specific requirement of high-summer suiting while tailoring the general guidance to the local Australian context and premium audience.",
+        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"high-summer suiting for events\", applying premium-tone and sustainability-voice."
+      },
+      {
+        "heading": "The Science of Natural Fibres and Cooling Comfort",
+        "kind": "new",
+        "rationale": "Provides the necessary educational depth to support the product pitch, linking comfort directly to material science in a luxurious tone.",
+        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"natural fibres and cooling comfort\", applying premium-tone and sustainability-voice."
+      },
+      {
+        "heading": "Curated Pieces for Australian Warm Climates",
+        "kind": "new",
+        "rationale": "A dedicated closing section to transition from education/inspiration directly into product discovery, optimizing the user journey.",
+        "sourcingHint": "Develop localized CTAs and collection links that speak specifically to 'Australian' needs."
+      }
+    ]
+  },
+  "reusedFragments": [
+    {
+      "id": "frag_067",
+      "title": "Summer linen essentials for warm climates — guide",
+      "category": "product-story",
+      "targetAudience": "Quality-led shoppers (women, 29-35), Jordan, interested in considered fashion.",
+      "brandGuidelinesApplied": [
+        "premium-tone"
+      ],
+      "locale": "en-gb",
+      "lastModified": "2026-01-28T11:43:50.538Z",
+      "content": "As temperatures rise and the days grow long, dressing for the summer demands an evolution of thought—a shift towards fabrics that breathe with you. Nothing captures the effortless elegance of warm weather quite like true linen. This essential textile is intrinsically linked to Mediterranean heat, possessing a natural drape and sublime breathability that keeps you feeling cool without ever sacrificing sophistication.\n\nWe have curated our collection of lightweight staples designed for those moments of unfussy grace. These are not merely garments; they are wearable comfort pieces built around the perfect blend of structure and ease. Imagine the crisp texture against your skin, moving effortlessly from a morning stroll in Jordan to an evening gathering under soft light. Linen’s inherent character means that even as you live life at pace, the garment only seems to deepen its beauty.\n\nSelecting the right linen piece is about investing in timeless versatility—items that transcend fleeting trends and offer quality year after year. Focus on natural hues and classic silhouettes for a capsule wardrobe built on enduring style. These pieces ensure that your considered dressing remains effortless, allowing you to embrace the true, sun-drenched spirit of summer with unparalleled comfort and chic refinement.",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_067"
+    },
+    {
+      "id": "frag_061",
+      "title": "Summer linen essentials for warm climates",
+      "category": "product-story",
+      "targetAudience": "Quality-led shoppers (men, 32-46), Algeria, interested in considered fashion.",
+      "brandGuidelinesApplied": [
+        "sustainability-voice"
+      ],
+      "locale": "en-gb",
+      "lastModified": "2025-12-25T23:40:55.754Z",
+      "content": "When the heat deepens and the air grows thick with the promise of summer, true luxury is found in breathability. It requires an understanding of climate that goes beyond mere aesthetics; it demands material science woven into impeccable design. Our curated collection of linen essentials is a study in effortless comfort, garments built for those months when the day lingers long and demanding. Linen itself speaks to a tradition of enduring craftsmanship, fibre cultivated from flax grown with respect for the earth—a quiet nod to sustainable elegance.\n\nThese aren't just pieces for warmer weather; they are architectural statements designed for life lived slowly, where every movement feels as natural as the weave. We have selected washes and weights that maintain their sophisticated drape, ensuring that even on the most challenging afternoons, you remain refined. The inherent lightweight nature of linen allows the air to move freely against the skin, offering a sublime reprieve from the intensity of sun-drenched days. Embrace the effortless structure of true summer style; let these timeless linens become the cornerstone of your considered wardrobe for seasons ahead.",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_061"
+    }
+  ]
+}

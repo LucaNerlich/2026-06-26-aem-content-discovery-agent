@@ -1,9 +1,9 @@
 {
-  "fragmentCount": 113,
+  "fragmentCount": 600,
   "locales": {
-    "en-gb": 40,
-    "fr-fr": 40,
-    "de-de": 33
+    "en-gb": 200,
+    "fr-fr": 200,
+    "de-de": 200
   },
-  "generatedAt": "2026-06-28T13:08:14.141Z"
+  "generatedAt": "2026-06-28T14:06:16.812Z"
 }

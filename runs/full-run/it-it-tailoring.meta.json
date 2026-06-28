@@ -1,0 +1,23 @@
+{
+  "slug": "it-it-tailoring",
+  "brief": "Stiamo lanciando una pagina di collezione dedicata al nostro tailoring smart-casual per il mercato italiano. Pubblico: professionisti, 30-50 anni, che cercano una sartoria versatile per il lavoro e il",
+  "locale": "n/a",
+  "startedAt": "2026-06-28T14:24:03.906Z",
+  "finishedAt": "2026-06-28T14:24:30.828Z",
+  "durationMs": 26922,
+  "stageDurations": {
+    "parseBrief": 3992,
+    "retrieve": 61,
+    "analyseGaps": 12794,
+    "compose": 10075
+  },
+  "chatModel": "google/gemma-4-e4b",
+  "embeddingModel": "embeddinggemma-300m",
+  "matchedFragmentCount": 3,
+  "gapCounts": {
+    "none": 0,
+    "partial": 3
+  },
+  "status": "ok",
+  "retryCount": 0
+}

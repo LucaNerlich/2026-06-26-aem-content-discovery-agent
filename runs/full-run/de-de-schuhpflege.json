@@ -1,0 +1,150 @@
+{
+  "schemaVersion": "1.0",
+  "brief": {
+    "audience": "Customers 35-60 who invest in high-quality footwear",
+    "locale": "de-de",
+    "tone": "premium",
+    "brandGuidelines": [
+      "sustainability-voice",
+      "premium-tone",
+      "technical-precision"
+    ],
+    "requiredTopics": [
+      "Leather polishing and protection",
+      "Long-term care routine",
+      "Sustainable shoe ownership"
+    ],
+    "pathHint": "/de-de/collections/schuhpflege"
+  },
+  "matchedFragments": [
+    {
+      "id": "frag_531",
+      "path": "/content/dam/aemcontentdisc/de-de/frag_531",
+      "score": 0.6599027217860846,
+      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice+premium-tone; older content"
+    },
+    {
+      "id": "frag_411",
+      "path": "/content/dam/aemcontentdisc/de-de/frag_411",
+      "score": 0.582580870249008,
+      "reason": "Partial semantic match; keyword overlap; brand: sustainability-voice+premium-tone; fresh content"
+    },
+    {
+      "id": "frag_537",
+      "path": "/content/dam/aemcontentdisc/de-de/frag_537",
+      "score": 0.5800259152794559,
+      "reason": "Partial semantic match; keyword overlap; brand: premium-tone+sustainability-voice; fresh content"
+    }
+  ],
+  "gaps": [
+    {
+      "topic": "Leather polishing and protection",
+      "coverage": "partial",
+      "description": "While multiple fragments cover the physical act of polishing, none provide a single comprehensive guide that strictly adheres to all requested brand guidelines (especially 'technical-precision') simultaneously.",
+      "partialMatches": [
+        "frag_531",
+        "frag_537",
+        "frag_498"
+      ],
+      "suggestedAction": "Write a 200-word de-de product-story fragment covering \"Leather polishing and protection\", applying sustainability-voice and premium-tone and technical-precision."
+    },
+    {
+      "topic": "Long-term care routine",
+      "coverage": "partial",
+      "description": "The pool contains excellent material-specific care guides (e.g., leather storage), but it lacks a centralized, comprehensive 'routine' guide that encompasses all relevant materials and services for optimal long-term maintenance.",
+      "partialMatches": [
+        "frag_411",
+        "frag_534",
+        "frag_468"
+      ],
+      "suggestedAction": "Write a 200-word de-de care-guide fragment covering \"Long-term care routine\", applying sustainability-voice and premium-tone and technical-precision."
+    },
+    {
+      "topic": "Sustainable shoe ownership",
+      "coverage": "partial",
+      "description": "The narrative link between durability and sustainability is present (longevity as value), but the content does not provide standalone information on circularity, repair programs, or ethical purchasing models required for comprehensive sustainable ownership guidance.",
+      "partialMatches": [
+        "frag_498",
+        "frag_537"
+      ],
+      "suggestedAction": "Write a 200-word de-de product-story fragment covering \"Sustainable shoe ownership\", applying sustainability-voice and premium-tone and technical-precision."
+    },
+    {
+      "topic": "Brand guideline coverage: technical-precision",
+      "coverage": "partial",
+      "description": "No top match applies the `technical-precision` brand guideline required by the brief. Some candidates exist but lacked any required brand guideline and were filtered out.",
+      "partialMatches": [
+        "frag_456",
+        "frag_540",
+        "frag_510",
+        "frag_523",
+        "frag_477",
+        "frag_555"
+      ],
+      "suggestedAction": "Add fragments tagged `technical-precision` (alongside sustainability-voice, premium-tone) for the de-de corpus so this brand voice is represented in the top matches."
+    }
+  ],
+  "draftOutline": {
+    "title": "Premium Pflege und Langlebigkeit für Ihren Schuhkabinett",
+    "pathHint": "/de-de/collections/schuhpflege",
+    "sections": [
+      {
+        "heading": "Der wahre Wert eines Stücks über die Zeit",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_537",
+          "frag_531"
+        ],
+        "rationale": "Establish the premium, lasting value narrative immediately. Use matched fragments to introduce shoe care not as a chore, but as an act of preservation and investment."
+      },
+      {
+        "heading": "Perfektes Leder-Finish: Polieren und Schutz",
+        "kind": "new",
+        "rationale": "The most immediate care action. Must provide technically precise, step-by-step guidance to meet the brand's 'technical-precision' mandate.",
+        "sourcingHint": "Write a 200-word de-de product-story fragment covering \"Leather polishing and protection\", applying sustainability-voice and premium-tone and technical-precision."
+      },
+      {
+        "heading": "Ihr ganzheitlicher Pflege-Rhythmus für optimalen Halt",
+        "kind": "new",
+        "rationale": "Move beyond simple polish application to create a comprehensive, multi-material maintenance routine that addresses long-term ownership.",
+        "sourcingHint": "Write a 200-word de-de care-guide fragment covering \"Long-term care routine\", applying sustainability-voice and premium-tone and technical-precision."
+      },
+      {
+        "heading": "Von der Pflege zur Nachhaltigkeit: Ein Leben mit Geschichte",
+        "kind": "new",
+        "rationale": "Elevate the discussion from mere product usage to philosophical ownership, linking durability directly to sustainable consumption models.",
+        "sourcingHint": "Write a 200-word de-de product-story fragment covering \"Sustainable shoe ownership\", applying sustainability-voice and premium-tone and technical-precision."
+      }
+    ]
+  },
+  "reusedFragments": [
+    {
+      "id": "frag_537",
+      "title": "Polishing and protecting fine footwear",
+      "category": "care-guide",
+      "targetAudience": "Existing customers (all genders, 36-45), Äquatorialguinea, seeking guidance on garment longevity.",
+      "brandGuidelinesApplied": [
+        "premium-tone",
+        "sustainability-voice"
+      ],
+      "locale": "de-de",
+      "lastModified": "2026-06-23T20:06:40.247Z",
+      "content": "Der wahre Wert eines exquisiten Paares Schuhe entfaltet sich nicht erst beim Kauf, sondern mit jedem Jahr, das sie begleiten. Die Pflege ist somit kein bloßer Pflichtakt, sondern ein Akt der Bewahrung – eine Hommage an die Handwerkskunst, die in Ihrem Schuh steckt. Um diese zeitlose Qualität über viele Saisonen hinweg zu erhalten, beginnen wir immer mit der Sorgfalt der Grundreinigung. Entfernen Sie Staub und Schmutz vorsichtig, damit das natürliche Material atmen kann. Anschließend folgt die eigentliche Pflege Ihres Lederschuhe: Ein hochwertiger Conditioner spendet Feuchtigkeit zurück in die Struktur des Leders, während eine feine Bürstung dabei hilft, die Patina zu betonen. Das anschließende Polieren ist der Höhepunkt dieses Rituals; es bringt nicht nur den Glanz hervor, sondern stärkt auch die Oberfläche gegen äußere Einflüsse. Denken Sie daran, dass richtige Schuhpflege ein kontinuierlicher Kreislauf ist – regelmäßiges Reinigen und gezieltes Auffrischen garantiert eine Langlebigkeit, die weit über das Neukaufen hinausgeht. Betrachten Sie diesen Prozess als Ihre Investition in die Zukunft Ihres Stils: Ein Schuh, der gut gepflegt wurde, erzählt eine Geschichte von Reisen und Eleganz, Jahr um Jahr aufs Neue.",
+      "path": "/content/dam/aemcontentdisc/de-de/frag_537"
+    },
+    {
+      "id": "frag_531",
+      "title": "Polishing and protecting fine footwear",
+      "category": "care-guide",
+      "targetAudience": "Existing customers (women, 33-42), Tschad, seeking guidance on garment longevity.",
+      "brandGuidelinesApplied": [
+        "sustainability-voice",
+        "premium-tone"
+      ],
+      "locale": "de-de",
+      "lastModified": "2025-03-22T19:01:55.098Z",
+      "content": "Jedes Paar unserer *leather shoes* trägt die Geschichte seiner Trägerinnen in sich – eine Erzählung von Eleganz und Beständigkeit. Wahre Langlebigkeit ist kein Zufall, sondern das Ergebnis liebevoller Fürsorge. Wir betrachten die Pflege nicht als lästige Pflicht, sondern als ein kostbares Ritual: die Verpflichtung zu Ihrem Stil. Die Kunst der *footwear care* beginnt mit Achtsamkeit. Ein sanftes Reinigen entfernt nicht nur Staub, sondern auch alltäglichen Schleier und bereitet das Material optimal vor. Anschließend folgt der Akt des *polishing*. Dieser Vorgang ist mehr als oberflächliches Glänzen; er nährt die Struktur des Leders und lässt seinen natürlichen Schimmer wieder aufleben. Verwenden Sie dabei immer spezielle Wachse, welche nicht nur schützen, sondern auch die einzigartige Patina betonen, die jedes hochwertige Stück im Laufe der Zeit entwickelt. Dieses sorgfältige, bewusste Handeln verlängert den Lebenszyklus Ihres Hauses und verwandelt Wartung in ein festliches Statement von Dauerhaftigkeit.",
+      "path": "/content/dam/aemcontentdisc/de-de/frag_531"
+    }
+  ]
+}
