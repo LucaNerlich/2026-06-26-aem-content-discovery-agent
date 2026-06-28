@@ -13,7 +13,7 @@ npm run seed
 
 # Run the discovery agent against a brief
 npm run agent eval/briefs/winter-sustainable.txt
-npm run agent eval/briefs/winter-sustainable.txt -- --json   # canonical AgentOutput JSON
+npm run agent eval/briefs/winter-sustainable.txt --json      # canonical AgentOutput JSON
 
 # Run all tests across all workspaces
 npm test
@@ -94,7 +94,7 @@ All stages produce / consume Zod-validated types from `shared/src/schema/`:
 
 ### Eval harness
 
-`eval/run.js` runs all 8 briefs and writes scores to `eval/latest.json`. Expectations reference deterministic fragment ids (`frag_001`, `frag_002`, …) that only stay stable when the seeder uses `DEMO_SEED=20260626`. If the seeder changes, re-seed with `npm run seed -- --seed=20260626` and re-label `eval/expectations/`.
+`eval/run.js` runs all 8 briefs and writes scores to `eval/latest.json`. Expectations reference deterministic fragment ids (`frag_001`, `frag_002`, …) that only stay stable when the seeder uses `DEMO_SEED=20260626`. If the seeder changes, re-seed with `npm run seed --seed=20260626` and re-label `eval/expectations/`.
 
 ### Decision log
 

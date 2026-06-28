@@ -21,7 +21,10 @@ const ALLOWED_VARIATIONS = new Set(["low", "medium", "high"]);
 const logger = pino({ name: "seed", level: process.env.LOG_LEVEL ?? "info" });
 
 function parseArgs(argv) {
-  const args = mri(argv, {
+  // pnpm prepends an extra "--" when forwarding args through nested npm-run scripts.
+  // Strip it so mri doesn't treat the real flags as positional args.
+  const cleaned = argv[0] === "--" ? argv.slice(1) : argv;
+  const args = mri(cleaned, {
     string: ["output", "locales", "variation"],
     boolean: ["dry-run", "skip-embeddings", "help"],
     default: {

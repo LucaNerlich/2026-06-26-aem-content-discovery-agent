@@ -33,7 +33,8 @@ the results directory: <ISO-timestamp>-<brief-slug>.<md|json>.
 Exit codes: 0 success; 1 pipeline/validation error; 2 input error.`;
 
 export function parseArgs(argv) {
-  return mri(argv, {
+  const cleaned = argv[0] === "--" ? argv.slice(1) : argv;
+  return mri(cleaned, {
     boolean: ["json", "quiet", "help"],
     string: ["locale", "source", "corpus", "results-dir"],
     alias: { h: "help" },

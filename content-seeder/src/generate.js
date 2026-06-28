@@ -3,14 +3,14 @@ import {
   fakerFR,
   fakerDE,
 } from "@faker-js/faker";
-import { chat, getChatModel, parseFragment, FRAGMENT_CATEGORIES } from "@aemdisc/shared";
+import { chat, getChatModel, parseFragment, FRAGMENT_CATEGORIES, LlmInvariantError } from "@aemdisc/shared";
 import { resolveVariation, pickTemplate } from "./templates.js";
 import { RESERVED_COUNT, reservedForLocale, pickRandomTopic } from "./topics.js";
 import { createRng, shuffle } from "./rng.js";
 
 const BRAND_GUIDELINES = ["sustainability-voice", "premium-tone", "inclusive-language"];
 const EIGHTEEN_MONTHS_MS = 18 * 30 * 24 * 60 * 60 * 1000;
-const SEEDER_NUM_PREDICT = 600;
+const SEEDER_NUM_PREDICT = 1024;
 
 const LOCALE_CONFIG = {
   "en-gb": { faker: fakerEN_GB, language: "British English", label: "en-GB" },
@@ -139,11 +139,23 @@ export async function generateFragment({ entry, seed, variation, now = Date.now(
     audience,
     brandGuidelines,
   });
-  const content = await chatImpl({
+  let content = await chatImpl({
     system: template.system,
     user,
     model: getChatModel("seeder"),
     options: { temperature, num_predict: SEEDER_NUM_PREDICT },
+  }).catch((err) => {
+    // Thinking models sometimes exhaust their token budget on <think> blocks and return
+    // empty content. Retry once with an explicit "no thinking tags" instruction.
+    if (err instanceof LlmInvariantError && err.message.includes("empty response")) {
+      return chatImpl({
+        system: template.system,
+        user: user + "\n\nIMPORTANT: Output only the prose content. Do not use <think> or any XML-style tags.",
+        model: getChatModel("seeder"),
+        options: { temperature, num_predict: SEEDER_NUM_PREDICT },
+      });
+    }
+    throw err;
   });
 
   return parseFragment({

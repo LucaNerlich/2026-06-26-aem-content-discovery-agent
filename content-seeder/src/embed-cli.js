@@ -17,7 +17,8 @@ const DEFAULT_DB = new URL("../../data/embeddings.db", import.meta.url).pathname
 const logger = pino({ name: "embed", level: process.env.LOG_LEVEL ?? "info" });
 
 function parseArgs(argv) {
-  const args = mri(argv, {
+  const cleaned = argv[0] === "--" ? argv.slice(1) : argv;
+  const args = mri(cleaned, {
     string: ["corpus", "db"],
     boolean: ["help"],
     default: { corpus: DEFAULT_CORPUS, db: DEFAULT_DB },

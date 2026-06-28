@@ -12,9 +12,9 @@
     "discovery-agent"
   ],
   "scripts": {
-    "seed": "npm run -w content-seeder seed --",
-    "embed": "npm run -w content-seeder embed --",
-    "agent": "npm run -w discovery-agent start --",
+    "seed": "node content-seeder/src/seed.js",
+    "embed": "node content-seeder/src/embed-cli.js",
+    "agent": "node discovery-agent/src/cli.js",
     "eval": "node eval/run.js",
     "full-run": "node scripts/full-run.js",
     "test": "node --test --test-reporter spec 'shared/test/**/*.test.js' 'content-seeder/test/**/*.test.js' 'discovery-agent/test/**/*.test.js' 'scripts/test/**/*.test.js'"
