@@ -110,13 +110,13 @@ the seams the contract depends on.
 
 - **JSON-primary, AEM-optional.** `data/corpus.json` and
   `data/embeddings.db` are committed so a clean clone runs without an
-  AEM SDK; `--source=aem` is an opt-in flag for the live AEM round-trip.
+  AEM SDK; `--source=aem` is an opt-in flag for the live AEM round-trip. (Details: see [Monorepo layout](docs/architecture.md#monorepo-layout))
 - **Local LM Studio at `:1234`.** OpenAI-compatible HTTP, zero-cost
   reproduction, no rate limits; single source of model truth in
-  `config/models.json`.
+  `config/models.json`. (Details: see [LLM stack](docs/architecture.md#llm-stack))
 - **Schema-validated, fail-loud-with-retry.** Every stage validates its
   output with Zod; `JsonParseError` / `ZodError` triggers one re-prompt
   with the error appended, then propagates as a typed error.
 - **Eval harness as contract.** `npm run eval` scores precision@3 /
   recall@3 / gap-F1 across 8 hand-labelled briefs and exits non-zero
-  below the 0.6 gap-F1 threshold.
+  below the 0.6 gap-F1 threshold. (Details: see [Evaluation harness](docs/architecture.md#evaluation-harness))

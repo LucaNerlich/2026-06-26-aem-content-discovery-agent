@@ -71,6 +71,8 @@ re-seeding.
 
 ## Monorepo layout
 
+*Decision rationale: [JSON-primary, AEM-optional](../delivery.md#other-notable-decisions) in delivery.md.*
+
 Three npm workspaces wired through the root `package.json`:
 
 ```
@@ -399,6 +401,8 @@ changing any pipeline stage.
 
 ## LLM stack
 
+*Decision rationale: [Local LM Studio at :1234](../delivery.md#other-notable-decisions) in delivery.md.*
+
 A single thin client (`shared/src/llm/`) wraps the local LM Studio server
 over its OpenAI-compatible HTTP API:
 
@@ -521,6 +525,8 @@ multipart requests. The Zod schemas in `shared/src/schema/` already match the
 shape the MCP tools expect, so only the transport layer changes.
 
 ## Evaluation harness
+
+*Decision rationale: [Eval harness as contract](../delivery.md#other-notable-decisions) in delivery.md.*
 
 `eval/run.js` (and `npm run eval`) scores the agent against the eight
 hand-labelled briefs under `eval/briefs/` using `eval/expectations/`:
