@@ -1,10 +1,29 @@
 {
-  "expectedMatchIds": ["frag_097", "frag_085", "frag_118"],
+  "expectedMatchIds": [
+    "frag_476",
+    "frag_403",
+    "frag_413"
+  ],
   "expectedGaps": [
-    { "topicLabel": "Technical performance specs", "coverage": "none" },
-    { "topicLabel": "Closed-loop recycling process", "coverage": "partial" },
-    { "topicLabel": "Product repair service", "coverage": "none" },
-    { "topicLabel": "End-of-life takeback program", "coverage": "none" },
-    { "topicLabel": "Brand guideline coverage: technical-precision", "coverage": "partial" }
+    {
+      "topicLabel": "Funktionsstoff-Leistungswerte",
+      "coverage": "none"
+    },
+    {
+      "topicLabel": "Kreislaufsystem/Recyclingprozess",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "Reparaturservice",
+      "coverage": "none"
+    },
+    {
+      "topicLabel": "Rücknahme am Produktende",
+      "coverage": "none"
+    },
+    {
+      "topicLabel": "Brand guideline coverage: technical-precision",
+      "coverage": "partial"
+    }
   ]
 }

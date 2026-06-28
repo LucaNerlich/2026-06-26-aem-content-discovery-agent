@@ -1,21 +1,21 @@
 {
   "expectedMatchIds": [
-    "frag_001",
-    "frag_146",
-    "frag_006"
+    "frag_134",
+    "frag_161",
+    "frag_023"
   ],
   "expectedGaps": [
     {
-      "topicLabel": "Technical specifications (recycled wool)",
+      "topicLabel": "cashmere washing and drying instructions",
       "coverage": "partial"
     },
     {
-      "topicLabel": "Sustainable material composition",
+      "topicLabel": "natural fibre care benefits",
       "coverage": "partial"
     },
     {
-      "topicLabel": "Garment care instructions",
-      "coverage": "none"
+      "topicLabel": "garment longevity",
+      "coverage": "partial"
     },
     {
       "topicLabel": "Brand guideline coverage: technical-precision",

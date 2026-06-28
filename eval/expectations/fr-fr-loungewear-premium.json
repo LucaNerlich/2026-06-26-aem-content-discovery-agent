@@ -1,10 +1,29 @@
 {
-  "expectedMatchIds": ["frag_062", "frag_057", "frag_041"],
+  "expectedMatchIds": [
+    "frag_400",
+    "frag_292",
+    "frag_313"
+  ],
   "expectedGaps": [
-    { "topicLabel": "Fiber Provenance", "coverage": "partial" },
-    { "topicLabel": "Artisan Collaboration", "coverage": "partial" },
-    { "topicLabel": "Small-Batch Production", "coverage": "none" },
-    { "topicLabel": "Fiber Quality & Care", "coverage": "partial" },
-    { "topicLabel": "Brand guideline coverage: technical-precision", "coverage": "partial" }
+    {
+      "topicLabel": "provenance des fibres (Écosse, Côme, Égypte)",
+      "coverage": "none"
+    },
+    {
+      "topicLabel": "partenariats et certifications",
+      "coverage": "none"
+    },
+    {
+      "topicLabel": "art du soin des matières nobles",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "production en petites séries",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "Brand guideline coverage: technical-precision",
+      "coverage": "partial"
+    }
   ]
 }

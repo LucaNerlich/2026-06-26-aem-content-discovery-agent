@@ -1,0 +1,26 @@
+{
+  "localeOverride": "en-us",
+  "expectedMatchIds": [
+    "frag_076",
+    "frag_058",
+    "frag_113"
+  ],
+  "expectedGaps": [
+    {
+      "topicLabel": "resort wear",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "travel lightweight pieces",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "linen suiting for events abroad",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "packing tailored shirts",
+      "coverage": "partial"
+    }
+  ]
+}

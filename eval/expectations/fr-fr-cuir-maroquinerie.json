@@ -1,0 +1,25 @@
+{
+  "expectedMatchIds": [
+    "frag_286",
+    "frag_361",
+    "frag_223"
+  ],
+  "expectedGaps": [
+    {
+      "topicLabel": "handcrafted leather pieces",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "heritage workshop expertise",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "leather maintenance and care",
+      "coverage": "none"
+    },
+    {
+      "topicLabel": "responsible material sourcing",
+      "coverage": "none"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "expectedMatchIds": [
+    "frag_369",
+    "frag_207",
+    "frag_339"
+  ],
+  "expectedGaps": [
+    {
+      "topicLabel": "foulards en soie",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "techniques de tissage traditionnelles",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "provenance et noble caractère de la soie",
+      "coverage": "none"
+    },
+    {
+      "topicLabel": "entretien à domicile des foulards en soie",
+      "coverage": "partial"
+    }
+  ]
+}

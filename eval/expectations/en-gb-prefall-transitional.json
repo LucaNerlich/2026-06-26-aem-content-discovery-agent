@@ -1,0 +1,25 @@
+{
+  "expectedMatchIds": [
+    "frag_102",
+    "frag_029",
+    "frag_090"
+  ],
+  "expectedGaps": [
+    {
+      "topicLabel": "pre-fall edit",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "transitional layering pieces",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "natural fibres for autumn",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "circular fashion commitment",
+      "coverage": "partial"
+    }
+  ]
+}

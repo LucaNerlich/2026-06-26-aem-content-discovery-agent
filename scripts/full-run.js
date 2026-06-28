@@ -271,7 +271,7 @@ export function buildIndexReadme(metas, { chatModel, embeddingModel, seed, gener
 
 export async function buildSeedSummary(corpusPath = CORPUS_PATH, now = () => Date.now()) {
   if (!existsSync(corpusPath)) {
-    return { status: "not-seeded", note: "Run npm run seed -- --seed=20260626 first" };
+    return { status: "not-seeded", note: "Run npm run seed --seed=20260626 first" };
   }
   const raw = await readFile(corpusPath, "utf8");
   const corpus = JSON.parse(raw);
@@ -303,7 +303,7 @@ export async function main({ now = () => Date.now() } = {}) {
   const precheck = await corpusPrecheck(CORPUS_PATH);
   if (!precheck.ok) {
     process.stderr.write(
-      `full-run: corpus precheck failed (${precheck.reason}). Run \`npm run seed -- --seed=${DEMO_SEED}\` first.\n`,
+      `full-run: corpus precheck failed (${precheck.reason}). Run \`npm run seed --seed=${DEMO_SEED}\` first.\n`,
     );
     return 1;
   }

@@ -1,8 +1,21 @@
 {
-  "expectedMatchIds": ["frag_024", "frag_009", "frag_003"],
+  "expectedMatchIds": [
+    "frag_039",
+    "frag_146",
+    "frag_001"
+  ],
   "expectedGaps": [
-    { "topicLabel": "recycled materials sourcing story", "coverage": "partial" },
-    { "topicLabel": "care instructions", "coverage": "partial" },
-    { "topicLabel": "seasonal styling tips", "coverage": "partial" }
+    {
+      "topicLabel": "recycled materials sourcing",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "garment care instructions",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "seasonal styling tips",
+      "coverage": "partial"
+    }
   ]
 }

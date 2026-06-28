@@ -1,0 +1,25 @@
+{
+  "expectedMatchIds": [
+    "frag_396",
+    "frag_201",
+    "frag_249"
+  ],
+  "expectedGaps": [
+    {
+      "topicLabel": "Athleisure minimaliste et mesuré",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "Confort des fibres naturelles",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "Engagement matériaux durables",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "Brand guideline coverage: technical-precision",
+      "coverage": "none"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "localeOverride": "en-au",
+  "expectedMatchIds": [
+    "frag_067",
+    "frag_061",
+    "frag_031"
+  ],
+  "expectedGaps": [
+    {
+      "topicLabel": "summer linen essentials for warm climates",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "high-summer suiting for events",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "natural fibres and cooling comfort",
+      "coverage": "partial"
+    }
+  ]
+}

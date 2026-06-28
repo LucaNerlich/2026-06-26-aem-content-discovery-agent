@@ -1,0 +1,21 @@
+{
+  "expectedMatchIds": [
+    "frag_404",
+    "frag_405",
+    "frag_515"
+  ],
+  "expectedGaps": [
+    {
+      "topicLabel": "Capsule-Garderobe Konzept",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "Layering-Essentials aus natürlichen Fasern",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "Langlebige, nachhaltige Materialien",
+      "coverage": "partial"
+    }
+  ]
+}

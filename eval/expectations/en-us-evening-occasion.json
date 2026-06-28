@@ -1,0 +1,26 @@
+{
+  "localeOverride": "en-us",
+  "expectedMatchIds": [
+    "frag_171",
+    "frag_073",
+    "frag_112"
+  ],
+  "expectedGaps": [
+    {
+      "topicLabel": "evening wear silk slip dresses",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "tailored tuxedos",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "timeless accessories",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "silk care basics",
+      "coverage": "partial"
+    }
+  ]
+}

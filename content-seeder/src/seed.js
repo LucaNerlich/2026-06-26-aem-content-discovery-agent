@@ -11,7 +11,10 @@ import { buildEmbeddingsDb } from "./embeddings.js";
 
 const DEFAULT_OUTPUT = new URL("../../data/corpus.json", import.meta.url).pathname;
 const DEFAULT_LOCALES = "en-gb,fr-fr,de-de";
-const DEFAULT_COUNT = 8;
+// Canonical corpus size: 200 per locale (600 total) is the frozen snapshot the
+// eval expectations are hand-labelled against. Changing this invalidates fragment
+// ids in eval/expectations/ — re-label if you change it. See eval/run.js DEMO_SEED.
+const DEFAULT_COUNT = 200;
 const DEFAULT_VARIATION = "medium";
 const DEFAULT_CONCURRENCY = 4;
 const COUNT_MIN = 1;

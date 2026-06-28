@@ -9,8 +9,9 @@ import { analyseGaps } from "../discovery-agent/src/pipeline/analyseGaps.js";
 import { compose } from "../discovery-agent/src/pipeline/compose.js";
 
 // DEMO_SEED - locked seed for the corpus this harness scores against.
-// See eval/README.md. If you change the seeder, re-run
-// `npm run seed -- --seed=20260626` and re-hand-label the expectations.
+// Canonical corpus is seed=20260626 AND count=200 (600 fragments, 200/locale);
+// count=200 is the seeder default so `npm run seed --seed=20260626` reproduces it.
+// See eval/README.md. If you change the seeder, re-seed and re-hand-label the expectations.
 export const DEMO_SEED = 20260626;
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -24,7 +25,8 @@ const GAP_COSINE_THRESHOLD = 0.5;
 const DEFAULT_F1_THRESHOLD = 0.6;
 // EVAL_CHAT_MODEL env override takes precedence over config/models.json so
 // graders can swap to a smaller fallback model without editing the config.
-const EVAL_CHAT_MODEL = process.env.EVAL_CHAT_MODEL || getChatModel("default");
+// Falls back to the config "eval" stage, which itself falls back to chat.default.
+const EVAL_CHAT_MODEL = process.env.EVAL_CHAT_MODEL || getChatModel("eval");
 
 // Wrap shared.chat so every pipeline stage uses EVAL_CHAT_MODEL by default.
 // Lets graders point the harness at a smaller local model when the default

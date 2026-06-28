@@ -1,0 +1,22 @@
+{
+  "localeOverride": "it-it",
+  "expectedMatchIds": [
+    "frag_028",
+    "frag_154",
+    "frag_082"
+  ],
+  "expectedGaps": [
+    {
+      "topicLabel": "smart-casual tailoring for the office",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "natural fibers and longevity",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "garment care advice",
+      "coverage": "partial"
+    }
+  ]
+}

@@ -38,7 +38,7 @@ There is **no lint or format step** — the project uses `node --check` only for
 |-----|---------|---------|
 | `CHAT_TIMEOUT_MS` | `120000` | Per-call chat timeout (ms) |
 | `LLM_HOST` | `http://localhost:1234` | Base URL of the LM Studio server |
-| `EVAL_CHAT_MODEL` | value in `config/models.json` | Override chat model for eval runs |
+| `EVAL_CHAT_MODEL` | `chat.eval` in `config/models.json` | Override chat model for eval runs (config `chat.eval` falls back to `chat.default`) |
 | `DISABLE_THINKING_MODE` | unset | Set truthy to send `think: false` to qwen3 models |
 | `LOG_LEVEL` | info | Pino log level; `silent` suppresses all pino output |
 
@@ -94,7 +94,7 @@ All stages produce / consume Zod-validated types from `shared/src/schema/`:
 
 ### Eval harness
 
-`eval/run.js` runs all 8 briefs and writes scores to `eval/latest.json`. Expectations reference deterministic fragment ids (`frag_001`, `frag_002`, …) that only stay stable when the seeder uses `DEMO_SEED=20260626`. If the seeder changes, re-seed with `npm run seed --seed=20260626` and re-label `eval/expectations/`.
+`eval/run.js` runs all 20 briefs and writes scores to `eval/latest.json`. Expectations reference deterministic fragment ids (`frag_001`, `frag_002`, …) that only stay stable when the seeder uses **both** `--seed=20260626` **and** `--count=200` (the canonical 600-fragment corpus, 200 per locale). `count=200` is the seeder default, so `npm run seed --seed=20260626` reproduces it. If you change the seed, the count, or the seeder logic, re-seed and re-label `eval/expectations/`.
 
 ### Decision log
 

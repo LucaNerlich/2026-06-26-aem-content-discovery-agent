@@ -1,0 +1,21 @@
+{
+  "expectedMatchIds": [
+    "frag_064",
+    "frag_096",
+    "frag_079"
+  ],
+  "expectedGaps": [
+    {
+      "topicLabel": "denim fits and fabrics for daily wear",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "supporting a considered wardrobe",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "basic denim care",
+      "coverage": "none"
+    }
+  ]
+}

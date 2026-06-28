@@ -1,21 +1,21 @@
 {
   "expectedMatchIds": [
-    "frag_001",
-    "frag_146",
-    "frag_006"
+    "frag_531",
+    "frag_411",
+    "frag_537"
   ],
   "expectedGaps": [
     {
-      "topicLabel": "Technical specifications (recycled wool)",
+      "topicLabel": "Leather polishing and protection",
       "coverage": "partial"
     },
     {
-      "topicLabel": "Sustainable material composition",
+      "topicLabel": "Long-term care routine",
       "coverage": "partial"
     },
     {
-      "topicLabel": "Garment care instructions",
-      "coverage": "none"
+      "topicLabel": "Sustainable shoe ownership",
+      "coverage": "partial"
     },
     {
       "topicLabel": "Brand guideline coverage: technical-precision",

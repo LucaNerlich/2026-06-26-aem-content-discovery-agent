@@ -15,13 +15,16 @@ the aggregate gap-F1 falls below `EVAL_F1_THRESHOLD` (default `0.6`).
 ## Reproducibility lock
 
 Expectations reference deterministic fragment ids (`frag_001`, `frag_002`, …)
-that only stay stable when the seeder uses the locked seed.
+that only stay stable when the seeder uses the locked seed **and** the
+canonical count (200 per locale = 600 fragments). `count=200` is the seeder
+default, so the command below reproduces the exact snapshot.
 
 - **`DEMO_SEED = 20260626`** - top-level constant in `eval/run.js`.
+- Canonical corpus: `--seed=20260626 --count=200` (600 fragments, 200/locale).
 - If you change the seeder, rerun:
 
   ```
-  npm run seed -- --seed=20260626
+  npm run seed --seed=20260626
   ```
 
   and re-hand-label the expectations files in `eval/expectations/` against

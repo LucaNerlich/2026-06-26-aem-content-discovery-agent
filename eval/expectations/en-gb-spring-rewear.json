@@ -1,9 +1,25 @@
 {
-  "expectedMatchIds": ["frag_021", "frag_003", "frag_024"],
+  "expectedMatchIds": [
+    "frag_039",
+    "frag_192",
+    "frag_015"
+  ],
   "expectedGaps": [
-    { "topicLabel": "Spring capsule fabrics", "coverage": "partial" },
-    { "topicLabel": "Wardrobe extension styling", "coverage": "partial" },
-    { "topicLabel": "Sustainable sourcing notes", "coverage": "partial" },
-    { "topicLabel": "Cotton jersey care guide", "coverage": "none" }
+    {
+      "topicLabel": "Extending existing wardrobe with spring fabrics",
+      "coverage": "none"
+    },
+    {
+      "topicLabel": "Sustainable cotton-jersey sourcing notes",
+      "coverage": "none"
+    },
+    {
+      "topicLabel": "Styling tips for re-wearing winter items",
+      "coverage": "partial"
+    },
+    {
+      "topicLabel": "Cotton jersey care guide (UK specific)",
+      "coverage": "none"
+    }
   ]
 }
