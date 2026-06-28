@@ -119,6 +119,33 @@ test("Corpus: happy path parses", () => {
   );
 });
 
+test("Corpus: persists optional provenance (seed, perLocaleCount, locales)", () => {
+  const parsed = Corpus.parse({
+    schemaVersion: "1.0",
+    generatedAt: "2026-06-26T12:00:00Z",
+    model: "m",
+    embeddingModel: "e",
+    seed: 20260626,
+    perLocaleCount: 40,
+    locales: ["en-gb", "fr-fr", "de-de"],
+    fragments: [validFragment],
+  });
+  assert.equal(parsed.seed, 20260626);
+  assert.equal(parsed.perLocaleCount, 40);
+  assert.deepEqual(parsed.locales, ["en-gb", "fr-fr", "de-de"]);
+});
+
+test("Corpus: provenance fields are optional (older corpus files still parse)", () => {
+  const parsed = Corpus.parse({
+    schemaVersion: "1.0",
+    generatedAt: "2026-06-26T12:00:00Z",
+    model: "m",
+    embeddingModel: "e",
+    fragments: [validFragment],
+  });
+  assert.equal(parsed.seed, undefined);
+});
+
 test("StructuredBrief: happy path parses", () => {
   assert.doesNotThrow(() => StructuredBrief.parse(validBrief));
 });

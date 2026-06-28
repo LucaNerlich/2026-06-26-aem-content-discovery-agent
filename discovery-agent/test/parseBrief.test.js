@@ -59,6 +59,18 @@ test("parseBrief: happy path returns valid StructuredBrief", async () => {
   assert.equal(chat.calls[0].json, true);
 });
 
+test("parseBrief: preserves theme when the model returns one", async () => {
+  const chat = makeChat([{ ...VALID, theme: "sustainable winter collection" }]);
+  const result = await parseBrief(BRIEF_TEXT, { chat });
+  assert.equal(result.theme, "sustainable winter collection");
+});
+
+test("parseBrief: defaults theme to empty string when the model omits it", async () => {
+  const chat = makeChat([VALID]); // VALID has no theme field
+  const result = await parseBrief(BRIEF_TEXT, { chat });
+  assert.equal(result.theme, "", "theme should default to '' so retrieval can fall back cleanly");
+});
+
 test("parseBrief: locale forced from URL path overrides model locale", async () => {
   const chat = makeChat([{ ...VALID, locale: "fr-fr" }]);
   const result = await parseBrief(

@@ -69,7 +69,7 @@ Key behaviours:
 | Flag                | Type   | Default                                      | Notes                                                            |
 |---------------------|--------|----------------------------------------------|------------------------------------------------------------------|
 | `--output=<path>`   | string | `data/corpus.json`                           | Output file path.                                                |
-| `--count=<n>`       | int    | `200`                                        | Fragments per locale, range `1..200`. Default `200` = canonical eval corpus. |
+| `--count=<n>`       | int    | `40`                                         | Fragments per locale, range `1..200`. Default `40` = canonical eval corpus. |
 | `--locales=<csv>`   | string | `en-gb,fr-fr,de-de`                          | Comma-separated locale codes.                                    |
 | `--variation=<lvl>` | enum   | `medium`                                     | One of `low|medium|high` (controls temperature + template pool). |
 | `--concurrency=<n>` | int    | `4`                                          | Parallel LLM calls per batch, range `1..16`.                     |
@@ -111,6 +111,9 @@ wired into the `seed` or `embed` CLIs; consume it programmatically from your own
     "generatedAt": "<ISO timestamp>",
     "model": "<chat model id>",
     "embeddingModel": "<embedding model id>",
+    "seed": 20260626,
+    "perLocaleCount": 40,
+    "locales": ["en-gb", "fr-fr", "de-de"],
     "fragments": [
       {
         "id": "frag_001",

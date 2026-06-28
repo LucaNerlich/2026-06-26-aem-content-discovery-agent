@@ -92,16 +92,21 @@ export async function retrieve(brief, { source, k = 3, vectorDbPath = "data/embe
   try {
     const perFragmentBest = new Map();
 
+    // Fold the brief-level theme into each per-topic query so generic topics
+    // ("garment care instructions") stay anchored to the page's subject
+    // ("sustainable winter collection") instead of matching any care guide.
+    const theme = typeof brief.theme === "string" ? brief.theme.trim() : "";
     for (const topic of brief.requiredTopics) {
+      const queryText = theme ? `${theme}: ${topic}` : topic;
       let vectorHits = [];
       if (vectorSearchAvailable && vectorStore) {
-        const queryVec = await embedImpl(topic);
+        const queryVec = await embedImpl(queryText);
         vectorHits = vectorStore.searchByVector(queryVec, {
           k: TOP_PER_QUERY,
           filterIds: candidateIds,
         });
       }
-      const bm25Hits = bm25.searchByText(topic, {
+      const bm25Hits = bm25.searchByText(queryText, {
         k: TOP_PER_QUERY,
         filterIds: candidateIds,
       });

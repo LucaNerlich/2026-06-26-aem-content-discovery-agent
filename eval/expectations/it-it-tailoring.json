@@ -1,9 +1,9 @@
 {
   "localeOverride": "it-it",
   "expectedMatchIds": [
-    "frag_028",
-    "frag_154",
-    "frag_082"
+    "frag_022",
+    "frag_003",
+    "frag_006"
   ],
   "expectedGaps": [
     {

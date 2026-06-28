@@ -108,6 +108,41 @@ test("retrieve returns default k=3 matches with scores in 0..1 and reasons ≤14
   }
 });
 
+test("retrieve folds brief.theme into each per-topic query", async () => {
+  const fx = await setupFixture();
+  try {
+    const source = new JsonFragmentSource(fx.corpusPath);
+    const embedImpl = mockEmbed();
+    const brief = { ...baseBrief, theme: "sustainable winter collection" };
+    await retrieve(brief, { source, vectorDbPath: fx.dbPath, embedImpl });
+    assert.equal(embedImpl.calls.length, brief.requiredTopics.length, "one embed call per topic");
+    for (const call of embedImpl.calls) {
+      assert.ok(
+        call.startsWith("sustainable winter collection: "),
+        `query should be theme-prefixed; got: ${call}`,
+      );
+    }
+  } finally {
+    await rm(fx.dir, { recursive: true, force: true });
+  }
+});
+
+test("retrieve uses bare topic when no theme is present", async () => {
+  const fx = await setupFixture();
+  try {
+    const source = new JsonFragmentSource(fx.corpusPath);
+    const embedImpl = mockEmbed();
+    await retrieve(baseBrief, { source, vectorDbPath: fx.dbPath, embedImpl }); // baseBrief has no theme
+    assert.deepEqual(
+      embedImpl.calls,
+      baseBrief.requiredTopics,
+      "without a theme, queries must equal the bare topics (backward compatible)",
+    );
+  } finally {
+    await rm(fx.dir, { recursive: true, force: true });
+  }
+});
+
 test("retrieve respects custom k and populates nearMisses", async () => {
   const fx = await setupFixture();
   try {

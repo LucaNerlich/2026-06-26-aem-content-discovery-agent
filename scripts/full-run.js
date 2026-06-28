@@ -283,6 +283,8 @@ export async function buildSeedSummary(corpusPath = CORPUS_PATH, now = () => Dat
     fragmentCount: (corpus.fragments ?? []).length,
     locales,
     generatedAt: corpus.generatedAt ?? new Date(now()).toISOString(),
+    seed: corpus.seed ?? null,
+    perLocaleCount: corpus.perLocaleCount ?? null,
   };
 }
 

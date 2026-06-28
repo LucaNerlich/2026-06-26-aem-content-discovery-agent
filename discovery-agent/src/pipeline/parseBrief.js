@@ -21,6 +21,7 @@ const BASE_SYSTEM = `You parse free-form content briefs into strict JSON.
 Return ONLY a JSON object with these fields:
 - audience: short string describing the target audience.
 - locale: one of "en-gb", "fr-fr", "de-de". Infer from country/region in the audience when no URL is present.
+- theme: short phrase capturing the overall subject of the page (e.g. "sustainable winter collection", "premium loungewear"). This is the unifying context that the individual requiredTopics share.
 - tone: short string describing the desired tone (e.g. "premium", "casual", "technical").
 - brandGuidelines: array of strings drawn ONLY from this locked vocabulary: ${JSON.stringify(BRAND_VOCAB)}. Include only those that clearly apply.
 - requiredTopics: array of 2-6 short topic labels the page must cover.
@@ -79,6 +80,8 @@ export async function parseBrief(
       brief = await callOnce({ chat, system: retrySystem2, user: rawText, model });
     }
   }
+
+  if (typeof brief.theme !== "string") brief.theme = "";
 
   const uncertain = [];
 

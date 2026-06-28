@@ -94,7 +94,7 @@ All stages produce / consume Zod-validated types from `shared/src/schema/`:
 
 ### Eval harness
 
-`eval/run.js` runs all 20 briefs and writes scores to `eval/latest.json`. Expectations reference deterministic fragment ids (`frag_001`, `frag_002`, …) that only stay stable when the seeder uses **both** `--seed=20260626` **and** `--count=200` (the canonical 600-fragment corpus, 200 per locale). `count=200` is the seeder default, so `npm run seed --seed=20260626` reproduces it. If you change the seed, the count, or the seeder logic, re-seed and re-label `eval/expectations/`.
+`eval/run.js` runs all 20 briefs and writes scores to `eval/latest.json`. Expectations reference deterministic fragment ids (`frag_001`, `frag_002`, …) that only stay stable when the seeder uses **both** `--seed=20260626` **and** `--count=40` (the canonical 120-fragment corpus, 40 per locale). `count=40` is the seeder default, so `npm run seed --seed=20260626` reproduces it. If you change the seed, the count, or the seeder logic, re-seed and re-label `eval/expectations/`. Note: match scoring is topic-aware (see `topicKeyOf` in `eval/run.js`), so labels only need a fragment of the right topic+locale, not an exact id.
 
 ### Decision log
 

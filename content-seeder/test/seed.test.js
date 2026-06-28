@@ -8,7 +8,7 @@ import { resolveVariation, TEMPLATE_POOL } from "../src/templates.js";
 test("parseArgs applies defaults and parses seed deterministically", () => {
   const a = parseArgs(["--seed=42"]);
   assert.equal(a.seed, 42);
-  assert.equal(a.count, 200);
+  assert.equal(a.count, 40);
   assert.deepEqual(a.locales, ["en-gb", "fr-fr", "de-de"]);
   assert.equal(a.variation, "medium");
   assert.equal(a.skipEmbeddings, true, "skip-embeddings defaults to true (embed is a separate step)");
@@ -16,9 +16,9 @@ test("parseArgs applies defaults and parses seed deterministically", () => {
   assert.equal(a.aemPush, undefined, "aemPush removed — use aem-push.js directly if needed");
 });
 
-test("parseArgs default --count is 200 per locale (600 total across en-gb,fr-fr,de-de)", () => {
+test("parseArgs default --count is 40 per locale (120 total across en-gb,fr-fr,de-de)", () => {
   const a = parseArgs([]);
-  assert.equal(a.count, 200, "default --count must be 200 per locale (canonical eval corpus)");
+  assert.equal(a.count, 40, "default --count must be 40 per locale (canonical eval corpus)");
 });
 
 test("parseArgs rejects bad count", () => {

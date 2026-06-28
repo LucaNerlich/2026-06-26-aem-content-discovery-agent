@@ -11,10 +11,10 @@ import { buildEmbeddingsDb } from "./embeddings.js";
 
 const DEFAULT_OUTPUT = new URL("../../data/corpus.json", import.meta.url).pathname;
 const DEFAULT_LOCALES = "en-gb,fr-fr,de-de";
-// Canonical corpus size: 200 per locale (600 total) is the frozen snapshot the
+// Canonical corpus size: 40 per locale (120 total) is the frozen snapshot the
 // eval expectations are hand-labelled against. Changing this invalidates fragment
 // ids in eval/expectations/ — re-label if you change it. See eval/run.js DEMO_SEED.
-const DEFAULT_COUNT = 200;
+const DEFAULT_COUNT = 40;
 const DEFAULT_VARIATION = "medium";
 const DEFAULT_CONCURRENCY = 4;
 const COUNT_MIN = 1;
@@ -99,12 +99,15 @@ export function avgBodyWords(fragments) {
   return Math.round(total / fragments.length);
 }
 
-async function saveCorpus(outputPath, fragments) {
+async function saveCorpus(outputPath, fragments, { seed, perLocaleCount, locales } = {}) {
   const corpus = Corpus.parse({
     schemaVersion: "1.0",
     generatedAt: new Date().toISOString(),
     model: getChatModel("seeder"),
     embeddingModel: getEmbeddingModel(),
+    seed,
+    perLocaleCount,
+    locales,
     fragments,
   });
   await mkdir(dirname(outputPath), { recursive: true });
@@ -167,7 +170,11 @@ async function run(argv) {
 
     // Incremental checkpoint: save what we have so far after each batch.
     if (!args.dryRun && fragments.length > 0) {
-      await saveCorpus(args.outputPath, fragments);
+      await saveCorpus(args.outputPath, fragments, {
+        seed: args.seed,
+        perLocaleCount: args.count,
+        locales: args.locales,
+      });
       logger.info({ saved: fragments.length, total: plan.length }, "corpus-checkpoint");
     }
   }

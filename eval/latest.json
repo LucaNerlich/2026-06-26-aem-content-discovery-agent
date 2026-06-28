@@ -4,70 +4,91 @@
   "corpusPath": "/mnt/workspace/tries/2026-06-26-aem-content-discovery-agent/data/corpus.json",
   "chatModel": "google/gemma-4-e4b",
   "gapCosineThreshold": 0.5,
+  "gapCoveragePenalty": 0.5,
   "f1Threshold": 0.6,
-  "ranAt": "2026-06-28T14:42:15.624Z",
+  "ranAt": "2026-06-28T16:18:57.356Z",
   "aggregate": {
-    "precision": 0.5833333333333333,
-    "recall": 0.5833333333333333,
-    "gapF1": 0.7312698412698412
+    "precision": 0.6,
+    "recall": 0.6083333333333333,
+    "gapF1": 0.7965079365079366
   },
   "perBrief": [
     {
       "name": "de-de-berlin-street",
-      "durationMs": 26245,
-      "precision": 1,
-      "recall": 1,
+      "durationMs": 28425,
+      "precision": 0.3333333333333333,
+      "recall": 0.3333333333333333,
       "gap": {
-        "f1": 1,
-        "precision": 1,
+        "f1": 0.8571428571428571,
+        "precision": 0.75,
         "recall": 1,
         "tp": 3,
-        "fp": 0,
+        "fp": 1,
         "fn": 0,
         "pairs": [
           {
             "expected": "Berlin Fashion Week Looks",
-            "returned": "Berlin Fashion Week looks",
-            "coverage": "none",
-            "cosine": 0.992
+            "returned": "Streetwear Looks der Berlin Fashion Week",
+            "expectedCoverage": "none",
+            "returnedCoverage": "none",
+            "coverageWeight": 1,
+            "cosine": 0.915
           },
           {
             "expected": "Sustainable winter outerwear",
-            "returned": "Sustainable winter outerwear",
-            "coverage": "partial",
-            "cosine": 1
+            "returned": "Nachhaltige Winteroberbekleidung aus recycelten Materialien",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.794
           },
           {
             "expected": "Wool coat care",
-            "returned": "Wool coat care instructions",
-            "coverage": "partial",
-            "cosine": 0.919
+            "returned": "Pflegehinweise für Wollmäntel",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.84
           }
         ]
       },
       "composeError": null,
       "returnedMatchIds": [
-        "frag_405",
-        "frag_403",
-        "frag_406"
+        "frag_108",
+        "frag_082",
+        "frag_085"
       ],
       "expectedMatchIds": [
-        "frag_405",
-        "frag_403",
-        "frag_406"
+        "frag_085",
+        "frag_083",
+        "frag_081"
+      ],
+      "returnedTopics": [
+        "de-de::Capsule wardrobe: ten pieces, one season",
+        "de-de::Seasonal collection story: autumn / winter campaign",
+        "de-de::Women's winter coats — recycled wool and sustainable insulation"
+      ],
+      "expectedTopics": [
+        "de-de::Women's winter coats — recycled wool and sustainable insulation",
+        "de-de::Recycled materials and circular fashion in outerwear",
+        "de-de::Care guide: extending the life of winter garments"
       ],
       "returnedGaps": [
         {
-          "topic": "Berlin Fashion Week looks",
+          "topic": "Streetwear Looks der Berlin Fashion Week",
           "coverage": "none"
         },
         {
-          "topic": "Sustainable winter outerwear",
+          "topic": "Nachhaltige Winteroberbekleidung aus recycelten Materialien",
           "coverage": "partial"
         },
         {
-          "topic": "Wool coat care instructions",
+          "topic": "Pflegehinweise für Wollmäntel",
           "coverage": "partial"
+        },
+        {
+          "topic": "Brand guideline coverage: premium-tone",
+          "coverage": "none"
         }
       ],
       "expectedGaps": [
@@ -87,60 +108,80 @@
     },
     {
       "name": "de-de-capsule-garderobe",
-      "durationMs": 25440,
-      "precision": 0,
-      "recall": 0,
+      "durationMs": 24707,
+      "precision": 0.6666666666666666,
+      "recall": 0.6666666666666666,
       "gap": {
-        "f1": 1,
-        "precision": 1,
+        "f1": 0.8571428571428571,
+        "precision": 0.75,
         "recall": 1,
         "tp": 3,
-        "fp": 0,
+        "fp": 1,
         "fn": 0,
         "pairs": [
           {
             "expected": "Capsule-Garderobe Konzept",
-            "returned": "capsule wardrobe concept",
-            "coverage": "partial",
-            "cosine": 0.863
+            "returned": "Capsule wardrobe concept",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.882
           },
           {
             "expected": "Layering-Essentials aus natürlichen Fasern",
-            "returned": "natural fibers layering",
-            "coverage": "partial",
-            "cosine": 0.801
+            "returned": "Seasonal layering essentials (natural fibers)",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.82
           },
           {
             "expected": "Langlebige, nachhaltige Materialien",
-            "returned": "sustainable materials",
-            "coverage": "partial",
-            "cosine": 0.779
+            "returned": "Sustainable and durable materials",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.89
           }
         ]
       },
       "composeError": null,
       "returnedMatchIds": [
-        "frag_506",
-        "frag_452",
-        "frag_590"
+        "frag_108",
+        "frag_084",
+        "frag_085"
       ],
       "expectedMatchIds": [
-        "frag_404",
-        "frag_405",
-        "frag_515"
+        "frag_108",
+        "frag_084",
+        "frag_083"
+      ],
+      "returnedTopics": [
+        "de-de::Capsule wardrobe: ten pieces, one season",
+        "de-de::Layering essentials with natural fibres",
+        "de-de::Women's winter coats — recycled wool and sustainable insulation"
+      ],
+      "expectedTopics": [
+        "de-de::Capsule wardrobe: ten pieces, one season",
+        "de-de::Layering essentials with natural fibres",
+        "de-de::Recycled materials and circular fashion in outerwear"
       ],
       "returnedGaps": [
         {
-          "topic": "capsule wardrobe concept",
+          "topic": "Capsule wardrobe concept",
           "coverage": "partial"
         },
         {
-          "topic": "natural fibers layering",
+          "topic": "Seasonal layering essentials (natural fibers)",
           "coverage": "partial"
         },
         {
-          "topic": "sustainable materials",
+          "topic": "Sustainable and durable materials",
           "coverage": "partial"
+        },
+        {
+          "topic": "Brand guideline coverage: premium-tone",
+          "coverage": "none"
         }
       ],
       "expectedGaps": [
@@ -160,63 +201,85 @@
     },
     {
       "name": "de-de-schuhpflege",
-      "durationMs": 20588,
-      "precision": 0.3333333333333333,
-      "recall": 0.3333333333333333,
+      "durationMs": 19534,
+      "precision": 0.6666666666666666,
+      "recall": 1,
       "gap": {
-        "f1": 0.75,
-        "precision": 0.75,
-        "recall": 0.75,
-        "tp": 3,
-        "fp": 1,
-        "fn": 1,
+        "f1": 1,
+        "precision": 1,
+        "recall": 1,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
         "pairs": [
           {
             "expected": "Leather polishing and protection",
-            "returned": "polishing fine leather shoes",
-            "coverage": "partial",
-            "cosine": 0.784
+            "returned": "Polishing and protecting fine leather",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.907
           },
           {
             "expected": "Long-term care routine",
-            "returned": "sustainability through care",
-            "coverage": "partial",
-            "cosine": 0.594
+            "returned": "Routine for extending lifespan",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.723
           },
           {
             "expected": "Sustainable shoe ownership",
-            "returned": "shoe care routine",
-            "coverage": "partial",
-            "cosine": 0.667
+            "returned": "Sustainability of proper care",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.549
+          },
+          {
+            "expected": "Brand guideline coverage: technical-precision",
+            "returned": "Brand guideline coverage: technical-precision",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 1
           }
         ]
       },
       "composeError": null,
       "returnedMatchIds": [
-        "frag_531",
-        "frag_564",
-        "frag_474"
+        "frag_106",
+        "frag_088",
+        "frag_115"
       ],
       "expectedMatchIds": [
-        "frag_531",
-        "frag_411",
-        "frag_537"
+        "frag_106",
+        "frag_088"
+      ],
+      "returnedTopics": [
+        "de-de::Polishing and protecting fine footwear",
+        "de-de::How to store leather accessories",
+        "de-de::Hat care: shaping, brushing, storage"
+      ],
+      "expectedTopics": [
+        "de-de::Polishing and protecting fine footwear",
+        "de-de::How to store leather accessories"
       ],
       "returnedGaps": [
         {
-          "topic": "polishing fine leather shoes",
+          "topic": "Polishing and protecting fine leather",
           "coverage": "partial"
         },
         {
-          "topic": "protecting fine leather shoes",
+          "topic": "Routine for extending lifespan",
           "coverage": "partial"
         },
         {
-          "topic": "shoe care routine",
+          "topic": "Sustainability of proper care",
           "coverage": "partial"
         },
         {
-          "topic": "sustainability through care",
+          "topic": "Brand guideline coverage: technical-precision",
           "coverage": "partial"
         }
       ],
@@ -241,69 +304,83 @@
     },
     {
       "name": "de-de-workwear-tech",
-      "durationMs": 29616,
+      "durationMs": 30828,
       "precision": 0,
       "recall": 0,
       "gap": {
-        "f1": 0.8000000000000002,
-        "precision": 0.8,
-        "recall": 0.8,
-        "tp": 4,
-        "fp": 1,
-        "fn": 1,
+        "f1": 0.9,
+        "precision": 0.9,
+        "recall": 0.9,
+        "tp": 4.5,
+        "fp": 0.5,
+        "fn": 0.5,
         "pairs": [
           {
             "expected": "Funktionsstoff-Leistungswerte",
-            "returned": "Funktionsstoffe Leistungswerte (Wassersäule, MVTR, Martindale)",
-            "coverage": "none",
-            "cosine": 0.656
+            "returned": "Funktionsmaterialien und Messwerte (Wassersäule, MVTR, Martindale)",
+            "expectedCoverage": "none",
+            "returnedCoverage": "none",
+            "coverageWeight": 1,
+            "cosine": 0.567
           },
           {
             "expected": "Kreislaufsystem/Recyclingprozess",
-            "returned": "Kreislaufsystem und Recyclingprozess",
-            "coverage": "partial",
-            "cosine": 0.927
+            "returned": "Geschlossenes Kreislaufsystem und Recycling",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.825
+          },
+          {
+            "expected": "Reparaturservice",
+            "returned": "Produkt-Reparatur-Service",
+            "expectedCoverage": "none",
+            "returnedCoverage": "partial",
+            "coverageWeight": 0.5,
+            "cosine": 0.787
           },
           {
             "expected": "Rücknahme am Produktende",
-            "returned": "Produktrücknahme am Ende des Produktlebenszyklus",
-            "coverage": "none",
-            "cosine": 0.796
+            "returned": "End-of-Life Rücknahme",
+            "expectedCoverage": "none",
+            "returnedCoverage": "none",
+            "coverageWeight": 1,
+            "cosine": 0.748
           },
           {
             "expected": "Brand guideline coverage: technical-precision",
             "returned": "Brand guideline coverage: technical-precision",
-            "coverage": "partial",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
             "cosine": 1
           }
         ]
       },
       "composeError": null,
-      "returnedMatchIds": [
-        "frag_411",
-        "frag_472",
-        "frag_406"
-      ],
+      "returnedMatchIds": [],
       "expectedMatchIds": [
-        "frag_476",
-        "frag_403",
-        "frag_413"
+        "frag_083"
+      ],
+      "returnedTopics": [],
+      "expectedTopics": [
+        "de-de::Recycled materials and circular fashion in outerwear"
       ],
       "returnedGaps": [
         {
-          "topic": "Funktionsstoffe Leistungswerte (Wassersäule, MVTR, Martindale)",
+          "topic": "Funktionsmaterialien und Messwerte (Wassersäule, MVTR, Martindale)",
           "coverage": "none"
         },
         {
-          "topic": "Kreislaufsystem und Recyclingprozess",
+          "topic": "Geschlossenes Kreislaufsystem und Recycling",
           "coverage": "partial"
         },
         {
-          "topic": "Reparatur-Service zur Lebensdauerverlängerung",
+          "topic": "Produkt-Reparatur-Service",
           "coverage": "partial"
         },
         {
-          "topic": "Produktrücknahme am Ende des Produktlebenszyklus",
+          "topic": "End-of-Life Rücknahme",
           "coverage": "none"
         },
         {
@@ -336,47 +413,60 @@
     },
     {
       "name": "en-au-summer-linen",
-      "durationMs": 28707,
+      "durationMs": 20701,
       "precision": 1,
       "recall": 1,
       "gap": {
-        "f1": 0.8571428571428571,
-        "precision": 0.75,
-        "recall": 1,
-        "tp": 3,
-        "fp": 1,
-        "fn": 0,
+        "f1": 0.625,
+        "precision": 0.5,
+        "recall": 0.8333333333333334,
+        "tp": 2.5,
+        "fp": 2.5,
+        "fn": 0.5,
         "pairs": [
           {
             "expected": "summer linen essentials for warm climates",
             "returned": "summer linen essentials for warm climates",
-            "coverage": "partial",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
             "cosine": 1
           },
           {
             "expected": "high-summer suiting for events",
-            "returned": "high-summer suiting for events",
-            "coverage": "partial",
-            "cosine": 1
+            "returned": "high-summer linen suiting for events",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.873
           },
           {
             "expected": "natural fibres and cooling comfort",
-            "returned": "cooling properties of natural fibres",
-            "coverage": "partial",
-            "cosine": 0.849
+            "returned": "natural fibres and cooling properties",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "none",
+            "coverageWeight": 0.5,
+            "cosine": 0.922
           }
         ]
       },
       "composeError": null,
       "returnedMatchIds": [
-        "frag_067",
-        "frag_061",
-        "frag_031"
+        "frag_030",
+        "frag_007",
+        "frag_037"
       ],
       "expectedMatchIds": [
-        "frag_067",
-        "frag_061",
-        "frag_031"
+        "frag_037",
+        "frag_007"
+      ],
+      "returnedTopics": [
+        "en-gb::High summer: linen suiting for warm-weather events",
+        "en-gb::Summer linen essentials for warm climates"
+      ],
+      "expectedTopics": [
+        "en-gb::Summer linen essentials for warm climates",
+        "en-gb::High summer: linen suiting for warm-weather events"
       ],
       "returnedGaps": [
         {
@@ -384,15 +474,19 @@
           "coverage": "partial"
         },
         {
-          "topic": "high-summer suiting for events",
+          "topic": "high-summer linen suiting for events",
           "coverage": "partial"
         },
         {
-          "topic": "cooling properties of natural fibres",
-          "coverage": "partial"
+          "topic": "natural fibres and cooling properties",
+          "coverage": "none"
         },
         {
           "topic": "Locale-appropriate content for en-au",
+          "coverage": "partial"
+        },
+        {
+          "topic": "Brand guideline coverage: sustainability-voice",
           "coverage": "partial"
         }
       ],
@@ -413,9 +507,9 @@
     },
     {
       "name": "en-gb-cashmere-care",
-      "durationMs": 18861,
+      "durationMs": 28731,
       "precision": 0.6666666666666666,
-      "recall": 0.6666666666666666,
+      "recall": 1,
       "gap": {
         "f1": 0.8571428571428571,
         "precision": 1,
@@ -426,46 +520,60 @@
         "pairs": [
           {
             "expected": "cashmere washing and drying instructions",
-            "returned": "seasonal cashmere washing and drying guide",
-            "coverage": "partial",
-            "cosine": 0.864
+            "returned": "washing and drying cashmere through the seasons",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.755
           },
           {
             "expected": "natural fibre care benefits",
-            "returned": "benefits of natural fibre care",
-            "coverage": "partial",
-            "cosine": 0.969
+            "returned": "benefits of natural fiber care",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.965
           },
           {
             "expected": "garment longevity",
-            "returned": "commitment to garment longevity",
-            "coverage": "partial",
-            "cosine": 0.881
+            "returned": "garment longevity commitment",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.932
           }
         ]
       },
       "composeError": null,
       "returnedMatchIds": [
-        "frag_027",
-        "frag_134",
-        "frag_161"
+        "frag_038",
+        "frag_002",
+        "frag_003"
       ],
       "expectedMatchIds": [
-        "frag_134",
-        "frag_161",
-        "frag_023"
+        "frag_038",
+        "frag_003"
+      ],
+      "returnedTopics": [
+        "en-gb::Caring for cashmere through the seasons",
+        "en-gb::Sustainable knitwear and natural fibres for cold weather",
+        "en-gb::Care guide: extending the life of winter garments"
+      ],
+      "expectedTopics": [
+        "en-gb::Caring for cashmere through the seasons",
+        "en-gb::Care guide: extending the life of winter garments"
       ],
       "returnedGaps": [
         {
-          "topic": "seasonal cashmere washing and drying guide",
+          "topic": "washing and drying cashmere through the seasons",
           "coverage": "partial"
         },
         {
-          "topic": "benefits of natural fibre care",
+          "topic": "benefits of natural fiber care",
           "coverage": "partial"
         },
         {
-          "topic": "commitment to garment longevity",
+          "topic": "garment longevity commitment",
           "coverage": "partial"
         }
       ],
@@ -490,59 +598,71 @@
     },
     {
       "name": "en-gb-denim-everyday",
-      "durationMs": 19260,
-      "precision": 1,
+      "durationMs": 23191,
+      "precision": 0.3333333333333333,
       "recall": 1,
       "gap": {
-        "f1": 1,
-        "precision": 1,
-        "recall": 1,
-        "tp": 3,
-        "fp": 0,
-        "fn": 0,
+        "f1": 0.8333333333333334,
+        "precision": 0.8333333333333334,
+        "recall": 0.8333333333333334,
+        "tp": 2.5,
+        "fp": 0.5,
+        "fn": 0.5,
         "pairs": [
           {
             "expected": "denim fits and fabrics for daily wear",
-            "returned": "denim fits and fabrics for daily wear",
-            "coverage": "partial",
-            "cosine": 1
+            "returned": "denim fits and daily fabrics",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "none",
+            "coverageWeight": 0.5,
+            "cosine": 0.907
           },
           {
             "expected": "supporting a considered wardrobe",
-            "returned": "wardrobe longevity",
-            "coverage": "partial",
-            "cosine": 0.694
+            "returned": "building a considered wardrobe",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.811
           },
           {
             "expected": "basic denim care",
-            "returned": "basic denim care",
-            "coverage": "none",
-            "cosine": 1
+            "returned": "basic denim care guide",
+            "expectedCoverage": "none",
+            "returnedCoverage": "none",
+            "coverageWeight": 1,
+            "cosine": 0.941
           }
         ]
       },
       "composeError": null,
       "returnedMatchIds": [
-        "frag_064",
-        "frag_096",
-        "frag_079"
+        "frag_028",
+        "frag_031",
+        "frag_003"
       ],
       "expectedMatchIds": [
-        "frag_064",
-        "frag_096",
-        "frag_079"
+        "frag_019"
+      ],
+      "returnedTopics": [
+        "en-gb::Capsule wardrobe: ten pieces, one season",
+        "en-gb::Smart-casual tailoring for the modern workplace",
+        "en-gb::Care guide: extending the life of winter garments"
+      ],
+      "expectedTopics": [
+        "en-gb::Capsule wardrobe: ten pieces, one season"
       ],
       "returnedGaps": [
         {
-          "topic": "denim fits and fabrics for daily wear",
+          "topic": "denim fits and daily fabrics",
+          "coverage": "none"
+        },
+        {
+          "topic": "building a considered wardrobe",
           "coverage": "partial"
         },
         {
-          "topic": "wardrobe longevity",
-          "coverage": "partial"
-        },
-        {
-          "topic": "basic denim care",
+          "topic": "basic denim care guide",
           "coverage": "none"
         }
       ],
@@ -563,63 +683,75 @@
     },
     {
       "name": "en-gb-prefall-transitional",
-      "durationMs": 21596,
+      "durationMs": 35058,
       "precision": 0.6666666666666666,
       "recall": 0.6666666666666666,
       "gap": {
-        "f1": 0.75,
-        "precision": 0.75,
-        "recall": 0.75,
-        "tp": 3,
-        "fp": 1,
-        "fn": 1,
+        "f1": 0.7142857142857143,
+        "precision": 0.8333333333333334,
+        "recall": 0.625,
+        "tp": 2.5,
+        "fp": 0.5,
+        "fn": 1.5,
         "pairs": [
           {
             "expected": "pre-fall edit",
-            "returned": "Pre-fall edit",
-            "coverage": "partial",
-            "cosine": 0.962
+            "returned": "pre-fall edit and between-season layering pieces",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.642
           },
           {
             "expected": "transitional layering pieces",
-            "returned": "Transitional layering pieces",
-            "coverage": "partial",
-            "cosine": 0.983
+            "returned": "natural fibre seasonal transition",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.528
           },
           {
-            "expected": "natural fibres for autumn",
-            "returned": "Natural fibers transition",
-            "coverage": "partial",
-            "cosine": 0.636
+            "expected": "circular fashion commitment",
+            "returned": "circular fashion commitment reminder",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "none",
+            "coverageWeight": 0.5,
+            "cosine": 0.717
           }
         ]
       },
       "composeError": null,
       "returnedMatchIds": [
-        "frag_102",
-        "frag_029",
-        "frag_045"
+        "frag_005",
+        "frag_002",
+        "frag_006"
       ],
       "expectedMatchIds": [
-        "frag_102",
-        "frag_029",
-        "frag_090"
+        "frag_033",
+        "frag_006",
+        "frag_005"
+      ],
+      "returnedTopics": [
+        "en-gb::Recycled materials and circular fashion in outerwear",
+        "en-gb::Sustainable knitwear and natural fibres for cold weather",
+        "en-gb::Layering essentials with natural fibres"
+      ],
+      "expectedTopics": [
+        "en-gb::Pre-fall edit: between-season layering pieces",
+        "en-gb::Layering essentials with natural fibres",
+        "en-gb::Recycled materials and circular fashion in outerwear"
       ],
       "returnedGaps": [
         {
-          "topic": "Pre-fall edit",
+          "topic": "pre-fall edit and between-season layering pieces",
           "coverage": "partial"
         },
         {
-          "topic": "Transitional layering pieces",
+          "topic": "natural fibre seasonal transition",
           "coverage": "partial"
         },
         {
-          "topic": "Natural fibers transition",
-          "coverage": "partial"
-        },
-        {
-          "topic": "Circularity commitment",
+          "topic": "circular fashion commitment reminder",
           "coverage": "none"
         }
       ],
@@ -644,63 +776,85 @@
     },
     {
       "name": "en-gb-spring-rewear",
-      "durationMs": 20836,
-      "precision": 0.3333333333333333,
+      "durationMs": 27932,
+      "precision": 1,
       "recall": 0.3333333333333333,
       "gap": {
-        "f1": 0.75,
-        "precision": 0.75,
-        "recall": 0.75,
-        "tp": 3,
-        "fp": 1,
-        "fn": 1,
+        "f1": 0.875,
+        "precision": 0.875,
+        "recall": 0.875,
+        "tp": 3.5,
+        "fp": 0.5,
+        "fn": 0.5,
         "pairs": [
           {
+            "expected": "Extending existing wardrobe with spring fabrics",
+            "returned": "spring fabrics for existing winter items",
+            "expectedCoverage": "none",
+            "returnedCoverage": "partial",
+            "coverageWeight": 0.5,
+            "cosine": 0.765
+          },
+          {
             "expected": "Sustainable cotton-jersey sourcing notes",
-            "returned": "sustainable cotton jersey sourcing notes",
-            "coverage": "none",
-            "cosine": 0.954
+            "returned": "sustainable cotton-jersey sourcing",
+            "expectedCoverage": "none",
+            "returnedCoverage": "none",
+            "coverageWeight": 1,
+            "cosine": 0.901
           },
           {
             "expected": "Styling tips for re-wearing winter items",
-            "returned": "pairing spring pieces with winter coats",
-            "coverage": "partial",
-            "cosine": 0.649
+            "returned": "styling spring pieces with past winter purchases",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.689
           },
           {
             "expected": "Cotton jersey care guide (UK specific)",
-            "returned": "cotton jersey care guide (UK focus)",
-            "coverage": "none",
-            "cosine": 0.951
+            "returned": "cotton jersey care guide (UK)",
+            "expectedCoverage": "none",
+            "returnedCoverage": "none",
+            "coverageWeight": 1,
+            "cosine": 0.967
           }
         ]
       },
       "composeError": null,
       "returnedMatchIds": [
-        "frag_039",
-        "frag_062",
-        "frag_002"
+        "frag_024",
+        "frag_021",
+        "frag_009"
       ],
       "expectedMatchIds": [
-        "frag_039",
-        "frag_192",
-        "frag_015"
+        "frag_009",
+        "frag_002",
+        "frag_006"
+      ],
+      "returnedTopics": [
+        "en-gb::Spring campaign: garden party styling"
+      ],
+      "expectedTopics": [
+        "en-gb::Spring campaign: garden party styling",
+        "en-gb::Sustainable knitwear and natural fibres for cold weather",
+        "en-gb::Layering essentials with natural fibres"
       ],
       "returnedGaps": [
         {
-          "topic": "wardrobe extension principles",
+          "topic": "spring fabrics for existing winter items",
           "coverage": "partial"
         },
         {
-          "topic": "sustainable cotton jersey sourcing notes",
+          "topic": "sustainable cotton-jersey sourcing",
           "coverage": "none"
         },
         {
-          "topic": "pairing spring pieces with winter coats",
+          "topic": "styling spring pieces with past winter purchases",
           "coverage": "partial"
         },
         {
-          "topic": "cotton jersey care guide (UK focus)",
+          "topic": "cotton jersey care guide (UK)",
           "coverage": "none"
         }
       ],
@@ -725,33 +879,47 @@
     },
     {
       "name": "en-gb-technical-outerwear",
-      "durationMs": 18034,
-      "precision": 0.3333333333333333,
-      "recall": 0.3333333333333333,
+      "durationMs": 18523,
+      "precision": 0.6666666666666666,
+      "recall": 0.6666666666666666,
       "gap": {
-        "f1": 0.6666666666666665,
-        "precision": 0.6,
-        "recall": 0.75,
-        "tp": 3,
-        "fp": 2,
-        "fn": 1,
+        "f1": 0.875,
+        "precision": 0.875,
+        "recall": 0.875,
+        "tp": 3.5,
+        "fp": 0.5,
+        "fn": 0.5,
         "pairs": [
           {
             "expected": "Technical specifications (recycled wool)",
-            "returned": "recycled wool insulation specifications",
-            "coverage": "partial",
-            "cosine": 0.865
+            "returned": "Recycled wool insulation performance specs",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.845
           },
           {
             "expected": "Sustainable material composition",
-            "returned": "sustainable material composition story",
-            "coverage": "partial",
-            "cosine": 0.851
+            "returned": "Sustainable material composition story",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.865
+          },
+          {
+            "expected": "Garment care instructions",
+            "returned": "Garment longevity and care instructions",
+            "expectedCoverage": "none",
+            "returnedCoverage": "partial",
+            "coverageWeight": 0.5,
+            "cosine": 0.893
           },
           {
             "expected": "Brand guideline coverage: technical-precision",
             "returned": "Brand guideline coverage: technical-precision",
-            "coverage": "partial",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
             "cosine": 1
           }
         ]
@@ -759,29 +927,35 @@
       "composeError": null,
       "returnedMatchIds": [
         "frag_001",
-        "frag_068",
-        "frag_077"
+        "frag_002",
+        "frag_005"
       ],
       "expectedMatchIds": [
         "frag_001",
-        "frag_146",
-        "frag_006"
+        "frag_005",
+        "frag_003"
+      ],
+      "returnedTopics": [
+        "en-gb::Women's winter coats — recycled wool and sustainable insulation",
+        "en-gb::Sustainable knitwear and natural fibres for cold weather",
+        "en-gb::Recycled materials and circular fashion in outerwear"
+      ],
+      "expectedTopics": [
+        "en-gb::Women's winter coats — recycled wool and sustainable insulation",
+        "en-gb::Recycled materials and circular fashion in outerwear",
+        "en-gb::Care guide: extending the life of winter garments"
       ],
       "returnedGaps": [
         {
-          "topic": "recycled wool insulation specifications",
+          "topic": "Recycled wool insulation performance specs",
           "coverage": "partial"
         },
         {
-          "topic": "sustainable material composition story",
+          "topic": "Sustainable material composition story",
           "coverage": "partial"
         },
         {
-          "topic": "garment care instructions for performance longevity",
-          "coverage": "partial"
-        },
-        {
-          "topic": "Brand guideline coverage: premium-tone",
+          "topic": "Garment longevity and care instructions",
           "coverage": "partial"
         },
         {
@@ -810,45 +984,87 @@
     },
     {
       "name": "en-us-evening-occasion",
-      "durationMs": 13045,
-      "precision": 0.6666666666666666,
+      "durationMs": 19418,
+      "precision": 1,
       "recall": 0.6666666666666666,
       "gap": {
-        "f1": 0,
-        "precision": 0,
-        "recall": 0,
-        "tp": 0,
-        "fp": 5,
-        "fn": 4,
-        "pairs": []
+        "f1": 0.888888888888889,
+        "precision": 0.8,
+        "recall": 1,
+        "tp": 4,
+        "fp": 1,
+        "fn": 0,
+        "pairs": [
+          {
+            "expected": "evening wear silk slip dresses",
+            "returned": "silk slip dresses",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.921
+          },
+          {
+            "expected": "tailored tuxedos",
+            "returned": "tailored tuxedos",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 1
+          },
+          {
+            "expected": "timeless accessories",
+            "returned": "evening accessories",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.781
+          },
+          {
+            "expected": "silk care basics",
+            "returned": "silk care basics",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 1
+          }
+        ]
       },
       "composeError": null,
       "returnedMatchIds": [
-        "frag_123",
-        "frag_073",
-        "frag_112"
+        "frag_013",
+        "frag_034",
+        "frag_027"
       ],
       "expectedMatchIds": [
-        "frag_171",
-        "frag_073",
-        "frag_112"
+        "frag_013",
+        "frag_027",
+        "frag_017"
+      ],
+      "returnedTopics": [
+        "en-gb::Evening wear: silk slip dresses and tailored tuxedos",
+        "en-gb::Holiday gifting: timeless accessories"
+      ],
+      "expectedTopics": [
+        "en-gb::Evening wear: silk slip dresses and tailored tuxedos",
+        "en-gb::Holiday gifting: timeless accessories",
+        "en-gb::Removing common stains from delicate fabrics"
       ],
       "returnedGaps": [
         {
           "topic": "silk slip dresses",
-          "coverage": "none"
+          "coverage": "partial"
         },
         {
           "topic": "tailored tuxedos",
-          "coverage": "none"
+          "coverage": "partial"
         },
         {
           "topic": "evening accessories",
-          "coverage": "none"
+          "coverage": "partial"
         },
         {
           "topic": "silk care basics",
-          "coverage": "none"
+          "coverage": "partial"
         },
         {
           "topic": "Locale-appropriate content for en-us",
@@ -876,63 +1092,72 @@
     },
     {
       "name": "en-us-holiday-gifting",
-      "durationMs": 28770,
+      "durationMs": 27219,
       "precision": 1,
       "recall": 1,
       "gap": {
-        "f1": 0.6666666666666665,
-        "precision": 0.6,
-        "recall": 0.75,
-        "tp": 3,
-        "fp": 2,
-        "fn": 1,
+        "f1": 0.625,
+        "precision": 0.625,
+        "recall": 0.625,
+        "tp": 2.5,
+        "fp": 1.5,
+        "fn": 1.5,
         "pairs": [
           {
             "expected": "holiday gifting ideas",
-            "returned": "Holiday gifting ideas",
-            "coverage": "partial",
-            "cosine": 0.997
+            "returned": "holiday gifting ideas",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 1
           },
           {
-            "expected": "timeless accessories",
-            "returned": "Timeless accessories",
-            "coverage": "partial",
-            "cosine": 0.991
+            "expected": "sustainable gifts",
+            "returned": "sustainable gift selections",
+            "expectedCoverage": "none",
+            "returnedCoverage": "partial",
+            "coverageWeight": 0.5,
+            "cosine": 0.919
           },
           {
             "expected": "hat care basics",
-            "returned": "Hat care basics",
-            "coverage": "partial",
-            "cosine": 0.971
+            "returned": "hat care basics",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 1
           }
         ]
       },
       "composeError": null,
       "returnedMatchIds": [
-        "frag_077",
-        "frag_129",
-        "frag_158"
+        "frag_039",
+        "frag_027",
+        "frag_032"
       ],
       "expectedMatchIds": [
-        "frag_077",
-        "frag_129",
-        "frag_158"
+        "frag_027",
+        "frag_011"
+      ],
+      "returnedTopics": [
+        "en-gb::Holiday gifting: timeless accessories",
+        "en-gb::Hat care: shaping, brushing, storage"
+      ],
+      "expectedTopics": [
+        "en-gb::Holiday gifting: timeless accessories",
+        "en-gb::Hat care: shaping, brushing, storage"
       ],
       "returnedGaps": [
         {
-          "topic": "Holiday gifting ideas",
+          "topic": "holiday gifting ideas",
           "coverage": "partial"
         },
         {
-          "topic": "Timeless accessories",
+          "topic": "sustainable gift selections",
           "coverage": "partial"
         },
         {
-          "topic": "Sustainable gifts",
-          "coverage": "partial"
-        },
-        {
-          "topic": "Hat care basics",
+          "topic": "hat care basics",
           "coverage": "partial"
         },
         {
@@ -961,69 +1186,74 @@
     },
     {
       "name": "en-us-resort-travel",
-      "durationMs": 28324,
-      "precision": 0.6666666666666666,
+      "durationMs": 18123,
+      "precision": 1,
       "recall": 0.6666666666666666,
       "gap": {
-        "f1": 0.888888888888889,
-        "precision": 0.8,
-        "recall": 1,
-        "tp": 4,
+        "f1": 0.75,
+        "precision": 0.75,
+        "recall": 0.75,
+        "tp": 3,
         "fp": 1,
-        "fn": 0,
+        "fn": 1,
         "pairs": [
           {
             "expected": "resort wear",
-            "returned": "Resort wear",
-            "coverage": "partial",
-            "cosine": 0.985
+            "returned": "resort wear for travel",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.934
           },
           {
             "expected": "travel lightweight pieces",
-            "returned": "Travel lightweight apparel",
-            "coverage": "partial",
-            "cosine": 0.835
+            "returned": "packing tailored shirts",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.545
           },
           {
             "expected": "linen suiting for events abroad",
-            "returned": "Linen suiting",
-            "coverage": "partial",
-            "cosine": 0.672
-          },
-          {
-            "expected": "packing tailored shirts",
-            "returned": "Packing tips",
-            "coverage": "partial",
-            "cosine": 0.716
+            "returned": "linen suiting for events",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.863
           }
         ]
       },
       "composeError": null,
       "returnedMatchIds": [
-        "frag_076",
-        "frag_058",
-        "frag_100"
+        "frag_030",
+        "frag_012",
+        "frag_007"
       ],
       "expectedMatchIds": [
-        "frag_076",
-        "frag_058",
-        "frag_113"
+        "frag_010",
+        "frag_007",
+        "frag_012"
+      ],
+      "returnedTopics": [
+        "en-gb::High summer: linen suiting for warm-weather events",
+        "en-gb::How to fold and travel with tailored shirts"
+      ],
+      "expectedTopics": [
+        "en-gb::Resort wear: lightweight pieces for travel",
+        "en-gb::High summer: linen suiting for warm-weather events",
+        "en-gb::How to fold and travel with tailored shirts"
       ],
       "returnedGaps": [
         {
-          "topic": "Resort wear",
+          "topic": "resort wear for travel",
           "coverage": "partial"
         },
         {
-          "topic": "Travel lightweight apparel",
+          "topic": "linen suiting for events",
           "coverage": "partial"
         },
         {
-          "topic": "Linen suiting",
-          "coverage": "partial"
-        },
-        {
-          "topic": "Packing tips",
+          "topic": "packing tailored shirts",
           "coverage": "partial"
         },
         {
@@ -1052,9 +1282,9 @@
     },
     {
       "name": "fr-fr-athleisure-mesure",
-      "durationMs": 28634,
-      "precision": 1,
-      "recall": 1,
+      "durationMs": 25346,
+      "precision": 0.3333333333333333,
+      "recall": 0.5,
       "gap": {
         "f1": 1,
         "precision": 1,
@@ -1065,44 +1295,60 @@
         "pairs": [
           {
             "expected": "Athleisure minimaliste et mesuré",
-            "returned": "athleisure mesuré et minimaliste",
-            "coverage": "partial",
-            "cosine": 0.884
+            "returned": "athleisure minimaliste",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.803
           },
           {
             "expected": "Confort des fibres naturelles",
             "returned": "confort des fibres naturelles",
-            "coverage": "partial",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
             "cosine": 0.963
           },
           {
             "expected": "Engagement matériaux durables",
             "returned": "matériaux durables",
-            "coverage": "partial",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
             "cosine": 0.839
           },
           {
             "expected": "Brand guideline coverage: technical-precision",
             "returned": "Brand guideline coverage: technical-precision",
-            "coverage": "none",
+            "expectedCoverage": "none",
+            "returnedCoverage": "none",
+            "coverageWeight": 1,
             "cosine": 1
           }
         ]
       },
       "composeError": null,
       "returnedMatchIds": [
-        "frag_396",
-        "frag_249",
-        "frag_201"
+        "frag_065",
+        "frag_056",
+        "frag_041"
       ],
       "expectedMatchIds": [
-        "frag_396",
-        "frag_201",
-        "frag_249"
+        "frag_065",
+        "frag_045"
+      ],
+      "returnedTopics": [
+        "fr-fr::Athleisure done with restraint",
+        "fr-fr::Capsule wardrobe: ten pieces, one season",
+        "fr-fr::Sustainable knitwear and natural fibres for cold weather"
+      ],
+      "expectedTopics": [
+        "fr-fr::Athleisure done with restraint",
+        "fr-fr::Layering essentials with natural fibres"
       ],
       "returnedGaps": [
         {
-          "topic": "athleisure mesuré et minimaliste",
+          "topic": "athleisure minimaliste",
           "coverage": "partial"
         },
         {
@@ -1139,9 +1385,9 @@
     },
     {
       "name": "fr-fr-cuir-maroquinerie",
-      "durationMs": 53027,
-      "precision": 0,
-      "recall": 0,
+      "durationMs": 17637,
+      "precision": 0.5,
+      "recall": 0.5,
       "gap": {
         "f1": 0.75,
         "precision": 0.75,
@@ -1152,51 +1398,72 @@
         "pairs": [
           {
             "expected": "handcrafted leather pieces",
-            "returned": "handcrafted leather goods",
-            "coverage": "partial",
-            "cosine": 0.935
+            "returned": "Pièces en cuir finies main",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.805
           },
           {
             "expected": "heritage workshop expertise",
-            "returned": "atelier craftsmanship",
-            "coverage": "partial",
-            "cosine": 0.627
+            "returned": "Savoir-faire des ateliers partenaires",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.529
+          },
+          {
+            "expected": "leather maintenance and care",
+            "returned": "Entretien et rangement du cuir",
+            "expectedCoverage": "none",
+            "returnedCoverage": "partial",
+            "coverageWeight": 0.5,
+            "cosine": 0.862
           },
           {
             "expected": "responsible material sourcing",
-            "returned": "sustainable sourcing",
-            "coverage": "none",
-            "cosine": 0.762
+            "returned": "Engagement matériaux durables et production responsable",
+            "expectedCoverage": "none",
+            "returnedCoverage": "partial",
+            "coverageWeight": 0.5,
+            "cosine": 0.698
           }
         ]
       },
       "composeError": null,
       "returnedMatchIds": [
-        "frag_250",
-        "frag_228",
-        "frag_322"
+        "frag_062",
+        "frag_063",
+        "frag_047"
       ],
       "expectedMatchIds": [
-        "frag_286",
-        "frag_361",
-        "frag_223"
+        "frag_047",
+        "frag_061"
+      ],
+      "returnedTopics": [
+        "fr-fr::Hand-finished leather goods from heritage workshops",
+        "fr-fr::Polishing and protecting fine footwear"
+      ],
+      "expectedTopics": [
+        "fr-fr::Hand-finished leather goods from heritage workshops",
+        "fr-fr::How to store leather accessories"
       ],
       "returnedGaps": [
         {
-          "topic": "handcrafted leather goods",
+          "topic": "Pièces en cuir finies main",
           "coverage": "partial"
         },
         {
-          "topic": "atelier craftsmanship",
+          "topic": "Savoir-faire des ateliers partenaires",
           "coverage": "partial"
         },
         {
-          "topic": "leather care guide",
+          "topic": "Entretien et rangement du cuir",
           "coverage": "partial"
         },
         {
-          "topic": "sustainable sourcing",
-          "coverage": "none"
+          "topic": "Engagement matériaux durables et production responsable",
+          "coverage": "partial"
         }
       ],
       "expectedGaps": [
@@ -1220,59 +1487,71 @@
     },
     {
       "name": "fr-fr-knitwear",
-      "durationMs": 27133,
-      "precision": 0.3333333333333333,
-      "recall": 0.3333333333333333,
+      "durationMs": 25538,
+      "precision": 0.6666666666666666,
+      "recall": 0.6666666666666666,
       "gap": {
-        "f1": 1,
-        "precision": 1,
-        "recall": 1,
-        "tp": 3,
-        "fp": 0,
-        "fn": 0,
+        "f1": 0.5714285714285715,
+        "precision": 0.5,
+        "recall": 0.6666666666666666,
+        "tp": 2,
+        "fp": 2,
+        "fn": 1,
         "pairs": [
           {
             "expected": "Tricots en laine mérinos",
-            "returned": "tricots mérinos",
-            "coverage": "partial",
-            "cosine": 0.673
-          },
-          {
-            "expected": "Pièces de superposition naturelles",
-            "returned": "superposition naturelle",
-            "coverage": "partial",
-            "cosine": 0.797
+            "returned": "Merino knitwear",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.666
           },
           {
             "expected": "Matériaux durables et engagement éthique",
-            "returned": "matériaux durables pour l'hiver",
-            "coverage": "partial",
-            "cosine": 0.637
+            "returned": "Sustainable materials and ethics",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.858
           }
         ]
       },
       "composeError": null,
       "returnedMatchIds": [
-        "frag_206",
-        "frag_201",
-        "frag_205"
+        "frag_041",
+        "frag_045",
+        "frag_046"
       ],
       "expectedMatchIds": [
-        "frag_201",
-        "frag_341",
-        "frag_204"
+        "frag_041",
+        "frag_045",
+        "frag_044"
+      ],
+      "returnedTopics": [
+        "fr-fr::Sustainable knitwear and natural fibres for cold weather",
+        "fr-fr::Layering essentials with natural fibres",
+        "fr-fr::Women's winter coats — recycled wool and sustainable insulation"
+      ],
+      "expectedTopics": [
+        "fr-fr::Sustainable knitwear and natural fibres for cold weather",
+        "fr-fr::Layering essentials with natural fibres",
+        "fr-fr::Recycled materials and circular fashion in outerwear"
       ],
       "returnedGaps": [
         {
-          "topic": "tricots mérinos",
+          "topic": "Merino knitwear",
           "coverage": "partial"
         },
         {
-          "topic": "superposition naturelle",
+          "topic": "Natural fiber layering essentials",
           "coverage": "partial"
         },
         {
-          "topic": "matériaux durables pour l'hiver",
+          "topic": "Sustainable materials and ethics",
+          "coverage": "partial"
+        },
+        {
+          "topic": "Winter knit collection",
           "coverage": "partial"
         }
       ],
@@ -1293,52 +1572,98 @@
     },
     {
       "name": "fr-fr-loungewear-premium",
-      "durationMs": 30842,
-      "precision": 1,
-      "recall": 1,
+      "durationMs": 33251,
+      "precision": 0.3333333333333333,
+      "recall": 0.5,
       "gap": {
-        "f1": 0.22222222222222224,
-        "precision": 0.25,
-        "recall": 0.2,
-        "tp": 1,
-        "fp": 3,
-        "fn": 4,
+        "f1": 0.8000000000000002,
+        "precision": 0.8,
+        "recall": 0.8,
+        "tp": 4,
+        "fp": 1,
+        "fn": 1,
         "pairs": [
           {
+            "expected": "provenance des fibres (Écosse, Côme, Égypte)",
+            "returned": "Provenances des fibres nobles (Cachemire, Soie, Coton)",
+            "expectedCoverage": "none",
+            "returnedCoverage": "partial",
+            "coverageWeight": 0.5,
+            "cosine": 0.62
+          },
+          {
+            "expected": "partenariats et certifications",
+            "returned": "Partenaires de fabrication et certifications",
+            "expectedCoverage": "none",
+            "returnedCoverage": "partial",
+            "coverageWeight": 0.5,
+            "cosine": 0.768
+          },
+          {
             "expected": "art du soin des matières nobles",
-            "returned": "Entretien de matières nobles à domicile",
-            "coverage": "partial",
-            "cosine": 0.805
+            "returned": "Entretien des matières premium à domicile",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.65
+          },
+          {
+            "expected": "production en petites séries",
+            "returned": "Production en petites séries",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.991
+          },
+          {
+            "expected": "Brand guideline coverage: technical-precision",
+            "returned": "Brand guideline coverage: technical-precision",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 1
           }
         ]
       },
       "composeError": null,
       "returnedMatchIds": [
-        "frag_400",
-        "frag_292",
-        "frag_313"
+        "frag_045",
+        "frag_043",
+        "frag_069"
       ],
       "expectedMatchIds": [
-        "frag_400",
-        "frag_292",
-        "frag_313"
+        "frag_048",
+        "frag_074"
+      ],
+      "returnedTopics": [
+        "fr-fr::Layering essentials with natural fibres",
+        "fr-fr::Seasonal collection story: autumn / winter campaign",
+        "fr-fr::Caring for cashmere through the seasons"
+      ],
+      "expectedTopics": [
+        "fr-fr::Caring for cashmere through the seasons",
+        "fr-fr::Silk scarves: traditional weaving techniques"
       ],
       "returnedGaps": [
         {
-          "topic": "Provenance des fibres (cachemire, soie, coton)",
+          "topic": "Provenances des fibres nobles (Cachemire, Soie, Coton)",
           "coverage": "partial"
         },
         {
-          "topic": "Maisons partenaires et certifications",
+          "topic": "Partenaires de fabrication et certifications",
           "coverage": "partial"
         },
         {
-          "topic": "Entretien de matières nobles à domicile",
+          "topic": "Entretien des matières premium à domicile",
           "coverage": "partial"
         },
         {
           "topic": "Production en petites séries",
-          "coverage": "none"
+          "coverage": "partial"
+        },
+        {
+          "topic": "Brand guideline coverage: technical-precision",
+          "coverage": "partial"
         }
       ],
       "expectedGaps": [
@@ -1366,69 +1691,89 @@
     },
     {
       "name": "fr-fr-soie-heritage",
-      "durationMs": 24609,
-      "precision": 0.6666666666666666,
-      "recall": 0.6666666666666666,
+      "durationMs": 28728,
+      "precision": 0,
+      "recall": 0,
       "gap": {
-        "f1": 1,
-        "precision": 1,
+        "f1": 0.888888888888889,
+        "precision": 0.8,
         "recall": 1,
         "tp": 4,
-        "fp": 0,
+        "fp": 1,
         "fn": 0,
         "pairs": [
           {
             "expected": "foulards en soie",
-            "returned": "Foulards en soie",
-            "coverage": "partial",
-            "cosine": 0.991
+            "returned": "silk scarves",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.756
           },
           {
             "expected": "techniques de tissage traditionnelles",
-            "returned": "Techniques de tissage traditionnelles",
-            "coverage": "partial",
-            "cosine": 0.986
+            "returned": "traditional weaving techniques",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.927
           },
           {
             "expected": "provenance et noble caractère de la soie",
-            "returned": "Provenance et noblesse de la soie",
-            "coverage": "none",
-            "cosine": 0.838
+            "returned": "provenance and quality of silk",
+            "expectedCoverage": "none",
+            "returnedCoverage": "none",
+            "coverageWeight": 1,
+            "cosine": 0.767
           },
           {
             "expected": "entretien à domicile des foulards en soie",
-            "returned": "Entretien des textiles délicats",
-            "coverage": "partial",
-            "cosine": 0.692
+            "returned": "at-home maintenance",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.642
           }
         ]
       },
       "composeError": null,
       "returnedMatchIds": [
-        "frag_207",
-        "frag_339",
-        "frag_270"
+        "frag_062",
+        "frag_079",
+        "frag_069"
       ],
       "expectedMatchIds": [
-        "frag_369",
-        "frag_207",
-        "frag_339"
+        "frag_074",
+        "frag_054"
+      ],
+      "returnedTopics": [
+        "fr-fr::Hand-finished leather goods from heritage workshops",
+        "fr-fr::Polishing and protecting fine footwear",
+        "fr-fr::Caring for cashmere through the seasons"
+      ],
+      "expectedTopics": [
+        "fr-fr::Silk scarves: traditional weaving techniques",
+        "fr-fr::Removing common stains from delicate fabrics"
       ],
       "returnedGaps": [
         {
-          "topic": "Foulards en soie",
+          "topic": "silk scarves",
           "coverage": "partial"
         },
         {
-          "topic": "Techniques de tissage traditionnelles",
+          "topic": "traditional weaving techniques",
           "coverage": "partial"
         },
         {
-          "topic": "Provenance et noblesse de la soie",
+          "topic": "provenance and quality of silk",
           "coverage": "none"
         },
         {
-          "topic": "Entretien des textiles délicats",
+          "topic": "at-home maintenance",
+          "coverage": "partial"
+        },
+        {
+          "topic": "Brand guideline coverage: technical-precision",
           "coverage": "partial"
         }
       ],
@@ -1453,48 +1798,78 @@
     },
     {
       "name": "it-it-tailoring",
-      "durationMs": 20147,
-      "precision": 1,
-      "recall": 1,
+      "durationMs": 25540,
+      "precision": 0.5,
+      "recall": 0.3333333333333333,
       "gap": {
-        "f1": 0,
-        "precision": 0,
-        "recall": 0,
-        "tp": 0,
-        "fp": 5,
-        "fn": 3,
-        "pairs": []
+        "f1": 0.42857142857142855,
+        "precision": 0.375,
+        "recall": 0.5,
+        "tp": 1.5,
+        "fp": 2.5,
+        "fn": 1.5,
+        "pairs": [
+          {
+            "expected": "smart-casual tailoring for the office",
+            "returned": "modern office smart-casual wear",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "none",
+            "coverageWeight": 0.5,
+            "cosine": 0.771
+          },
+          {
+            "expected": "natural fibers and longevity",
+            "returned": "natural fiber durability",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "none",
+            "coverageWeight": 0.5,
+            "cosine": 0.812
+          },
+          {
+            "expected": "garment care advice",
+            "returned": "tailoring garment care",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "none",
+            "coverageWeight": 0.5,
+            "cosine": 0.835
+          }
+        ]
       },
       "composeError": null,
       "returnedMatchIds": [
-        "frag_082",
-        "frag_154",
-        "frag_028"
+        "frag_114",
+        "frag_040",
+        "frag_022"
       ],
       "expectedMatchIds": [
-        "frag_028",
-        "frag_154",
-        "frag_082"
+        "frag_022",
+        "frag_003",
+        "frag_006"
+      ],
+      "returnedTopics": [
+        "de-de::Smart-casual tailoring for the modern workplace",
+        "en-gb::Smart-casual tailoring for the modern workplace"
+      ],
+      "expectedTopics": [
+        "en-gb::Smart-casual tailoring for the modern workplace",
+        "en-gb::Care guide: extending the life of winter garments",
+        "en-gb::Layering essentials with natural fibres"
       ],
       "returnedGaps": [
         {
-          "topic": "Smart-casual tailoring",
+          "topic": "modern office smart-casual wear",
           "coverage": "none"
         },
         {
-          "topic": "Natural fibers for longevity",
+          "topic": "natural fiber durability",
           "coverage": "none"
         },
         {
-          "topic": "Garment care and preservation",
+          "topic": "tailoring garment care",
           "coverage": "none"
         },
         {
           "topic": "Locale-appropriate content for it-it",
-          "coverage": "partial"
-        },
-        {
-          "topic": "Brand guideline coverage: technical-precision",
           "coverage": "partial"
         }
       ],
@@ -1515,54 +1890,76 @@
     },
     {
       "name": "winter-sustainable",
-      "durationMs": 48974,
-      "precision": 0,
-      "recall": 0,
+      "durationMs": 24871,
+      "precision": 0.6666666666666666,
+      "recall": 0.6666666666666666,
       "gap": {
-        "f1": 0.6666666666666666,
-        "precision": 0.6666666666666666,
-        "recall": 0.6666666666666666,
-        "tp": 2,
-        "fp": 1,
-        "fn": 1,
+        "f1": 0.8333333333333334,
+        "precision": 0.8333333333333334,
+        "recall": 0.8333333333333334,
+        "tp": 2.5,
+        "fp": 0.5,
+        "fn": 0.5,
         "pairs": [
           {
             "expected": "recycled materials sourcing",
-            "returned": "recycled materials sourcing",
-            "coverage": "partial",
-            "cosine": 1
+            "returned": "recycled materials sourcing story",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 0.874
           },
           {
             "expected": "garment care instructions",
+            "returned": "garment care instructions",
+            "expectedCoverage": "partial",
+            "returnedCoverage": "partial",
+            "coverageWeight": 1,
+            "cosine": 1
+          },
+          {
+            "expected": "seasonal styling tips",
             "returned": "seasonal styling tips",
-            "coverage": "partial",
-            "cosine": 0.514
+            "expectedCoverage": "partial",
+            "returnedCoverage": "none",
+            "coverageWeight": 0.5,
+            "cosine": 1
           }
         ]
       },
       "composeError": null,
       "returnedMatchIds": [
-        "frag_077",
-        "frag_068",
-        "frag_086"
+        "frag_003",
+        "frag_001",
+        "frag_009"
       ],
       "expectedMatchIds": [
-        "frag_039",
-        "frag_146",
-        "frag_001"
+        "frag_001",
+        "frag_005",
+        "frag_003"
+      ],
+      "returnedTopics": [
+        "en-gb::Care guide: extending the life of winter garments",
+        "en-gb::Women's winter coats — recycled wool and sustainable insulation",
+        "en-gb::Spring campaign: garden party styling"
+      ],
+      "expectedTopics": [
+        "en-gb::Women's winter coats — recycled wool and sustainable insulation",
+        "en-gb::Recycled materials and circular fashion in outerwear",
+        "en-gb::Care guide: extending the life of winter garments"
       ],
       "returnedGaps": [
         {
-          "topic": "recycled materials sourcing",
+          "topic": "recycled materials sourcing story",
           "coverage": "partial"
         },
         {
-          "topic": "garment care and longevity",
-          "coverage": "none"
+          "topic": "garment care instructions",
+          "coverage": "partial"
         },
         {
           "topic": "seasonal styling tips",
-          "coverage": "partial"
+          "coverage": "none"
         }
       ],
       "expectedGaps": [
