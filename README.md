@@ -5,6 +5,9 @@ fragments from a local corpus using hybrid vector + BM25 search, asks a local LL
 strict three-block `AgentOutput` (top matches, gaps, draft outline). The original brief PDF lives at
 the [repo root](AEM_Content_Discovery_Agent_Brief.pdf); the decision log is in `docs/why.md`.
 
+> **Note:** The **JSON-based corpus pipeline** (seed → embed → run agent) is complete and ready to use.
+> Anything that touches a **real AEM instance** — live `--source=aem` fragment fetching, the AEM push step in the seeder, and the AEM SDK client — is work in progress and not production-ready.
+
 ## How to Use
 
 ### 1 — Start LM Studio
