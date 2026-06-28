@@ -265,6 +265,8 @@ invocation. The locked canonical corpus is produced by
 
 ## Chunking strategy
 
+*Decision rationale and rejected alternatives: [§ 2 Chunking strategy](../delivery.md#2-chunking-strategy--fragment-as-chunk) in delivery.md.*
+
 In a typical RAG retriever, **chunking** is how source documents are
 split into the atomic units that get embedded and later returned by
 retrieval. Generic approaches include fixed-size or sliding-window token
