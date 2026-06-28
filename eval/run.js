@@ -8,7 +8,7 @@ import { retrieve } from "../discovery-agent/src/pipeline/retrieve.js";
 import { analyseGaps } from "../discovery-agent/src/pipeline/analyseGaps.js";
 import { compose } from "../discovery-agent/src/pipeline/compose.js";
 
-// DEMO_SEED — locked seed for the corpus this harness scores against.
+// DEMO_SEED - locked seed for the corpus this harness scores against.
 // See eval/README.md. If you change the seeder, re-run
 // `npm run seed -- --seed=20260626` and re-hand-label the expectations.
 export const DEMO_SEED = 20260626;
@@ -193,7 +193,7 @@ async function main() {
   const briefs = await loadBriefSet();
   const chatFn = makeChat(EVAL_CHAT_MODEL);
   process.stdout.write(
-    `Eval harness — DEMO_SEED=${DEMO_SEED}, corpus=${CORPUS_PATH}\n` +
+    `Eval harness - DEMO_SEED=${DEMO_SEED}, corpus=${CORPUS_PATH}\n` +
       `chat=${EVAL_CHAT_MODEL}, gap cosine ≥ ${GAP_COSINE_THRESHOLD}, F1 threshold = ${threshold}\n` +
       `${briefs.length} brief(s):\n\n`,
   );

@@ -36,12 +36,12 @@ Each successful run also persists the rendered output to
 >
 > The transcript below was captured with chat model `qwen2.5-coder:1.5b`
 > (the shipped default is `qwen3.5:9b`, with `gemma4:26b` available as a
-> premium alternative for hardware that can sustain it — swap either via
+> premium alternative for hardware that can sustain it - swap either via
 > `config/models.json`). The JSON block was captured in a single invocation;
 > the Markdown block is the canonical render of that same JSON via
 > `discovery-agent/src/render/markdown.js`.
 
-## Output — `--json` (canonical `AgentOutput`)
+## Output - `--json` (canonical `AgentOutput`)
 
 ```json
 {
@@ -144,7 +144,7 @@ Each successful run also persists the rendered output to
 }
 ```
 
-## Output — Markdown (default)
+## Output - Markdown (default)
 
 ```markdown
 ## Top 3 Matching Content Fragments
@@ -207,11 +207,11 @@ No top match applies the `technical-precision` brand guideline required by the b
 - **Top block (`matchedFragments`).** The three highest-scoring en-gb
   fragments after locale, brand, and hybrid-score filtering. Scores are the
   fused `0.6·cosine + 0.3·bm25 + 0.1·freshness`. Reasons are deterministically
-  derived from the score breakdown — no LLM involvement.
+  derived from the score breakdown - no LLM involvement.
 - **Middle block (`gaps`).** Each of the brief's three required topics gets
   exactly one verdict (`none` or `partial`). The model returns the description
   and any partial-match ids; the agent appends one structural gap per missing
-  brand guideline and one per locale relaxation (none in this run — the corpus
+  brand guideline and one per locale relaxation (none in this run - the corpus
   has en-gb coverage, so locale was not relaxed).
 - **Bottom block (`draftOutline`).** 4–6 sections, each `kind: "reuse"` (with
   `fragmentIds` strictly from the top block) or `kind: "new"` (with a
@@ -220,5 +220,5 @@ No top match applies the `technical-precision` brand guideline required by the b
   matched fragments instead.
 
 A `**NEW**` marker in the Markdown output corresponds to a `kind: "new"` section
-in the JSON — the same `SectionUnion` discriminator in
+in the JSON - the same `SectionUnion` discriminator in
 `shared/src/schema/output.js`.

@@ -1,4 +1,4 @@
-# Interview Walkthrough — AEM Content Discovery Agent
+# Interview Walkthrough - AEM Content Discovery Agent
 
 Companion to the take-home submission. Cross-references the original brief
 ([`AEM_Content_Discovery_Agent_Brief.pdf`](../AEM_Content_Discovery_Agent_Brief.pdf)),
@@ -11,7 +11,7 @@ decision log ([`docs/why.md`](why.md)), and the evaluation harness output
 The agent is a Node 22 CLI that turns a free-form content brief into a strict,
 Zod-validated `AgentOutput` with exactly three blocks: top-3 reusable
 Content Fragments, a gap analysis, and a draft page outline. It runs in four
-sequential stages — `parseBrief → retrieve → analyseGaps → compose` — all
+sequential stages - `parseBrief → retrieve → analyseGaps → compose` - all
 backed by a **local** LLM stack (LM Studio: `google/gemma-4-e4b` for chat,
 `text-embedding-embeddinggemma-300m` for embeddings) and a **local** content
 corpus (`data/corpus.json` + a persisted `sqlite-vec` index).
@@ -30,12 +30,12 @@ Two architectural moves keep it reviewer-friendly and honest:
 ### Where the RAG happens
 
 RAG is the whole `parseBrief → retrieve → analyseGaps → compose` pipeline, not a
-single step — that's why retrieval and generation are split across four typed
+single step - that's why retrieval and generation are split across four typed
 stages instead of a one-shot prompt.
 
 - **`parseBrief()`** turns the free-form brief into a `StructuredBrief`
   (topics, audience, locale, brand-guidelines list). This is what makes
-  retrieval queryable — topics become embedding inputs and filter predicates.
+  retrieval queryable - topics become embedding inputs and filter predicates.
 - **`retrieve()`** is the retrieval layer (`discovery-agent/src/pipeline/retrieve.js`).
   Per topic it first narrows the candidate pool via the locale ladder
   (exact → `en-*` → any), embeds the query with `embeddinggemma-300m`, runs a
@@ -67,37 +67,37 @@ a bounded re-prompt on failure.
 | PDF requirement | Where it lives | Notes |
 |---|---|---|
 | Synthetic content library, 15–20 JSON fragments, locked schema (`id`, `title`, `category`, `targetAudience`, `brandGuidelinesApplied`, `locale`, `lastModified`, `content`) | `data/corpus.json` (seeded by `content-seeder/`); schema in `shared/src/schema/fragment.js`; CF Model XML in `aemcontentdisc/ui.content/` | Seeded with 40/locale × 3 locales = 120 fragments (above the 15–20 floor) to give meaningful retrieval signal. Same shape on both sides of the JSON ↔ AEM boundary. |
-| Runnable agent script — single command, prints all three outputs | `npm run agent -- eval/briefs/winter-sustainable.txt` (Markdown) and `… --json` (canonical `AgentOutput`); entry point `discovery-agent/src/cli.js` | No AEM dependency on the default path. |
-| Architecture doc — one page, justifies (a) embedding model, (b) chunking, (c) retrieval method, (d) why agentic | [`docs/architecture.md`](architecture.md); rationale recorded per-decision in [`docs/why.md`](why.md) | All four required questions answered with citations to source files. |
-| Prompt logs | [`docs/runtime-prompt-log.md`](runtime-prompt-log.md) (auto-appended on every chat call) + curated templates in [`docs/prompt-templates.md`](prompt-templates.md) | Every call — success or failure — is logged with `{ ts, model, ok, durationMs, system, user, response }` on success or `{ ts, model, ok, durationMs, system, user, errorClass, errorMessageHead }` on failure; `system`/`user`/`response`/`errorMessageHead` are truncated to 200 chars. |
-| Sample run for the example brief in the README | [`docs/sample-run.md`](sample-run.md) — captured JSON + Markdown render | The brief is reproduced verbatim from the PDF (winter-sustainable). |
-| Three output blocks: top matches, gaps, outline | `shared/src/schema/output.js` — `AgentOutput` (`schemaVersion: "1.0"`, `matchedFragments[0..3]`, `gaps[]`, `draftOutline.sections[1..8]`) | Markdown renderer is a pure view over the same object — no parallel implementation. |
+| Runnable agent script - single command, prints all three outputs | `npm run agent -- eval/briefs/winter-sustainable.txt` (Markdown) and `… --json` (canonical `AgentOutput`); entry point `discovery-agent/src/cli.js` | No AEM dependency on the default path. |
+| Architecture doc - one page, justifies (a) embedding model, (b) chunking, (c) retrieval method, (d) why agentic | [`docs/architecture.md`](architecture.md); rationale recorded per-decision in [`docs/why.md`](why.md) | All four required questions answered with citations to source files. |
+| Prompt logs | [`docs/runtime-prompt-log.md`](runtime-prompt-log.md) (auto-appended on every chat call) + curated templates in [`docs/prompt-templates.md`](prompt-templates.md) | Every call - success or failure - is logged with `{ ts, model, ok, durationMs, system, user, response }` on success or `{ ts, model, ok, durationMs, system, user, errorClass, errorMessageHead }` on failure; `system`/`user`/`response`/`errorMessageHead` are truncated to 200 chars. |
+| Sample run for the example brief in the README | [`docs/sample-run.md`](sample-run.md) - captured JSON + Markdown render | The brief is reproduced verbatim from the PDF (winter-sustainable). |
+| Three output blocks: top matches, gaps, outline | `shared/src/schema/output.js` - `AgentOutput` (`schemaVersion: "1.0"`, `matchedFragments[0..3]`, `gaps[]`, `draftOutline.sections[1..8]`) | Markdown renderer is a pure view over the same object - no parallel implementation. |
 | Submission: code + prompt logs + corpus JSON + README + arch doc | Repo root holds all of them; corpus is committed | A grader can clone and run without re-seeding. |
 
 ## 3. Core technical decisions (with the "why" in one line each)
 
 The full reasoning per decision lives in [`docs/why.md`](why.md). Headline calls:
 
-- **JSON-primary, AEM-optional** — `data/corpus.json` is canonical; AEM is two
+- **JSON-primary, AEM-optional** - `data/corpus.json` is canonical; AEM is two
   opt-in flags (`seed --aem-push`, `agent --source=aem`). Keeps the agent
   runnable on a clean clone while still demonstrating AEM competence.
-- **npm workspaces (`shared` / `content-seeder` / `discovery-agent`)** — same
+- **npm workspaces (`shared` / `content-seeder` / `discovery-agent`)** - same
   Zod schemas and LLM/AEM clients shared across packages; different lifecycles
   isolated (seeder pulls faker; agent does not).
-- **LM Studio @ `:1234`, OpenAI-compatible HTTP** — local, zero-cost, no rate
+- **LM Studio @ `:1234`, OpenAI-compatible HTTP** - local, zero-cost, no rate
   limits. Single source of model truth in `config/models.json` (`chat.default`
   + optional per-stage overrides + `embedding.default`).
-- **Chat = `google/gemma-4-e4b`** — multilingual, JSON-mode capable, fast
+- **Chat = `google/gemma-4-e4b`** - multilingual, JSON-mode capable, fast
   enough for the full-run harness on consumer hardware. `gemma4:26b` and
-  `qwen3.5:9b` are documented premium alternatives — flip one file, no rebuild.
-- **Embeddings = `text-embedding-embeddinggemma-300m` (768-d)** — same Gemma
+  `qwen3.5:9b` are documented premium alternatives - flip one file, no rebuild.
+- **Embeddings = `text-embedding-embeddinggemma-300m` (768-d)** - same Gemma
   research lineage as the chat model, 100+ languages (genuine multilingual
   signal for `fr-fr` / `de-de`), Matryoshka-truncatable to 512/256/128 for a
   credible scale-up story at hypothetical 40k-doc corpus sizes.
-- **Chunking = fragment-as-chunk** — a Content Fragment is already the
+- **Chunking = fragment-as-chunk** - a Content Fragment is already the
   reusable authoring unit (~150–250 words); sub-fragment chunking would split
   reuse-able material below what the composer can cite by id.
-- **Hybrid retrieval = `0.6 · cosine + 0.3 · BM25 + 0.1 · freshness`** —
+- **Hybrid retrieval = `0.6 · cosine + 0.3 · BM25 + 0.1 · freshness`** -
   semantic dominates because the corpus is paraphrased marketing copy; BM25
   is the proper-noun backstop (brand names, "merino"); freshness is a
   tiebreaker only. Vector store is `sqlite-vec` (persistent, SQL-queryable);

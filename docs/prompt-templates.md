@@ -28,10 +28,10 @@ The full body construction is in `shared/src/llm/chat.js`.
   `z.ZodError`, appends the exact validation message to the system prompt and
   calls again. Two failures bubble up.
 - **Schema-coupled prompts.** Every JSON prompt explicitly enumerates the
-  expected JSON shape inside the prompt — the prompt and the Zod schema are kept
+  expected JSON shape inside the prompt - the prompt and the Zod schema are kept
   in lockstep so the model sees the same field names it must produce.
 
-## Stage 1 — `parseBrief`
+## Stage 1 - `parseBrief`
 
 Source: `discovery-agent/src/pipeline/parseBrief.js`.
 
@@ -82,7 +82,7 @@ non-empty array of non-empty strings derived from the brief.
   the brief and force-sets it; the prompt's locale hint paragraph reflects which
   path the agent took.
 
-## Stage 2 — `retrieve`
+## Stage 2 - `retrieve`
 
 No chat calls. Vector retrieval calls the embedding model per topic.
 
@@ -92,13 +92,13 @@ No chat calls. Vector retrieval calls the embedding model per topic.
 embed(brief.requiredTopics[i])
 ```
 
-The topic string is passed verbatim. No template — `embeddinggemma:300m` was
+The topic string is passed verbatim. No template - `embeddinggemma:300m` was
 tuned to be robust against short phrases. An earlier iteration prefixed every
 topic with `"AEM content fragment about: "` and the retrieval scores got
 slightly worse (the prefix tokens shifted the centroid away from the document
 embeddings, which are pure body text). Removed.
 
-## Stage 3 — `analyseGaps`
+## Stage 3 - `analyseGaps`
 
 Source: `discovery-agent/src/pipeline/analyseGaps.js`.
 
@@ -107,8 +107,8 @@ Source: `discovery-agent/src/pipeline/analyseGaps.js`.
 ```
 You are a content gap auditor for an AEM Content Discovery agent.
 Given a structured brief and a pool of candidate Content Fragments, classify EACH required topic from the brief as either:
-  - "none" — no fragment in the pool substantively addresses the topic
-  - "partial" — at least one fragment touches the topic but coverage is incomplete (wrong locale, shallow, stale, missing brand voice, brand-filter dropped)
+  - "none" - no fragment in the pool substantively addresses the topic
+  - "partial" - at least one fragment touches the topic but coverage is incomplete (wrong locale, shallow, stale, missing brand voice, brand-filter dropped)
 
 Brief: locale={brief.locale}; audience={brief.audience}; tone={brief.tone}; brandGuidelines=[{brief.brandGuidelines.join(", ")}].
 Required topics (return one verdict per topic, in the same order):
@@ -162,7 +162,7 @@ schema; do not include prose around the JSON.
   `buildStructuralGaps()`. Not asking the model to identify them keeps the
   output stable and the prompt short.
 
-## Stage 4 — `compose`
+## Stage 4 - `compose`
 
 Source: `discovery-agent/src/pipeline/compose.js`.
 
@@ -177,7 +177,7 @@ Each Section is EXACTLY ONE of these two shapes, never a mix:
   NEW:   { "heading": string, "kind": "new",   "rationale": string, "sourcingHint": string }
 Rules:
 - Order sections as they would appear on the page (intro → body → close).
-- A reuse section's fragmentIds MUST all reference ids listed under matchedFragments — never invent ids.
+- A reuse section's fragmentIds MUST all reference ids listed under matchedFragments - never invent ids.
 - A new section's sourcingHint should typically echo or refine a relevant gap's suggestedAction.
 - Do NOT add extra keys. Do NOT mix reuse fields with new fields in the same section.
 - Derive the title from the brief's audience + required topics. Set pathHint from the brief's pathHint.
@@ -238,9 +238,9 @@ for the corpus. A pool of six system prompts captures different brand voices
 `sustainability-explainer`, `heritage-voice`, `inclusive-modern`). The
 `--variation` flag (`low | medium | high`) selects the subset and temperature:
 
-- `low` — `[premium-narrative]`, temperature 0.6
-- `medium` — `[premium-narrative, seasonal-aspirational, heritage-voice]`, temperature 1.0 (default)
-- `high` — all six voices, temperature 1.2
+- `low` - `[premium-narrative]`, temperature 0.6
+- `medium` - `[premium-narrative, seasonal-aspirational, heritage-voice]`, temperature 1.0 (default)
+- `high` - all six voices, temperature 1.2
 
 ### Example system prompt (`premium-narrative`)
 

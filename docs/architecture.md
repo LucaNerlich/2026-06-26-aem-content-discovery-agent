@@ -1,11 +1,11 @@
 # Architecture
 
-> A four-stage, schema-validated pipeline (parse → retrieve → analyse → compose) that fuses vector search, BM25, and freshness scoring to map any editorial brief to ranked AEM Content Fragments — all running on local models with no external dependencies.
+> A four-stage, schema-validated pipeline (parse → retrieve → analyse → compose) that fuses vector search, BM25, and freshness scoring to map any editorial brief to ranked AEM Content Fragments - all running on local models with no external dependencies.
 
 End-to-end design of the **AEM Content Discovery Agent**: a Node 22 CLI that
 turns a free-form content brief into a strict, schema-validated
-`AgentOutput` — top-3 reusable Content Fragments, a gap analysis, and a draft
-page outline — using a local content corpus and a local LLM.
+`AgentOutput` - top-3 reusable Content Fragments, a gap analysis, and a draft
+page outline - using a local content corpus and a local LLM.
 
 ## Table of contents
 
@@ -77,13 +77,13 @@ Three npm workspaces wired through the root `package.json`:
 
 ```
 .
-├── shared/                # @aemdisc/shared — schemas, LLM, AEM, retrieval primitives
+├── shared/                # @aemdisc/shared - schemas, LLM, AEM, retrieval primitives
 │   └── src/{aem,config,llm,retrieve,schema,sources}/
-├── content-seeder/        # `npm run seed` — writes data/corpus.json (+ optional AEM push)
+├── content-seeder/        # `npm run seed` - writes data/corpus.json (+ optional AEM push)
 │   └── src/{generate,topics,templates,embeddings,aem-push}.js
-├── discovery-agent/       # `npm run agent` — CLI + 4-stage pipeline + Markdown renderer
+├── discovery-agent/       # `npm run agent` - CLI + 4-stage pipeline + Markdown renderer
 │   └── src/{cli.js, pipeline/, render/markdown.js}
-├── eval/                  # `npm run eval` — F1 harness over hand-labelled briefs
+├── eval/                  # `npm run eval` - F1 harness over hand-labelled briefs
 │   ├── briefs/            # 8 briefs spanning en-gb / en-us / fr-fr / de-de
 │   ├── expectations/      # gold fragment ids + gap topics
 │   └── run.js
@@ -154,7 +154,7 @@ Source: `discovery-agent/src/pipeline/parseBrief.js`.
 - Pre-detects locale from any `/en-gb/`, `/fr-fr/`, `/de-de/` path in the
   input and forces it onto the result; mismatches are recorded in
   `brief.uncertain[]`.
-- Output: `StructuredBrief` — `{ audience, locale, tone, brandGuidelines[],
+- Output: `StructuredBrief` - `{ audience, locale, tone, brandGuidelines[],
   requiredTopics[], pathHint, uncertain? }`.
 
 ### 2. retrieve
@@ -181,7 +181,7 @@ Source: `discovery-agent/src/pipeline/retrieve.js`.
   visible to `analyseGaps` so the agent can report "candidates existed but
   were filtered out".
 - `match.reason` is **deterministically generated** from the score
-  breakdown by `buildReason()` — never LLM-written. This keeps the top
+  breakdown by `buildReason()` - never LLM-written. This keeps the top
   block of every output stable and auditable.
 
 ### 3. analyseGaps
@@ -217,7 +217,7 @@ Source: `discovery-agent/src/pipeline/compose.js`.
   tagged `kind: "reuse"` (with `fragmentIds[≥1]` referencing only matched
   ids) or `kind: "new"` (with `sourcingHint`).
 - The Zod schema is wrapped in a `superRefine` that rejects any `reuse`
-  section whose `fragmentIds` are not in `matchedFragments` — preventing
+  section whose `fragmentIds` are not in `matchedFragments` - preventing
   the model from hallucinating fragment ids.
 - The final `AgentOutput.parse({ schemaVersion: "1.0", brief,
   matchedFragments, gaps, draftOutline, reusedFragments })` is the only
@@ -296,7 +296,7 @@ sub-fragment splitting and no chunk-overlap parameter.
   in the first place.
 
 Fixed-size / sliding-window token chunks and sentence-or-paragraph
-splitting are the deliberate alternatives rejected here — both break
+splitting are the deliberate alternatives rejected here - both break
 the "reuse a whole fragment by id" contract that ties retrieval to the
 output schema.
 
@@ -338,18 +338,18 @@ fragments are ranked recent-first.
 Each component of `fused = 0.6 · cosine + 0.3 · BM25 + 0.1 · freshness`
 is normalised to `[0, 1]` and combined as a linear sum. In plain terms:
 
-- **cosine similarity** — semantic closeness of the topic embedding to
+- **cosine similarity** - semantic closeness of the topic embedding to
   the fragment embedding (cosine of the angle between the two 768-d
   vectors), already in `[0, 1]` for non-negative embeddings. The
   dominant 0.6 weight catches paraphrase, which matters because the
   corpus is LLM-paraphrased marketing copy where the brief and the
   fragment rarely share the same surface wording.
-- **BM25** — a classic lexical ranking function from the
+- **BM25** - a classic lexical ranking function from the
   term-frequency × inverse-document-frequency family that rewards
   exact term overlap weighted by how rare a term is across the corpus.
   Raw BM25 scores are unbounded, so the retriever divides by the
   per-query max to normalise into `[0, 1]`. The 0.3 weight makes BM25
-  the proper-noun backstop — brand names and material terms like
+  the proper-noun backstop - brand names and material terms like
   "merino" need exact lexical match that a 300M-parameter embedder
   cannot guarantee.
   - **TF-IDF** (term frequency × inverse document frequency) is the
@@ -361,7 +361,7 @@ is normalised to `[0, 1]` and combined as a linear sum. In plain terms:
     a word stops helping after a few occurrences) and *document-length
     normalisation* (long fragments are not rewarded just for having more
     words).
-- **freshness** — `clamp(1 − age_months / 18, 0, 1)`, so a brand-new
+- **freshness** - `clamp(1 − age_months / 18, 0, 1)`, so a brand-new
   fragment scores `1` and an 18-month-old fragment scores `0`. The
   small 0.1 weight makes it a tiebreaker only between otherwise
   equally relevant fragments; it never overturns a strong semantic or
@@ -393,7 +393,7 @@ sqlite-vec is chosen for the production story:
 - `embeddinggemma`'s **Matryoshka** property means the same vector can be
   truncated to 512/256/128 dimensions when the corpus grows large enough to
   matter. Re-indexing to 256-d at 40k+ fragments cuts the index size by 3× with
-  modest recall loss — no need to switch to a different model or store.
+  modest recall loss - no need to switch to a different model or store.
 
 For corpora large enough to outgrow sqlite-vec, the same `VectorStore`
 interface fits on top of a remote vector database (Qdrant, Vespa) without
@@ -406,7 +406,7 @@ changing any pipeline stage.
 A single thin client (`shared/src/llm/`) wraps the local LM Studio server
 over its OpenAI-compatible HTTP API:
 
-- `chat.js` — posts to `POST {host}/v1/chat/completions`. Strips a leading
+- `chat.js` - posts to `POST {host}/v1/chat/completions`. Strips a leading
   `<think>…</think>` block as a safety net, then `JSON.parse`s the reply
   when `json: true`.
 - `embed.js` — posts to `POST {host}/v1/embeddings`, returns the 768-d

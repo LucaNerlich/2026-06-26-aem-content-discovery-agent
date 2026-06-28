@@ -7,7 +7,7 @@
 
 ## How to use this guide
 
-- Read it front to back **once** — it builds concepts in the same order as the runtime pipeline.
+- Read it front to back **once** - it builds concepts in the same order as the runtime pipeline.
 - Each section ends with one or two **"Pop quiz"** prompts. If you can answer them out loud, you understand it.
 - The **citations** are not decoration: `path#Lstart-end` ranges are current; open the file alongside the prose.
 - For the *why* behind a choice, jump to [`why.md`](why.md) and [`delivery.md`](../delivery.md). For the *what*,
@@ -20,10 +20,10 @@
 2. [Problem framing & non-goals](#2-problem-framing--non-goals)
 3. [Repo map & monorepo layout](#3-repo-map--monorepo-layout)
 4. [The runtime pipeline at a glance](#4-the-runtime-pipeline-at-a-glance)
-5. [Stage 1 — `parseBrief`](#5-stage-1--parsebrief)
-6. [Stage 2 — `retrieve` (hybrid fusion)](#6-stage-2--retrieve-hybrid-fusion)
-7. [Stage 3 — `analyseGaps`](#7-stage-3--analysegaps)
-8. [Stage 4 — `compose`](#8-stage-4--compose)
+5. [Stage 1 - `parseBrief`](#5-stage-1--parsebrief)
+6. [Stage 2 - `retrieve` (hybrid fusion)](#6-stage-2--retrieve-hybrid-fusion)
+7. [Stage 3 - `analyseGaps`](#7-stage-3--analysegaps)
+8. [Stage 4 - `compose`](#8-stage-4--compose)
 9. [Schema-as-contract (Zod)](#9-schema-as-contract-zod)
 10. [Vector store: `sqlite-vec`](#10-vector-store-sqlite-vec)
 11. [BM25 index](#11-bm25-index)
@@ -34,15 +34,15 @@
 16. [Evaluation & full-run harnesses](#16-evaluation--full-run-harnesses)
 17. [Testing strategy & test suite organization](#17-testing-strategy--test-suite-organization)
 18. [CLI, artifacts & operational concerns](#18-cli-artifacts--operational-concerns)
-19. [Interview cheat-sheet — likely questions](#19-interview-cheat-sheet--likely-questions)
+19. [Interview cheat-sheet - likely questions](#19-interview-cheat-sheet--likely-questions)
 20. [Glossary](#20-glossary)
 
 ---
 
 ## 1. Elevator pitch (60 seconds)
 
-> A Node 22 CLI that turns a free-form editorial brief into a strict, schema-validated `AgentOutput` — top-3 reusable
-> AEM Content Fragments, a gap analysis, and a draft page outline — using a local content corpus and local LLMs
+> A Node 22 CLI that turns a free-form editorial brief into a strict, schema-validated `AgentOutput` - top-3 reusable
+> AEM Content Fragments, a gap analysis, and a draft page outline - using a local content corpus and local LLMs
 > served by LM Studio. The pipeline is four stages (parse → retrieve → analyse → compose), retrieval is a hybrid of
 > vector cosine + BM25 + freshness, every stage validates input/output with Zod, and every LLM call is logged to a
 > Markdown audit trail. Nothing leaves the laptop.
@@ -67,16 +67,16 @@ The agent answers **three questions in one pass**, as stated in
    ids) or `new` (with a sourcing hint).
 
 The output is a **single Zod-validated `AgentOutput` object**; the Markdown renderer is a *view* over that object,
-never a parallel implementation — see [`discovery-agent/src/render/markdown.js`](../discovery-agent/src/render/markdown.js)
+never a parallel implementation - see [`discovery-agent/src/render/markdown.js`](../discovery-agent/src/render/markdown.js)
 and the schema at [`shared/src/schema/output.js#L48-L55`](../shared/src/schema/output.js).
 
 **Non-goals (explicit):**
 
-- No production AEM round-trip yet — the `--source=aem` path and the seeder's AEM push step are marked
+- No production AEM round-trip yet - the `--source=aem` path and the seeder's AEM push step are marked
   *work-in-progress* in [`README.md#L8-L9`](../README.md).
 - No remote LLMs. Everything runs against LM Studio at `http://localhost:1234`
   ([`shared/src/llm/llm.js#L11`](../shared/src/llm/llm.js)).
-- No lint/format step — only `node --check` syntax validation, per `CLAUDE.md` ("There is **no lint or format
+- No lint/format step - only `node --check` syntax validation, per `CLAUDE.md` ("There is **no lint or format
   step**").
 
 **Pop quiz.** Why is "the renderer is a view over `AgentOutput`" worth saying out loud?
@@ -130,18 +130,18 @@ the final `compose` result.
 Key invariants to memorise:
 
 - **Three LLM chat calls per run** (`parseBrief`, `analyseGaps`, `compose`). `retrieve` itself does **not** call
-  chat — it only calls the embedding endpoint, once per `requiredTopic`.
+  chat - it only calls the embedding endpoint, once per `requiredTopic`.
 - **`k = 3`** by default; the CLI exposes `--top` (1..10) for debugging only
   ([`discovery-agent/src/cli.js#L87-L94`](../discovery-agent/src/cli.js)).
 - The final object is parsed with `AgentOutput.parse(...)` inside
-  [`compose` at `discovery-agent/src/pipeline/compose.js#L135-L143`](../discovery-agent/src/pipeline/compose.js) —
+  [`compose` at `discovery-agent/src/pipeline/compose.js#L135-L143`](../discovery-agent/src/pipeline/compose.js) -
   schema validation is the last thing that happens.
 
 **Pop quiz.** How many chat completions does one `npm run agent` invocation make in the happy path? (Three.)
 
 ---
 
-## 5. Stage 1 — `parseBrief`
+## 5. Stage 1 - `parseBrief`
 
 Source: [`discovery-agent/src/pipeline/parseBrief.js`](../discovery-agent/src/pipeline/parseBrief.js).
 
@@ -154,7 +154,7 @@ Source: [`discovery-agent/src/pipeline/parseBrief.js`](../discovery-agent/src/pi
 
 Things to remember:
 
-- The system prompt locks a **controlled vocabulary** for brand guidelines —
+- The system prompt locks a **controlled vocabulary** for brand guidelines -
   [`BRAND_VOCAB` at `parseBrief.js#L12-L17`](../discovery-agent/src/pipeline/parseBrief.js): `sustainability-voice`,
   `premium-tone`, `inclusive-language`, `technical-precision`. The prompt explicitly says "Do not invent brand
   guidelines outside the locked vocabulary" ([`parseBrief.js#L29`](../discovery-agent/src/pipeline/parseBrief.js)).
@@ -173,16 +173,16 @@ Things to remember:
 
 ---
 
-## 6. Stage 2 — `retrieve` (hybrid fusion)
+## 6. Stage 2 - `retrieve` (hybrid fusion)
 
 Source: [`discovery-agent/src/pipeline/retrieve.js`](../discovery-agent/src/pipeline/retrieve.js). **This is the most
 likely deep-dive question in an interview.** Memorise the constants:
 
-- **Weights:** `cosine: 0.6, bm25: 0.3, freshness: 0.1` —
+- **Weights:** `cosine: 0.6, bm25: 0.3, freshness: 0.1` -
   [`retrieve.js#L10`](../discovery-agent/src/pipeline/retrieve.js).
-- **Per-query top-k pool:** `TOP_PER_QUERY = 15` —
+- **Per-query top-k pool:** `TOP_PER_QUERY = 15` -
   [`retrieve.js#L8`](../discovery-agent/src/pipeline/retrieve.js).
-- **Freshness horizon:** 18 months — [`retrieve.js#L9`](../discovery-agent/src/pipeline/retrieve.js); the score is
+- **Freshness horizon:** 18 months - [`retrieve.js#L9`](../discovery-agent/src/pipeline/retrieve.js); the score is
   `clamp01(1 − months/18)` ([`freshnessScore` at `retrieve.js#L20-L26`](../discovery-agent/src/pipeline/retrieve.js)).
 - **Default `k` returned to the caller:** 3.
 

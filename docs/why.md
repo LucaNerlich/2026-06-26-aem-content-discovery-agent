@@ -2,22 +2,22 @@
 
 Append-only decision log for the AEM Content Discovery Agent project. Every entry records the context, the choice, the alternatives that were ruled out, and the consequences. Entries are ordered from most foundational (architecture, stack) to most local (per-stage tuning).
 
-## 2026-06-26 — Decision Log Rule
+## 2026-06-26 - Decision Log Rule
 **Context:** A multi-wave plan with many implementors needs a shared memory of why each non-trivial choice was made, or the project re-litigates the same trade-offs every wave.
 **Decision:** Repo-root `why.md` is the canonical decision log. Every implementor whose work makes or executes a non-trivial decision MUST append a dated entry before marking their task complete. Append-only; never edit prior entries.
-**Alternatives considered:** Inline rationale in commit messages (rejected — not greppable, not co-located with the spec); a separate ADR directory (rejected — overkill for a single-author exercise); skip it (rejected — the brief explicitly grades on "justifying decisions").
+**Alternatives considered:** Inline rationale in commit messages (rejected - not greppable, not co-located with the spec); a separate ADR directory (rejected - overkill for a single-author exercise); skip it (rejected - the brief explicitly grades on "justifying decisions").
 **Consequences:** Future maintainers (and the interview reviewer) can answer "why this?" without re-reading the whole spec. Costs roughly 60 seconds per decision.
 
-## 2026-06-26 — Architecture: JSON-primary, AEM-optional
+## 2026-06-26 - Architecture: JSON-primary, AEM-optional
 **Context:** The original draft assumed the agent reads fragments live from AEM at runtime. A reviewer who cannot run the local AEM SDK (30+ minute install) would then be unable to run the agent at all, violating the brief's "single-command invocation" requirement.
 **Decision:** `data/corpus.json` is the canonical, committed source of truth. The agent reads it by default. AEM is a code path behind two flags: `seed --aem-push` (writes fragments into AEM) and `agent --source=aem` (reads fragments live from AEM).
-**Alternatives considered:** Live AEM only (rejected — reviewer-hostile, fragile); AEM-only with a JSON snapshot for backup (rejected — same fragility, more code); JSON only and drop AEM entirely (rejected — loses the AEM-depth interview signal).
+**Alternatives considered:** Live AEM only (rejected - reviewer-hostile, fragile); AEM-only with a JSON snapshot for backup (rejected - same fragility, more code); JSON only and drop AEM entirely (rejected - loses the AEM-depth interview signal).
 **Consequences:** Reviewer can `npm run agent` on a clean clone with zero AEM dependency. The AEM code path still ships and is tested, demonstrating AEM competence as an opt-in capability. Cost: two `FragmentSource` implementations instead of one.
 
-## 2026-06-26 — npm workspaces monorepo with shared / content-seeder / discovery-agent
+## 2026-06-26 - npm workspaces monorepo with shared / content-seeder / discovery-agent
 **Context:** The seeder and the agent both need the same Zod schemas, Ollama wrappers, and AEM client. They have different CLIs, different dependencies (seeder needs faker, agent does not), and different lifecycles (seeder runs once, agent runs many times).
-**Decision:** npm workspaces with three packages — `shared/` (schemas, Ollama, AEM, retrieval primitives), `content-seeder/` (the seed script), `discovery-agent/` (the runtime CLI + pipeline).
-**Alternatives considered:** Single package with everything under `src/` (rejected — couples seeder-only deps onto the agent and vice versa); three separate git repos (rejected — code review and reproducibility nightmare for an 8h exercise); pnpm workspaces (rejected — adds a tool the reviewer must install when npm ships with Node).
+**Decision:** npm workspaces with three packages - `shared/` (schemas, Ollama, AEM, retrieval primitives), `content-seeder/` (the seed script), `discovery-agent/` (the runtime CLI + pipeline).
+**Alternatives considered:** Single package with everything under `src/` (rejected - couples seeder-only deps onto the agent and vice versa); three separate git repos (rejected - code review and reproducibility nightmare for an 8h exercise); pnpm workspaces (rejected — adds a tool the reviewer must install when npm ships with Node).
 **Consequences:** Clean dependency boundaries; the agent's `node_modules` does not pull in faker. Costs: marginally more `package.json` files; first-time contributors must remember `npm install` at the root, not inside a sub-package.
 
 ## 2026-06-26 — LLM stack: gemma4:26b chat + embeddinggemma:300m embeddings, both via local Ollama

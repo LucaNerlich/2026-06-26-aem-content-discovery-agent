@@ -17,7 +17,7 @@ the aggregate gap-F1 falls below `EVAL_F1_THRESHOLD` (default `0.6`).
 Expectations reference deterministic fragment ids (`frag_001`, `frag_002`, …)
 that only stay stable when the seeder uses the locked seed.
 
-- **`DEMO_SEED = 20260626`** — top-level constant in `eval/run.js`.
+- **`DEMO_SEED = 20260626`** - top-level constant in `eval/run.js`.
 - If you change the seeder, rerun:
 
   ```
@@ -33,7 +33,7 @@ that only stay stable when the seeder uses the locked seed.
 ```
 eval/
 ├── briefs/                       hand-written briefs (one .txt per brief)
-│   ├── winter-sustainable.txt    spec example (verbatim) — en-gb
+│   ├── winter-sustainable.txt    spec example (verbatim) - en-gb
 │   ├── fr-fr-knitwear.txt        rich fr-fr brief (locale relaxes to "any")
 │   ├── de-de-berlin-street.txt   de-de brief with a topic absent from corpus
 │   ├── en-gb-technical-outerwear.txt  forces a brand-guideline gap
@@ -46,15 +46,15 @@ eval/
 
 ## Metric definitions
 
-- **precision@3 / recall@3** — set intersection of returned
+- **precision@3 / recall@3** - set intersection of returned
   `matchedFragments[].id` with `expectedMatchIds`. Order-insensitive.
-- **gap-F1** — for every expected gap, greedy-match the best returned gap
+- **gap-F1** - for every expected gap, greedy-match the best returned gap
   with the same `coverage` enum and a topic-label cosine similarity ≥ 0.5.
   Cosine uses the configured embedding model (`text-embedding-embeddinggemma-300m`
   by default) so paraphrases and cross-lingual variants are not penalised.
-- **aggregate** — unweighted mean of per-brief metrics over the 8 briefs.
+- **aggregate** - unweighted mean of per-brief metrics over the 8 briefs.
 
-Briefs in `eval/briefs/` without a matching `eval/expectations/` file are skipped (with a `warn:` line on stderr) rather than aborting the run — additional full-run briefs live alongside the eval set, but un-calibrated expectations would skew aggregate metrics.
+Briefs in `eval/briefs/` without a matching `eval/expectations/` file are skipped (with a `warn:` line on stderr) rather than aborting the run - additional full-run briefs live alongside the eval set, but un-calibrated expectations would skew aggregate metrics.
 
 ## Per-brief scenarios
 
@@ -66,7 +66,7 @@ Briefs in `eval/briefs/` without a matching `eval/expectations/` file are skippe
 | `en-gb-technical-outerwear` | en-gb | Forces a `coverage: "partial"` brand-guideline gap (`technical-precision` is absent from the corpus). |
 | `en-us-holiday-gifting` | en-us → en-gb (prefix) | Locale prefix relaxation via `localeOverride`. |
 
-`localeOverride` is the only optional knob in the expectations JSON — used
+`localeOverride` is the only optional knob in the expectations JSON - used
 when a brief targets a locale outside the parser's `en-gb | fr-fr | de-de`
 allowed list, so the evaluator can still exercise that code path.
 
@@ -75,7 +75,7 @@ allowed list, so the evaluator can still exercise that code path.
 | Env var | Default | Effect |
 |---|---|---|
 | `EVAL_F1_THRESHOLD` | `0.6` | Exit non-zero if aggregate gap-F1 falls below this. |
-| `EVAL_CHAT_MODEL` | _(uses `config/models.json` default — currently `google/gemma-4-e4b` via LM Studio)_ | Override the chat model used by the harness only (the agent's runtime default is untouched). Useful on hardware where the default model is impractically slow. |
+| `EVAL_CHAT_MODEL` | _(uses `config/models.json` default - currently `google/gemma-4-e4b` via LM Studio)_ | Override the chat model used by the harness only (the agent's runtime default is untouched). Useful on hardware where the default model is impractically slow. |
 | `CHAT_TIMEOUT_MS` | `120000` | Override the per-call chat timeout. Raise this when running with a larger model that struggles to finish within 2 minutes on your hardware. |
 | `LOG_LEVEL` | `error` | Pipeline pino logger verbosity. |
 | `LLM_HOST` | `http://localhost:1234` | Base URL of the LM Studio server. |
