@@ -426,6 +426,8 @@ Defaults in `config/models.json` (see `docs/why.md` for the picks):
 
 ## Embedding model
 
+*Decision rationale and rejected alternatives: [§ 1 Embedding model](../delivery.md#1-embedding-model--text-embedding-embeddinggemma-300m-768-d) in delivery.md.*
+
 The agent uses `text-embedding-embeddinggemma-300m` (referenced as
 `embeddinggemma-300m` in `config/models.json`) to embed both the seeded
 fragment bodies and the per-topic retrieval queries.
