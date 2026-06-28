@@ -332,6 +332,8 @@ precision/recall rose from ~0.13 to 0.42 and gap-F1 from 0.46 to 0.75.
 
 ## Optional AEM round-trip
 
+> **Work in progress.** The AEM round-trip code path is not production-ready. Use the JSON-primary path (no `--aem-push` or `--source=aem` flags) for evaluation.
+
 To exercise the AEM code path end-to-end against the local AEM SDK:
 
 1. Start the AEM SDK at `http://localhost:4502` (admin:admin) and install the project package:

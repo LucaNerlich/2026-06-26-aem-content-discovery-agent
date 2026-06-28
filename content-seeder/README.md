@@ -88,6 +88,8 @@ Key behaviours:
 
 ### `aem-push.js` (library module)
 
+> **Work in progress.** This module is not production-ready. The JSON-based seed + embed workflow (`npm run seed` + `npm run embed`) is the supported path.
+
 `content-seeder/src/aem-push.js` exports helpers (`pushFragments`, `resetLocales`, `validateCfModel`,
 `aemClient`) for pushing the generated corpus into AEM Author via the shared AEM client. It is **not**
 wired into the `seed` or `embed` CLIs; consume it programmatically from your own script.
