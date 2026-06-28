@@ -57,9 +57,38 @@ function setIntersect(a, b) {
   return n;
 }
 
-function precisionRecall(returnedIds, expectedIds) {
-  const r = [...new Set(returnedIds)];
-  const e = [...new Set(expectedIds)];
+// The seeder produces many near-identical fragments per topic (e.g. several
+// "Summer linen essentials" pieces with cosmetic title suffixes). Which exact
+// duplicate retrieval picks shifts run-to-run because parseBrief is an LLM stage,
+// so exact-id scoring is noisy. We score on a topic key (locale + base title)
+// instead: a returned fragment counts as a hit if it shares a topic with an
+// expected one. titleFor() appends one of these cosmetic suffixes.
+const TITLE_SUFFIXES = [" — collection notes", " — editorial", " — guide"];
+
+export function topicKeyOf(fragment) {
+  let title = fragment.title ?? "";
+  for (const suffix of TITLE_SUFFIXES) {
+    if (title.endsWith(suffix)) {
+      title = title.slice(0, -suffix.length);
+      break;
+    }
+  }
+  return `${fragment.locale}::${title}`;
+}
+
+export async function buildIdToTopicKey(corpusPath) {
+  const corpus = JSON.parse(await readFile(corpusPath, "utf8"));
+  const map = new Map();
+  for (const f of corpus.fragments ?? []) map.set(f.id, topicKeyOf(f));
+  return map;
+}
+
+function precisionRecall(returnedIds, expectedIds, idToTopicKey) {
+  // Map ids → topic keys (unknown ids fall back to the raw id) and dedupe,
+  // so duplicate-topic fragments collapse to a single comparable unit.
+  const toKeys = (ids) => [...new Set(ids.map((id) => idToTopicKey.get(id) ?? id))];
+  const r = toKeys(returnedIds);
+  const e = toKeys(expectedIds);
   const tp = setIntersect(r, e);
   const precision = r.length === 0 ? (e.length === 0 ? 1 : 0) : tp / r.length;
   const recall = e.length === 0 ? 1 : tp / e.length;
@@ -193,6 +222,7 @@ async function main() {
   if (!process.env.LOG_LEVEL) process.env.LOG_LEVEL = "error";
   const threshold = Number(process.env.EVAL_F1_THRESHOLD ?? DEFAULT_F1_THRESHOLD);
   const briefs = await loadBriefSet();
+  const idToTopicKey = await buildIdToTopicKey(CORPUS_PATH);
   const chatFn = makeChat(EVAL_CHAT_MODEL);
   process.stdout.write(
     `Eval harness - DEMO_SEED=${DEMO_SEED}, corpus=${CORPUS_PATH}\n` +
@@ -226,7 +256,7 @@ async function main() {
     }
 
     const returnedIds = output.matchedFragments.map((m) => m.id);
-    const pr = precisionRecall(returnedIds, brief.expect.expectedMatchIds ?? []);
+    const pr = precisionRecall(returnedIds, brief.expect.expectedMatchIds ?? [], idToTopicKey);
     const gap = await gapF1(output.gaps, brief.expect.expectedGaps ?? []);
 
     perBrief.push({
@@ -238,6 +268,8 @@ async function main() {
       composeError: output.composeError ?? null,
       returnedMatchIds: returnedIds,
       expectedMatchIds: brief.expect.expectedMatchIds ?? [],
+      returnedTopics: [...new Set(returnedIds.map((id) => idToTopicKey.get(id) ?? id))],
+      expectedTopics: [...new Set((brief.expect.expectedMatchIds ?? []).map((id) => idToTopicKey.get(id) ?? id))],
       returnedGaps: output.gaps.map((g) => ({ topic: g.topic, coverage: g.coverage })),
       expectedGaps: brief.expect.expectedGaps ?? [],
     });
