@@ -2,14 +2,14 @@
   "slug": "en-us-holiday-gifting",
   "brief": "We're launching a US holiday gifting landing page for our accessories range. Audience: US gift shoppers (men and women, 30+) looking for premium, timeless gift ideas during the holiday season. The pag",
   "locale": "en-us",
-  "startedAt": "2026-06-27T10:23:47.778Z",
-  "finishedAt": "2026-06-27T10:26:23.367Z",
-  "durationMs": 155589,
+  "startedAt": "2026-06-28T13:17:59.892Z",
+  "finishedAt": "2026-06-28T13:18:27.614Z",
+  "durationMs": 27722,
   "stageDurations": {
-    "parseBrief": 19884,
-    "retrieve": 74,
-    "analyseGaps": 76321,
-    "compose": 59310
+    "parseBrief": 5784,
+    "retrieve": 37,
+    "analyseGaps": 11903,
+    "compose": 9997
   },
   "chatModel": "google/gemma-4-e4b",
   "embeddingModel": "embeddinggemma-300m",

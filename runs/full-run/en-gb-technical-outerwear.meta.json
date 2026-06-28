@@ -2,20 +2,20 @@
   "slug": "en-gb-technical-outerwear",
   "brief": "We're publishing a technical specification page for our new performance outerwear range. Audience: detail-oriented UK shoppers who want to understand fabric performance before purchasing. The page mus",
   "locale": "en-gb",
-  "startedAt": "2026-06-27T10:21:15.867Z",
-  "finishedAt": "2026-06-27T10:23:47.775Z",
-  "durationMs": 151908,
+  "startedAt": "2026-06-28T13:17:34.976Z",
+  "finishedAt": "2026-06-28T13:17:59.891Z",
+  "durationMs": 24915,
   "stageDurations": {
-    "parseBrief": 22289,
-    "retrieve": 140,
-    "analyseGaps": 82135,
-    "compose": 47344
+    "parseBrief": 910,
+    "retrieve": 27,
+    "analyseGaps": 12359,
+    "compose": 11618
   },
   "chatModel": "google/gemma-4-e4b",
   "embeddingModel": "embeddinggemma-300m",
   "matchedFragmentCount": 3,
   "gapCounts": {
-    "none": 1,
+    "none": 0,
     "partial": 4
   },
   "status": "ok",

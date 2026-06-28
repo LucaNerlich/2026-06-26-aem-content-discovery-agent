@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "brief": {
-    "audience": "Existing UK customers (28-45) concerned about consumption",
+    "audience": "Existing customers (28-45) focused on mindful consumption",
     "locale": "en-gb",
     "tone": "premium",
     "brandGuidelines": [
@@ -9,10 +9,10 @@
       "premium-tone"
     ],
     "requiredTopics": [
-      "spring capsule collection",
-      "sustainable cotton sourcing",
-      "winter to spring styling",
-      "care guide"
+      "Extending existing winter wardrobe pieces",
+      "Sustainable cotton-jersey sourcing",
+      "Spring styling with retained knitwear",
+      "Cotton jersey care guide (UK)"
     ],
     "pathHint": "/en-gb/collections/spring-rewear-2027"
   },
@@ -20,97 +20,129 @@
     {
       "id": "frag_024",
       "path": "/content/dam/aemcontentdisc/en-gb/frag_024",
-      "score": 0.6754741232990773,
+      "score": 0.7214795527856461,
       "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone; fresh content"
     },
     {
       "id": "frag_021",
       "path": "/content/dam/aemcontentdisc/en-gb/frag_021",
-      "score": 0.6623526425677013,
+      "score": 0.6664785510805514,
       "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice"
     },
     {
-      "id": "frag_002",
-      "path": "/content/dam/aemcontentdisc/en-gb/frag_002",
-      "score": 0.640762764839988,
-      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone+sustainability-voice; fresh content"
+      "id": "frag_009",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_009",
+      "score": 0.6615631662549556,
+      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice"
     }
   ],
   "gaps": [
     {
-      "topic": "spring capsule collection",
+      "topic": "Extending existing winter wardrobe pieces",
       "coverage": "partial",
-      "description": "While there are fragments dedicated to spring campaigns and capsule concepts, none cohesively combine the 'capsule' structure with both the premium tone and sustainable voice required by the brand guidelines.",
+      "description": "While there are guides on general garment maintenance, the coverage lacks specific advice on creatively styling or updating older winter items. The focus is more on care than re-styling.",
       "partialMatches": [
-        "frag_021",
-        "frag_009"
-      ],
-      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"spring capsule collection\", applying sustainability-voice and premium-tone."
-    },
-    {
-      "topic": "sustainable cotton sourcing",
-      "coverage": "none",
-      "description": "The candidates cover general sustainable fibres and origin integrity, but none specifically address the sourcing details or focus on cotton required by this topic.",
-      "partialMatches": [],
-      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"sustainable cotton sourcing\", applying sustainability-voice and premium-tone."
-    },
-    {
-      "topic": "winter to spring styling",
-      "coverage": "partial",
-      "description": "Fragments cover transitional seasonality and styling concepts, but the necessary blend of Premium Tone AND Sustainability Voice across a W/S transition in one document is not consistently present.",
-      "partialMatches": [
-        "frag_024",
-        "frag_021"
-      ],
-      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"winter to spring styling\", applying sustainability-voice and premium-tone."
-    },
-    {
-      "topic": "care guide",
-      "coverage": "partial",
-      "description": "Specific maintenance guides exist for various items (footwear, hats, stains), but a holistic garment 'Care Guide' that aligns with the audience's concern for consumption through both required voices is missing.",
-      "partialMatches": [
+        "frag_003",
         "frag_023",
+        "frag_005"
+      ],
+      "suggestedAction": "Write a 200-word en-gb care-guide fragment covering \"Extending existing winter wardrobe pieces\", applying sustainability-voice and premium-tone."
+    },
+    {
+      "topic": "Sustainable cotton-jersey sourcing",
+      "coverage": "none",
+      "description": "No candidate fragment specifically names 'cotton jersey' or details its sustainable sourcing process. The materials discussed are either general knitwear or outerwear.",
+      "partialMatches": [],
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"Sustainable cotton-jersey sourcing\", applying sustainability-voice and premium-tone."
+    },
+    {
+      "topic": "Spring styling with retained knitwear",
+      "coverage": "partial",
+      "description": "Several fragments address general spring transitions (frag_021, frag_006), but none explicitly connect the act of 'retaining' or repurposing heavy winter knitwear for a modern spring wardrobe.",
+      "partialMatches": [
+        "frag_006",
+        "frag_021",
         "frag_003"
       ],
-      "suggestedAction": "Write a 200-word en-gb care-guide fragment covering \"care guide\", applying sustainability-voice and premium-tone."
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"Spring styling with retained knitwear\", applying sustainability-voice and premium-tone."
+    },
+    {
+      "topic": "Cotton jersey care guide (UK)",
+      "coverage": "partial",
+      "description": "There are guides for general stain removal from delicate fabrics, but none specify 'cotton jersey' as the material type. This makes the advice too broad to serve as a dedicated product guide.",
+      "partialMatches": [
+        "frag_023",
+        "frag_017"
+      ],
+      "suggestedAction": "Write a 200-word en-gb care-guide fragment covering \"Cotton jersey care guide (UK)\", applying sustainability-voice and premium-tone."
     }
   ],
   "draftOutline": {
-    "title": "Spring Rewear 2027: A Sustainable Journey Through Transition",
+    "title": "Spring Re-wear Edit: Styling Sustainable Staples",
     "pathHint": "/en-gb/collections/spring-rewear-2027",
     "sections": [
       {
-        "heading": "The Glorious Awakening: Celebrating the Arrival of Spring",
+        "heading": "The Spirit of Spring",
         "kind": "reuse",
         "fragmentIds": [
-          "frag_024"
+          "frag_021",
+          "frag_009"
         ],
-        "rationale": "Establishes the seasonal transition and premium, celebratory tone suitable for introducing a luxury lifestyle narrative."
+        "rationale": "Uses existing evocative spring content to set the premium, celebratory tone required for a seasonal edit."
       },
       {
-        "heading": "The Spring Capsule Collection: Pieces for the Modern Wardrobe",
+        "heading": "Transitioning Your Wardrobe Sustainably",
         "kind": "new",
-        "rationale": "Addresses the core product offering by providing a cohesively toned and volume-appropriate story on the new capsule pieces.",
-        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"spring capsule collection\", applying sustainability-voice and premium-tone."
+        "rationale": "Addresses the core need of extending and repurposing existing winter pieces as season changes.",
+        "sourcingHint": "Write a 200-word en-gb care-guide fragment covering \"Extending existing winter wardrobe pieces\", applying sustainability-voice and premium-tone."
       },
       {
-        "heading": "Our Commitment: Sustainable Cotton Sourcing and Integrity",
+        "heading": "Sustainable Materials Spotlight: Cotton Jersey",
         "kind": "new",
-        "rationale": "Dedicated focus on the specific raw material required by this audience, linking quality to ethical origins.",
-        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"sustainable cotton sourcing\", applying sustainability-voice and premium-tone."
+        "rationale": "Fulfills the gap regarding specific sustainable material sourcing, focusing on core product type.",
+        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"Sustainable cotton-jersey sourcing\", applying sustainability-voice and premium-tone."
       },
       {
-        "heading": "Beyond the Season: Winter to Spring Styling Versatility",
+        "heading": "Styling for the New Season: Knitwear & Beyond",
         "kind": "new",
-        "rationale": "Provides actionable advice on maximizing wardrobe investment, crucial for the consumption-aware audience.",
-        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"winter to spring styling\", applying sustainability-voice and premium-tone."
+        "rationale": "Directly addresses the necessity of linking old knitwear to modern spring styling.",
+        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"Spring styling with retained knitwear\", applying sustainability-voice and premium-tone."
       },
       {
-        "heading": "Caring for Your Investment: A Guide to Longevity",
+        "heading": "Caring for Your Investment Pieces",
         "kind": "new",
-        "rationale": "Offers necessary practical information that aligns with the audience's mindful consumption habits and enhances product value.",
-        "sourcingHint": "Write a 200-word en-gb care-guide fragment covering \"care guide\", applying sustainability-voice and premium-tone."
+        "rationale": "Provides dedicated, material-specific care advice to complete the educational component of the brief.",
+        "sourcingHint": "Write a 200-word en-gb care-guide fragment covering \"Cotton jersey care guide (UK)\", applying sustainability-voice and premium-tone."
       }
     ]
-  }
+  },
+  "reusedFragments": [
+    {
+      "id": "frag_021",
+      "title": "Spring campaign: garden party styling — collection notes",
+      "category": "seasonal-campaign",
+      "targetAudience": "Brand-engaged shoppers (women, 24-36), North Macedonia, browsing seasonal collections.",
+      "brandGuidelinesApplied": [
+        "sustainability-voice"
+      ],
+      "locale": "en-gb",
+      "lastModified": "2025-12-01T01:51:06.886Z",
+      "content": "As the vernal equinox approaches, nature awakens with a breathtaking flourish, calling us back to the joyous rituals of the year. There is an unparalleled magic that settles upon the air during spring, hinting at the delicate brilliance awaiting beneath the burgeoning petals. The classic garden party remains one of life's most enduring pleasures—a celebration rooted in history and refined leisure. Our styling for this season draws inspiration from centuries of English garden elegance, honoring the deep tradition of bloom and celebration. We believe that true style is never transient; it speaks to a lasting appreciation for exquisite design and natural beauty. This year, we invite you to curate an ensemble worthy of the finest sun-drenched afternoon. Focus upon garments where craftsmanship reigns supreme, favouring natural textures and responsibly sourced materials that honour both the wearer and the Earth. The inclusion of vibrant florals, whether in print or sheer drape, is paramount. Let these motifs recall the rich provenance of our botanical heritage, turning a simple gathering into an affair steeped in grace and nostalgic romance. To celebrate this season's bounty, discover pieces designed not just for a single day, but built to become enduring elements of your personal story.",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_021"
+    },
+    {
+      "id": "frag_009",
+      "title": "Spring campaign: garden party styling — editorial",
+      "category": "seasonal-campaign",
+      "targetAudience": "Brand-engaged shoppers (men, 27-36), Armenia, browsing seasonal collections.",
+      "brandGuidelinesApplied": [
+        "sustainability-voice",
+        "inclusive-language"
+      ],
+      "locale": "en-gb",
+      "lastModified": "2025-10-30T03:39:22.960Z",
+      "content": "As the nascent warmth of spring heralds a renaissance in colour and life, there is nothing quite as evocative as the tradition of a garden party. It is an occasion rooted deeply in history, where refined elegance meets pastoral beauty. This season, we invite you to embrace that spirit, drawing inspiration from the exquisite abundance of natural florals and their delicate structure. Our new collection has been meticulously curated for those who appreciate clothing that carries with it a sense of timeless lineage—pieces designed not merely for an afternoon, but for years of treasured memories.\n\nCrafted with sustainable practices at heart, these garments are built for the modern gentleman who values provenance alongside style. Whether you envision strolling through a manicured English garden or attending an intimate outdoor gathering, our offerings provide sophisticated options that honour both nature and masterful tailoring. Discover how subtle patterns woven into linen blends, or rich textiles punctuated by seasonal hues, can elevate your sartorial narrative. This is more than just dressing for spring; it is adopting a mindset of measured optimism, celebrating the enduring craftsmanship found in every petal and every stitch. Prepare to curate an ensemble that speaks softly of heritage while embracing the vibrant promise of the year’s awakening garden.",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_009"
+    }
+  ]
 }

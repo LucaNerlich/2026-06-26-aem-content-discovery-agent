@@ -1,108 +1,151 @@
 {
   "schemaVersion": "1.0",
   "brief": {
-    "audience": "Young adults interested in urban street fashion and Berlin Fashion Week",
+    "audience": "junge Erwachsene in Deutschland mit Interesse an Streetwear",
     "locale": "de-de",
     "tone": "premium",
     "brandGuidelines": [
-      "sustainability-voice",
-      "premium-tone",
-      "inclusive-language"
+      "inclusive-language",
+      "sustainability-voice"
     ],
     "requiredTopics": [
-      "Berlin Fashion Week street styles",
-      "Sustainable winter outerwear",
-      "Recycled materials",
-      "Wool coat care instructions"
+      "Berlin Fashion Week Streetwear Looks",
+      "Nachhaltige Winteroberbekleidung aus recycelten Materialien",
+      "Pflegehinweise für Wollmäntel"
     ],
     "pathHint": "/de-de/collections/berlin-street-style"
   },
   "matchedFragments": [
     {
-      "id": "frag_085",
-      "path": "/content/dam/aemcontentdisc/de-de/frag_085",
-      "score": 0.7098968278284044,
-      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice; fresh content"
+      "id": "frag_082",
+      "path": "/content/dam/aemcontentdisc/de-de/frag_082",
+      "score": 0.6422420192250544,
+      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice+inclusive-language; fresh content"
     },
     {
       "id": "frag_083",
       "path": "/content/dam/aemcontentdisc/de-de/frag_083",
-      "score": 0.6202918503533033,
-      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone+inclusive-language; fresh content"
+      "score": 0.5670565338916234,
+      "reason": "Partial semantic match; strong keyword overlap; brand: inclusive-language; fresh content"
     },
     {
-      "id": "frag_081",
-      "path": "/content/dam/aemcontentdisc/de-de/frag_081",
-      "score": 0.5800029899903728,
-      "reason": "Partial semantic match; strong keyword overlap; brand: inclusive-language; fresh content"
+      "id": "frag_084",
+      "path": "/content/dam/aemcontentdisc/de-de/frag_084",
+      "score": 0.45577615977959157,
+      "reason": "Partial semantic match; keyword overlap; brand: sustainability-voice+inclusive-language"
     }
   ],
   "gaps": [
     {
-      "topic": "Berlin Fashion Week street styles",
+      "topic": "Berlin Fashion Week Streetwear Looks",
       "coverage": "none",
-      "description": "Although there are fragments on winter fashion, none specifically mention or address the context of Berlin Fashion Week or capture the dynamic nature of urban street style unique to that event.",
+      "description": "No fragment mentions a specific fashion event like Berlin Fashion Week, nor does any piece provide concrete styling recommendations or looks tailored to the streetwear audience.",
       "partialMatches": [],
-      "suggestedAction": "Write a 200-word de-de product-story fragment covering \"Berlin Fashion Week street styles\", applying sustainability-voice and premium-tone and inclusive-language."
+      "suggestedAction": "Write a 200-word de-de product-story fragment covering \"Berlin Fashion Week Streetwear Looks\", applying inclusive-language and sustainability-voice."
     },
     {
-      "topic": "Sustainable winter outerwear",
+      "topic": "Nachhaltige Winteroberbekleidung aus recycelten Materialien",
       "coverage": "partial",
-      "description": "While high-quality, sustainable winter coats are covered (e.g., in frag_085), the content might lack full depth regarding how it aligns with both premium brand execution and inclusive language across all global markets.",
-      "partialMatches": [
-        "frag_085"
-      ],
-      "suggestedAction": "Write a 200-word de-de product-story fragment covering \"Sustainable winter outerwear\", applying sustainability-voice and premium-tone and inclusive-language."
-    },
-    {
-      "topic": "Recycled materials",
-      "coverage": "partial",
-      "description": "There is a direct match on the topic (frag_083), but the content may need to provide broader detail regarding the circular journey and material sourcing beyond just application in outerwear.",
+      "description": "While frag_083 is highly relevant, the content head focuses broadly on 'timeless design' and 'origins' rather than providing detailed winter care or material deep dives needed for complete coverage.",
       "partialMatches": [
         "frag_083"
       ],
-      "suggestedAction": "Write a 200-word de-de product-story fragment covering \"Recycled materials\", applying sustainability-voice and premium-tone and inclusive-language."
+      "suggestedAction": "Write a 200-word de-de product-story fragment covering \"Nachhaltige Winteroberbekleidung aus recycelten Materialien\", applying inclusive-language and sustainability-voice."
     },
     {
-      "topic": "Wool coat care instructions",
-      "coverage": "none",
-      "description": "The available fragments offer general care guides for winter garments or specific fiber types (like cashmere), but none provide detailed, targeted instructions exclusively for maintaining wool coats.",
-      "partialMatches": [],
-      "suggestedAction": "Write a 200-word de-de care-guide fragment covering \"Wool coat care instructions\", applying sustainability-voice and premium-tone and inclusive-language."
+      "topic": "Pflegehinweise für Wollmäntel",
+      "coverage": "partial",
+      "description": "Fragment frag_081 provides general care guidelines for winter outerwear, which is relevant, but it fails to specifically mention or focus on wool materials (Wollmänteln).",
+      "partialMatches": [
+        "frag_081"
+      ],
+      "suggestedAction": "Write a 200-word de-de product-story fragment covering \"Pflegehinweise für Wollmäntel\", applying inclusive-language and sustainability-voice."
     }
   ],
   "draftOutline": {
-    "title": "Berlin Street Style: The Future of Sustainable Winter Outerwear",
+    "title": "Dein Streetwear Look inspiriert von Berlin und Nachhaltigkeit",
     "pathHint": "/de-de/collections/berlin-street-style",
     "sections": [
       {
-        "heading": "The Pulse of Berlin: Street Style Meets Sustainability",
+        "heading": "Berlin Style trifft nachhaltige Eleganz",
         "kind": "new",
-        "rationale": "Establish the product context by tying the collection to the high-energy, trendsetting environment of Berlin Fashion Week, filtering trends through a sustainable luxury lens.",
-        "sourcingHint": "Write a 200-word de-de product-story fragment covering \"Berlin Fashion Week street styles\", applying sustainability-voice and premium-tone and inclusive-language."
+        "rationale": "Einleitung, die den Kontext von Streetwear in Berlin Fashion Week herstellt und das Thema Nachhaltigkeit verbindet.",
+        "sourcingHint": "Write a 200-word de-de product-story fragment covering \"Berlin Fashion Week Streetwear Looks\", applying inclusive-language and sustainability-voice."
       },
       {
-        "heading": "Crafted for the Modern Climate: Sustainable Winter Outerwear",
+        "heading": "Die Transformation der Saison",
         "kind": "reuse",
         "fragmentIds": [
-          "frag_085"
+          "frag_082"
         ],
-        "rationale": "Provides the primary product narrative, detailing how the coats offer protection while maintaining an aesthetic harmony with changing seasons and environmental consciousness."
+        "rationale": "Setzt den emotionalen und saisonalen Ton für die gesamte Kollektion, passend zum Premium-Tonfall."
       },
       {
-        "heading": "The Circular Journey: Materials with a Meaningful Past",
+        "heading": "Outerwear mit kreislaufwirtschaftlichem Anspruch",
         "kind": "reuse",
         "fragmentIds": [
           "frag_083"
         ],
-        "rationale": "Deep dive into the ethics and sourcing of the collection, appealing to the conscious luxury buyer interested in circular fashion principles."
+        "rationale": "Fokussiert auf nachhaltige Winteroberbekleidung und die Nutzung von recycelten Materialien, ergänzt durch vertiefendes Wissen zu Materialkreisläufen."
       },
       {
-        "heading": "Preserving Your Investment: Wool Coat Care Guide",
+        "heading": "Kunst des Layerings für die kalte Jahreszeit",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_084"
+        ],
+        "rationale": "Bietet konkrete Styling-Inspirationen, um die Vielseitigkeit der Kollektion zu demonstrieren und den Streetwear-Aspekt zu betonen."
+      },
+      {
+        "heading": "Pflege-Know-how für hochwertige Wintermäntel",
         "kind": "new",
-        "rationale": "Offers actionable, premium advice that extends the garment's life, reinforcing the investment quality of the piece.",
-        "sourcingHint": "Write a 200-word de-de care-guide fragment covering \"Wool coat care instructions\", applying sustainability-voice and premium-tone and inclusive-language."
+        "rationale": "Schließt mit einem nützlichen, anwendungsbezogenen Tipp ab (Wool Care), der den Wert des Kaufs steigert und die Langlebigkeitsphilosophie untermauert.",
+        "sourcingHint": "Write a 200-word de-de product-story fragment covering \"Pflegehinweise für Wollmäntel\", applying inclusive-language and sustainability-voice."
       }
     ]
-  }
+  },
+  "reusedFragments": [
+    {
+      "id": "frag_082",
+      "title": "Seasonal collection story: autumn / winter campaign",
+      "category": "seasonal-campaign",
+      "targetAudience": "Brand-engaged shoppers (men, 29-46), Französische Gebiete im südlichen Indischen Ozean, browsing seasonal collections.",
+      "brandGuidelinesApplied": [
+        "sustainability-voice",
+        "inclusive-language"
+      ],
+      "locale": "de-de",
+      "lastModified": "2026-05-14T15:22:35.434Z",
+      "content": "Wenn die Tage länger werden und ein melancholisches Licht über die Stadt fällt, beginnt eine Transformation – eine Zeit der Tiefe, des Umbruchs und des Neubeginns. Unsere neue Kollektion feiert diesen Übergang spiritueller Stärke. Dieser Herbst/Winter ist mehr als nur ein saisonaler Wechsel; er ist eine bewusste Auseinandersetzung mit dem Wesen von Beständigkeit inmitten ständiger Veränderung.\n\nWir präsentieren stolz unsere *premium collection* für die kommenden Monate, ein Meisterwerk aus Materialien, die Respekt vor der Erde und über Generationen hinweg getragen werden wollen. Jedes Stück erzählt eine Geschichte – eine sorgfältig kuratierte *campaign narrative*, die jenseits von kurzlebigen Trends existiert.\n\nDieses *seasonal launch* lädt Sie ein, sich dem Rhythmus des Herbstes zu entfachen. Von tiefen, erdverbundenen Tönen bis hin zu Texturen, die das Licht wie gefiltert Gold einfangen – hier treffen Handwerkskunst und ethische Verantwortung aufeinander. Unsere Designs sind für den Mann geschaffen, der seinen Wert in Authentizität findet; jemand, dessen Stil ebenso reflektiert wie tiefgründig ist.\n\nWir glauben fest daran, dass wahre Eleganz nachhaltige Entscheidungen erfordert. Entdecken Sie die Kollektion und finden Sie Ihr eigenes Statement dieser Saison – ein zeitloses Stück Design für eine bewusste Zukunft.",
+      "path": "/content/dam/aemcontentdisc/de-de/frag_082"
+    },
+    {
+      "id": "frag_083",
+      "title": "Recycled materials and circular fashion in outerwear",
+      "category": "product-story",
+      "targetAudience": "Quality-led shoppers (men, 23-31), Luxemburg, interested in considered fashion.",
+      "brandGuidelinesApplied": [
+        "premium-tone",
+        "inclusive-language"
+      ],
+      "locale": "de-de",
+      "lastModified": "2026-03-06T04:40:49.066Z",
+      "content": "Die wahre Eleganz liegt in der Beständigkeit des Designs und dem Bewusstsein für seinen Ursprung. Wir glauben nicht an kurzlebige Trends, sondern an zeitlose Stücke, die einen neuen Kreislauf beginnen können. Unsere neuesten Kollektionen sind ein tiefes Statement für eine zirkuläre Mode. Dabei setzen wir auf innovative Ansätze, um die Qualität von Außenkleidung neu zu definieren. Anstelle des Neuanfangs nutzen wir das Potenzial bereits existierender Materialien, wie beispielsweise hochwertiges recycled polyester. Dieses Material verleiht unseren Outerwear materials nicht nur Langlebigkeit, sondern auch eine bewusste Geschichte. Mit unserem closed-loop Ansatz verankern wir die Prinzipien der circular fashion tief in jeder Faser. Es ist mehr als nur ein Kleidungsstück; es ist eine Philosophie des verantwortungsvollen Tragens. Ein Stück, das Stil und Verantwortung gleichermaßen ehrt.",
+      "path": "/content/dam/aemcontentdisc/de-de/frag_083"
+    },
+    {
+      "id": "frag_084",
+      "title": "Layering essentials with natural fibres — editorial",
+      "category": "product-story",
+      "targetAudience": "Quality-led shoppers (women, 38-52), Bolivien, interested in considered fashion.",
+      "brandGuidelinesApplied": [
+        "sustainability-voice",
+        "inclusive-language"
+      ],
+      "locale": "de-de",
+      "lastModified": "2025-05-07T09:38:54.589Z",
+      "content": "Die wahre Eleganz liegt oft in der Subtilität des Details und der Perfektion des Tragegefühls. Wenn die kältere Jahreszeit Einzug hält, ist das Kunststück des geschickten Layerings nicht nur funktional, sondern zutiefst stilistisch. Wir glauben, dass wahre Mode ein Dialog zwischen Ihrer Haut und den Materialien sein sollte – natürlich, atemend und unaufdringlich. Deshalb bauen unsere Kollektion auf die kraftvollen Eigenschaften natürlicher Fasern. Betrachten Sie beispielsweise das Fundament aus Merino Base Layers; diese bieten eine unvergleichliche Wärmeisolierung, während sie gleichzeitig Feuchtigkeit ableiten und ein angenehmes Tragegefühl über Tag hinweg garantieren. Ergänzen Sie diesen Komfort mit der zeitlosen Langlebigkeit von Organic Cotton Teilen, die für ihre außergewöhnliche Weichheit bekannt sind. Zusammen bilden diese Kombinationen nicht nur Ihre neuen Winter Essentials, sondern auch eine Garderobe, die Generationen überdauert. Es geht darum, Stücke zu finden, die Ihren Lebensrhythmus begleiten und Sie jeden Tag mit einem Gefühl von ruhiger Überlegenheit erfüllen. So wird jeder Look ein bewusst komponiertes Meisterwerk aus Nachhaltigkeit und purer Formensprache.",
+      "path": "/content/dam/aemcontentdisc/de-de/frag_084"
+    }
+  ]
 }

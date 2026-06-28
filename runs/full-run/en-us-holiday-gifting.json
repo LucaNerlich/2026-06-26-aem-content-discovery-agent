@@ -1,113 +1,130 @@
 {
   "schemaVersion": "1.0",
   "brief": {
-    "audience": "US gift shoppers (30+)",
+    "audience": "US gift shoppers 30+ seeking premium gifts",
     "locale": "en-gb",
     "tone": "premium",
     "brandGuidelines": [
-      "sustainability-voice",
-      "premium-tone"
+      "premium-tone",
+      "sustainability-voice"
     ],
     "requiredTopics": [
-      "holiday gifting",
+      "holiday gifting ideas",
       "timeless accessories",
       "sustainable gift selections",
-      "hat care basics"
+      "accessory care basics"
     ],
-    "pathHint": "/en-gb/collections/holiday-gifts"
+    "pathHint": "/en-us/collections/holiday-gifts-us"
   },
   "matchedFragments": [
     {
-      "id": "frag_032",
-      "path": "/content/dam/aemcontentdisc/en-gb/frag_032",
-      "score": 0.6936880547283775,
-      "reason": "Strong semantic match; strong keyword overlap; brand: premium-tone"
-    },
-    {
       "id": "frag_039",
       "path": "/content/dam/aemcontentdisc/en-gb/frag_039",
-      "score": 0.6858525379150262,
+      "score": 0.65009471765691,
       "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice"
     },
     {
       "id": "frag_027",
       "path": "/content/dam/aemcontentdisc/en-gb/frag_027",
-      "score": 0.6382940020889792,
+      "score": 0.62503010099823,
       "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone; older content"
+    },
+    {
+      "id": "frag_032",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_032",
+      "score": 0.5929185198658835,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone"
     }
   ],
   "gaps": [
     {
-      "topic": "holiday gifting",
+      "topic": "holiday gifting ideas",
       "coverage": "partial",
-      "description": "While the concept of holiday gifting is present, the fragments are focused on accessories and establishing a high-end tone rather than addressing the specific logistical needs of a US gift shopper demographic.",
+      "description": "While several fragments reference 'Holiday gifting', they are highly specific to accessories rather than offering general gift inspiration. Additionally, the ideal fragment needs to combine all required brand guidelines (premium tone and sustainability voice).",
       "partialMatches": [
         "frag_039",
         "frag_027"
       ],
-      "suggestedAction": "Write a 200-word en-gb seasonal-campaign fragment covering \"holiday gifting\", applying sustainability-voice and premium-tone."
+      "suggestedAction": "Write a 200-word en-gb seasonal-campaign fragment covering \"holiday gifting ideas\", applying premium-tone and sustainability-voice."
     },
     {
       "topic": "timeless accessories",
       "coverage": "partial",
-      "description": "The fragments establish the value and longevity of accessories, but they remain conceptual editorials without deep dives into product usage or buying guidance needed for a comprehensive topic coverage.",
+      "description": "The existing content focuses strongly on 'timeless' items via specific articles (e.g., hats, footwear) but lacks a comprehensive piece that captures the breadth of all accessory types while integrating the full set of brand guidelines.",
       "partialMatches": [
         "frag_039",
         "frag_027"
       ],
-      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"timeless accessories\", applying sustainability-voice and premium-tone."
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"timeless accessories\", applying premium-tone and sustainability-voice."
     },
     {
       "topic": "sustainable gift selections",
       "coverage": "partial",
-      "description": "While one fragment applies the sustainability voice to gifting, the content is high-level and does not provide dedicated selection criteria or actionable advice for sustainable gift ideas.",
+      "description": "Fragments exist covering 'gifting' or 'sustainable materials', but there is no single content piece that effectively bridges the concepts of making a curated, thoughtful selection *and* ensuring it meets sustainability criteria.",
       "partialMatches": [
-        "frag_039"
+        "frag_039",
+        "frag_002"
       ],
-      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"sustainable gift selections\", applying sustainability-voice and premium-tone."
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"sustainable gift selections\", applying premium-tone and sustainability-voice."
     },
     {
-      "topic": "hat care basics",
+      "topic": "accessory care basics",
       "coverage": "partial",
-      "description": "The basics of care (shaping, brushing, storage) are covered and the premium tone is present; however, a lack of explicit step-by-step instructional depth makes the coverage fall short of being fully actionable for a modern guide.",
+      "description": "Several fragments cover specific types of care (e.g., leather, footwear, hats), but there is no single comprehensive 'basics' guide that addresses the breadth of accessories while adhering to all required brand guidelines.",
       "partialMatches": [
-        "frag_032",
-        "frag_011"
+        "frag_035",
+        "frag_029",
+        "frag_032"
       ],
-      "suggestedAction": "Write a 200-word en-gb care-guide fragment covering \"hat care basics\", applying sustainability-voice and premium-tone."
+      "suggestedAction": "Write a 200-word en-gb care-guide fragment covering \"accessory care basics\", applying premium-tone and sustainability-voice."
     }
   ],
   "draftOutline": {
-    "title": "Holiday Gifting Guide: Timeless Accessories for the Modern Shopper",
-    "pathHint": "/en-gb/collections/holiday-gifts",
+    "title": "Thoughtful Holiday Gifts: Discover Timeless & Sustainable Style",
+    "pathHint": "/en-us/collections/holiday-gifts-us",
     "sections": [
       {
-        "heading": "The Art of Intentional Gifting",
+        "heading": "Find the Perfect Thoughtful Gift This Season",
         "kind": "new",
-        "rationale": "Addresses the specific logistical and emotional needs of the US gift shopper demographic at the start of the journey.",
-        "sourcingHint": "Write a 200-word en-gb seasonal-campaign fragment covering \"holiday gifting\", applying sustainability-voice and premium-tone."
+        "rationale": "Sets a premium and values-driven tone, addressing general gift inspiration while integrating brand guidelines (sustainability).",
+        "sourcingHint": "Write a 200-word en-gb seasonal-campaign fragment covering \"holiday gifting ideas\", applying premium-tone and sustainability-voice."
       },
       {
-        "heading": "Transcendence Through Design",
+        "heading": "Timeless Accessories for Every Character",
         "kind": "reuse",
         "fragmentIds": [
-          "frag_027",
-          "frag_039"
+          "frag_027"
         ],
-        "rationale": "Establishes the premium, long-term value of the collection pieces as opposed to fleeting trends."
+        "rationale": "Leverages existing editorial content to focus on the core product message: enduring style over fleeting trends."
       },
       {
-        "heading": "Curating Conscious Choices",
+        "heading": "Curated Gift Selections with a Sustainable Heart",
         "kind": "new",
-        "rationale": "Provides actionable advice on how the shopper can select pieces that align with environmental values and contribute to meaningful gifting.",
-        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"sustainable gift selections\", applying sustainability-voice and premium-tone."
+        "rationale": "Highlights the ethical purchasing criteria, linking premium gifts directly to sustainability practices.",
+        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"sustainable gift selections\", applying premium-tone and sustainability-voice."
       },
       {
-        "heading": "Preserving Your Investment: Care Guide",
+        "heading": "Caring for Your Investment Pieces",
         "kind": "new",
-        "rationale": "Transforms the existing care instructions into a comprehensive, actionable guide fitting the modern shopper's need for detailed knowledge.",
-        "sourcingHint": "Write a 200-word en-gb care-guide fragment covering \"hat care basics\", applying sustainability-voice and premium-tone."
+        "rationale": "Provides essential utility content to increase perceived value and encourage long-term investment in the brand's products.",
+        "sourcingHint": "Write a 200-word en-gb care-guide fragment covering \"accessory care basics\", applying premium-tone and sustainability-voice."
       }
     ]
-  }
+  },
+  "reusedFragments": [
+    {
+      "id": "frag_027",
+      "title": "Holiday gifting: timeless accessories — editorial",
+      "category": "seasonal-campaign",
+      "targetAudience": "Brand-engaged shoppers (men, 26-32), Comoros, browsing seasonal collections.",
+      "brandGuidelinesApplied": [
+        "inclusive-language",
+        "premium-tone"
+      ],
+      "locale": "en-gb",
+      "lastModified": "2025-04-12T09:01:24.898Z",
+      "content": "This season, true elegance lies not in fleeting trends, but in enduring craftsmanship. For the discerning individual who understands that style is an extension of character, the thoughtful gift remains a profoundly powerful gesture. We believe the art of giving should be as refined as the recipient’s taste, moving beyond the ephemeral novelty toward pieces imbued with lasting significance.\n\nThe perfect holiday present resides within our curated collection of timeless accessories—items designed not just for a season, but for a lifetime. Whether selecting a distinguished leather goods piece to complement his daily ritual or an exquisitely detailed timepiece that captures the passing moment, these are investments in style and memory. They speak volumes without saying a word, offering tangible proof of consideration.\n\nExploring our new arrivals makes finding the ideal gesture effortless. Each accessory has been conceived with precision, blending heritage techniques with modern sensibility, ensuring it remains relevant year after year. This is more than simply gifting; it is curating an heirloom experience. Discover the perfect complement to his wardrobe this holiday season and select a piece of enduring sophistication that will be cherished long after the festive lights fade.",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_027"
+    }
+  ]
 }

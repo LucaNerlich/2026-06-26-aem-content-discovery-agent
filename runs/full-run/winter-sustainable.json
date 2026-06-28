@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "brief": {
-    "audience": "Eco-conscious women (25-40, UK)",
+    "audience": "Eco-conscious women aged 25–40 in the UK.",
     "locale": "en-gb",
     "tone": "premium",
     "brandGuidelines": [
@@ -9,83 +9,112 @@
       "premium-tone"
     ],
     "requiredTopics": [
-      "Sustainable sourcing",
-      "Product care instructions",
-      "Seasonal styling tips"
+      "recycled materials sourcing",
+      "garment care instructions",
+      "seasonal styling tips"
     ],
     "pathHint": "/en-gb/collections/winter-sustainable"
   },
   "matchedFragments": [
     {
-      "id": "frag_024",
-      "path": "/content/dam/aemcontentdisc/en-gb/frag_024",
-      "score": 0.6180361841412898,
+      "id": "frag_003",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_003",
+      "score": 0.6750588126885225,
       "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone; fresh content"
     },
     {
-      "id": "frag_009",
-      "path": "/content/dam/aemcontentdisc/en-gb/frag_009",
-      "score": 0.5913172326681309,
-      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice"
+      "id": "frag_024",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_024",
+      "score": 0.6364639970798315,
+      "reason": "Partial semantic match; strong keyword overlap; brand: premium-tone; fresh content"
     },
     {
-      "id": "frag_035",
-      "path": "/content/dam/aemcontentdisc/en-gb/frag_035",
-      "score": 0.5872280074767212,
-      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice+premium-tone; fresh content"
+      "id": "frag_021",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_021",
+      "score": 0.623791913681023,
+      "reason": "Partial semantic match; strong keyword overlap; brand: sustainability-voice"
     }
   ],
   "gaps": [
     {
-      "topic": "Sustainable sourcing",
-      "coverage": "none",
-      "description": "The candidate pool contains several fragments that specifically discuss the ethical origins and integrity of materials, aligning perfectly with the brief's tone and values.",
-      "partialMatches": [],
-      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"Sustainable sourcing\", applying sustainability-voice and premium-tone."
+      "topic": "recycled materials sourcing",
+      "coverage": "partial",
+      "description": "While the content highlights recycled materials, coverage appears limited to outerwear and specific collection launches. Expanding this topic would broaden its scope to cover different product categories (e.g., accessories, knitwear) using sustainable fibers.",
+      "partialMatches": [
+        "frag_005",
+        "frag_001"
+      ],
+      "suggestedAction": "Write a 200-word en-gb product-story fragment covering \"recycled materials sourcing\", applying sustainability-voice and premium-tone."
     },
     {
-      "topic": "Product care instructions",
-      "coverage": "none",
-      "description": "Care guides are present that not only match the required locale and tone but also maintain alignment with the brand's sustainability message through their voice.",
-      "partialMatches": [],
-      "suggestedAction": "Write a 200-word en-gb care-guide fragment covering \"Product care instructions\", applying sustainability-voice and premium-tone."
+      "topic": "garment care instructions",
+      "coverage": "partial",
+      "description": "The content provides excellent guides for stain removal from delicate fabrics, but a gap exists regarding general maintenance advice for various garment types (e.g., basic mending, specialized cleaning tips beyond stains).",
+      "partialMatches": [
+        "frag_026",
+        "frag_023"
+      ],
+      "suggestedAction": "Write a 200-word en-gb care-guide fragment covering \"garment care instructions\", applying sustainability-voice and premium-tone."
     },
     {
-      "topic": "Seasonal styling tips",
-      "coverage": "none",
-      "description": "The pool includes high-quality editorial content that provides seasonal styling advice while strictly adhering to the required sustainability and premium brand voice.",
-      "partialMatches": [],
-      "suggestedAction": "Write a 200-word en-gb seasonal-campaign fragment covering \"Seasonal styling tips\", applying sustainability-voice and premium-tone."
+      "topic": "seasonal styling tips",
+      "coverage": "partial",
+      "description": "Multiple fragments address seasonal transitions (spring, pre-fall) and capsule wardrobes. However, dedicated content linking specific sustainable sourcing narratives (e.g., 'how to style recycled wool') directly into actionable styling guides would enhance relevance.",
+      "partialMatches": [
+        "frag_024",
+        "frag_033",
+        "frag_028",
+        "frag_019",
+        "frag_009"
+      ],
+      "suggestedAction": "Write a 200-word en-gb seasonal-campaign fragment covering \"seasonal styling tips\", applying sustainability-voice and premium-tone."
     }
   ],
   "draftOutline": {
-    "title": "Winter Sustainable Collection Briefing for Eco-Conscious Audience",
+    "title": "Sustainable Winter Wardrobe Guide",
     "pathHint": "/en-gb/collections/winter-sustainable",
     "sections": [
       {
-        "heading": "Collection Hero & Introduction",
+        "heading": "Building an Enduring, Sustainable Style",
         "kind": "new",
-        "rationale": "Establishes the premium, sustainable context for the winter collection targeting eco-conscious buyers.",
-        "sourcingHint": "Develop a high-impact introductory piece (200 words) setting the premium and sustainable tone for the collection."
+        "rationale": "This serves as the opening hook for the collection page, establishing a premium and eco-conscious narrative tailored to the UK audience.",
+        "sourcingHint": "Write a 200-word en-gb introductory fragment covering 'sustainable wardrobe philosophy', applying sustainability-voice and premium-tone."
       },
       {
-        "heading": "The Integrity of Our Materials",
+        "heading": "The Power of Recycled Materials",
         "kind": "new",
-        "rationale": "Addresses the critical requirement of transparently communicating brand values regarding ethics and origins.",
-        "sourcingHint": "Write a 200-word product story fragment focusing entirely on 'Sustainable sourcing', maintaining the premium brand voice."
+        "rationale": "Addresses the primary required topic (recycled materials) by giving depth beyond just outerwear, fulfilling a key gap identified in the brief.",
+        "sourcingHint": "Write a 200-word en-gb product-story fragment covering \"recycled materials sourcing\", applying sustainability-voice and premium-tone."
       },
       {
-        "heading": "Art of Preservation: Product Care Guide",
-        "kind": "new",
-        "rationale": "Provides essential, lifecycle-conscious information that reinforces quality and ownership investment.",
-        "sourcingHint": "Produce a 200-word care-guide fragment tailored to the product line, applying sustainability and premium brand voice."
+        "heading": "Maintaining Your Investment Pieces",
+        "kind": "reuse",
+        "fragmentIds": [
+          "frag_003"
+        ],
+        "rationale": "The matched fragment 'Care guide: extending the life...' is perfectly aligned with general garment maintenance and longevity advice for winter items."
       },
       {
-        "heading": "Styling for the Season Ahead",
+        "heading": "Seasonal Styling Tips for Winter",
         "kind": "new",
-        "rationale": "Delivers actionable, aspirational content that engages the audience beyond the point of sale.",
-        "sourcingHint": "Draft a 200-word editorial fragment offering 'Seasonal styling tips' appropriate for the current winter collection."
+        "rationale": "Provides actionable, highly relevant style guidance specific to seasonal dressing while maintaining a sustainability focus.",
+        "sourcingHint": "Write a 200-word en-gb seasonal-campaign fragment covering \"seasonal styling tips\", applying sustainability-voice and premium-tone."
       }
     ]
-  }
+  },
+  "reusedFragments": [
+    {
+      "id": "frag_003",
+      "title": "Care guide: extending the life of winter garments — collection notes",
+      "category": "care-guide",
+      "targetAudience": "Existing customers (men, 27-44), Antarctica, seeking guidance on garment longevity.",
+      "brandGuidelinesApplied": [
+        "premium-tone"
+      ],
+      "locale": "en-gb",
+      "lastModified": "2026-02-10T08:48:07.823Z",
+      "content": "True style is defined not by fleeting trends, but by enduring quality. Your winter wardrobe comprises investments—pieces crafted for seasons of adventure and years of life. Extending the impeccable character of these garments requires a thoughtful approach to care, transforming maintenance into an act of preservation. Approach every season with intention, remembering that true luxury lies in longevity.\n\nFor materials such as fine wool, never overlook the specific ritual of washing; gentle hand-washing or professional dry cleaning is always preferable to machine agitation. Furthermore, viewing minor imperfections not as flaws but as signs of a life well-lived encourages the philosophy of repair. A skilled tailor can breathe new life into cuffs, mend a tear in tweed, and restore structural integrity, ensuring that your outerwear remains as formidable years from now.\n\nMastering effective winter garment care is an understated art. By following these principles—from mindful storage to diligent upkeep—you ensure that every stitch endures. This meticulous attention not only preserves the exceptional quality of your clothing but reinforces a commitment to enduring elegance that transcends seasonal cycles.",
+      "path": "/content/dam/aemcontentdisc/en-gb/frag_003"
+    }
+  ]
 }

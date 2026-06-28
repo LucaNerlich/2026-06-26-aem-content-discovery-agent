@@ -2,14 +2,14 @@
   "slug": "en-gb-spring-rewear",
   "brief": "We're building a Spring 2027 capsule landing page that leans into a \"rewear, don't replace\" message for the UK market. Audience: existing customers aged 28-45 who already own one of our winter pieces ",
   "locale": "en-gb",
-  "startedAt": "2026-06-27T10:18:05.550Z",
-  "finishedAt": "2026-06-27T10:21:15.837Z",
-  "durationMs": 190287,
+  "startedAt": "2026-06-28T13:17:16.247Z",
+  "finishedAt": "2026-06-28T13:17:34.976Z",
+  "durationMs": 18729,
   "stageDurations": {
-    "parseBrief": 20531,
-    "retrieve": 285,
-    "analyseGaps": 108220,
-    "compose": 61250
+    "parseBrief": 3433,
+    "retrieve": 41,
+    "analyseGaps": 11515,
+    "compose": 3740
   },
   "chatModel": "google/gemma-4-e4b",
   "embeddingModel": "embeddinggemma-300m",

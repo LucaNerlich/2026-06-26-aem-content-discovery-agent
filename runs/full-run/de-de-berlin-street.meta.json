@@ -2,20 +2,20 @@
   "slug": "de-de-berlin-street",
   "brief": "Wir bauen eine Landing Page für unsere neue Berlin-Street-Style-Kapsel. Zielgruppe: junge Erwachsene in Deutschland, die sich für urbanen Streetwear und Berlin Fashion Week interessieren. Die Seite mu",
   "locale": "de-de",
-  "startedAt": "2026-06-27T10:15:51.199Z",
-  "finishedAt": "2026-06-27T10:16:53.013Z",
-  "durationMs": 61814,
+  "startedAt": "2026-06-28T13:16:20.859Z",
+  "finishedAt": "2026-06-28T13:16:44.272Z",
+  "durationMs": 23413,
   "stageDurations": {
-    "parseBrief": 10653,
-    "retrieve": 73,
-    "analyseGaps": 30348,
-    "compose": 20739
+    "parseBrief": 1105,
+    "retrieve": 45,
+    "analyseGaps": 11813,
+    "compose": 10449
   },
   "chatModel": "google/gemma-4-e4b",
   "embeddingModel": "embeddinggemma-300m",
   "matchedFragmentCount": 3,
   "gapCounts": {
-    "none": 2,
+    "none": 1,
     "partial": 2
   },
   "status": "ok",
