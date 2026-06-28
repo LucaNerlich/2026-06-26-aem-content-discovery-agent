@@ -28,7 +28,7 @@ model IDs — no changes needed.
 nvm use && npm install
 
 # Generate 40 fragments per locale (120 total) with a stable seed
-npm run seed -- --seed=20260626 --count=40
+npm run seed --seed=20260626 --count=40
 # → writes data/corpus.json  (~120 fragments, ~45 KB)
 ```
 
@@ -57,10 +57,10 @@ skip steps 2–3 and run the agent immediately with the locked corpus (`DEMO_SEE
 
 ```bash
 # Markdown output (human-readable)
-npm run agent -- eval/briefs/winter-sustainable.txt
+npm run agent eval/briefs/winter-sustainable.txt
 
 # Canonical JSON (AgentOutput schema)
-npm run agent -- eval/briefs/winter-sustainable.txt --json
+npm run agent eval/briefs/winter-sustainable.txt --json
 
 # Full-run (all briefs)
 npm run full-run
@@ -98,10 +98,10 @@ The default path needs no AEM and no network beyond LM Studio. Copy-paste:
 ```bash
 nvm use && npm install
 
-npm run seed -- --seed=20260626 --count=40   # writes data/corpus.json (120 fragments)
-npm run embed                                # writes data/embeddings.db (768-d vectors)
-npm run agent -- eval/briefs/winter-sustainable.txt          # Markdown to stdout
-npm run agent -- eval/briefs/winter-sustainable.txt --json   # canonical AgentOutput
+npm run seed --seed=20260626 --count=40   # writes data/corpus.json (120 fragments)
+npm run embed                              # writes data/embeddings.db (768-d vectors)
+npm run agent eval/briefs/winter-sustainable.txt          # Markdown to stdout
+npm run agent eval/briefs/winter-sustainable.txt --json   # canonical AgentOutput
 npm run eval                                # full evaluation harness
 npm test                                    # unit tests across all workspaces
 ```
@@ -194,7 +194,7 @@ under /en-gb/collections/winter-sustainable.
 **Command**
 
 ```bash
-npm run agent -- eval/briefs/winter-sustainable.txt
+npm run agent eval/briefs/winter-sustainable.txt
 ```
 
 **Output**
@@ -349,10 +349,10 @@ To exercise the AEM code path end-to-end against the local AEM SDK:
 
 1. Start the AEM SDK at `http://localhost:4502` (admin:admin) and install the project package:
    `cd aemcontentdisc && mvn clean install -PautoInstallPackage`
-2. Push the corpus into AEM as Content Fragments: `npm run seed -- --aem-push --reset --seed=20260626`. `--reset` removes
+2. Push the corpus into AEM as Content Fragments: `npm run seed --aem-push --reset --seed=20260626`. `--reset` removes
    any prior `/content/dam/aemcontentdisc/{locale}/` tree first; the seeder then creates one CF per fragment using the
    Sling POST servlet against the `discovery-fragment` CF Model.
-3. Run the agent against the live AEM instance: `npm run agent eval/briefs/winter-sustainable.txt -- --source=aem`
+3. Run the agent against the live AEM instance: `npm run agent eval/briefs/winter-sustainable.txt --source=aem`
 
 In `--source=aem` mode the agent reads fragments live via the Assets HTTP API and skips the precomputed vector index —
 BM25 alone scores retrieval. The JSON-primary path is the supported default for graders; the AEM path is here to

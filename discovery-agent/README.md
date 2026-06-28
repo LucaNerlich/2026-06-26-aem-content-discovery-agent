@@ -115,19 +115,19 @@ name; piped stdin yields `stdin`.
 
 ```bash
 # Markdown rendering (human-readable, default)
-npm run agent -- eval/briefs/winter-sustainable.txt
+npm run agent eval/briefs/winter-sustainable.txt
 
 # Canonical AgentOutput JSON
-npm run agent -- eval/briefs/winter-sustainable.txt --json
+npm run agent eval/briefs/winter-sustainable.txt --json
 
 # Pipe a brief via stdin
 echo "Audience: UK premium shoppers. Topic: spring linen capsule." | npm run agent
 
 # Override locale and bump the matched-fragment top-k
-npm run agent -- eval/briefs/spring-linen-capsule.txt --locale=fr-fr --top=5
+npm run agent eval/briefs/spring-linen-capsule.txt --locale=fr-fr --top=5
 
 # Read from a live AEM Assets endpoint (uses shared AEM client)
-npm run agent -- eval/briefs/winter-sustainable.txt --source=aem
+npm run agent eval/briefs/winter-sustainable.txt --source=aem
 ```
 
 The default `--source=json` path requires the content-seeder outputs to be present:

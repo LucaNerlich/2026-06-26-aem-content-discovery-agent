@@ -14,7 +14,7 @@ does not require regenerating prose.
 
 ```bash
 # Step 1 — generate corpus.json (LLM prose only; no embeddings by default)
-npm run seed -- --seed=20260626 --count=40
+npm run seed --seed=20260626 --count=40
 
 # Step 2 — embed corpus.json into embeddings.db
 npm run embed
@@ -137,18 +137,18 @@ wired into the `seed` or `embed` CLIs; consume it programmatically from your own
 
 ```bash
 # Locked eval corpus — reproducible across machines
-npm run seed -- --seed=20260626 --count=40
+npm run seed --seed=20260626 --count=40
 npm run embed
 
 # Quick smoke run (no disk writes, no embeddings)
-npm run seed -- --count=2 --dry-run
+npm run seed --count=2 --dry-run
 
 # Single-locale, high-variation regeneration
-npm run seed -- --locales=en-gb --count=20 --variation=high --concurrency=2
+npm run seed --locales=en-gb --count=20 --variation=high --concurrency=2
 npm run embed
 
 # Re-embed an existing corpus into a non-default DB path
-npm run embed -- --corpus=data/corpus.json --db=data/embeddings.alt.db
+npm run embed --corpus=data/corpus.json --db=data/embeddings.alt.db
 ```
 
 After step 2 completes, run the [`discovery-agent`](../discovery-agent/README.md) against a brief.
