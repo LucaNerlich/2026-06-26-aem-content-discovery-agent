@@ -58,7 +58,7 @@ No top match applies the `technical-precision` brand guideline required by the b
 
 ## Reused Fragments
 
-### `frag_313` — Removing common stains from delicate fabrics — guide
+### `frag_313` - Removing common stains from delicate fabrics - guide
 <a id="appendix-frag_313"></a>
 - Path: `/content/dam/aemcontentdisc/fr-fr/frag_313`
 - Category: care-guide

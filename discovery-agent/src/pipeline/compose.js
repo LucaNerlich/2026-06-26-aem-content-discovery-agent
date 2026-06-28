@@ -19,7 +19,7 @@ const BASE_SYSTEM_PROMPT = [
   '  NEW:   { "heading": string, "kind": "new",   "rationale": string, "sourcingHint": string }',
   "Rules:",
   "- Order sections as they would appear on the page (intro → body → close).",
-  "- A reuse section's fragmentIds MUST all reference ids listed under matchedFragments — never invent ids.",
+  "- A reuse section's fragmentIds MUST all reference ids listed under matchedFragments - never invent ids.",
   "- A new section's sourcingHint should typically echo or refine a relevant gap's suggestedAction.",
   "- Do NOT add extra keys. Do NOT mix reuse fields with new fields in the same section.",
   "- Derive the title from the brief's audience + required topics. Set pathHint from the brief's pathHint.",
@@ -53,7 +53,7 @@ function buildOrphanCheckedSchema(matchedFragments) {
           ctx.addIssue({
             code: z.ZodIssueCode.custom,
             path: ["sections", idx, "fragmentIds", fidIdx],
-            message: `orphan fragmentId "${fid}" — not present in matchedFragments`,
+            message: `orphan fragmentId "${fid}" - not present in matchedFragments`,
           });
         }
       });
@@ -84,7 +84,7 @@ async function callOutlineWithRetry({ chat, system, user, schema, model }) {
         continue;
       }
       if (err instanceof z.ZodError) {
-        // Fail loud per spec — this is the last LLM call.
+        // Fail loud per spec - this is the last LLM call.
         console.error(
           "compose: draftOutline schema validation failed after retry",
           JSON.stringify(err.issues, null, 2),

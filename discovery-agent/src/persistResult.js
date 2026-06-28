@@ -1,5 +1,5 @@
 // Timestamped artifact persistence for successful agent and full-run executions.
-// See spec section "Timestamped Agent Results — 2026-06-27" and docs/why.md.
+// See spec section "Timestamped Agent Results - 2026-06-27" and docs/why.md.
 import { mkdir, writeFile } from "node:fs/promises";
 import { basename, extname, join } from "node:path";
 

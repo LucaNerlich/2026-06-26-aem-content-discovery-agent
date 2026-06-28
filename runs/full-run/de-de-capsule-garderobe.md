@@ -52,7 +52,7 @@ Although strong fragments exist focusing on durable craftsmanship (e.g., leather
 
 ## Reused Fragments
 
-### `frag_404` — Layering essentials with natural fibres — guide
+### `frag_404` - Layering essentials with natural fibres - guide
 <a id="appendix-frag_404"></a>
 - Path: `/content/dam/aemcontentdisc/de-de/frag_404`
 - Category: product-story
@@ -64,7 +64,7 @@ Die Tage werden kürzer und die Luft trägt eine kühle, erdige Kühle, die uns 
 
 Wir glauben fest daran, dass wahre Qualität im Einklang mit der Natur liegt. Deshalb setzen unsere *Winteressentials* auf die Kraft von natürlichen Fasern. Die feuchtigkeitsregulierenden Eigenschaften unserer Merinowolle dienen als ideale Grundlage; sie hält warm, ohne dabei zu beschweren oder zu überhitzen, selbst an aktiven Tagen durch den Frost. Darauf kombinieren wir das vertraute Wohlgefühl der Bio-Baumwolle, deren natürliche Atmungsaktivität für Komfort sorgt,
 
-### `frag_405` — Women's winter coats — recycled wool and sustainable insulation — collection notes
+### `frag_405` - Women's winter coats - recycled wool and sustainable insulation - collection notes
 <a id="appendix-frag_405"></a>
 - Path: `/content/dam/aemcontentdisc/de-de/frag_405`
 - Category: product-story

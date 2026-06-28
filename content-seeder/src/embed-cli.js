@@ -33,7 +33,7 @@ function parseArgs(argv) {
 }
 
 function printHelp() {
-  process.stdout.write(`aemdisc-embed — embed corpus.json into SQLite vector store (Step 2 of 2)
+  process.stdout.write(`aemdisc-embed - embed corpus.json into SQLite vector store (Step 2 of 2)
 
 Options:
   --corpus=<path>  path to corpus.json   default: ${DEFAULT_CORPUS}
@@ -80,12 +80,12 @@ async function ensureEmbedModelLoaded(model) {
     });
     const body = await res.json().catch(() => ({}));
     if (!res.ok) {
-      logger.warn({ model: fullId, status: res.status, body }, "model-load-failed — continuing anyway");
+      logger.warn({ model: fullId, status: res.status, body }, "model-load-failed - continuing anyway");
       return;
     }
     logger.info({ model: fullId, status: body.status, load_time_seconds: body.load_time_seconds }, "model-loaded");
   } catch (err) {
-    logger.warn({ model: fullId, err: err.message }, "model-load-request-failed — continuing anyway");
+    logger.warn({ model: fullId, err: err.message }, "model-load-request-failed - continuing anyway");
   }
 }
 
@@ -107,7 +107,7 @@ async function run(argv) {
 
   const corpus = Corpus.parse(raw);
   if (corpus.fragments.length === 0) {
-    logger.warn("corpus contains no fragments — nothing to embed");
+    logger.warn("corpus contains no fragments - nothing to embed");
     return 0;
   }
 

@@ -4,10 +4,10 @@
 > Built to run entirely on local models, it keeps sensitive content and editorial strategy inside your infrastructure.
 
 This document justifies the significant design choices behind the AEM Content
-Discovery Agent. It does not describe what was built — for that, see
+Discovery Agent. It does not describe what was built - for that, see
 [`README.md`](README.md) and [`architecture.md`](architecture.md).
 
-## 1. Embedding model — `text-embedding-embeddinggemma-300m` (768-d)
+## 1. Embedding model - `text-embedding-embeddinggemma-300m` (768-d)
 
 **Choice.** Local embeddings served by LM Studio at `:1234`, configured in
 [`config/models.json`](config/models.json).
@@ -23,14 +23,14 @@ credible scale-up story at the hypothetical 40k-doc corpus size without
 re-embedding. Local execution matches the brief's preference for local,
 zero-cost models.
 
-**Rejected alternatives.** `nomic-embed-text` — English-mostly, weak for
-fr-fr/de-de. Hosted OpenAI embeddings — cost, rate limits, and the brief
-favours local. Reusing the chat model as an embedder — chat models are not
+**Rejected alternatives.** `nomic-embed-text` - English-mostly, weak for
+fr-fr/de-de. Hosted OpenAI embeddings - cost, rate limits, and the brief
+favours local. Reusing the chat model as an embedder - chat models are not
 embedders.
 
 **Details:** see [Embedding model](docs/architecture.md#embedding-model) in the architecture doc.
 
-## 2. Chunking strategy — fragment-as-chunk
+## 2. Chunking strategy - fragment-as-chunk
 
 **Choice.** One chunk per AEM Content Fragment; no sub-fragment splitting.
 
@@ -43,13 +43,13 @@ the output actually references, surfacing partial fragments the author
 could not act on without manual reassembly.
 
 **Rejected alternatives.** Fixed-size / sliding-window token chunks and
-sentence-or-paragraph splitting — both produce chunks that are not
+sentence-or-paragraph splitting - both produce chunks that are not
 addressable by fragment id and therefore cannot be re-assembled into a
 "reuse this whole fragment" suggestion.
 
 **Details:** see [Chunking strategy](docs/architecture.md#chunking-strategy) in the architecture doc.
 
-## 3. Retrieval method — hybrid fused score `0.6 · cosine + 0.3 · BM25 + 0.1 · freshness`
+## 3. Retrieval method - hybrid fused score `0.6 · cosine + 0.3 · BM25 + 0.1 · freshness`
 
 **Choice.** Hybrid retrieval: `sqlite-vec` cosine search plus
 `wink-bm25-text-search` BM25 plus a freshness signal, blended at fixed
@@ -57,15 +57,15 @@ weights, wrapped by a locale ladder (exact → `en-*` → any).
 
 **Why for this content / use case.** The seeded corpus is LLM-paraphrased
 marketing copy, so semantic similarity must dominate to catch paraphrase.
-BM25 is the proper-noun backstop — brand names and material terms like
+BM25 is the proper-noun backstop - brand names and material terms like
 "merino" need exact lexical match that a 300M-parameter embedder cannot
 guarantee. Freshness is a tiebreaker only and intentionally small. The
 locale ladder relaxes only when it must, and every relaxation surfaces as
 a structural gap so the user sees that it happened.
 
-**Rejected alternatives.** Pure vector — misses exact brand matches. Pure
-BM25 — misses paraphrase. Reciprocal Rank Fusion — adds a `k` constant to
-tune for no measurable benefit at this corpus size. Learned weights — would
+**Rejected alternatives.** Pure vector - misses exact brand matches. Pure
+BM25 - misses paraphrase. Reciprocal Rank Fusion - adds a `k` constant to
+tune for no measurable benefit at this corpus size. Learned weights - would
 overfit an 8-brief eval set.
 
 **Trade-off.** Weights are constants. A substantially different corpus
@@ -73,10 +73,10 @@ character (e.g. long-form technical docs) would warrant re-tuning.
 
 **Details:** see [Score components explained](docs/architecture.md#score-components-explained) in the architecture doc for the per-component breakdown and weight rationale.
 
-## 4. Why agentic + the orchestration pattern — sequential typed multi-stage pipeline
+## 4. Why agentic + the orchestration pattern - sequential typed multi-stage pipeline
 
-**Choice.** RAG split across four typed stages — `parseBrief → retrieve →
-analyseGaps → compose` — orchestrated as a deterministic sequential
+**Choice.** RAG split across four typed stages - `parseBrief → retrieve →
+analyseGaps → compose` - orchestrated as a deterministic sequential
 pipeline with typed errors and a bounded one-shot re-prompt on schema
 failure.
 
@@ -86,22 +86,22 @@ them) and they *constrain* generation. The composer's Zod `superRefine`
 rejects any reuse section citing a fragment id outside `matchedFragments`,
 and the gap judge cannot claim coverage without retrieved evidence. Each
 stage validates its own output, so a malformed `DraftOutline` triggers a
-targeted re-prompt for that stage only — a single mega-prompt cannot
+targeted re-prompt for that stage only - a single mega-prompt cannot
 offer per-stage validation, per-stage retry budget, or per-stage model
 selection.
 
 **Why this orchestration pattern.** Hand-rolled sequential pipeline, not
 an autonomous tool-loop / ReAct agent and not a framework (LangChain,
-LlamaIndex). The seams the rest of the design depends on — per-stage Zod
+LlamaIndex). The seams the rest of the design depends on - per-stage Zod
 schemas, per-stage model selection in `config/models.json`, per-stage
-prompt logging in `docs/runtime-prompt-log.md` — must stay visible and
+prompt logging in `docs/runtime-prompt-log.md` - must stay visible and
 individually testable.
 
 **Rejected alternatives.** One-shot prompt that returns matches + gaps +
-outline together — loses per-stage validation and selective retry; one
-bad section blocks all output. Autonomous tool-loop agent —
+outline together - loses per-stage validation and selective retry; one
+bad section blocks all output. Autonomous tool-loop agent -
 non-deterministic call patterns, harder to audit against the locked
-`AgentOutput` schema. RAG framework — extra abstraction layers obscure
+`AgentOutput` schema. RAG framework - extra abstraction layers obscure
 the seams the contract depends on.
 
 **Details:** see [Why agentic](docs/architecture.md#why-agentic) in the architecture doc.

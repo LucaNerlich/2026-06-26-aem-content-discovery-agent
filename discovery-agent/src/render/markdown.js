@@ -74,7 +74,7 @@ function renderReusedFragments(reusedFragments) {
   if (!reusedFragments || reusedFragments.length === 0) return "";
   const lines = ["## Reused Fragments", ""];
   reusedFragments.forEach((f) => {
-    lines.push(`### \`${f.id}\` — ${f.title}`);
+    lines.push(`### \`${f.id}\` - ${f.title}`);
     lines.push(`<a id="appendix-${f.id}"></a>`);
     if (f.path) lines.push(`- Path: \`${f.path}\``);
     lines.push(`- Category: ${f.category}`);

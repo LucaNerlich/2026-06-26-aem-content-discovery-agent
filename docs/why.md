@@ -17,111 +17,111 @@ Append-only decision log for the AEM Content Discovery Agent project. Every entr
 ## 2026-06-26 - npm workspaces monorepo with shared / content-seeder / discovery-agent
 **Context:** The seeder and the agent both need the same Zod schemas, Ollama wrappers, and AEM client. They have different CLIs, different dependencies (seeder needs faker, agent does not), and different lifecycles (seeder runs once, agent runs many times).
 **Decision:** npm workspaces with three packages - `shared/` (schemas, Ollama, AEM, retrieval primitives), `content-seeder/` (the seed script), `discovery-agent/` (the runtime CLI + pipeline).
-**Alternatives considered:** Single package with everything under `src/` (rejected - couples seeder-only deps onto the agent and vice versa); three separate git repos (rejected - code review and reproducibility nightmare for an 8h exercise); pnpm workspaces (rejected — adds a tool the reviewer must install when npm ships with Node).
+**Alternatives considered:** Single package with everything under `src/` (rejected - couples seeder-only deps onto the agent and vice versa); three separate git repos (rejected - code review and reproducibility nightmare for an 8h exercise); pnpm workspaces (rejected - adds a tool the reviewer must install when npm ships with Node).
 **Consequences:** Clean dependency boundaries; the agent's `node_modules` does not pull in faker. Costs: marginally more `package.json` files; first-time contributors must remember `npm install` at the root, not inside a sub-package.
 
-## 2026-06-26 — LLM stack: gemma4:26b chat + embeddinggemma:300m embeddings, both via local Ollama
+## 2026-06-26 - LLM stack: gemma4:26b chat + embeddinggemma:300m embeddings, both via local Ollama
 **Context:** The brief requires justifying the embedding model AND a generation model. Locale coverage spans en-gb / fr-fr / de-de.
 **Decision:** Chat = `gemma4:26b` (released Apr 2026, MoE ~3.8B active / 25.2B total, 256K context, native function calling, configurable thinking mode). Embeddings = `embeddinggemma:300m` (768d default, Matryoshka-truncatable to 512/256/128, 100+ languages, ~600 MB RAM). Both served by local Ollama at `http://localhost:11434`.
-**Alternatives considered:** `gemma3:27b` + `nomic-embed-text` (rejected — nomic is English-mostly, weak for fr-fr/de-de); OpenAI hosted (rejected — brief explicitly favours local models; also costs and rate limits); single model for both (impossible — chat models are not good embedders).
+**Alternatives considered:** `gemma3:27b` + `nomic-embed-text` (rejected - nomic is English-mostly, weak for fr-fr/de-de); OpenAI hosted (rejected - brief explicitly favours local models; also costs and rate limits); single model for both (impossible - chat models are not good embedders).
 **Consequences:** Single Gemma research lineage for both stages = cleaner architecture narrative. Multilingual retrieval works out of the box. Matryoshka gives a credible scale-up story (768→256 for 3× memory savings at hypothetical 40k-doc scale). Cost: gemma4:26b is ~18 GB on disk; reviewers on low-RAM hardware need a fallback model via env var.
 
-## 2026-06-26 — sqlite-vec for persistent vector storage
+## 2026-06-26 - sqlite-vec for persistent vector storage
 **Context:** The agent needs a vector index. Corpus size is ~120 fragments now, hypothetically 40k+. Re-embedding on every run wastes 10+ minutes.
 **Decision:** Use the `sqlite-vec` extension loaded into `better-sqlite3`, persisted at `data/embeddings.db`. Lexical search uses `wink-bm25-text-search` in-memory.
-**Alternatives considered:** In-memory brute-force cosine in pure JS (rejected — re-embeds every run, no persistence story); `hnswlib-node` (rejected — native build complexity, no SQL interface for inspection); `lancedb` (rejected — heavier than needed at this scale); dedicated vector DB server like Qdrant (rejected — zero-server constraint).
+**Alternatives considered:** In-memory brute-force cosine in pure JS (rejected - re-embeds every run, no persistence story); `hnswlib-node` (rejected - native build complexity, no SQL interface for inspection); `lancedb` (rejected - heavier than needed at this scale); dedicated vector DB server like Qdrant (rejected - zero-server constraint).
 **Consequences:** Real persistent vector store, SQL-queryable for debugging, zero-server. Demonstrates picking a right-sized tool. Cost: `better-sqlite3` + `sqlite-vec` add native dependencies that compile on install.
 
-## 2026-06-26 — No ESLint, no Prettier, rely on `node --check` only
+## 2026-06-26 - No ESLint, no Prettier, rely on `node --check` only
 **Context:** This is a single-author 8h exercise. Configuring ESLint/Prettier for ESM + the workspace layout eats time that should go into the agent itself.
 **Decision:** No linter, no formatter. `node --check` on every source file during CI/local verification catches syntax errors. Code style is enforced by review, not tooling.
-**Alternatives considered:** Full ESLint + Prettier setup (rejected — 30+ min of yak shaving for a one-shot project); just Prettier (rejected — same setup cost, marginal benefit for one author); typescript-eslint (rejected — project is JS, not TS).
+**Alternatives considered:** Full ESLint + Prettier setup (rejected - 30+ min of yak shaving for a one-shot project); just Prettier (rejected - same setup cost, marginal benefit for one author); typescript-eslint (rejected - project is JS, not TS).
 **Consequences:** Faster iteration, fewer config files. Costs: no automatic style enforcement; reviewers must trust the author's hand.
 
-## 2026-06-26 — AEM Assets API verified shape (brandGuidelinesApplied as JSON array, lastModified as `{value, type:'calendar'}`)
+## 2026-06-26 - AEM Assets API verified shape (brandGuidelinesApplied as JSON array, lastModified as `{value, type:'calendar'}`)
 **Context:** The Assets API's `.json` and `.model.json` representations of Content Fragment fields are not symmetric between read and write, and Adobe's docs do not spell out the exact wire format for multi-value fields on read.
 **Decision:** `brandGuidelinesApplied` is read as a JSON array of strings (despite being stored as a Granite multi-value property). `lastModified` is read as `{ value: "<ISO string>", type: "calendar" }`. Both shapes were verified end-to-end by Task 2's smoke test before Task 5 was locked.
-**Alternatives considered:** Assume the shapes from Adobe docs (rejected — docs are incomplete on this); use Sling GraphQL instead of Assets HTTP API (rejected — heavier, also under-documented for this exact case); parse permissively and accept anything (rejected — loses schema-driven safety).
+**Alternatives considered:** Assume the shapes from Adobe docs (rejected - docs are incomplete on this); use Sling GraphQL instead of Assets HTTP API (rejected - heavier, also under-documented for this exact case); parse permissively and accept anything (rejected - loses schema-driven safety).
 **Consequences:** The AEM client's read path now has a verified contract; the Zod schema enforces it. Cost: ~30 min of smoke-testing during Task 2 to nail the shape.
 
-## 2026-06-26 — Maven profile is `autoInstallPackage` (not `autoInstallSinglePackage`)
+## 2026-06-26 - Maven profile is `autoInstallPackage` (not `autoInstallSinglePackage`)
 **Context:** The initial spec referenced `mvn install -PautoInstallSinglePackage` for pushing the CF Model to local AEM. Task 2 discovered the actual `aemcontentdisc/pom.xml` declares `autoInstallPackage`, not the `Single` variant.
 **Decision:** Use `mvn install -PautoInstallPackage` for the local install. Documented in README and the seeder's prerequisite check.
-**Alternatives considered:** Add a `autoInstallSinglePackage` profile to the pom to match the docs (rejected — modifies pre-existing AEM project beyond what's needed); both (rejected — confusing). Fixing the docs is correct.
+**Alternatives considered:** Add a `autoInstallSinglePackage` profile to the pom to match the docs (rejected - modifies pre-existing AEM project beyond what's needed); both (rejected - confusing). Fixing the docs is correct.
 **Consequences:** Reviewers running the optional AEM path get a command that actually works. Cost: one line change in instructions; no code change.
 
-## 2026-06-26 — Ollama Error Model: 7 typed classes with selective retry
+## 2026-06-26 - Ollama Error Model: 7 typed classes with selective retry
 **Context:** Ollama can fail in at least seven distinct ways (down, 5xx, timeout, model missing, malformed JSON, context overflow, programmer error). A single `OllamaError` class loses the information needed to decide whether to retry, surface, or re-prompt.
-**Decision:** Define 7 typed classes — `OllamaUnavailableError`, `OllamaServerError`, `OllamaTimeoutError`, `OllamaModelNotFoundError`, `OllamaJsonParseError`, `OllamaContextOverflowError`, `OllamaInvariantError`. Inside `ollamaFetch`, only `Unavailable` and `Server` are retried (with backoff); everything else surfaces immediately. `JsonParse` retry is the CALLER's responsibility — the caller re-prompts with the parse error appended to the system prompt.
-**Alternatives considered:** Single error class (rejected — loses retry semantics); retry everything (rejected — model-not-found and context-overflow will never succeed on retry, just burn time); no retry at all (rejected — transient 502s from Ollama under load are real).
+**Decision:** Define 7 typed classes - `OllamaUnavailableError`, `OllamaServerError`, `OllamaTimeoutError`, `OllamaModelNotFoundError`, `OllamaJsonParseError`, `OllamaContextOverflowError`, `OllamaInvariantError`. Inside `ollamaFetch`, only `Unavailable` and `Server` are retried (with backoff); everything else surfaces immediately. `JsonParse` retry is the CALLER's responsibility - the caller re-prompts with the parse error appended to the system prompt.
+**Alternatives considered:** Single error class (rejected - loses retry semantics); retry everything (rejected - model-not-found and context-overflow will never succeed on retry, just burn time); no retry at all (rejected - transient 502s from Ollama under load are real).
 **Consequences:** Pipeline stages can `catch` exactly the error class they know how to handle. Cost: 7 classes to maintain; 7 distinct test cases.
 
-## 2026-06-26 — Uniform LLM retry pattern at the caller layer
+## 2026-06-26 - Uniform LLM retry pattern at the caller layer
 **Context:** Every LLM-using pipeline stage (rewrite, gap, compose, match-reason) wants the same behaviour: if the model returns malformed JSON or the parsed object fails Zod, re-prompt once with the error appended; otherwise let typed errors propagate.
-**Decision:** All LLM-using pipeline stages use the same retry pattern — catch `OllamaJsonParseError` and `ZodError` once, append the error message to the system prompt, retry exactly once. Let every other typed error propagate (because `ollamaFetch` already retried the transient ones).
-**Alternatives considered:** Per-stage bespoke retry (rejected — four near-identical implementations that drift); retry N>1 times (rejected — if the model can't produce valid JSON on the second try given the explicit error, it won't on the third either); no retry (rejected — observed JSON-mode flakiness with gemma4:26b makes one retry valuable).
+**Decision:** All LLM-using pipeline stages use the same retry pattern - catch `OllamaJsonParseError` and `ZodError` once, append the error message to the system prompt, retry exactly once. Let every other typed error propagate (because `ollamaFetch` already retried the transient ones).
+**Alternatives considered:** Per-stage bespoke retry (rejected - four near-identical implementations that drift); retry N>1 times (rejected - if the model can't produce valid JSON on the second try given the explicit error, it won't on the third either); no retry (rejected - observed JSON-mode flakiness with gemma4:26b makes one retry valuable).
 **Consequences:** One retry helper used by all stages; consistent observability. Cost: callers must know to construct the system prompt as a function of `errorContext`.
 
-## 2026-06-26 — prompt-log.md logs every call, success or failure
+## 2026-06-26 - prompt-log.md logs every call, success or failure
 **Context:** The brief requires submitting prompt logs. Logging only successes hides the failure modes that matter most for debugging and architecture review.
 **Decision:** `prompt-log.md` records every Ollama call with `{ ts, model, mode, ok, errorClass?, elapsedMs, promptHead, responseHead }`. `promptHead` and `responseHead` are 200-char truncations. Local-only tool, so the truncated heads are kept (not redacted).
-**Alternatives considered:** Log successes only (rejected — failures are the interesting telemetry); full prompt + full response (rejected — bloats the log and the response can be tens of KB); no log at all (rejected — brief requires it).
+**Alternatives considered:** Log successes only (rejected - failures are the interesting telemetry); full prompt + full response (rejected - bloats the log and the response can be tens of KB); no log at all (rejected - brief requires it).
 **Consequences:** The log is human-readable, greppable, and small. Costs: 200 chars is sometimes not enough to see the failure cause; in those cases the implementor adds a one-off `console.error` rather than expanding the log format.
 
-## 2026-06-26 — Seeder owns ALL embedding writes (agent is read-only)
+## 2026-06-26 - Seeder owns ALL embedding writes (agent is read-only)
 **Context:** Two writers to `data/embeddings.db` would race on first run and produce subtle dimension mismatches if the agent ever re-embedded a fragment with a different model version than the seeder used.
-**Decision:** The seeder is the sole writer to `data/embeddings.db`. Each seed run drops and recreates the embeddings table — all-or-nothing seeding. The agent opens the DB read-only.
-**Alternatives considered:** Agent re-embeds on cache miss (rejected — races + dim drift); incremental seeding with cache key `(id, lastModified, model)` (rejected — adds schema we don't need yet; will be added if/when incremental seeding becomes a real requirement); no embeddings DB, embed-on-startup (rejected — 30s+ cold start on every agent run).
+**Decision:** The seeder is the sole writer to `data/embeddings.db`. Each seed run drops and recreates the embeddings table - all-or-nothing seeding. The agent opens the DB read-only.
+**Alternatives considered:** Agent re-embeds on cache miss (rejected - races + dim drift); incremental seeding with cache key `(id, lastModified, model)` (rejected - adds schema we don't need yet; will be added if/when incremental seeding becomes a real requirement); no embeddings DB, embed-on-startup (rejected - 30s+ cold start on every agent run).
 **Consequences:** Predictable: agent startup is fast and deterministic. Seeder runs are self-contained. Cost: any fragment change requires a full re-seed.
 
-## 2026-06-26 — No runtime embedding cache in the agent
+## 2026-06-26 - No runtime embedding cache in the agent
 **Context:** Carrying a cache-key schema (id, lastModified, model) when the seeder is the only writer and seeds atomically introduces dead schema and one more invalidation surface.
-**Decision:** No runtime embedding cache. The seeder drops + recreates the table; the agent reads the result. If incremental seeding ever becomes a need, the cache key gets added then — not before.
-**Alternatives considered:** Build the cache key now "for future-proofing" (rejected — YAGNI, and unused schema is a maintenance trap); cache embeddings in memory inside the agent (rejected — pointless, the DB read is already in-process and microsecond-scale).
+**Decision:** No runtime embedding cache. The seeder drops + recreates the table; the agent reads the result. If incremental seeding ever becomes a need, the cache key gets added then - not before.
+**Alternatives considered:** Build the cache key now "for future-proofing" (rejected - YAGNI, and unused schema is a maintenance trap); cache embeddings in memory inside the agent (rejected - pointless, the DB read is already in-process and microsecond-scale).
 **Consequences:** Smaller schema, fewer invariants to test. Cost: a future "only re-embed changed fragments" feature will require a small migration; acceptable because that feature does not exist yet.
 
-## 2026-06-26 — Default corpus size: 120 fragments (40 per locale × 3 locales)
-**Context:** Earlier draft said 24 fragments total (8 per locale). With three locales, three categories, four brand-guideline combinations, and a deliberate planted gap, 24 is too thin — retrieval becomes trivially correct or trivially empty, eval signal is noisy.
+## 2026-06-26 - Default corpus size: 120 fragments (40 per locale × 3 locales)
+**Context:** Earlier draft said 24 fragments total (8 per locale). With three locales, three categories, four brand-guideline combinations, and a deliberate planted gap, 24 is too thin - retrieval becomes trivially correct or trivially empty, eval signal is noisy.
 **Decision:** Default corpus = 120 fragments. 40 per locale × 3 locales. Seeder `--count` flag still allows scaling down for fast local iterations.
-**Alternatives considered:** Keep 24 (rejected — too small to discriminate retrieval quality); 300+ (rejected — seeding runtime becomes prohibitive at ~20-30s per LLM-generated body); 60 (rejected — still thin for the eval harness's precision/recall to be meaningful).
+**Alternatives considered:** Keep 24 (rejected - too small to discriminate retrieval quality); 300+ (rejected - seeding runtime becomes prohibitive at ~20-30s per LLM-generated body); 60 (rejected - still thin for the eval harness's precision/recall to be meaningful).
 **Consequences:** More realistic retrieval signal; meaningful eval precision@3 and recall@3 numbers. Cost: ~40-60 minutes one-time seeding wall-clock against local Ollama.
 
-## 2026-06-26 — Pure random topic distribution + guaranteed-coverage subset
+## 2026-06-26 - Pure random topic distribution + guaranteed-coverage subset
 **Context:** If all fragments are drawn from a small topic pool, retrieval has nothing to discriminate. If all topics are pure random, the demo brief (winter-sustainable) may match nothing and the demo falls flat.
 **Decision:** Each locale gets ≥6 fragments drawn from a locked "seasonal-clothing-sustainability" topic pool (guaranteed coverage for the demo brief), and the remaining ~34 fragments per locale are pure random topics from the broader category pool.
-**Alternatives considered:** Pure random everywhere (rejected — demo brief might find zero matches); pure curated for the demo brief (rejected — retrieval becomes trivial); topic-balanced quotas across all categories (rejected — too much hand-engineering, defeats the "honest retrieval" signal).
+**Alternatives considered:** Pure random everywhere (rejected - demo brief might find zero matches); pure curated for the demo brief (rejected - retrieval becomes trivial); topic-balanced quotas across all categories (rejected - too much hand-engineering, defeats the "honest retrieval" signal).
 **Consequences:** Demo always has plausible matches; retrieval still has to work against ~85% random distractors. Cost: the locked topic pool must be maintained as a constant in the seeder.
 
-## 2026-06-26 — Retrieval scoring weights: 0.6 cosine / 0.3 BM25 / 0.1 freshness
+## 2026-06-26 - Retrieval scoring weights: 0.6 cosine / 0.3 BM25 / 0.1 freshness
 **Context:** The corpus is LLM-paraphrased marketing copy. Pure BM25 misses paraphrasing; pure cosine misses brand and material proper nouns ("merino", brand names). Freshness has signal but should not dominate.
 **Decision:** Final score = 0.6 × cosine + 0.3 × BM25 + 0.1 × freshness. Semantic dominates because the corpus is paraphrased; BM25 is a backstop for proper-noun matching; freshness is a tiebreaker only.
-**Alternatives considered:** 0.5/0.5 vector + BM25 (rejected — over-weights lexical against paraphrased prose); 1.0 cosine (rejected — misses exact brand matches); reciprocal rank fusion instead of weighted sum (rejected — RRF requires tuning a `k` constant, more knobs than this corpus justifies); learn the weights from the eval set (rejected — overkill for a 5-brief eval).
+**Alternatives considered:** 0.5/0.5 vector + BM25 (rejected - over-weights lexical against paraphrased prose); 1.0 cosine (rejected - misses exact brand matches); reciprocal rank fusion instead of weighted sum (rejected - RRF requires tuning a `k` constant, more knobs than this corpus justifies); learn the weights from the eval set (rejected - overkill for a 5-brief eval).
 **Consequences:** Defensible weights with a clear story for the architecture doc. Cost: weights are constants; if the corpus character changes substantially (e.g. add long-form technical docs) they will need re-tuning.
 
-## 2026-06-26 — Brief parser locale precedence: URL/path regex > LLM inference > en-gb default
-**Context:** Task 7 (parseBrief) needs a locale on the StructuredBrief, but free-form briefs supply it inconsistently — sometimes as a path (`/en-gb/...`), sometimes only as audience text ("UK market"), sometimes not at all.
+## 2026-06-26 - Brief parser locale precedence: URL/path regex > LLM inference > en-gb default
+**Context:** Task 7 (parseBrief) needs a locale on the StructuredBrief, but free-form briefs supply it inconsistently - sometimes as a path (`/en-gb/...`), sometimes only as audience text ("UK market"), sometimes not at all.
 **Decision:** Three-tier precedence inside `parseBrief`. (1) Regex `/(en-gb|fr-fr|de-de)/` against the raw text wins absolutely and overrides whatever the LLM returns; mismatches are noted in `brief.uncertain`. (2) If no path locale, the LLM infers from the audience description. (3) If the LLM returns something outside the locked set, default to `en-gb` and record the fallback in `brief.uncertain`. `uncertain` is a new optional `string[]` on `StructuredBrief`.
-**Alternatives considered:** Let the LLM be authoritative always (rejected — observed gemma4:26b drift on locale when audience country is implicit); regex-only (rejected — fails on briefs that describe audience without a path, including realistic marketing briefs); throw on ambiguity (rejected — non-interactive CLI must proceed; the brief explicitly favours "proceed + note" per spec §2d).
+**Alternatives considered:** Let the LLM be authoritative always (rejected - observed gemma4:26b drift on locale when audience country is implicit); regex-only (rejected - fails on briefs that describe audience without a path, including realistic marketing briefs); throw on ambiguity (rejected - non-interactive CLI must proceed; the brief explicitly favours "proceed + note" per spec §2d).
 **Consequences:** Deterministic locale extraction when a path is present; transparent fallback signal when not. Downstream consumers (retrieval locale filter, gap analyser, composer) can trust `brief.locale` AND inspect `brief.uncertain` to know whether to surface the assumption in the user-facing output.
 
-## 2026-06-26 — Locale relaxation ladder: exact → prefix (en-*) → any
+## 2026-06-26 - Locale relaxation ladder: exact → prefix (en-*) → any
 **Context:** A brief tagged `en-gb` should prefer en-gb fragments, but if there are none, en-us is a better fallback than fr-fr or de-de. Forcing exact locale match can produce empty top-3 results in cross-locale gap scenarios.
 **Decision:** Retrieval tries exact locale first. If too few results, relax to the language prefix (`en-*` matches both en-gb and en-us). If still too few, relax to any locale. Every relaxation step sets a `localeRelaxed` flag on the result so the composer and CLI can call it out in the output.
-**Alternatives considered:** Exact locale only (rejected — produces empty results on small corpora); always search across all locales and post-filter (rejected — embedding-time cost wasted on locales that get discarded); user-specified relaxation policy (rejected — extra CLI surface that almost nobody will tune).
+**Alternatives considered:** Exact locale only (rejected - produces empty results on small corpora); always search across all locales and post-filter (rejected - embedding-time cost wasted on locales that get discarded); user-specified relaxation policy (rejected - extra CLI surface that almost nobody will tune).
 **Consequences:** Robust to thin per-locale coverage; transparent to the user that relaxation happened. Cost: three retrieval passes worst case (in practice one or two).
 
-## 2026-06-26 — sqlite-vec rowid binding uses BigInt
+## 2026-06-26 - sqlite-vec rowid binding uses BigInt
 **Context:** During Wave 3 seeder implementation, inserting embedding rows into the `fragments_vec` virtual table failed with a vec0 affinity error.
 **Decision:** Cast all rowids to `BigInt` before binding them to better-sqlite3 prepared statements (`stmt.run(BigInt(rowid), …)`).
 **Alternatives considered:**
-- Use a TEXT primary key on `fragments_meta` and join by id only — rejected because sqlite-vec's k-NN query returns rowids, and joining via int rowid is cheaper than a TEXT lookup.
-- Use a different vector library (sqlite-vss, hnswlib) — rejected because sqlite-vec is the locked choice (see entry above on persistent vector storage).
+- Use a TEXT primary key on `fragments_meta` and join by id only - rejected because sqlite-vec's k-NN query returns rowids, and joining via int rowid is cheaper than a TEXT lookup.
+- Use a different vector library (sqlite-vss, hnswlib) - rejected because sqlite-vec is the locked choice (see entry above on persistent vector storage).
 **Consequences:** Anyone writing to `fragments_vec` must remember the BigInt cast. Documented inline in `content-seeder/src/embeddings.js` so the next maintainer doesn't trip on it.
 
-## 2026-06-26 — Gap analyser: single batched LLM judge + deterministic suggestedAction + force-none invariants
+## 2026-06-26 - Gap analyser: single batched LLM judge + deterministic suggestedAction + force-none invariants
 **Context:** Task 9 needs to classify each required topic in the brief as `none` or `partial` against the retrieval candidate pool, surface structural gaps (locale relaxation, missing brand voice), and produce a useful `suggestedAction` per gap. Multiple plausible designs (LLM-per-topic, LLM-everything, hand-rolled coverage rules) trade cost, determinism, and quality against each other.
-**Decision:** (1) **Single batched LLM call** over all required topics; input = brief + JSON-serialised candidate pool (matches ∪ nearMisses ∪ droppedByBrandFilter). (2) **`suggestedAction` is deterministic**, derived from the topic words (mapped to seeder categories) + brief locale + brief `brandGuidelines` — the LLM has no influence on it. (3) **Hard invariants enforced post-LLM**: any `partialMatches` id not in the pool is dropped; `partial` with empty `partialMatches` is downgraded to `none`; `none` is forced when the pool is empty. (4) **Structural gaps (locale, brand) are synthesised independently** of the LLM verdicts, so they always appear when the retrieval signal demands them.
-**Alternatives considered:** One LLM call per topic (rejected — N×latency for no recall benefit at the corpus size); ask the LLM to also generate `suggestedAction` (rejected — drift undermines test stability and the seeder's known vocabulary is the authoritative input anyway); compute coverage purely from retrieval scores (rejected — score thresholds are corpus-specific and noisy, and the user-visible `description` needs natural-language judgement); trust the LLM's `partialMatches` without sanitising (rejected — hallucinated ids would violate the contract's "no orphan ids" invariant).
+**Decision:** (1) **Single batched LLM call** over all required topics; input = brief + JSON-serialised candidate pool (matches ∪ nearMisses ∪ droppedByBrandFilter). (2) **`suggestedAction` is deterministic**, derived from the topic words (mapped to seeder categories) + brief locale + brief `brandGuidelines` - the LLM has no influence on it. (3) **Hard invariants enforced post-LLM**: any `partialMatches` id not in the pool is dropped; `partial` with empty `partialMatches` is downgraded to `none`; `none` is forced when the pool is empty. (4) **Structural gaps (locale, brand) are synthesised independently** of the LLM verdicts, so they always appear when the retrieval signal demands them.
+**Alternatives considered:** One LLM call per topic (rejected - N×latency for no recall benefit at the corpus size); ask the LLM to also generate `suggestedAction` (rejected — drift undermines test stability and the seeder's known vocabulary is the authoritative input anyway); compute coverage purely from retrieval scores (rejected — score thresholds are corpus-specific and noisy, and the user-visible `description` needs natural-language judgement); trust the LLM's `partialMatches` without sanitising (rejected — hallucinated ids would violate the contract's "no orphan ids" invariant).
 **Consequences:** One Ollama chat call per agent run for gaps (cheap, ~1-3 s on local gemma4:26b). Test fixtures stay deterministic because suggestedAction is pure-functional. Locale/brand structural gaps are reliable regardless of LLM mood. Retry policy follows the Task 4 Ollama Error Model: `OllamaJsonParseError` or `ZodError` → one retry with the failure appended to the system prompt, then propagate.
 
 

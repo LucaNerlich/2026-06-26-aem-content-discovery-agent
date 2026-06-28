@@ -2,7 +2,7 @@
 // (eco-conscious UK women, winter, sustainability) has ≥6 retrievable matches per locale.
 export const RESERVED_TOPICS = [
   {
-    title: "Women's winter coats — recycled wool and sustainable insulation",
+    title: "Women's winter coats - recycled wool and sustainable insulation",
     category: "product-story",
     keywords: ["winter coats", "recycled wool", "responsibly sourced insulation", "women's outerwear"],
   },
@@ -35,7 +35,7 @@ export const RESERVED_TOPICS = [
 
 export const RESERVED_COUNT = RESERVED_TOPICS.length;
 
-// Random topic pool — intentionally broad so we don't bias the demo retrieval test.
+// Random topic pool - intentionally broad so we don't bias the demo retrieval test.
 export const RANDOM_TOPICS = [
   { title: "Summer linen essentials for warm climates", category: "product-story", keywords: ["linen", "summer", "lightweight"] },
   { title: "Smart-casual tailoring for the modern workplace", category: "product-story", keywords: ["tailoring", "workwear", "blazer"] },

@@ -15,7 +15,7 @@ import {
 } from "@aemdisc/shared";
 import { buildArtifactFilename, slugify } from "../discovery-agent/src/persistResult.js";
 
-// 5min default per chat call — gemma-class 9b models still need >120s under
+// 5min default per chat call - gemma-class 9b models still need >120s under
 // load on consumer hardware. User can override via env.
 process.env.CHAT_TIMEOUT_MS ??= "300000";
 
@@ -26,7 +26,7 @@ const EXPECTATIONS_DIR = join(ROOT, "eval", "expectations");
 const RUNS_DIR = join(ROOT, "runs", "full-run");
 const CORPUS_PATH = join(ROOT, "data", "corpus.json");
 
-// Locked seed — mirrors eval/run.js DEMO_SEED so the README header is honest
+// Locked seed - mirrors eval/run.js DEMO_SEED so the README header is honest
 // about which seeded snapshot the run was produced against.
 export const DEMO_SEED = 20260626;
 
@@ -262,7 +262,7 @@ export function buildIndexReadme(metas, { chatModel, embeddingModel, seed, gener
     const gaps = m.status === "ok"
       ? `${m.gapCounts?.none ?? 0} / ${m.gapCounts?.partial ?? 0}`
       : "";
-    const link = m.status === "ok" ? `[md](./${m.slug}.md)` : "—";
+    const link = m.status === "ok" ? `[md](./${m.slug}.md)` : "-";
     lines.push(`| \`${m.slug}\` | ${m.locale} | ${matched} | ${gaps} | ${m.status} | ${m.durationMs} | ${link} |`);
   }
   lines.push("");

@@ -27,23 +27,23 @@ flowchart TD
 
 Stages live in `discovery-agent/src/pipeline/`:
 
-- **`parseBrief`** — calls the chat LLM to produce a `StructuredBrief`
+- **`parseBrief`** - calls the chat LLM to produce a `StructuredBrief`
   (`audience`, `locale`, `tone`, `brandGuidelines`, `requiredTopics`, `pathHint`).
   Brand guidelines are constrained to a locked vocabulary.
-- **`retrieve`** — applies the locale ladder (exact → language-prefix → any) over the loaded
+- **`retrieve`** - applies the locale ladder (exact → language-prefix → any) over the loaded
   fragments, embeds each `requiredTopic` for cosine search against the sqlite-vec store, runs an
   in-memory BM25 search over the same candidate set, fuses both with a freshness component
   (18-month half-window), and returns the top-k matches plus `nearMisses`,
   `droppedByBrandFilter`, and the `localeRelaxed` flag.
-- **`analyseGaps`** — asks the LLM to judge per-topic coverage, then merges in any structural
+- **`analyseGaps`** - asks the LLM to judge per-topic coverage, then merges in any structural
   gaps (locale relaxation, brand drops).
-- **`compose`** — asks the LLM for a 4–6 section outline; validates with the `AgentOutput` Zod
+- **`compose`** - asks the LLM for a 4–6 section outline; validates with the `AgentOutput` Zod
   schema; on validation failure re-prompts **once** with the error before surfacing it.
 
 After a successful run, the rendered output is also persisted to a timestamped artifact in
 `runs/agent/` (or the directory passed via `--results-dir`).
 
-## CLI reference — `discovery-agent/src/cli.js`
+## CLI reference - `discovery-agent/src/cli.js`
 
 ```
 aemdisc-agent [brief.txt] [options]
@@ -51,30 +51,30 @@ aemdisc-agent [brief.txt] [options]
 
 | Flag                  | Type   | Default              | Notes                                                          |
 |-----------------------|--------|----------------------|----------------------------------------------------------------|
-| `[brief.txt]`         | path   | —                    | Positional brief file. If omitted, stdin is read.              |
+| `[brief.txt]`         | path   | -                    | Positional brief file. If omitted, stdin is read.              |
 | `--json`              | flag   | `false`              | Emit canonical `AgentOutput` JSON instead of Markdown.         |
-| `--locale=<code>`     | string | —                    | Override the locale auto-detected from the brief.              |
+| `--locale=<code>`     | string | -                    | Override the locale auto-detected from the brief.              |
 | `--quiet`             | flag   | `false`              | Suppress pino progress logs on stderr (sets `LOG_LEVEL=silent`). |
 | `--top=<n>`           | int    | `3`                  | Debug override of matched-fragments `k`, range `1..10`.        |
 | `--source=json\|aem`  | enum   | `json`               | Fragment source: local corpus.json or live AEM Assets HTTP.    |
 | `--corpus=<path>`     | string | `data/corpus.json`   | Corpus path when `--source=json`. Resolved against `INIT_CWD`. |
 | `--results-dir=<path>`| string | `runs/agent`         | Directory for timestamped result artifacts.                    |
-| `-h, --help`          | flag   | —                    | Print help.                                                    |
+| `-h, --help`          | flag   | -                    | Print help.                                                    |
 
 **Exit codes**
 
 | Code | Meaning                                                           |
 |------|-------------------------------------------------------------------|
-| `0`  | Success — output written to stdout and persisted to the artifact. |
+| `0`  | Success - output written to stdout and persisted to the artifact. |
 | `1`  | Pipeline or schema-validation error during a stage.               |
-| `2`  | Input error — missing/empty brief, unknown `--source`, or invalid `--top`. |
+| `2`  | Input error - missing/empty brief, unknown `--source`, or invalid `--top`. |
 
 ## Input / output
 
-**Input** — a brief is plain text (Markdown is fine). Either pass a path as the positional
+**Input** - a brief is plain text (Markdown is fine). Either pass a path as the positional
 argument or pipe text via stdin. An empty file or empty stdin returns exit code `2`.
 
-**Output** — `AgentOutput` validated by the Zod schema in `@aemdisc/shared/schema/output.js`:
+**Output** - `AgentOutput` validated by the Zod schema in `@aemdisc/shared/schema/output.js`:
 
 ```jsonc
 {

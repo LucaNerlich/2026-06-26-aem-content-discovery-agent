@@ -1,5 +1,5 @@
 // Mulberry32: deterministic, lightweight PRNG. Plenty good for picking templates,
-// brand-guideline combos, and lastModified offsets — no crypto requirements.
+// brand-guideline combos, and lastModified offsets - no crypto requirements.
 export function createRng(seed) {
   let state = seed >>> 0;
   return function next() {

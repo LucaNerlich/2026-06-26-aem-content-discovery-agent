@@ -48,7 +48,7 @@ The best matches address stains or specific items (like shirts), but a generaliz
 
 ## Reused Fragments
 
-### `frag_028` — Smart-casual tailoring for the modern workplace — guide
+### `frag_028` - Smart-casual tailoring for the modern workplace - guide
 <a id="appendix-frag_028"></a>
 - Path: `/content/dam/aemcontentdisc/en-gb/frag_028`
 - Category: product-story
@@ -56,7 +56,7 @@ The best matches address stains or specific items (like shirts), but a generaliz
 - Brand guidelines: inclusive-language, premium-tone
 - Last modified: 2026-02-16T00:35:25.787Z
 
-The modern professional understands that style should never feel like a compromise to capability. The rigid structures of traditional corporate attire no longer speak to the fluid nature of today’s ambition; what is required is an elevated ease—a sense of polish that moves with you through every agenda, whether board room or creative space. Our approach to contemporary workwear reimagines the art of tailoring, ensuring every piece retains its sharp silhouette without ever restricting thought.
+The modern professional understands that style should never feel like a compromise to capability. The rigid structures of traditional corporate attire no longer speak to the fluid nature of today’s ambition; what is required is an elevated ease-a sense of polish that moves with you through every agenda, whether board room or creative space. Our approach to contemporary workwear reimagines the art of tailoring, ensuring every piece retains its sharp silhouette without ever restricting thought.
 
-Consider the perfect blazer: a foundational element designed not just for structure, but for effortless versatility. It is the anchor point around which your most considered looks are built. We have sourced luxurious fabrics and perfected the drape, resulting in garments that feel as impeccable as they look. This collection celebrates smart-casual dressing, offering exquisite tailoring that transitions seamlessly across diverse environments. Invest in pieces designed to last beyond a season—investment staples that define quiet confidence. These are not mere outfits; they are components of your evolving narrative, crafted for those who demand both distinction and comfort in equal measure.
+Consider the perfect blazer: a foundational element designed not just for structure, but for effortless versatility. It is the anchor point around which your most considered looks are built. We have sourced luxurious fabrics and perfected the drape, resulting in garments that feel as impeccable as they look. This collection celebrates smart-casual dressing, offering exquisite tailoring that transitions seamlessly across diverse environments. Invest in pieces designed to last beyond a season-investment staples that define quiet confidence. These are not mere outfits; they are components of your evolving narrative, crafted for those who demand both distinction and comfort in equal measure.
 

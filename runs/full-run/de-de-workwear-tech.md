@@ -61,7 +61,7 @@ No top match applies the `technical-precision` brand guideline required by the b
 
 ## Reused Fragments
 
-### `frag_413` — Smart-casual tailoring for the modern workplace
+### `frag_413` - Smart-casual tailoring for the modern workplace
 <a id="appendix-frag_413"></a>
 - Path: `/content/dam/aemcontentdisc/de-de/frag_413`
 - Category: product-story

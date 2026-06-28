@@ -273,8 +273,8 @@ test("buildIndexReadme: emits header counts and one row per meta", () => {
   assert.match(md, /chatModel: `gemma4:26b`/);
   assert.match(md, /\*\*1\*\* \/ \*\*1\*\* \/ \*\*1\*\*/);
   assert.match(md, /\| `a` \| en-gb \| 3 \| 1 \/ 2 \| ok \| 100 \| \[md\]\(\.\/a\.md\) \|/);
-  assert.match(md, /\| `b` \| fr-fr \|  \|  \| timeout \| 240000 \| — \|/);
-  assert.match(md, /\| `c` \| de-de \|  \|  \| error \| 50 \| — \|/);
+  assert.match(md, /\| `b` \| fr-fr \|  \|  \| timeout \| 240000 \| - \|/);
+  assert.match(md, /\| `c` \| de-de \|  \|  \| error \| 50 \| - \|/);
 });
 
 test("buildSeedSummary: missing corpus returns not-seeded note", async () => {

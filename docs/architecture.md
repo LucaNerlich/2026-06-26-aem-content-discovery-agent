@@ -409,16 +409,16 @@ over its OpenAI-compatible HTTP API:
 - `chat.js` - posts to `POST {host}/v1/chat/completions`. Strips a leading
   `<think>…</think>` block as a safety net, then `JSON.parse`s the reply
   when `json: true`.
-- `embed.js` — posts to `POST {host}/v1/embeddings`, returns the 768-d
+- `embed.js` - posts to `POST {host}/v1/embeddings`, returns the 768-d
   vector directly.
-- `llm.js` — host resolution (`LLM_HOST` env, default
+- `llm.js` - host resolution (`LLM_HOST` env, default
   `http://localhost:1234`, which is LM Studio's default port), timeout
   (`CHAT_TIMEOUT_MS`, default 120 s), retries on `LlmUnavailableError` /
   `LlmServerError`. Other typed errors (`LlmJsonParseError`,
   `LlmModelNotFoundError`, `LlmContextOverflowError`, `LlmTimeoutError`,
   `LlmInvariantError`) propagate to callers so each pipeline stage can
   decide whether to re-prompt or abort.
-- `models.js` — `getChatModel(stage)` / `getEmbeddingModel()` read
+- `models.js` - `getChatModel(stage)` / `getEmbeddingModel()` read
   `config/models.json`; per-stage overrides (`parseBrief`, `analyseGaps`,
   `compose`, `seeder`) fall back to `chat.default`. Changing models is a
   config edit, not a code change.
@@ -455,7 +455,7 @@ fragment bodies and the per-topic retrieval queries.
   [Vector store: sqlite-vec](#vector-store-sqlite-vec) for how the
   index is shaped and how `embeddinggemma`'s **Matryoshka** property
   enables truncation to 512 / 256 / 128 dimensions as the corpus
-  scales — no model swap required.
+  scales - no model swap required.
 - **Local and zero-cost.** Served by the same LM Studio instance as
   the chat model at `:1234`, so a fresh clone needs no API keys or
   quotas to run the agent.
@@ -469,14 +469,14 @@ model as an embedder (chat models are not embedders).
 
 All cross-stage contracts live in `shared/src/schema/`:
 
-- `Fragment` — what the seeder writes and the agent consumes.
-- `StructuredBrief` — the `parseBrief` output.
-- `MatchedFragment` — `{ id, path, score, reason }`.
-- `Gap` — `{ topic, coverage, description, partialMatches, suggestedAction }`.
-- `DraftOutline` — strictly typed `reuse` vs `new` sections; `reuse`
+- `Fragment` - what the seeder writes and the agent consumes.
+- `StructuredBrief` - the `parseBrief` output.
+- `MatchedFragment` - `{ id, path, score, reason }`.
+- `Gap` - `{ topic, coverage, description, partialMatches, suggestedAction }`.
+- `DraftOutline` - strictly typed `reuse` vs `new` sections; `reuse`
   sections are cross-validated against the matched-fragment id set via
   `superRefine`.
-- `AgentOutput` — the agent's only contract with its caller; carries
+- `AgentOutput` - the agent's only contract with its caller; carries
   `schemaVersion: "1.0"`.
 
 Every LLM-generated object is parsed through its Zod schema immediately
@@ -489,9 +489,9 @@ malformed model reply cannot corrupt downstream stages.
 The `FragmentSource` interface (`shared/src/sources/`) has two
 implementations:
 
-- `JsonFragmentSource(path)` — default; reads and validates
+- `JsonFragmentSource(path)` - default; reads and validates
   `data/corpus.json`.
-- `AemFragmentSource(client)` — calls `GET
+- `AemFragmentSource(client)` - calls `GET
   /content/dam/aemcontentdisc/<locale>.json` via the AEM client
   (`shared/src/aem/`), maps the Sling JSON into the `Fragment` shape, and
   serves the same `loadAll()` contract.
@@ -504,7 +504,7 @@ AEM-optional" in `docs/why.md` explains why JSON wins as the default.
 ## Prompt logging
 
 `shared/src/llm/prompt-log.js` appends a Markdown entry to
-`docs/runtime-prompt-log.md` for **every** chat call — success or failure —
+`docs/runtime-prompt-log.md` for **every** chat call - success or failure -
 with the model, system + user heads, response (or error class + message),
 and duration. `PROMPT_LOG_PATH` overrides the location. Together with
 `docs/why.md` and the typed error taxonomy, this gives a complete audit
@@ -610,7 +610,7 @@ npm run agent eval/briefs/winter-sustainable.txt -- --json # canonical AgentOutp
     { "topic": "Brand guideline coverage: technical-precision", "coverage": "partial", "description": "No top match applies the `technical-precision` brand guideline required by the brief.", "partialMatches": ["frag_003", "frag_005"], "suggestedAction": "Add fragments tagged `technical-precision` (alongside sustainability-voice) for the en-gb corpus so this brand voice is represented in the top matches." }
   ],
   "draftOutline": {
-    "title": "Sustainable Winter Collection — UK Landing",
+    "title": "Sustainable Winter Collection - UK Landing",
     "pathHint": "/en-gb/collections/winter-sustainable",
     "sections": [
       { "heading": "Recycled materials sourcing story", "kind": "reuse", "fragmentIds": ["frag_008"], "rationale": "Strong en-gb sustainability-voice match for sourcing narrative." },
@@ -629,15 +629,15 @@ npm run agent eval/briefs/winter-sustainable.txt -- --json # canonical AgentOutp
 
 ## Where to look next
 
-- **`README.md`** — install, run, expected output, the eight-brief
+- **`README.md`** - install, run, expected output, the eight-brief
   eval table.
-- **`docs/why.md`** — every non-trivial decision with its alternatives and
+- **`docs/why.md`** - every non-trivial decision with its alternatives and
   consequences (decision log).
-- **`docs/sample-run.md`** — end-to-end transcript with both JSON and
+- **`docs/sample-run.md`** - end-to-end transcript with both JSON and
   Markdown renderings.
-- **`docs/runtime-prompt-log.md`** — auto-appended log of every chat call.
-- **`docs/prompt-templates.md`** — verbatim system/user prompt templates and
+- **`docs/runtime-prompt-log.md`** - auto-appended log of every chat call.
+- **`docs/prompt-templates.md`** - verbatim system/user prompt templates and
   per-stage tuning notes.
-- **`config/models.json`** — single source of truth for model selection.
-- **`discovery-agent/src/pipeline/`** — the four stages in 4 files.
-- **`shared/src/retrieve/`** — vector + BM25 + freshness fusion.
+- **`config/models.json`** - single source of truth for model selection.
+- **`discovery-agent/src/pipeline/`** - the four stages in 4 files.
+- **`shared/src/retrieve/`** - vector + BM25 + freshness fusion.

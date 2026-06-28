@@ -53,7 +53,7 @@ The best dedicated coverage (frag_399) successfully hits all brand guidelines bu
 
 ## Reused Fragments
 
-### `frag_223` — How to store leather accessories
+### `frag_223` - How to store leather accessories
 <a id="appendix-frag_223"></a>
 - Path: `/content/dam/aemcontentdisc/fr-fr/frag_223`
 - Category: care-guide

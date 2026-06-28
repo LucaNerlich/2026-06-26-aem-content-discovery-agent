@@ -13,10 +13,10 @@ The corpus is built in two explicit steps so an embedding-only re-run (e.g. swap
 does not require regenerating prose.
 
 ```bash
-# Step 1 — generate corpus.json (LLM prose only; no embeddings by default)
+# Step 1 - generate corpus.json (LLM prose only; no embeddings by default)
 npm run seed --seed=20260626 --count=40
 
-# Step 2 — embed corpus.json into embeddings.db
+# Step 2 - embed corpus.json into embeddings.db
 npm run embed
 ```
 
@@ -43,28 +43,28 @@ flowchart TD
 
 Key behaviours:
 
-- **Topic pools** — `topics.js` defines a **reserved pool** of 6 topics tuned for the demo brief
+- **Topic pools** - `topics.js` defines a **reserved pool** of 6 topics tuned for the demo brief
   (winter / sustainable / women's outerwear) and a **random pool** of 20 broader topics.
   Reserved topics are rotated per locale (`reservedForLocale(localeIndex)`) so the first reserved
   slots differ across `en-gb`, `fr-fr`, `de-de`.
-- **Locale rotation** — `planFragments` walks `locales × count` and assigns the first
+- **Locale rotation** - `planFragments` walks `locales × count` and assigns the first
   `min(count, RESERVED_COUNT)` slots per locale from the rotated reserved pool; the rest come from
   the random pool with round-robin category balancing.
-- **Brand-guideline tagging** — `generateFragment` picks 1–3 tags from
+- **Brand-guideline tagging** - `generateFragment` picks 1–3 tags from
   `["sustainability-voice", "premium-tone", "inclusive-language"]` weighted toward 1–2; the same
   pool the discovery agent's brief parser draws from.
-- **Deterministic RNG** — Mulberry32 (`rng.js`) is seeded per locale (`seed + localeIndex × 1009`)
+- **Deterministic RNG** - Mulberry32 (`rng.js`) is seeded per locale (`seed + localeIndex × 1009`)
   and per fragment (`seed + globalIndex × 7919`). Faker is seeded identically so titles and audiences
   reproduce. Pass `--seed=20260626` to lock the eval corpus.
-- **`preflightModels`** — before any LLM call, `preflight.js` queries LM Studio `/v1/models` and
+- **`preflightModels`** - before any LLM call, `preflight.js` queries LM Studio `/v1/models` and
   hard-fails with a clear error if any configured chat model (or the embedding model, when
   `requireEmbed`) is not loaded.
-- **Incremental checkpoint** — `saveCorpus(outputPath, fragments)` runs after every batch so a crash
+- **Incremental checkpoint** - `saveCorpus(outputPath, fragments)` runs after every batch so a crash
   mid-run still leaves a parseable `corpus.json` with everything generated so far.
 
 ## CLI reference
 
-### `npm run seed` — `content-seeder/src/seed.js`
+### `npm run seed` - `content-seeder/src/seed.js`
 
 | Flag                | Type   | Default                                      | Notes                                                            |
 |---------------------|--------|----------------------------------------------|------------------------------------------------------------------|
@@ -76,15 +76,15 @@ Key behaviours:
 | `--seed=<n>`        | int    | `Date.now() & 0xFFFFFFFF`                    | uint32; lock to `20260626` for the eval corpus.                  |
 | `--dry-run`         | flag   | `false`                                      | Generate + log; write nothing to disk.                           |
 | `--skip-embeddings` | flag   | **`true`**                                   | Skip the inline embed step; use `npm run embed` separately.      |
-| `-h, --help`        | flag   | —                                            | Print help.                                                      |
+| `-h, --help`        | flag   | -                                            | Print help.                                                      |
 
-### `npm run embed` — `content-seeder/src/embed-cli.js`
+### `npm run embed` - `content-seeder/src/embed-cli.js`
 
 | Flag              | Type   | Default              | Notes                            |
 |-------------------|--------|----------------------|----------------------------------|
 | `--corpus=<path>` | string | `data/corpus.json`   | Source corpus to embed.          |
 | `--db=<path>`     | string | `data/embeddings.db` | Destination sqlite-vec database. |
-| `-h, --help`      | flag   | —                    | Print help.                      |
+| `-h, --help`      | flag   | -                    | Print help.                      |
 
 ### `aem-push.js` (library module)
 
@@ -104,7 +104,7 @@ wired into the `seed` or `embed` CLIs; consume it programmatically from your own
 
 **Outputs**
 
-- `data/corpus.json` — conforms to the `Corpus` Zod schema from `@aemdisc/shared`:
+- `data/corpus.json` - conforms to the `Corpus` Zod schema from `@aemdisc/shared`:
   ```json
   {
     "schemaVersion": "1.0",
@@ -129,17 +129,17 @@ wired into the `seed` or `embed` CLIs; consume it programmatically from your own
     ]
   }
   ```
-- `data/embeddings.db` — SQLite database with two tables:
-  - `fragments_vec` — `vec0(embedding float[<dims>])` virtual table (sqlite-vec).
-  - `fragments_meta` — `(rowid, id, locale, category, title)`.
+- `data/embeddings.db` - SQLite database with two tables:
+  - `fragments_vec` - `vec0(embedding float[<dims>])` virtual table (sqlite-vec).
+  - `fragments_meta` - `(rowid, id, locale, category, title)`.
   Dimensions are detected from the first embedding response, so the same DB shape works for any
   embedding model.
-- **stdout** — both CLIs print a JSON run-summary on success (paths, seed, totals, durations).
+- **stdout** - both CLIs print a JSON run-summary on success (paths, seed, totals, durations).
 
 ## Usage
 
 ```bash
-# Locked eval corpus — reproducible across machines
+# Locked eval corpus - reproducible across machines
 npm run seed --seed=20260626 --count=40
 npm run embed
 

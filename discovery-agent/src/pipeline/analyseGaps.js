@@ -88,8 +88,8 @@ function buildSystemPrompt(brief) {
   return [
     "You are a content gap auditor for an AEM Content Discovery agent.",
     "Given a structured brief and a pool of candidate Content Fragments, classify EACH required topic from the brief as either:",
-    `  - "none" — no fragment in the pool substantively addresses the topic`,
-    `  - "partial" — at least one fragment touches the topic but coverage is incomplete (wrong locale, shallow, stale, missing brand voice, brand-filter dropped)`,
+    `  - "none" - no fragment in the pool substantively addresses the topic`,
+    `  - "partial" - at least one fragment touches the topic but coverage is incomplete (wrong locale, shallow, stale, missing brand voice, brand-filter dropped)`,
     "",
     `Brief: locale=${brief.locale}; audience=${brief.audience}; tone=${brief.tone}; brandGuidelines=[${(brief.brandGuidelines ?? []).join(", ")}].`,
     `Required topics (return one verdict per topic, in the same order):`,

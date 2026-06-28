@@ -53,7 +53,7 @@ No top match applies the `technical-precision` brand guideline required by the b
 
 ## Reused Fragments
 
-### `frag_537` — Polishing and protecting fine footwear
+### `frag_537` - Polishing and protecting fine footwear
 <a id="appendix-frag_537"></a>
 - Path: `/content/dam/aemcontentdisc/de-de/frag_537`
 - Category: care-guide
@@ -63,7 +63,7 @@ No top match applies the `technical-precision` brand guideline required by the b
 
 Der wahre Wert eines exquisiten Paares Schuhe entfaltet sich nicht erst beim Kauf, sondern mit jedem Jahr, das sie begleiten. Die Pflege ist somit kein bloßer Pflichtakt, sondern ein Akt der Bewahrung – eine Hommage an die Handwerkskunst, die in Ihrem Schuh steckt. Um diese zeitlose Qualität über viele Saisonen hinweg zu erhalten, beginnen wir immer mit der Sorgfalt der Grundreinigung. Entfernen Sie Staub und Schmutz vorsichtig, damit das natürliche Material atmen kann. Anschließend folgt die eigentliche Pflege Ihres Lederschuhe: Ein hochwertiger Conditioner spendet Feuchtigkeit zurück in die Struktur des Leders, während eine feine Bürstung dabei hilft, die Patina zu betonen. Das anschließende Polieren ist der Höhepunkt dieses Rituals; es bringt nicht nur den Glanz hervor, sondern stärkt auch die Oberfläche gegen äußere Einflüsse. Denken Sie daran, dass richtige Schuhpflege ein kontinuierlicher Kreislauf ist – regelmäßiges Reinigen und gezieltes Auffrischen garantiert eine Langlebigkeit, die weit über das Neukaufen hinausgeht. Betrachten Sie diesen Prozess als Ihre Investition in die Zukunft Ihres Stils: Ein Schuh, der gut gepflegt wurde, erzählt eine Geschichte von Reisen und Eleganz, Jahr um Jahr aufs Neue.
 
-### `frag_531` — Polishing and protecting fine footwear
+### `frag_531` - Polishing and protecting fine footwear
 <a id="appendix-frag_531"></a>
 - Path: `/content/dam/aemcontentdisc/de-de/frag_531`
 - Category: care-guide

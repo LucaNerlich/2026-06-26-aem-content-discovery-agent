@@ -53,7 +53,7 @@ The pool offers extensive guidance on caring for luxury natural fibers like cash
 
 ## Reused Fragments
 
-### `frag_403` — Recycled materials and circular fashion in outerwear
+### `frag_403` - Recycled materials and circular fashion in outerwear
 <a id="appendix-frag_403"></a>
 - Path: `/content/dam/aemcontentdisc/de-de/frag_403`
 - Category: product-story
@@ -69,7 +69,7 @@ Diese Philosophie bedeutet, dass nichts weggeworfen wird. Jeder neue Mantel oder
 
 Fühlen Sie die Dichte dieser Stoffe bei den ersten kühleren Winden und lassen Sie sich von einem Design inspirieren, das so zeitlos ist wie der Wechsel der Jahreszeiten selbst. Es ist mehr als ein Kleidungsstück; es ist Teil einer bewussten Bewegung hin zu einer nachhaltigeren Garderobe für alle.
 
-### `frag_406` — Sustainable knitwear and natural fibres for cold weather
+### `frag_406` - Sustainable knitwear and natural fibres for cold weather
 <a id="appendix-frag_406"></a>
 - Path: `/content/dam/aemcontentdisc/de-de/frag_406`
 - Category: product-story

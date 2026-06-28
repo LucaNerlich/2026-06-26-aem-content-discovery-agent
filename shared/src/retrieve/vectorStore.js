@@ -3,7 +3,7 @@ import * as sqliteVec from "sqlite-vec";
 import { existsSync } from "node:fs";
 
 export const VECTOR_DB_MISSING_HINT =
-  "data/embeddings.db not found — run 'npm run seed' first";
+  "data/embeddings.db not found - run 'npm run seed' first";
 
 function clamp01(n) {
   if (!Number.isFinite(n)) return 0;

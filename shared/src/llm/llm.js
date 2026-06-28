@@ -92,7 +92,7 @@ export async function llmFetch(path, body, opts = {}) {
         const baseFields = { model, durationMs, promptHead, responseHead: text, attempt };
         if (res.status === 404 || looksLikeModelMissing(text)) {
           throw new LlmModelNotFoundError(
-            `Model not found${model ? ` (${model})` : ""} — ensure it is loaded in LM Studio`,
+            `Model not found${model ? ` (${model})` : ""} - ensure it is loaded in LM Studio`,
             baseFields,
           );
         }

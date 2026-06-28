@@ -13,7 +13,7 @@ const DEFAULT_OUTPUT = new URL("../../data/corpus.json", import.meta.url).pathna
 const DEFAULT_LOCALES = "en-gb,fr-fr,de-de";
 // Canonical corpus size: 40 per locale (120 total) is the frozen snapshot the
 // eval expectations are hand-labelled against. Changing this invalidates fragment
-// ids in eval/expectations/ — re-label if you change it. See eval/run.js DEMO_SEED.
+// ids in eval/expectations/ - re-label if you change it. See eval/run.js DEMO_SEED.
 const DEFAULT_COUNT = 40;
 const DEFAULT_VARIATION = "medium";
 const DEFAULT_CONCURRENCY = 4;
@@ -74,7 +74,7 @@ function parseArgs(argv) {
 }
 
 function printHelp() {
-  process.stdout.write(`aemdisc-seed — generate corpus.json (Step 1 of 2)
+  process.stdout.write(`aemdisc-seed - generate corpus.json (Step 1 of 2)
 
 Options:
   --output=<path>                default data/corpus.json

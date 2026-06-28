@@ -30,7 +30,7 @@ npm run eval
 npm run full-run
 ```
 
-There is **no lint or format step** — the project uses `node --check` only for syntax validation.
+There is **no lint or format step** - the project uses `node --check` only for syntax validation.
 
 ### Key env vars
 
@@ -42,7 +42,7 @@ There is **no lint or format step** — the project uses `node --check` only for
 | `DISABLE_THINKING_MODE` | unset | Set truthy to send `think: false` to qwen3 models |
 | `LOG_LEVEL` | info | Pino log level; `silent` suppresses all pino output |
 
-Model selection lives in **`config/models.json`** — one file, no rebuild needed.
+Model selection lives in **`config/models.json`** - one file, no rebuild needed.
 
 ## Architecture
 
@@ -60,28 +60,28 @@ All four stages live in `discovery-agent/src/pipeline/`. The CLI entry point is 
 ### Monorepo layout
 
 Three npm workspaces:
-- **`shared/`** — schemas (Zod), LM Studio client, AEM client, retrieval primitives. Imported as `@aemdisc/shared`.
-- **`content-seeder/`** — deterministic corpus generator (`npm run seed`). Sole writer to `data/embeddings.db`.
-- **`discovery-agent/`** — the runtime CLI + 4-stage pipeline.
+- **`shared/`** - schemas (Zod), LM Studio client, AEM client, retrieval primitives. Imported as `@aemdisc/shared`.
+- **`content-seeder/`** - deterministic corpus generator (`npm run seed`). Sole writer to `data/embeddings.db`.
+- **`discovery-agent/`** - the runtime CLI + 4-stage pipeline.
 
 ### Retrieval
 
-Hybrid fused score: `0.6·cosine + 0.3·BM25 + 0.1·freshness`. Vector search via `sqlite-vec` (persistent, read-only in agent). BM25 via `wink-bm25-text-search` in-memory. The seeder is the **only** writer to `data/embeddings.db` — the agent opens it read-only.
+Hybrid fused score: `0.6·cosine + 0.3·BM25 + 0.1·freshness`. Vector search via `sqlite-vec` (persistent, read-only in agent). BM25 via `wink-bm25-text-search` in-memory. The seeder is the **only** writer to `data/embeddings.db` - the agent opens it read-only.
 
 Locale ladder: exact → language prefix (`en-*`) → any. Each fallback surfaces as a structural gap in the output.
 
 ### Fragment sources
 
 Two implementations behind the `FragmentSource` interface:
-- `JsonFragmentSource` (default, `--source=json`) — reads `data/corpus.json`.
-- `AemFragmentSource` (`--source=aem`) — reads live from AEM Assets HTTP API.
+- `JsonFragmentSource` (default, `--source=json`) - reads `data/corpus.json`.
+- `AemFragmentSource` (`--source=aem`) - reads live from AEM Assets HTTP API.
 
 ### LLM layer (`shared/src/llm/`)
 
-- `chat.js` — posts to the OpenAI-compatible `/v1/chat/completions` endpoint served by LM Studio. Strips `<think>...</think>` blocks. Every call (success or failure) is appended to `docs/runtime-prompt-log.md` (override with `PROMPT_LOG_PATH`).
-- `embed.js` — posts to LM Studio's OpenAI-compatible `/v1/embeddings` endpoint.
-- `llm.js` — host resolution and shared `llmFetch` helper. The client talks to LM Studio at `http://localhost:1234` (override with `LLM_HOST`).
-- `errors.js` — 7 typed error classes (`LlmUnavailableError`, `LlmServerError`, `LlmTimeoutError`, `LlmModelNotFoundError`, `LlmJsonParseError`, `LlmContextOverflowError`, `LlmInvariantError`). Only `Unavailable` and `Server` are retried inside `llmFetch`. `JsonParseError` retry is the caller's responsibility (re-prompt with error context).
+- `chat.js` - posts to the OpenAI-compatible `/v1/chat/completions` endpoint served by LM Studio. Strips `<think>...</think>` blocks. Every call (success or failure) is appended to `docs/runtime-prompt-log.md` (override with `PROMPT_LOG_PATH`).
+- `embed.js` - posts to LM Studio's OpenAI-compatible `/v1/embeddings` endpoint.
+- `llm.js` - host resolution and shared `llmFetch` helper. The client talks to LM Studio at `http://localhost:1234` (override with `LLM_HOST`).
+- `errors.js` - 7 typed error classes (`LlmUnavailableError`, `LlmServerError`, `LlmTimeoutError`, `LlmModelNotFoundError`, `LlmJsonParseError`, `LlmContextOverflowError`, `LlmInvariantError`). Only `Unavailable` and `Server` are retried inside `llmFetch`. `JsonParseError` retry is the caller's responsibility (re-prompt with error context).
 
 ### Output contract
 

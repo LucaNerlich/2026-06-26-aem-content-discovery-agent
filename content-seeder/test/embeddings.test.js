@@ -50,7 +50,7 @@ test("buildEmbeddingsDb rejects inconsistent embedding dimensions across fragmen
   const dir = await mkdtemp(join(tmpdir(), "embed-test-"));
   const path = join(dir, "embeddings.db");
   try {
-    // First fragment returns 384 dims, second returns 512 — mismatch must be caught.
+    // First fragment returns 384 dims, second returns 512 - mismatch must be caught.
     let call = 0;
     const inconsistentEmbed = async () => new Float32Array(call++ === 0 ? 384 : 512);
     await assert.rejects(
@@ -62,7 +62,7 @@ test("buildEmbeddingsDb rejects inconsistent embedding dimensions across fragmen
   }
 });
 
-test("buildEmbeddingsDb is idempotent — second run drops & recreates", async () => {
+test("buildEmbeddingsDb is idempotent - second run drops & recreates", async () => {
   const dir = await mkdtemp(join(tmpdir(), "embed-test-"));
   const path = join(dir, "embeddings.db");
   try {

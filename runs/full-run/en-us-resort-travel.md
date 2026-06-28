@@ -57,7 +57,7 @@ Multiple guides exist on *how* to pack and care for tailored shirts, meeting ton
 
 ## Reused Fragments
 
-### `frag_058` — Resort wear: lightweight pieces for travel — guide
+### `frag_058` - Resort wear: lightweight pieces for travel - guide
 <a id="appendix-frag_058"></a>
 - Path: `/content/dam/aemcontentdisc/en-gb/frag_058`
 - Category: product-story
@@ -67,11 +67,11 @@ Multiple guides exist on *how* to pack and care for tailored shirts, meeting ton
 
 When anticipating a period of repose, one considers not merely destinations, but the very garments that will accompany one upon their journey. Our collection of resort wear is conceived for the woman who appreciates enduring style and the effortless elegance demanded by a discerning traveller. These are pieces designed to transcend fleeting trends, built instead on foundational principles of timeless design and impeccable craftsmanship.
 
-For the quintessential vacation experience—be it amidst the whitewashed architecture of the Aegean or along secluded Mediterranean coastlines—we have selected fabrics renowned for their sublime lightness and breathability. Imagine silks that drape with natural grace, or linen blends perfected through centuries of textile artistry. They are designed to adapt seamlessly from the bright intensity of a day spent exploring, to the quiet sophistication required during an evening meal overlooking the sea.
+For the quintessential vacation experience-be it amidst the whitewashed architecture of the Aegean or along secluded Mediterranean coastlines-we have selected fabrics renowned for their sublime lightness and breathability. Imagine silks that drape with natural grace, or linen blends perfected through centuries of textile artistry. They are designed to adapt seamlessly from the bright intensity of a day spent exploring, to the quiet sophistication required during an evening meal overlooking the sea.
 
 These lightweight essentials ensure that every element of your wardrobe contributes to a feeling of polished ease. We believe true luxury lies in provenance and thoughtful construction; nothing should feel cumbersome or out of place when transitioning between activities on holiday. Allow these pieces to become the foundation of memories made, ensuring that your style is as rich and resonant as the destination itself.
 
-### `frag_076` — Resort wear: lightweight pieces for travel
+### `frag_076` - Resort wear: lightweight pieces for travel
 <a id="appendix-frag_076"></a>
 - Path: `/content/dam/aemcontentdisc/en-gb/frag_076`
 - Category: product-story
@@ -81,7 +81,7 @@ These lightweight essentials ensure that every element of your wardrobe contribu
 
 The ideal journey demands wardrobe pieces that do not merely accompany you on your travels, but ones that enhance the rhythm and romance of destination living. Our collection of resort wear is conceived not simply for the moment of a vacation, but as considered components for a life lived fluidly between continents. Drawing inspiration from time-honoured tailoring techniques and the effortless elegance required by global exploration, these garments are designed to traverse diverse climates with supreme ease.
 
-We have sourced lightweight natural fibres—from breathable organic linens to expertly treated cotton voile—chosen for their inherent breathability and resistance to creasing. This dedication to material provenance ensures that whether you spend your morning exploring a historic market or relaxing by the ocean at a secluded resort, the fit remains impeccable from dawn till dusk.
+We have sourced lightweight natural fibres-from breathable organic linens to expertly treated cotton voile-chosen for their inherent breathability and resistance to creasing. This dedication to material provenance ensures that whether you spend your morning exploring a historic market or relaxing by the ocean at a secluded resort, the fit remains impeccable from dawn till dusk.
 
-The pieces are styled with an understated sensibility, allowing them to transition seamlessly across different occasions; they require little thought but convey considerable depth of style. Sustainability is woven into this design philosophy: we champion longevity and craftsmanship over fleeting trends, ensuring that your investment in these essentials contributes positively both to your personal style and to the planet. This is sophisticated dressing for the modern globetrotter—pieces built for memorable travels, designed for a lifetime of discovery.
+The pieces are styled with an understated sensibility, allowing them to transition seamlessly across different occasions; they require little thought but convey considerable depth of style. Sustainability is woven into this design philosophy: we champion longevity and craftsmanship over fleeting trends, ensuring that your investment in these essentials contributes positively both to your personal style and to the planet. This is sophisticated dressing for the modern globetrotter-pieces built for memorable travels, designed for a lifetime of discovery.
 

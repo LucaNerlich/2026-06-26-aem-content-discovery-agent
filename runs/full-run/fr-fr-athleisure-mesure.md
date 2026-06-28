@@ -58,7 +58,7 @@ While sustainability is mentioned frequently, only one fragment directly address
 
 ## Reused Fragments
 
-### `frag_396` — Athleisure done with restraint
+### `frag_396` - Athleisure done with restraint
 <a id="appendix-frag_396"></a>
 - Path: `/content/dam/aemcontentdisc/fr-fr/frag_396`
 - Category: product-story
@@ -70,7 +70,7 @@ Sous le ciel lumineux des Grenadines, où l’air est chargé du sel et de la ch
 
 L’athleisure ne doit jamais compromettre le raffinement. Il s'agit plutôt de réinventer le confort pour qu'il devienne une seconde peau. Nos coupes sont pensées pour épouser la silhouette sans contraindre, utilisant des matières naturelles et durables qui respirent au rythme du soleil. Le résultat est un vestiaire restreint mais profondément réfléchi : des pièces minimalistes par essence, capables de vous accompagner avec aisance, peu importe le changement d'ambiance de votre journée. Ce confort subtil n'est pas une concession ; c'est la fondation même d'une garde-robe mature et intentionnelle. Redécouvrir l’équilibre parfait entre performance et allure, c'est retrouver sa sérénité dans le mouvement.
 
-### `frag_249` — Summer linen essentials for warm climates — collection notes
+### `frag_249` - Summer linen essentials for warm climates - collection notes
 <a id="appendix-frag_249"></a>
 - Path: `/content/dam/aemcontentdisc/fr-fr/frag_249`
 - Category: product-story
@@ -84,7 +84,7 @@ Le lin est cette réponse intemporelle. Sa texture légèrement froissée n'est 
 
 Choisir des pièces au lin, c’est investir dans la saison elle-même. C'est adopter une garde-robe qui dialogue avec l'environnement, alliant la robustesse du savoir-faire à la délicatesse d'un souffle tiède. Laissez les fibres naturelles guider votre quotidien estival : un confort si naturel qu'il semble venir du vent même.
 
-### `frag_201` — Sustainable knitwear and natural fibres for cold weather
+### `frag_201` - Sustainable knitwear and natural fibres for cold weather
 <a id="appendix-frag_201"></a>
 - Path: `/content/dam/aemcontentdisc/fr-fr/frag_201`
 - Category: product-story

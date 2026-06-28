@@ -57,7 +57,7 @@ No top match applies the `technical-precision` brand guideline required by the b
 
 ## Reused Fragments
 
-### `frag_134` — Caring for cashmere through the seasons — guide
+### `frag_134` - Caring for cashmere through the seasons - guide
 <a id="appendix-frag_134"></a>
 - Path: `/content/dam/aemcontentdisc/en-gb/frag_134`
 - Category: care-guide
@@ -67,13 +67,13 @@ No top match applies the `technical-precision` brand guideline required by the b
 
 The true measure of fine craftsmanship is not only in its creation but in its enduring life. Cashmere, a material steeped in tradition and refined by time, deserves nothing less than meticulous custodianship throughout the changing seasons. To ensure your investment remains as impeccable today as when it was first donned, adopting consistent knitwear care practices is paramount.
 
-As you transition through Botswana’s diverse climate cycles, adapting your approach to maintenance will extend its exquisite lifespan. When preparing your cherished pieces for seasonal storage—be it a summer reprieve or the turn towards cooler climes—it is crucial that they are spotlessly clean and completely dry, preventing any mildew or stale odour from settling into the delicate fibres.
+As you transition through Botswana’s diverse climate cycles, adapting your approach to maintenance will extend its exquisite lifespan. When preparing your cherished pieces for seasonal storage-be it a summer reprieve or the turn towards cooler climes-it is crucial that they are spotlessly clean and completely dry, preventing any mildew or stale odour from settling into the delicate fibres.
 
 For daily wear, remember that gentle handling is key. Never subject the luxurious drape of fine cashmere to aggressive washing cycles; professional dry cleaning, specifically trained in caring for natural animal fibers, remains the gold standard. Furthermore, avoid harsh detergents and abrasive brushes, which can compromise the integrity of the weave. A simple hand wash with pH-neutral soap, followed by careful lay-flat drying, is often all that is required.
 
 By treating your cashmere not merely as an article of clothing, but as a piece of wearable history, you honour the skill and provenance embedded within its every thread. Proper seasonal care ensures that the unparalleled comfort and unmistakable quality of these timeless garments will endure for generations to come.
 
-### `frag_161` — How to fold and travel with tailored shirts
+### `frag_161` - How to fold and travel with tailored shirts
 <a id="appendix-frag_161"></a>
 - Path: `/content/dam/aemcontentdisc/en-gb/frag_161`
 - Category: care-guide
@@ -81,5 +81,5 @@ By treating your cashmere not merely as an article of clothing, but as a piece o
 - Brand guidelines: sustainability-voice
 - Last modified: 2025-12-05T23:12:17.511Z
 
-When curating your wardrobe for journeying through Grenada or beyond, remember that the longevity of truly tailored pieces is not merely about their intrinsic quality, but how respectfully they are handled in transit. To ensure your finely cut shirts retain their impeccable drape and crisp appearance upon arrival, meticulous attention must be paid to packing methods. While traditional steaming offers a delightful finish, sustainable travel demands thoughtful consideration for the garment’s structure. Mastering efficient travel folding is key; rather than crumpling or hanging garments which can induce shoulder strain or deep creases, gently fold the shirt into thirds. This technique minimises stress points and allows the fabric's natural integrity to endure the rigours of packing. By adopting these simple habits of mindful handling, you significantly extend the life of your investment pieces. Remembering proper shirt care before any trip—a gentle brushing or airing out—will complement this careful folding process. Ultimately, treating each journey as an opportunity to preserve the craftsmanship within reinforces our commitment to enduring style and responsible consumption.
+When curating your wardrobe for journeying through Grenada or beyond, remember that the longevity of truly tailored pieces is not merely about their intrinsic quality, but how respectfully they are handled in transit. To ensure your finely cut shirts retain their impeccable drape and crisp appearance upon arrival, meticulous attention must be paid to packing methods. While traditional steaming offers a delightful finish, sustainable travel demands thoughtful consideration for the garment’s structure. Mastering efficient travel folding is key; rather than crumpling or hanging garments which can induce shoulder strain or deep creases, gently fold the shirt into thirds. This technique minimises stress points and allows the fabric's natural integrity to endure the rigours of packing. By adopting these simple habits of mindful handling, you significantly extend the life of your investment pieces. Remembering proper shirt care before any trip-a gentle brushing or airing out-will complement this careful folding process. Ultimately, treating each journey as an opportunity to preserve the craftsmanship within reinforces our commitment to enduring style and responsible consumption.
 

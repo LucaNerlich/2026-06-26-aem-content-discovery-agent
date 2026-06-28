@@ -48,7 +48,7 @@ Fragment frag_006 addresses natural fibres and layering effectively but fails to
 
 ## Reused Fragments
 
-### `frag_067` — Summer linen essentials for warm climates — guide
+### `frag_067` - Summer linen essentials for warm climates - guide
 <a id="appendix-frag_067"></a>
 - Path: `/content/dam/aemcontentdisc/en-gb/frag_067`
 - Category: product-story
@@ -56,13 +56,13 @@ Fragment frag_006 addresses natural fibres and layering effectively but fails to
 - Brand guidelines: premium-tone
 - Last modified: 2026-01-28T11:43:50.538Z
 
-As temperatures rise and the days grow long, dressing for the summer demands an evolution of thought—a shift towards fabrics that breathe with you. Nothing captures the effortless elegance of warm weather quite like true linen. This essential textile is intrinsically linked to Mediterranean heat, possessing a natural drape and sublime breathability that keeps you feeling cool without ever sacrificing sophistication.
+As temperatures rise and the days grow long, dressing for the summer demands an evolution of thought-a shift towards fabrics that breathe with you. Nothing captures the effortless elegance of warm weather quite like true linen. This essential textile is intrinsically linked to Mediterranean heat, possessing a natural drape and sublime breathability that keeps you feeling cool without ever sacrificing sophistication.
 
 We have curated our collection of lightweight staples designed for those moments of unfussy grace. These are not merely garments; they are wearable comfort pieces built around the perfect blend of structure and ease. Imagine the crisp texture against your skin, moving effortlessly from a morning stroll in Jordan to an evening gathering under soft light. Linen’s inherent character means that even as you live life at pace, the garment only seems to deepen its beauty.
 
-Selecting the right linen piece is about investing in timeless versatility—items that transcend fleeting trends and offer quality year after year. Focus on natural hues and classic silhouettes for a capsule wardrobe built on enduring style. These pieces ensure that your considered dressing remains effortless, allowing you to embrace the true, sun-drenched spirit of summer with unparalleled comfort and chic refinement.
+Selecting the right linen piece is about investing in timeless versatility-items that transcend fleeting trends and offer quality year after year. Focus on natural hues and classic silhouettes for a capsule wardrobe built on enduring style. These pieces ensure that your considered dressing remains effortless, allowing you to embrace the true, sun-drenched spirit of summer with unparalleled comfort and chic refinement.
 
-### `frag_061` — Summer linen essentials for warm climates
+### `frag_061` - Summer linen essentials for warm climates
 <a id="appendix-frag_061"></a>
 - Path: `/content/dam/aemcontentdisc/en-gb/frag_061`
 - Category: product-story
@@ -70,7 +70,7 @@ Selecting the right linen piece is about investing in timeless versatility—ite
 - Brand guidelines: sustainability-voice
 - Last modified: 2025-12-25T23:40:55.754Z
 
-When the heat deepens and the air grows thick with the promise of summer, true luxury is found in breathability. It requires an understanding of climate that goes beyond mere aesthetics; it demands material science woven into impeccable design. Our curated collection of linen essentials is a study in effortless comfort, garments built for those months when the day lingers long and demanding. Linen itself speaks to a tradition of enduring craftsmanship, fibre cultivated from flax grown with respect for the earth—a quiet nod to sustainable elegance.
+When the heat deepens and the air grows thick with the promise of summer, true luxury is found in breathability. It requires an understanding of climate that goes beyond mere aesthetics; it demands material science woven into impeccable design. Our curated collection of linen essentials is a study in effortless comfort, garments built for those months when the day lingers long and demanding. Linen itself speaks to a tradition of enduring craftsmanship, fibre cultivated from flax grown with respect for the earth-a quiet nod to sustainable elegance.
 
 These aren't just pieces for warmer weather; they are architectural statements designed for life lived slowly, where every movement feels as natural as the weave. We have selected washes and weights that maintain their sophisticated drape, ensuring that even on the most challenging afternoons, you remain refined. The inherent lightweight nature of linen allows the air to move freely against the skin, offering a sublime reprieve from the intensity of sun-drenched days. Embrace the effortless structure of true summer style; let these timeless linens become the cornerstone of your considered wardrobe for seasons ahead.
 

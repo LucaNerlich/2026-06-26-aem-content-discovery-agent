@@ -13,7 +13,7 @@ test("parseArgs applies defaults and parses seed deterministically", () => {
   assert.equal(a.variation, "medium");
   assert.equal(a.skipEmbeddings, true, "skip-embeddings defaults to true (embed is a separate step)");
   assert.equal(a.concurrency, 4, "default concurrency is 4");
-  assert.equal(a.aemPush, undefined, "aemPush removed — use aem-push.js directly if needed");
+  assert.equal(a.aemPush, undefined, "aemPush removed - use aem-push.js directly if needed");
 });
 
 test("parseArgs default --count is 40 per locale (120 total across en-gb,fr-fr,de-de)", () => {

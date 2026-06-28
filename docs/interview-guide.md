@@ -102,29 +102,29 @@ The full reasoning per decision lives in [`docs/why.md`](why.md). Headline calls
   is the proper-noun backstop (brand names, "merino"); freshness is a
   tiebreaker only. Vector store is `sqlite-vec` (persistent, SQL-queryable);
   BM25 is `wink-bm25-text-search` in-memory.
-- **Locale ladder = exact → language prefix (`en-*`) → any** — every fallback
+- **Locale ladder = exact → language prefix (`en-*`) → any** - every fallback
   surfaces as a structural gap on the output (`localeRelaxed` flag) so the
   user sees that relaxation happened.
 - **Gap analysis = single batched LLM judge + deterministic
-  `suggestedAction` + post-LLM invariants** — one chat call per run; orphan
+  `suggestedAction` + post-LLM invariants** - one chat call per run; orphan
   ids in `partialMatches` are dropped; `partial` with empty matches is
   downgraded to `none`; structural locale/brand gaps are synthesised
   independently of the LLM so they always appear when retrieval demands them.
-- **Schema validation = Zod everywhere, fail-loud with bounded retry** — every
+- **Schema validation = Zod everywhere, fail-loud with bounded retry** - every
   stage validates its output; `JsonParseError`/`ZodError` triggers a re-prompt
   with the error appended to the system prompt, then propagates. `parseBrief`
   retries up to twice (one extra retry with a stricter "JSON only" reminder);
   `analyseGaps` and `compose` retry exactly once.
   Composer enforces orphan-id rejection via `superRefine` so reuse sections
   can only cite ids present in `matchedFragments`.
-- **Prompt logging = every call, success or failure** — `docs/runtime-prompt-log.md`
+- **Prompt logging = every call, success or failure** - `docs/runtime-prompt-log.md`
   is greppable, 200-char head truncation; curated templates in
   `docs/prompt-templates.md` capture the verbatim system/user prompts per stage.
-- **Eval harness = offline F1 + non-zero exit on regression** — 8 briefs in
+- **Eval harness = offline F1 + non-zero exit on regression** - 8 briefs in
   `eval/briefs/`, gold labels in `eval/expectations/`, scores written to
   `eval/latest.json`. Exits non-zero below `EVAL_F1_THRESHOLD` (default 0.6).
 - **Seeder is the sole writer to `data/embeddings.db`; agent opens read-only.**
-  No runtime embedding cache — predictable startup, no dim-mismatch races.
+  No runtime embedding cache - predictable startup, no dim-mismatch races.
 
 ## 4. Demo script (≈8 minutes)
 
@@ -132,17 +132,17 @@ The full reasoning per decision lives in [`docs/why.md`](why.md). Headline calls
 # 0. Pre-warm LM Studio: load gemma-4-e4b + embeddinggemma-300m, start server.
 nvm use && npm install
 
-# 1. (Optional, skippable — corpus is committed) Re-seed deterministically.
+# 1. (Optional, skippable - corpus is committed) Re-seed deterministically.
 npm run seed -- --seed=20260626 --count=40   # writes data/corpus.json (120 fragments)
 npm run embed                                # writes data/embeddings.db (768-d vectors)
 
-# 2. Run the PDF's example brief — Markdown for humans.
+# 2. Run the PDF's example brief - Markdown for humans.
 npm run agent -- eval/briefs/winter-sustainable.txt
 
-# 3. Same brief, canonical JSON — show schema, matchedFragments[3], gaps, outline.
+# 3. Same brief, canonical JSON - show schema, matchedFragments[3], gaps, outline.
 npm run agent -- eval/briefs/winter-sustainable.txt --json | jq .
 
-# 4. Different locale — fr-fr knitwear, demonstrates locale ladder.
+# 4. Different locale - fr-fr knitwear, demonstrates locale ladder.
 npm run agent -- eval/briefs/fr-fr-knitwear.txt --json | jq '.gaps[].topic'
 
 # 5. The contract: full evaluation harness.
@@ -154,19 +154,19 @@ npm run agent -- eval/briefs/winter-sustainable.txt --source=aem
 
 Talking points to hit as it runs:
 
-- Show `docs/runtime-prompt-log.md` updating in real time — every chat call is logged.
+- Show `docs/runtime-prompt-log.md` updating in real time - every chat call is logged.
 - `eval/latest.json` headline numbers from the most recent run:
   precision@3 ≈ **0.42**, recall@3 ≈ **0.42**, gap-F1 ≈ **0.75** (above the
-  0.6 floor). Per-brief breakdown is honest — `de-de-workwear-tech` and
+  0.6 floor). Per-brief breakdown is honest - `de-de-workwear-tech` and
   `fr-fr-loungewear-premium` currently score 0 on precision/recall while
   still landing gap-F1 of 0.8 (`de-de-workwear-tech`) and a perfect 1.0
   (`fr-fr-loungewear-premium`), which is the trade-off the next round of
   corpus tuning would attack.
-- Open `docs/architecture.md` — point to the four required-by-PDF justifications.
-- Open `docs/why.md` — show that every non-trivial choice has a dated entry with
+- Open `docs/architecture.md` - point to the four required-by-PDF justifications.
+- Open `docs/why.md` - show that every non-trivial choice has a dated entry with
   alternatives considered and consequences.
 
-## 5. Likely panel questions — concise answer bullets
+## 5. Likely panel questions - concise answer bullets
 
 **Why not LangChain / LlamaIndex?**
 - Pipeline is four stages; hand-rolling gives full control over retries,
@@ -178,10 +178,10 @@ Talking points to hit as it runs:
   120-fragment corpus, and a credible path to ~10k via the same primitives.
   Documented in [`docs/why.md` § sqlite-vec for persistent vector storage](why.md).
 
-**Why the `0.6 / 0.3 / 0.1` weights — were they tuned?**
+**Why the `0.6 / 0.3 / 0.1` weights - were they tuned?**
 - Hand-picked from a defensible story (semantic dominates paraphrase, BM25
   catches proper nouns, freshness is a tiebreaker). Not learned from the
-  eval set on purpose — that would overfit 8 briefs and make the metric
+  eval set on purpose - that would overfit 8 briefs and make the metric
   meaningless. Re-tunable if the corpus character changes substantially.
 
 **How do you guarantee the LLM doesn't hallucinate fragment ids?**
@@ -196,7 +196,7 @@ Talking points to hit as it runs:
   / connection failures are retried inside `llmFetch` with backoff.
   Everything else propagates as a typed error.
 
-**Multilingual — really, or just `en-gb` with locale tags?**
+**Multilingual - really, or just `en-gb` with locale tags?**
 - Genuinely multilingual: `embeddinggemma` covers 100+ languages, the seeder
   generates fr-fr and de-de bodies natively, and the eval harness includes
   `fr-fr-knitwear`, `fr-fr-loungewear-premium`, `de-de-berlin-street`, and
@@ -208,14 +208,14 @@ Talking points to hit as it runs:
   privacy story for enterprise clients who own their corpora.
 
 **What happens when `--source=aem` is used instead of JSON?**
-- Vector stage is skipped (no embeddings on the live AEM payload — the
+- Vector stage is skipped (no embeddings on the live AEM payload - the
   seeder is the sole writer to `embeddings.db`). Retrieval falls back to
   BM25 + freshness only; the composer/gap analyser still receive a
   normalised `RetrievalResult` so output shape is unchanged.
 
 **How long did this take?**
 - ~12 h, ~4 h over the 8 h target. The over-budget time went into the AEM
-  round-trip + multi-locale corpus + eval harness — all three are signal
+  round-trip + multi-locale corpus + eval harness - all three are signal
   for the interview rather than nice-to-haves.
 
 ## 6. Honest limitations and follow-up improvements
@@ -228,7 +228,7 @@ Talking points to hit as it runs:
   intentionally on gap-F1 (the harder semantic metric), not on raw recall.
 - **Gap-F1 reflects an LLM judge.** The harness greedy-matches expected and
   returned gap labels by cosine ≥ 0.5 plus `coverage` enum agreement.
-  Different chat models drift on `partial` vs `none` — documented in
+  Different chat models drift on `partial` vs `none` - documented in
   [`eval/README.md` § Model variance](../eval/README.md).
 - **No learned retrieval weights.** Weights are constants; on a substantially
   different corpus character (long-form technical docs) they would need
@@ -241,7 +241,7 @@ Talking points to hit as it runs:
   key `(id, lastModified, model)` is sketched in `docs/why.md` and can be added
   when the requirement appears.
 - **Markdown renderer is a single view.** A second view (HTML, JSON-LD,
-  AEM CF authoring payload) would be straightforward — the `AgentOutput`
+  AEM CF authoring payload) would be straightforward - the `AgentOutput`
   contract is the integration boundary.
 - **No browser/UI surface.** Per the brief, the deliverable is a CLI. An
   ExC Shell extension or AEM UI extension is the obvious next step for a

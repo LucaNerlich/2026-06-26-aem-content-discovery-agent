@@ -66,10 +66,10 @@
       "returnedTopics": [
         "de-de::Capsule wardrobe: ten pieces, one season",
         "de-de::Seasonal collection story: autumn / winter campaign",
-        "de-de::Women's winter coats — recycled wool and sustainable insulation"
+        "de-de::Women's winter coats - recycled wool and sustainable insulation"
       ],
       "expectedTopics": [
-        "de-de::Women's winter coats — recycled wool and sustainable insulation",
+        "de-de::Women's winter coats - recycled wool and sustainable insulation",
         "de-de::Recycled materials and circular fashion in outerwear",
         "de-de::Care guide: extending the life of winter garments"
       ],
@@ -159,7 +159,7 @@
       "returnedTopics": [
         "de-de::Capsule wardrobe: ten pieces, one season",
         "de-de::Layering essentials with natural fibres",
-        "de-de::Women's winter coats — recycled wool and sustainable insulation"
+        "de-de::Women's winter coats - recycled wool and sustainable insulation"
       ],
       "expectedTopics": [
         "de-de::Capsule wardrobe: ten pieces, one season",
@@ -936,12 +936,12 @@
         "frag_003"
       ],
       "returnedTopics": [
-        "en-gb::Women's winter coats — recycled wool and sustainable insulation",
+        "en-gb::Women's winter coats - recycled wool and sustainable insulation",
         "en-gb::Sustainable knitwear and natural fibres for cold weather",
         "en-gb::Recycled materials and circular fashion in outerwear"
       ],
       "expectedTopics": [
-        "en-gb::Women's winter coats — recycled wool and sustainable insulation",
+        "en-gb::Women's winter coats - recycled wool and sustainable insulation",
         "en-gb::Recycled materials and circular fashion in outerwear",
         "en-gb::Care guide: extending the life of winter garments"
       ],
@@ -1530,7 +1530,7 @@
       "returnedTopics": [
         "fr-fr::Sustainable knitwear and natural fibres for cold weather",
         "fr-fr::Layering essentials with natural fibres",
-        "fr-fr::Women's winter coats — recycled wool and sustainable insulation"
+        "fr-fr::Women's winter coats - recycled wool and sustainable insulation"
       ],
       "expectedTopics": [
         "fr-fr::Sustainable knitwear and natural fibres for cold weather",
@@ -1940,11 +1940,11 @@
       ],
       "returnedTopics": [
         "en-gb::Care guide: extending the life of winter garments",
-        "en-gb::Women's winter coats — recycled wool and sustainable insulation",
+        "en-gb::Women's winter coats - recycled wool and sustainable insulation",
         "en-gb::Spring campaign: garden party styling"
       ],
       "expectedTopics": [
-        "en-gb::Women's winter coats — recycled wool and sustainable insulation",
+        "en-gb::Women's winter coats - recycled wool and sustainable insulation",
         "en-gb::Recycled materials and circular fashion in outerwear",
         "en-gb::Care guide: extending the life of winter garments"
       ],

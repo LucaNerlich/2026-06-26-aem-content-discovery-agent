@@ -49,7 +49,7 @@ The conceptual understanding is very strong, but there lacks a high-level editor
 
 ## Reused Fragments
 
-### `frag_096` — Daily-wear denim: fits and fabrics
+### `frag_096` - Daily-wear denim: fits and fabrics
 <a id="appendix-frag_096"></a>
 - Path: `/content/dam/aemcontentdisc/en-gb/frag_096`
 - Category: seasonal-campaign
@@ -57,11 +57,11 @@ The conceptual understanding is very strong, but there lacks a high-level editor
 - Brand guidelines: premium-tone, sustainability-voice, inclusive-language
 - Last modified: 2026-01-01T05:12:01.675Z
 
-True style is never about trends; it is an effortless dialogue between superior fabrication and the rhythm of your daily life. At the heart of this timeless conversation lies denim—a fabric elevated beyond mere utility into a foundational statement piece. We understand that the perfect garment should adapt seamlessly, moving with you through every chapter of your day, whether navigating the urban sprawl or gathering for a quiet moment of reflection. That is why our approach to every pair of jeans begins with an uncompromising dedication to both silhouette and conscience.
+True style is never about trends; it is an effortless dialogue between superior fabrication and the rhythm of your daily life. At the heart of this timeless conversation lies denim-a fabric elevated beyond mere utility into a foundational statement piece. We understand that the perfect garment should adapt seamlessly, moving with you through every chapter of your day, whether navigating the urban sprawl or gathering for a quiet moment of reflection. That is why our approach to every pair of jeans begins with an uncompromising dedication to both silhouette and conscience.
 
 Our meticulous fit guide is built upon years of mastering the most flattering cuts, ensuring that exceptional comfort never sacrifices impeccable structure. We champion denim crafted from the finest sustainable materials, selecting blends that reduce environmental impact while enhancing resilience, guaranteeing pieces that feel as good on the first wear as they do many seasons later. Discover how consciously designed washes and innovative weaves combine to create a wash of unparalleled depth and character. Embrace the versatility of beautifully cut denim, pieces engineered to be your trusted companion for every everyday adventure, adding an enduring element of refinement to your modern wardrobe.
 
-### `frag_079` — Daily-wear denim: fits and fabrics — collection notes
+### `frag_079` - Daily-wear denim: fits and fabrics - collection notes
 <a id="appendix-frag_079"></a>
 - Path: `/content/dam/aemcontentdisc/en-gb/frag_079`
 - Category: product-story
@@ -71,7 +71,7 @@ Our meticulous fit guide is built upon years of mastering the most flattering cu
 
 The enduring romance of denim lies not just in its timeless structure, but in the way it adapts to your most considered moments. We understand that true style is effortless; it should move with you from dawn until dusk. This is why every piece of denim we craft is engineered for the rhythm of your everyday life, ensuring that comfort and impeccable tailoring are never mutually exclusive.
 
-Mastering the perfect pair begins with understanding both fabric and form. Our comprehensive fit guide has been developed precisely to navigate the nuances of modern silhouette—whether you favour a streamlined straight leg or a more relaxed wide cut, there is an ideal shape awaiting you. Equally important is the composition: we focus on premium blends that enhance durability without sacrificing breathability, guaranteeing that your favourite denim feels as exquisite today as it will years from now.
+Mastering the perfect pair begins with understanding both fabric and form. Our comprehensive fit guide has been developed precisely to navigate the nuances of modern silhouette-whether you favour a streamlined straight leg or a more relaxed wide cut, there is an ideal shape awaiting you. Equally important is the composition: we focus on premium blends that enhance durability without sacrificing breathability, guaranteeing that your favourite denim feels as exquisite today as it will years from now.
 
-Wearing beautiful denim should feel like slipping into a second skin—confident and utterly natural. We invite you to explore our collection, designed not merely for dressing, but for living life fully in pieces crafted to elevate the everyday routine into an art form.
+Wearing beautiful denim should feel like slipping into a second skin-confident and utterly natural. We invite you to explore our collection, designed not merely for dressing, but for living life fully in pieces crafted to elevate the everyday routine into an art form.
 

@@ -31,7 +31,7 @@ export function checkCorpusProvenance(corpus) {
     issues.push(`perLocaleCount=${corpus.perLocaleCount} (expected ${DEMO_PER_LOCALE_COUNT})`);
   }
   if (issues.length > 0) {
-    return `WARNING: corpus provenance mismatch — ${issues.join(", ")}. Expectation fragment ids will not line up; re-seed with \`npm run seed --seed=${DEMO_SEED}\` or re-label.`;
+    return `WARNING: corpus provenance mismatch - ${issues.join(", ")}. Expectation fragment ids will not line up; re-seed with \`npm run seed --seed=${DEMO_SEED}\` or re-label.`;
   }
   return null;
 }
@@ -100,7 +100,7 @@ function setIntersect(a, b) {
 // so exact-id scoring is noisy. We score on a topic key (locale + base title)
 // instead: a returned fragment counts as a hit if it shares a topic with an
 // expected one. titleFor() appends one of these cosmetic suffixes.
-const TITLE_SUFFIXES = [" — collection notes", " — editorial", " — guide"];
+const TITLE_SUFFIXES = [" - collection notes", " - editorial", " - guide"];
 
 export function topicKeyOf(fragment) {
   let title = fragment.title ?? "";
@@ -290,7 +290,7 @@ async function main() {
     const durationMs = Date.now() - startedAt;
 
     if (error) {
-      process.stdout.write(`× ${brief.name} — pipeline error (${durationMs}ms)\n  ${error.split("\n")[0]}\n\n`);
+      process.stdout.write(`× ${brief.name} - pipeline error (${durationMs}ms)\n  ${error.split("\n")[0]}\n\n`);
       perBrief.push({
         name: brief.name,
         durationMs,
@@ -321,7 +321,7 @@ async function main() {
       expectedGaps: brief.expect.expectedGaps ?? [],
     });
 
-    const composeNote = output.composeError ? "  (compose draftOutline rejected — metrics computed from retrieval+gaps)\n" : "";
+    const composeNote = output.composeError ? "  (compose draftOutline rejected - metrics computed from retrieval+gaps)\n" : "";
     process.stdout.write(
       `• ${brief.name} (${(durationMs / 1000).toFixed(1)}s)\n` +
         `    precision@3=${fmt(pr.precision)} recall@3=${fmt(pr.recall)} ` +

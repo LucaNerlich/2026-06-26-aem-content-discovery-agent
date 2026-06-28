@@ -34,7 +34,7 @@ export async function appendPromptLog({
   await ensureFile(path);
   const okFlag = typeof ok === "boolean" ? ok : !error;
   const lines = [
-    `## ${new Date().toISOString()} — ${model ?? "<unknown>"}`,
+    `## ${new Date().toISOString()} - ${model ?? "<unknown>"}`,
     `- ok: ${okFlag}`,
     `- durationMs: ${durationMs ?? "n/a"}`,
     `- system: ${truncateHead(system) ?? ""}`,

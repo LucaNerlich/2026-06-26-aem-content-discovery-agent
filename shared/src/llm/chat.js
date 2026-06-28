@@ -38,7 +38,7 @@ const THINK_OPEN_REGEX = /^\s*<think>/i;
  * Thinking-model handling:
  *  - The reply is stripped of a leading `<think>...</think>` block (model-agnostic safety net).
  *  - A reply starting with `<think>` but lacking a closing tag throws LlmInvariantError
- *    with "truncated mid-think" — caller should raise `num_predict` or set DISABLE_THINKING_MODE=true.
+ *    with "truncated mid-think" - caller should raise `num_predict` or set DISABLE_THINKING_MODE=true.
  *  - When DISABLE_THINKING_MODE is truthy AND the model matches /^qwen3/i, `think: false` is sent.
  */
 export async function chat({ system, user, json = false, model = getChatModel("default"), options } = {}) {
@@ -94,7 +94,7 @@ export async function chat({ system, user, json = false, model = getChatModel("d
       logger.info({ model, thinkBytesStripped: stripped }, "stripped think block");
     } else if (THINK_OPEN_REGEX.test(content)) {
       throw new LlmInvariantError(
-        "Response truncated mid-think — increase max_tokens",
+        "Response truncated mid-think - increase max_tokens",
         { model, durationMs, promptHead, responseHead: content },
       );
     }

@@ -141,7 +141,7 @@ test("render: appends Reused Fragments appendix with stable per-id anchor", () =
   });
   const md = render(out);
   assert.match(md, /## Reused Fragments/);
-  assert.match(md, /### `frag_001` — Sustainable Merino/);
+  assert.match(md, /### `frag_001` - Sustainable Merino/);
   assert.match(md, /<a id="appendix-frag_001"><\/a>/);
   assert.match(md, /<a id="appendix-frag_002"><\/a>/);
   assert.match(md, /- Path: `\/content\/dam\/aemcontentdisc\/en-gb\/frag_001`/);

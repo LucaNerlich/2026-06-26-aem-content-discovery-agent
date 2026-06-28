@@ -6,11 +6,11 @@ strict three-block `AgentOutput` (top matches, gaps, draft outline). The origina
 the [repo root](AEM_Content_Discovery_Agent_Brief.pdf); the decision log is in `docs/why.md`.
 
 > **Note:** The **JSON-based corpus pipeline** (seed → embed → run agent) is complete and ready to use.
-> Anything that touches a **real AEM instance** — live `--source=aem` fragment fetching, the AEM push step in the seeder, and the AEM SDK client — is work in progress and not production-ready.
+> Anything that touches a **real AEM instance** - live `--source=aem` fragment fetching, the AEM push step in the seeder, and the AEM SDK client - is work in progress and not production-ready.
 
 ## How to Use
 
-### 1 — Start LM Studio
+### 1 - Start LM Studio
 
 Download [LM Studio](https://lmstudio.ai/) and load two models:
 
@@ -20,9 +20,9 @@ Download [LM Studio](https://lmstudio.ai/) and load two models:
 | Embeddings | text-embedding-embeddinggemma-300m | Used by npm run embed                                   |
 
 Start the **local server** in LM Studio (default `http://localhost:1234`). `config/models.json` already points at these
-model IDs — no changes needed.
+model IDs - no changes needed.
 
-### 2 — Seed the corpus
+### 2 - Seed the corpus
 
 ```bash
 nvm use && npm install
@@ -33,9 +33,9 @@ npm run seed --seed=20260626 --count=40
 ```
 
 Or omit `--seed` for a fresh random corpus. Increase `--count` for richer coverage (max 200). The seeder calls LM Studio
-via the OpenAI-compatible `/v1/chat/completions` endpoint — make sure the chat model is loaded first.
+via the OpenAI-compatible `/v1/chat/completions` endpoint - make sure the chat model is loaded first.
 
-### 3 — Build the vector index
+### 3 - Build the vector index
 
 ```bash
 npm run embed
@@ -45,7 +45,7 @@ npm run embed
 The embed step calls the LM Studio embeddings endpoint (`/v1/embeddings`). Both `data/` files are committed so you can
 skip steps 2–3 and run the agent immediately with the locked corpus (`DEMO_SEED=20260626`).
 
-> **Troubleshooting — "Could not locate the bindings file":** `better-sqlite3` is a native addon that must be compiled
+> **Troubleshooting - "Could not locate the bindings file":** `better-sqlite3` is a native addon that must be compiled
 > for your exact Node version. `pnpm rebuild` silently no-ops here, so if you see this error run:
 > ```bash
 > cd shared/node_modules/better-sqlite3 && node-gyp rebuild
@@ -53,7 +53,7 @@ skip steps 2–3 and run the agent immediately with the locked corpus (`DEMO_SEE
 > You will need `node-gyp` (`npm i -g node-gyp`) and a C++ toolchain (`build-essential` / Xcode CLT). Repeat after any
 > Node version switch.
 
-### 4 — Run the discovery agent
+### 4 - Run the discovery agent
 
 ```bash
 # Markdown output (human-readable)
@@ -74,7 +74,7 @@ same timestamped `.json` + `.md` per brief into `runs/full-run/` alongside the
 existing latest-overwriting `<slug>.json` / `<slug>.md` / `<slug>.meta.json`
 aggregates, accumulating a run-to-run history.
 
-### 5 — Evaluate
+### 5 - Evaluate
 
 ```bash
 npm run eval    # precision@3 / recall@3 / gap-F1 across 8 briefs → eval/latest.json
@@ -83,11 +83,11 @@ npm test        # unit tests across all workspaces
 
 ## Prerequisites
 
-- **Node 22** (`.nvmrc` is checked in — `nvm use` picks it up).
+- **Node 22** (`.nvmrc` is checked in - `nvm use` picks it up).
 - **LM Studio** running at `http://localhost:1234` with:
     - `google/gemma-4-e4b` (chat)
     - `text-embedding-embeddinggemma-300m` (embeddings, 768-d)
-- **sqlite3** native toolchain — `better-sqlite3` requires a C++ compiler (`build-essential` / Xcode CLT) and must be rebuilt manually if the binding is missing (see the troubleshooting note under step 3). `sqlite-vec` ships prebuilt and needs no compilation.
+- **sqlite3** native toolchain - `better-sqlite3` requires a C++ compiler (`build-essential` / Xcode CLT) and must be rebuilt manually if the binding is missing (see the troubleshooting note under step 3). `sqlite-vec` ships prebuilt and needs no compilation.
 - *(Optional, for the AEM round-trip only)* JDK 21, Maven 3.9, AEM Cloud SDK 2026.6 at `http://localhost:4502` with
   `admin:admin`.
 
@@ -112,7 +112,7 @@ precision/recall/gap-F1.
 
 ### Tuning the chat model and timeout
 
-The shipped default is `google/gemma-4-e4b` via LM Studio — fast enough for the full-run harness on consumer hardware.
+The shipped default is `google/gemma-4-e4b` via LM Studio - fast enough for the full-run harness on consumer hardware.
 To swap models edit `config/models.json` (one file, no rebuild). The default chat timeout is 120 s; override it for
 long-running stages via `CHAT_TIMEOUT_MS`. The eval harness additionally honours `EVAL_CHAT_MODEL`:
 
@@ -132,7 +132,7 @@ handles this automatically:
   stripped unconditionally. A reply that opens `<think>` without a closing tag throws `LlmInvariantError`.
 - **Per-stage **`num_predict`** caps** give the model enough headroom. The seeder uses 3000; `parseBrief` 2500;
   `analyseGaps` 4000; `compose` 6000.
-- `DISABLE_THINKING_MODE`** escape hatch.** Set to anything truthy with a `qwen3*` model to pass `think: false` — only
+- `DISABLE_THINKING_MODE`** escape hatch.** Set to anything truthy with a `qwen3*` model to pass `think: false` - only
   matched for qwen3-family: `DISABLE_THINKING_MODE=true npm run full-run`
 
 ## Architecture
@@ -144,13 +144,13 @@ brief.txt  ──► parseBrief ──► retrieve ──► analyseGaps ──�
                                 freshness)
 ```
 
-- `parseBrief` — LLM extracts `StructuredBrief` (audience, locale, tone, brand-guideline enum, required topics, path
+- `parseBrief` - LLM extracts `StructuredBrief` (audience, locale, tone, brand-guideline enum, required topics, path
   hint). Locale auto-detected from any `/locale/` path in the brief.
-- `retrieve` — Locale ladder (exact → language prefix → any) feeds a fused score `0.6·cosine + 0.3·bm25 + 0.1·freshness`
+- `retrieve` - Locale ladder (exact → language prefix → any) feeds a fused score `0.6·cosine + 0.3·bm25 + 0.1·freshness`
   over the candidate fragments. Returns `matches` (top-3), `nearMisses`, and `droppedByBrandFilter`.
-- `analyseGaps` — LLM judge verdicts each required topic as `none|partial` against the candidate pool; structural
+- `analyseGaps` - LLM judge verdicts each required topic as `none|partial` against the candidate pool; structural
   locale + brand-coverage gaps are appended deterministically.
-- `compose` — LLM drafts a 4–6 section outline; each section is strictly `kind: "reuse"` (with ids from `matches` only)
+- `compose` - LLM drafts a 4–6 section outline; each section is strictly `kind: "reuse"` (with ids from `matches` only)
   or `kind: "new"` (with a `sourcingHint`). Schema rejects orphan ids; retries once on validation error.
 
 The full pipeline walkthrough, schema definitions, and the Adobe MCP / sqlite-vec / Matryoshka discussion live in
@@ -174,7 +174,7 @@ AgentOutput = {
 }
 ```
 
-Zod schemas: `shared/src/schema/` — `brief.js`, `corpus.js`, `fragment.js`, `output.js`.
+Zod schemas: `shared/src/schema/` - `brief.js`, `corpus.js`, `fragment.js`, `output.js`.
 
 ## Example result
 
@@ -211,21 +211,21 @@ npm run agent eval/briefs/winter-sustainable.txt
 
 ### Gap Analysis
 
-#### Recycled material sourcing — *partial*
+#### Recycled material sourcing - *partial*
 While both the use of recycled wool and general circular fashion are covered, the fragments introduce the concepts rather than providing deep supply chain transparency on sourcing.
 - Partial matches: `frag_001`, `frag_005`
 - **Suggested action:** Write a 200-word en-gb product-story fragment covering "Recycled material sourcing", applying sustainability-voice and premium-tone.
 
-#### Garment longevity and care — *partial*
+#### Garment longevity and care - *partial*
 Extensive maintenance guides are available for various items (cashmere, coats, accessories), allowing users to care for their investment pieces.
 - Partial matches: `frag_003`, `frag_038`, `frag_026`
 - **Suggested action:** Write a 200-word en-gb care-guide fragment covering "Garment longevity and care", applying sustainability-voice and premium-tone.
 
-#### Winter styling guides — *none*
+#### Winter styling guides - *none*
 The pool contains foundational pieces on layering and seasonal shifts, but no dedicated editorial guide for executing specific winter outfits that meets all brief criteria.
 - **Suggested action:** Write a 200-word en-gb product-story fragment covering "Winter styling guides", applying sustainability-voice and premium-tone.
 
-#### Brand guideline coverage: sustainability-voice — *partial*
+#### Brand guideline coverage: sustainability-voice - *partial*
 No top match applies the `sustainability-voice` brand guideline required by the brief. Some candidates exist but lacked any required brand guideline and were filtered out.
 - **Suggested action:** Add fragments tagged `sustainability-voice` (alongside premium-tone) for the en-gb corpus so this brand voice is represented in the top matches.
 
@@ -234,16 +234,16 @@ No top match applies the `sustainability-voice` brand guideline required by the 
 **Title:** The Sustainable Winter Collection: A Guide for the Conscious Wardrobe
 **Path hint:** `/en-gb/collections/winter-sustainable`
 
-1. **Introducing Enduring Style: Our Commitment to Circular Fashion** — **NEW**
+1. **Introducing Enduring Style: Our Commitment to Circular Fashion** - **NEW**
    - Sourcing hint: Develop an introductory product story that frames the winter collection within a sustainability-first, premium lifestyle context.
 
-2. **Deep Dive: The Art of Recycled Material Sourcing** — **NEW**
+2. **Deep Dive: The Art of Recycled Material Sourcing** - **NEW**
    - Sourcing hint: Write a 200-word en-gb product-story fragment detailing the sourcing and journey of our recycled fibres.
 
-3. **Preserving Your Investment: Garment Care and Longevity** — reuse `frag_003`, `frag_038`
+3. **Preserving Your Investment: Garment Care and Longevity** - reuse `frag_003`, `frag_038`
    - Provides valuable, actionable maintenance and care advice, enhancing the perceived value of the garments.
 
-4. **Styling Sustainably: Building Your Perfect Winter Capsule** — **NEW**
+4. **Styling Sustainably: Building Your Perfect Winter Capsule** - **NEW**
    - Sourcing hint: Develop a dedicated 200-word en-gb editorial guide offering actionable styling ideas for diverse winter outfits.
 
 ---
@@ -265,27 +265,27 @@ Each brief has a companion file in `eval/expectations/` that specifies two
 things: the fragment IDs the retriever should return, and the content gaps the
 LLM judge should identify.
 
-**precision@3** — of the (up to) 3 fragments the agent returned, what fraction
+**precision@3** - of the (up to) 3 fragments the agent returned, what fraction
 were in the expected set? A score of `1.00` means every returned fragment was
 correct; `0.33` means one of three was.
 
-**recall@3** — of all the fragments in the expected set, what fraction did the
+**recall@3** - of all the fragments in the expected set, what fraction did the
 agent actually return? The denominator is capped at 3 (the output limit), so
 a brief with 2 expected fragments can reach `1.00` if both are returned.
 
-**gap-F1** — the harmonic mean of gap precision and recall. Each expected gap
+**gap-F1** - the harmonic mean of gap precision and recall. Each expected gap
 has a `topicLabel` and a `coverage` value (`none` or `partial`). A returned
 gap counts as a true positive if its topic is semantically close to an expected
 label (cosine ≥ 0.5 between their embeddings) **and** the coverage verdict
 matches exactly. Gap-F1 therefore measures whether the agent correctly
-identified which topics were missing or only partially covered — not just that
+identified which topics were missing or only partially covered - not just that
 it flagged some gaps. A score of `1.00` means every expected gap was found with
 the right coverage; `0.00` means none matched.
 
 **Why gap-F1 is the primary pass/fail signal.** Fragment retrieval quality is
 bounded by corpus size and embedding model choice; on a 120-fragment corpus a
 mismatch of one ID already costs 0.33. Gap analysis, by contrast, reflects
-reasoning quality — whether the LLM correctly judges what the corpus does and
+reasoning quality - whether the LLM correctly judges what the corpus does and
 does not cover for a given brief. That is the harder and more meaningful
 capability to verify, so the harness passes or fails on aggregate gap-F1 ≥ 0.6.
 
@@ -306,7 +306,7 @@ capability to verify, so the harness passes or fails on aggregate gap-F1 ≥ 0.6
 **threshold: gap-F1 ≥ 0.6 → PASS**
 
 The two briefs with precision@3 = 0.00 (`de-de-workwear-tech`,
-`fr-fr-loungewear-premium`) are not retrieval failures — both achieve strong
+`fr-fr-loungewear-premium`) are not retrieval failures - both achieve strong
 gap-F1 scores (0.80 and 1.00). Their fragment matches differ from the
 expectations because `gemma-4-e4b` is non-deterministic: on any given run the
 retriever's reranking and the LLM's gap reasoning may surface slightly different
@@ -323,7 +323,7 @@ two problems emerged:
 
 1. **Fragment ID drift.** IDs are assigned in locale-batched order
    (`frag_001–040` = en-gb, `frag_041–080` = fr-fr, `frag_081–120` = de-de).
-   The old expectations referenced IDs like `frag_001` for fr-fr briefs —
+   The old expectations referenced IDs like `frag_001` for fr-fr briefs -
    those are en-gb fragments in the new corpus. Precision and recall collapsed
    to near zero despite the retriever returning semantically correct content.
 
@@ -337,7 +337,7 @@ two problems emerged:
 **What changed.** All eight `eval/expectations/*.json` files were re-labelled
 by running the agent with `--json` and using the actual returned fragment IDs
 and gap topics as the new ground truth. `GAP_COSINE_THRESHOLD` in `eval/run.js`
-was lowered from 0.7 to 0.5 — still requiring clear semantic overlap, but
+was lowered from 0.7 to 0.5 - still requiring clear semantic overlap, but
 robust to paraphrase and cross-lingual variation. After re-labelling, aggregate
 precision/recall rose from ~0.13 to 0.42 and gap-F1 from 0.46 to 0.75.
 
@@ -354,7 +354,7 @@ To exercise the AEM code path end-to-end against the local AEM SDK:
    Sling POST servlet against the `discovery-fragment` CF Model.
 3. Run the agent against the live AEM instance: `npm run agent eval/briefs/winter-sustainable.txt --source=aem`
 
-In `--source=aem` mode the agent reads fragments live via the Assets HTTP API and skips the precomputed vector index —
+In `--source=aem` mode the agent reads fragments live via the Assets HTTP API and skips the precomputed vector index -
 BM25 alone scores retrieval. The JSON-primary path is the supported default for graders; the AEM path is here to
 demonstrate the read/write round-trip without making AEM a prerequisite.
 
@@ -385,8 +385,8 @@ demonstrate the read/write round-trip without making AEM a prerequisite.
 
 ### Subpackage documentation
 
-- [`content-seeder/README.md`](./content-seeder/README.md) — Deterministic corpus + vector-index generator.
-- [`discovery-agent/README.md`](./discovery-agent/README.md) — Runtime 4-stage discovery pipeline CLI.
+- [`content-seeder/README.md`](./content-seeder/README.md) - Deterministic corpus + vector-index generator.
+- [`discovery-agent/README.md`](./discovery-agent/README.md) - Runtime 4-stage discovery pipeline CLI.
 
 ## Design notes (short form)
 
@@ -396,7 +396,7 @@ demonstrate the read/write round-trip without making AEM a prerequisite.
   SQL-inspectability, and a clean scale path to 40k+ fragments without changing the retrieval API.
 - `google/gemma-4-e4b`** for chat (via LM Studio).** Strong JSON-mode discipline and multilingual coverage (matters for
   fr-fr / de-de briefs). Runs via LM Studio's OpenAI-compatible endpoint (`/v1/chat/completions`). Model selection lives
-  in `config/models.json` — swap freely without rebuilding.
+  in `config/models.json` - swap freely without rebuilding.
 - `text-embedding-embeddinggemma-300m`** for embeddings.** 768-d default, **Matryoshka**-truncatable to 512/256/128
   dimensions, 100+ languages, ~600 MB RAM. Same Gemma research lineage as the chat model.
 - **Locale ladder.** Exact `brief.locale` → language prefix (`en-*` for `en-gb`) → all locales. Each relaxation surfaces
@@ -410,6 +410,6 @@ The detailed rationale for every non-trivial choice is in `docs/why.md`.
 
 - [https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/ai-in-aem/local-development-with-ai-tools](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/ai-in-aem/local-development-with-ai-tools)
 - [https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/ai-in-aem/mcp-support/using-mcp-with-aem-as-a-cloud-service](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/ai-in-aem/mcp-support/using-mcp-with-aem-as-a-cloud-service)
-- [LM Studio — Local LLM server](https://lmstudio.ai/)
+- [LM Studio - Local LLM server](https://lmstudio.ai/)
 - [LM Studio model catalogue (search for `google/gemma-4-e4b` and `text-embedding-embeddinggemma-300m`)](https://lmstudio.ai/models)
 - [LM Studio OpenAI-compatible API reference](https://lmstudio.ai/docs/app/api/endpoints/openai)

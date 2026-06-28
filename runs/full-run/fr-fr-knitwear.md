@@ -52,7 +52,7 @@ Le fragment 'frag_204' couvre très bien les matériaux recyclés, mais son cham
 
 ## Reused Fragments
 
-### `frag_341` — Pre-fall edit: between-season layering pieces — collection notes
+### `frag_341` - Pre-fall edit: between-season layering pieces - collection notes
 <a id="appendix-frag_341"></a>
 - Path: `/content/dam/aemcontentdisc/fr-fr/frag_341`
 - Category: seasonal-campaign
@@ -62,7 +62,7 @@ Le fragment 'frag_204' couvre très bien les matériaux recyclés, mais son cham
 
 L'approche de l'automne exige une attention particulière à la subtilité du vestiaire. Ce temps entre deux saisons n’est pas une simple transition climatique, mais un moment où le raffinement des matières et la précision d'une coupe révèlent tout leur sens. Notre sélection capsule est pensée pour accompagner les jours qui modulent leurs tempéraments, offrant des pièces de superposition essentielles qui traverseront aisément ces périodes délicates. Chaque vêtement est une réponse à cet équilibre précaire : le parfait équilibre entre l’aisance printanière et la structure automnale. Nous avons puisé l'inspiration dans les savoir-faire ancestraux, privilégiant des techniques de tissage durables et des fibres qui racontent leur provenance, garantissant ainsi une allégeance au temps qui passe plutôt qu'à la mode éphémère. Adopter ces pièces superposables, c’est choisir un garde-robe pensé pour l'homme éclairé, capable d'apprécier la beauté de l'évolution stylistique. Il s'agit d'un art de vivre où le luxe réside dans la pérennité et le récit de chaque fil. Découvrez comment notre engagement envers l'artisanat intemporel vous permettra de composer un vestiaire non seulement adapté, mais riche de sens pour les mois à venir.
 
-### `frag_204` — Recycled materials and circular fashion in outerwear
+### `frag_204` - Recycled materials and circular fashion in outerwear
 <a id="appendix-frag_204"></a>
 - Path: `/content/dam/aemcontentdisc/fr-fr/frag_204`
 - Category: product-story

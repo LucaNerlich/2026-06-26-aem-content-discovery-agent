@@ -56,7 +56,7 @@ While 'frag_003' is a care guide for winter garments, it focuses only on mainten
 
 ## Reused Fragments
 
-### `frag_192` — Spring campaign: garden party styling
+### `frag_192` - Spring campaign: garden party styling
 <a id="appendix-frag_192"></a>
 - Path: `/content/dam/aemcontentdisc/en-gb/frag_192`
 - Category: seasonal-campaign

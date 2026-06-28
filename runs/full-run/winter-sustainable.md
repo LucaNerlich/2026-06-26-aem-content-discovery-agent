@@ -48,7 +48,7 @@ There is strong coverage for seasonal transitions and specific event styling (li
 
 ## Reused Fragments
 
-### `frag_001` — Women's winter coats — recycled wool and sustainable insulation
+### `frag_001` - Women's winter coats - recycled wool and sustainable insulation
 <a id="appendix-frag_001"></a>
 - Path: `/content/dam/aemcontentdisc/en-gb/frag_001`
 - Category: product-story
@@ -56,5 +56,5 @@ There is strong coverage for seasonal transitions and specific event styling (li
 - Brand guidelines: sustainability-voice, inclusive-language
 - Last modified: 2026-04-29T06:19:40.946Z
 
-The enduring elegance of true craftsmanship lies in its commitment to both form and conscience. Our latest collection of women's outerwear reflects this philosophy, offering exceptional warmth without compromise. We have meticulously reimagined the traditional silhouette of the winter coat, paying homage to centuries of durable tailoring while embracing modern material science. At the core of these pieces is a beautiful blend of premium recycled wool; a conscious choice that not only diverts valuable fibres from waste streams but also retains the rich texture and inherent strength for which natural wool is celebrated. This careful use of recycled wool ensures that every coat carries forward a renewed story of resilience. Complementing this exquisite textile are linings utilising responsibly sourced insulation, materials selected after rigorous vetting to minimise environmental impact. These sustainable fillings provide superior thermal performance, ensuring warmth travels with you through the harshest Nordic winters. More than merely functional garments, these women's winter coats are considered investments—pieces built for longevity, designed to become cherished staples of a thoughtful wardrobe for years to come.
+The enduring elegance of true craftsmanship lies in its commitment to both form and conscience. Our latest collection of women's outerwear reflects this philosophy, offering exceptional warmth without compromise. We have meticulously reimagined the traditional silhouette of the winter coat, paying homage to centuries of durable tailoring while embracing modern material science. At the core of these pieces is a beautiful blend of premium recycled wool; a conscious choice that not only diverts valuable fibres from waste streams but also retains the rich texture and inherent strength for which natural wool is celebrated. This careful use of recycled wool ensures that every coat carries forward a renewed story of resilience. Complementing this exquisite textile are linings utilising responsibly sourced insulation, materials selected after rigorous vetting to minimise environmental impact. These sustainable fillings provide superior thermal performance, ensuring warmth travels with you through the harshest Nordic winters. More than merely functional garments, these women's winter coats are considered investments-pieces built for longevity, designed to become cherished staples of a thoughtful wardrobe for years to come.
 

@@ -71,7 +71,7 @@ function buildUserPrompt({ topic, locale, category, audience, brandGuidelines })
 
 function titleFor(topic, locale, faker) {
   // Light per-locale flavour; keep meaning aligned with the topic.
-  const suffix = faker.helpers.arrayElement(["", " — collection notes", " — editorial", " — guide", ""]);
+  const suffix = faker.helpers.arrayElement(["", " - collection notes", " - editorial", " - guide", ""]);
   const localePrefix = locale === "fr-fr" ? "" : locale === "de-de" ? "" : "";
   return `${localePrefix}${topic.title}${suffix}`.trim();
 }

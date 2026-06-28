@@ -53,7 +53,7 @@ Guides exist for delicate fabric care, but they are not explicitly targeted at '
 
 ## Reused Fragments
 
-### `frag_073` — Evening wear: silk slip dresses and tailored tuxedos
+### `frag_073` - Evening wear: silk slip dresses and tailored tuxedos
 <a id="appendix-frag_073"></a>
 - Path: `/content/dam/aemcontentdisc/en-gb/frag_073`
 - Category: product-story
@@ -61,9 +61,9 @@ Guides exist for delicate fabric care, but they are not explicitly targeted at '
 - Brand guidelines: premium-tone, inclusive-language
 - Last modified: 2025-11-04T18:30:29.864Z
 
-As the day softens into that luminous velvet hour, there is a particular kind of anticipation—a moment where the ordinary edges off, leaving only the promise of what comes next. This season belongs to moments crafted for reflection: whispered conversations, soft jazz spilling from hidden corners, and the satisfying click of well-worn heels on marble floors. We have curated collections that celebrate this transition, pieces designed not merely to be worn, but to inhabit you. For those nights demanding a touch of liquid glamour, the fluid drape of our finest silk slip dresses offers incomparable ease; its whisper against the skin makes it the perfect embodiment of effortless evening wear. Complementing this soft sophistication is the enduring sharpness of impeccably tailored menswear. From the modern slim-fit dinner jacket to the classic midnight tuxedo, these structured pieces provide a confident anchor. It is in the thoughtful pairing—the sublime softness meeting the disciplined edge—that true style resides. These are garments built for conversation and lasting impressions, celebrating every nuanced detail from the rich sheen of satin lapels to the ethereal cascade of fine silk. Dress for the narrative you wish to write when the lights dim.
+As the day softens into that luminous velvet hour, there is a particular kind of anticipation-a moment where the ordinary edges off, leaving only the promise of what comes next. This season belongs to moments crafted for reflection: whispered conversations, soft jazz spilling from hidden corners, and the satisfying click of well-worn heels on marble floors. We have curated collections that celebrate this transition, pieces designed not merely to be worn, but to inhabit you. For those nights demanding a touch of liquid glamour, the fluid drape of our finest silk slip dresses offers incomparable ease; its whisper against the skin makes it the perfect embodiment of effortless evening wear. Complementing this soft sophistication is the enduring sharpness of impeccably tailored menswear. From the modern slim-fit dinner jacket to the classic midnight tuxedo, these structured pieces provide a confident anchor. It is in the thoughtful pairing-the sublime softness meeting the disciplined edge-that true style resides. These are garments built for conversation and lasting impressions, celebrating every nuanced detail from the rich sheen of satin lapels to the ethereal cascade of fine silk. Dress for the narrative you wish to write when the lights dim.
 
-### `frag_112` — Evening wear: silk slip dresses and tailored tuxedos — guide
+### `frag_112` - Evening wear: silk slip dresses and tailored tuxedos - guide
 <a id="appendix-frag_112"></a>
 - Path: `/content/dam/aemcontentdisc/en-gb/frag_112`
 - Category: product-story
@@ -71,7 +71,7 @@ As the day softens into that luminous velvet hour, there is a particular kind of
 - Brand guidelines: inclusive-language
 - Last modified: 2026-02-10T17:04:04.655Z
 
-As dusk settles over the city, casting that exquisite blue hour glow, there are moments when everyday dressing simply does not suffice. This season calls for pieces designed to capture light and movement—the quiet magic of true evening wear. Consider the whisper-soft drape of a bias-cut silk slip; it moves against the skin like liquid moonlight, offering understated glamour perfect for an intimate supper or gallery opening. For those who favour structure with equal passion, our expertly tailored tuxedos offer a powerful counterpoint to softness. The precise cut and deep midnight tones speak of confident refinement.
+As dusk settles over the city, casting that exquisite blue hour glow, there are moments when everyday dressing simply does not suffice. This season calls for pieces designed to capture light and movement-the quiet magic of true evening wear. Consider the whisper-soft drape of a bias-cut silk slip; it moves against the skin like liquid moonlight, offering understated glamour perfect for an intimate supper or gallery opening. For those who favour structure with equal passion, our expertly tailored tuxedos offer a powerful counterpoint to softness. The precise cut and deep midnight tones speak of confident refinement.
 
-These are not merely garments; they are foundational elements of a cherished memory. Whether choosing the ethereal sheen of silk for a fluid silhouette or embracing the sharp geometry of a beautifully fitted tuxedo, the intention is always the same: to feel utterly impeccable, entirely self, and perfectly present. It’s about the satisfying weight of fine fabric against your shoulder, the whisper of quality material when you turn at a crowded gathering—a subtle statement of considered taste that speaks volumes without saying a word.
+These are not merely garments; they are foundational elements of a cherished memory. Whether choosing the ethereal sheen of silk for a fluid silhouette or embracing the sharp geometry of a beautifully fitted tuxedo, the intention is always the same: to feel utterly impeccable, entirely self, and perfectly present. It’s about the satisfying weight of fine fabric against your shoulder, the whisper of quality material when you turn at a crowded gathering-a subtle statement of considered taste that speaks volumes without saying a word.
 
