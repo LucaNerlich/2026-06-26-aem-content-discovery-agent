@@ -348,6 +348,15 @@ is normalised to `[0, 1]` and combined as a linear sum. In plain terms:
   the proper-noun backstop — brand names and material terms like
   "merino" need exact lexical match that a 300M-parameter embedder
   cannot guarantee.
+  - **TF-IDF** (term frequency × inverse document frequency) is the
+    statistical basis: a term scores higher the more it appears in a given
+    fragment (TF) and the rarer it is across the whole corpus (IDF), so
+    ubiquitous words like "the" carry no weight while distinctive terms like
+    "merino" carry a lot.
+  - **BM25** refines plain TF-IDF with term-frequency *saturation* (repeating
+    a word stops helping after a few occurrences) and *document-length
+    normalisation* (long fragments are not rewarded just for having more
+    words).
 - **freshness** — `clamp(1 − age_months / 18, 0, 1)`, so a brand-new
   fragment scores `1` and an 18-month-old fragment scores `0`. The
   small 0.1 weight makes it a tiebreaker only between otherwise
