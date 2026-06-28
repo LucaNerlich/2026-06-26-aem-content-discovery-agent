@@ -12,7 +12,7 @@
 - The **citations** are not decoration: `path#Lstart-end` ranges are current; open the file alongside the prose.
 - For the *why* behind a choice, jump to [`docs/why.md`](docs/why.md) and [`delivery.md`](delivery.md). For the *what*,
   jump to [`docs/architecture.md`](docs/architecture.md). This guide stitches them together for an interview audience.
-- Interview-style Q&A is collected at the very end (Section 18).
+- Interview-style Q&A is collected at the very end (Section 19).
 
 ## Table of contents
 
@@ -32,9 +32,10 @@
 14. [Content seeder (deterministic generation)](#14-content-seeder-deterministic-generation)
 15. [Fragment sources (JSON vs AEM)](#15-fragment-sources-json-vs-aem)
 16. [Evaluation & full-run harnesses](#16-evaluation--full-run-harnesses)
-17. [CLI, artifacts & operational concerns](#17-cli-artifacts--operational-concerns)
-18. [Interview cheat-sheet — likely questions](#18-interview-cheat-sheet--likely-questions)
-19. [Glossary](#19-glossary)
+17. [Testing strategy & test suite organization](#17-testing-strategy--test-suite-organization)
+18. [CLI, artifacts & operational concerns](#18-cli-artifacts--operational-concerns)
+19. [Interview cheat-sheet — likely questions](#19-interview-cheat-sheet--likely-questions)
+20. [Glossary](#20-glossary)
 
 ---
 
@@ -664,7 +665,133 @@ Two safety nets unique to full-run:
 
 ---
 
-## 17. CLI, artifacts & operational concerns
+## 17. Testing strategy & test suite organization
+
+The repo has **no lint or format step** (only `node --check` for syntax) — so the test suite carries the
+whole quality bar. Tests live next to the workspace they exercise; everything runs through the **`node:test`**
+runner.
+
+### Runner & layout
+
+```
+package.json "test": node --test --test-reporter spec
+  'shared/test/**/*.test.js'
+  'content-seeder/test/**/*.test.js'
+  'discovery-agent/test/**/*.test.js'
+  'scripts/test/**/*.test.js'
+```
+
+Four test roots, mirroring the three workspaces plus the `scripts/` harness driver:
+
+| Root | Files | Tests | Focus |
+|------|-------|-------|-------|
+| [`shared/test/`](shared/test) | 6 | 77 | Schemas, retrieval primitives, LLM client + error taxonomy, model config, AEM client, barrel exports |
+| [`discovery-agent/test/`](discovery-agent/test) | 6 | 59 | The four pipeline stages, CLI flag parsing, markdown rendering, retrieve integration with fixture corpora |
+| [`content-seeder/test/`](content-seeder/test) | 4 | 27 | Determinism of `planFragments`, embeddings DB write, Sling-POST push, model preflight |
+| [`scripts/test/`](scripts/test) | 1 | 18 | `full-run` harness wiring: corpus precheck, retry, README aggregation, stage instrumentation |
+| **Total** | **17** | **181** | |
+
+`npm test` runs all four roots in one invocation. A single root can be run on its own — useful while iterating:
+
+```bash
+node --test --test-reporter spec 'shared/test/**/*.test.js'
+```
+
+### What each file covers
+
+**`shared/test/`**
+
+- [`schema.test.js`](shared/test/schema.test.js) — every Zod schema (Fragment, Corpus, StructuredBrief,
+  MatchedFragment, Gap, SectionUnion, AgentOutput). Includes happy-path parses + every refinement: locale enum,
+  brand-vocab enum, `schemaVersion === "1.0"`, `matchedFragments[0..3]`, `draftOutline.sections[1..8]`, the
+  `superRefine` discriminated union on `kind: "reuse" | "new"`.
+- [`retrieve.test.js`](shared/test/retrieve.test.js) — the low-level retrieval primitives without the
+  `retrieve()` pipeline orchestration. Builds a real on-disk `sqlite-vec` DB inside `mkdtemp()`, then asserts
+  cosine ordering, BM25 ranking, and `VECTOR_DB_MISSING_HINT` when the DB is absent.
+- [`llm.test.js`](shared/test/llm.test.js) — all 22 tests around the LLM client: `chat`, `embed`,
+  `appendPromptLog`, `getHost`, `llmFetch`, plus each of the **7 error classes** (`LlmUnavailableError`,
+  `LlmServerError`, `LlmTimeoutError`, `LlmModelNotFoundError`, `LlmJsonParseError`, `LlmContextOverflowError`,
+  `LlmInvariantError`) and `truncateHead`. Mocks `global.fetch` per `beforeEach`/`afterEach`.
+- [`config.test.js`](shared/test/config.test.js) — `loadModelsConfig` / `getChatModel` / `getEmbeddingModel`
+  resolution rules; per-stage override; cache reset; fallback to `default`.
+- [`aem.test.js`](shared/test/aem.test.js) — the `@aemdisc/shared` AEM client. Verifies request shape against
+  a hand-rolled `createMockFetch` recorder: Sling POST encoding, CF model walk, `damPathToAssetsApi` path
+  translation, the three typed errors (`AemAuthError`, `AemNotFoundError`, `AemUnavailableError`).
+- [`smoke.test.js`](shared/test/smoke.test.js) — single placeholder that imports the barrel and asserts the
+  package is loadable. Guards against accidental export-graph breaks.
+
+**`discovery-agent/test/`**
+
+- [`parseBrief.test.js`](discovery-agent/test/parseBrief.test.js) — deterministic shape (locale detection,
+  brand vocab clamping), retry-with-error-hint on `LlmJsonParseError`, `LlmTimeoutError` surfacing.
+- [`retrieve.test.js`](discovery-agent/test/retrieve.test.js) — full pipeline retrieve against a real
+  `sqlite-vec` DB built from a 4-fragment fixture (`FIXTURE_FRAGMENTS`). Uses a deterministic
+  `vectorFromTopic` so the embedder is replaced by a pure function — **no LLM is contacted**.
+- [`analyseGaps.test.js`](discovery-agent/test/analyseGaps.test.js) — structural gaps (locale relax,
+  brand-filter drop), the LLM judge stub, candidate pool union, orphan-id rejection.
+- [`compose.test.js`](discovery-agent/test/compose.test.js) — the `buildOrphanCheckedSchema` wrapper,
+  schema retry once, `reuse`/`new` section discrimination, `schemaVersion` enforcement.
+- [`cli.test.js`](discovery-agent/test/cli.test.js) — flag parser (`--json`, `--locale`, `--top`,
+  `--source`, `--corpus`, `--results-dir`), exit code mapping, `INIT_CWD` path re-anchoring,
+  `slugify`/`buildArtifactFilename` round-trip. Drives `runPipeline` with injected mocks for chat + embed.
+- [`render-markdown.test.js`](discovery-agent/test/render-markdown.test.js) — the markdown renderer as a
+  pure view: deterministic output given a fixed `AgentOutput`. No I/O.
+
+**`content-seeder/test/`**
+
+- [`seed.test.js`](content-seeder/test/seed.test.js) — `parseArgs` defaults, deterministic `planFragments`
+  (same seed → identical IDs and reserved-topic placement), `avgBodyWords` body-length sanity.
+- [`embeddings.test.js`](content-seeder/test/embeddings.test.js) — `buildEmbeddingsDb` writes a valid
+  `sqlite-vec` table; vectors round-trip; idempotent re-build.
+- [`aem-push.test.js`](content-seeder/test/aem-push.test.js) — CF model validation (`validateCfModel`) and
+  `pushFragments` Sling-POST payload shape, with a hand-rolled mock client.
+- [`preflight.test.js`](content-seeder/test/preflight.test.js) — `preflightModels` HTTP probes against LM
+  Studio, with `global.fetch` mocked.
+
+**`scripts/test/`**
+
+- [`full-run.test.js`](scripts/test/full-run.test.js) — `runBriefWithRetry` retry semantics,
+  `corpusPrecheck` (counts + locales), `buildIndexReadme`, `instrumentStages` timing capture,
+  `localeFromSlug` / `inferLocale` heuristics, `buildSeedSummary`.
+
+### Mocking patterns (the three workhorses)
+
+1. **`global.fetch` swap.** LLM, AEM, and preflight tests all replace `global.fetch` in `beforeEach` and
+   restore it in `afterEach` — e.g. [`llm.test.js#L28-L39`](shared/test/llm.test.js) and
+   [`preflight.test.js#L7-L13`](content-seeder/test/preflight.test.js). No HTTP ever leaves the process.
+2. **Real `sqlite-vec` in `mkdtemp()`.** Retrieval tests build a throw-away DB on the temp filesystem
+   ([`shared/test/retrieve.test.js#L1-L23`](shared/test/retrieve.test.js),
+   [`discovery-agent/test/retrieve.test.js#L1-L24`](discovery-agent/test/retrieve.test.js)) instead of
+   mocking the driver — the math is the system under test, so stubs would defeat the purpose.
+3. **Deterministic vectors as fake embedders.** `vectorFromTopic` (a normalised `sin()`-based hash) replaces
+   the embedding model entirely. Pipeline tests inject this via the `embed` parameter so the LLM stack is
+   never touched.
+
+`PROMPT_LOG_PATH` is redirected to a `mkdtemp` per test ([`parseBrief.test.js#L11-L19`](discovery-agent/test/parseBrief.test.js))
+so log appends do not pollute `docs/runtime-prompt-log.md`.
+
+### What is **not** tested (and why)
+
+- **LM Studio itself** — out of scope; the harnesses call the real server in `npm run agent` / `npm run eval`.
+- **`sqlite-vec` native extension correctness** — trusted as a dependency; we test our usage of it, not its
+  cosine math.
+- **Markdown rendering against external diff tooling** — `render-markdown.test.js` only asserts our string
+  output is stable.
+- **End-to-end against a real AEM tenant** — `AemFragmentSource` is exercised via mocked fetch; live AEM is
+  reached only by the production path (`--source=aem`).
+
+### Determinism budget
+
+The whole suite runs in ~10.6s on a developer laptop (`duration_ms 10653` in the last green run). Tests that
+need randomness use fixed seeds — `planFragments(seed=42)` in
+[`seed.test.js#L9`](content-seeder/test/seed.test.js), `DEMO_SEED = 20260626` in eval expectations.
+
+**Pop quiz.** A new test for `retrieve()` needs an embedding vector but you cannot call LM Studio in CI.
+Which two patterns from this section would you compose to get a deterministic, network-free fixture?
+
+---
+
+## 18. CLI, artifacts & operational concerns
 
 Source: [`discovery-agent/src/cli.js`](discovery-agent/src/cli.js).
 
@@ -711,7 +838,7 @@ so `data/corpus.json` resolves correctly.
 
 ---
 
-## 18. Interview cheat-sheet — likely questions
+## 19. Interview cheat-sheet — likely questions
 
 These are the questions the design itself invites; canned answers below cite the supporting code.
 
@@ -794,7 +921,7 @@ streaming them buys nothing.
 
 ---
 
-## 19. Glossary
+## 20. Glossary
 
 - **AgentOutput** — the single Zod-validated object returned by `compose`. Contract: `schemaVersion`, `brief`,
   `matchedFragments[≤3]`, `gaps[]`, `draftOutline`, `reusedFragments[]`. Source:
