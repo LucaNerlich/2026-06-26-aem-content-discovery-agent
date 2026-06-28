@@ -71,7 +71,7 @@ overfit an 8-brief eval set.
 **Trade-off.** Weights are constants. A substantially different corpus
 character (e.g. long-form technical docs) would warrant re-tuning.
 
-**Details:** see [Retrieval and scoring](docs/architecture.md#retrieval-and-scoring) — and the [Score components explained](docs/architecture.md#score-components-explained) subsection — in the architecture doc.
+**Details:** see [Score components explained](docs/architecture.md#score-components-explained) in the architecture doc for the per-component breakdown and weight rationale.
 
 ## 4. Why agentic + the orchestration pattern — sequential typed multi-stage pipeline
 

@@ -329,6 +329,8 @@ fragments are ranked recent-first.
 
 ### Score components explained
 
+*Rationale for the weight choices: [§ 3 Retrieval method](../delivery.md#3-retrieval-method--hybrid-fused-score-06--cosine--03--bm25--01--freshness) in delivery.md.*
+
 Each component of `fused = 0.6 · cosine + 0.3 · BM25 + 0.1 · freshness`
 is normalised to `[0, 1]` and combined as a linear sum. In plain terms:
 
