@@ -1,5 +1,7 @@
 # Architecture
 
+> A four-stage, schema-validated pipeline (parse → retrieve → analyse → compose) that fuses vector search, BM25, and freshness scoring to map any editorial brief to ranked AEM Content Fragments — all running on local models with no external dependencies.
+
 End-to-end design of the **AEM Content Discovery Agent**: a Node 22 CLI that
 turns a free-form content brief into a strict, schema-validated
 `AgentOutput` — top-3 reusable Content Fragments, a gap analysis, and a draft
@@ -606,7 +608,6 @@ npm run agent eval/briefs/winter-sustainable.txt -- --json # canonical AgentOutp
 
 - **`README.md`** — install, run, expected output, the eight-brief
   eval table.
-- **`docs/augment-spec.md`** — the original brief and acceptance criteria.
 - **`docs/why.md`** — every non-trivial decision with its alternatives and
   consequences (decision log).
 - **`docs/sample-run.md`** — end-to-end transcript with both JSON and
