@@ -45,6 +45,14 @@ npm run embed
 The embed step calls the LM Studio embeddings endpoint (`/v1/embeddings`). Both `data/` files are committed so you can
 skip steps 2–3 and run the agent immediately with the locked corpus (`DEMO_SEED=20260626`).
 
+> **Troubleshooting — "Could not locate the bindings file":** `better-sqlite3` is a native addon that must be compiled
+> for your exact Node version. `pnpm rebuild` silently no-ops here, so if you see this error run:
+> ```bash
+> cd shared/node_modules/better-sqlite3 && node-gyp rebuild
+> ```
+> You will need `node-gyp` (`npm i -g node-gyp`) and a C++ toolchain (`build-essential` / Xcode CLT). Repeat after any
+> Node version switch.
+
 ### 4 — Run the discovery agent
 
 ```bash
@@ -53,6 +61,9 @@ npm run agent -- eval/briefs/winter-sustainable.txt
 
 # Canonical JSON (AgentOutput schema)
 npm run agent -- eval/briefs/winter-sustainable.txt --json
+
+# Full-run (all briefs)
+npm run full-run
 ```
 
 Every successful single-agent run is also written to a timestamped file under
@@ -76,7 +87,7 @@ npm test        # unit tests across all workspaces
 - **LM Studio** running at `http://localhost:1234` with:
     - `google/gemma-4-e4b` (chat)
     - `text-embedding-embeddinggemma-300m` (embeddings, 768-d)
-- **sqlite3** native toolchain (`better-sqlite3` + `sqlite-vec` build on install).
+- **sqlite3** native toolchain — `better-sqlite3` requires a C++ compiler (`build-essential` / Xcode CLT) and must be rebuilt manually if the binding is missing (see the troubleshooting note under step 3). `sqlite-vec` ships prebuilt and needs no compilation.
 - *(Optional, for the AEM round-trip only)* JDK 21, Maven 3.9, AEM Cloud SDK 2026.6 at `http://localhost:4502` with
   `admin:admin`.
 

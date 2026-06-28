@@ -10,7 +10,7 @@ import { createRng, shuffle } from "./rng.js";
 
 const BRAND_GUIDELINES = ["sustainability-voice", "premium-tone", "inclusive-language"];
 const EIGHTEEN_MONTHS_MS = 18 * 30 * 24 * 60 * 60 * 1000;
-const SEEDER_NUM_PREDICT = 3000;
+const SEEDER_NUM_PREDICT = 600;
 
 const LOCALE_CONFIG = {
   "en-gb": { faker: fakerEN_GB, language: "British English", label: "en-GB" },

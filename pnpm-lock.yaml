@@ -6,7 +6,11 @@ settings:
 
 importers:
 
-  .: {}
+  .:
+    dependencies:
+      '@aemdisc/shared':
+        specifier: workspace:*
+        version: link:shared
 
   content-seeder:
     dependencies:
