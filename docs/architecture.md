@@ -538,6 +538,8 @@ without touching `config/models.json`.
 
 ## Why agentic
 
+*Decision rationale and orchestration patterns: [§ 4 Why agentic + the orchestration pattern](../delivery.md#4-why-agentic--the-orchestration-pattern--sequential-typed-multi-stage-pipeline) in delivery.md.*
+
 The agent isn't a one-shot RAG call; it composes LLM steps with
 deterministic infrastructure:
 
