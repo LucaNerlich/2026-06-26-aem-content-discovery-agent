@@ -2,8 +2,6 @@
 
 - [Full Augment Code Log](./pure-augment-log.md)
   - Opus 4.7 as the Agent Coordinator (4.8 is more expensive, and I am running out of budget =P) 
-  - This isn't really readable, but I'll include it for the sake of transparency.
-- [Augment Code Specification File](./augment-spec.md)
 
 ## Augment Code - Log Abbreviation
 
