@@ -71,7 +71,7 @@ re-seeding.
 
 ## Monorepo layout
 
-*Decision rationale: [JSON-primary, AEM-optional](../delivery.md#other-notable-decisions) in delivery.md.*
+*Decision rationale: [JSON-primary, AEM-optional](delivery.md#other-notable-decisions) in delivery.md.*
 
 Three npm workspaces wired through the root `package.json`:
 
@@ -267,7 +267,7 @@ invocation. The locked canonical corpus is produced by
 
 ## Chunking strategy
 
-*Decision rationale and rejected alternatives: [§ 2 Chunking strategy](../delivery.md#2-chunking-strategy--fragment-as-chunk) in delivery.md.*
+*Decision rationale and rejected alternatives: [§ 2 Chunking strategy](delivery.md#2-chunking-strategy--fragment-as-chunk) in delivery.md.*
 
 In a typical RAG retriever, **chunking** is how source documents are
 split into the atomic units that get embedded and later returned by
@@ -333,7 +333,7 @@ fragments are ranked recent-first.
 
 ### Score components explained
 
-*Rationale for the weight choices: [§ 3 Retrieval method](../delivery.md#3-retrieval-method--hybrid-fused-score-06--cosine--03--bm25--01--freshness) in delivery.md.*
+*Rationale for the weight choices: [§ 3 Retrieval method](delivery.md#3-retrieval-method--hybrid-fused-score-06--cosine--03--bm25--01--freshness) in delivery.md.*
 
 Each component of `fused = 0.6 · cosine + 0.3 · BM25 + 0.1 · freshness`
 is normalised to `[0, 1]` and combined as a linear sum. In plain terms:
@@ -401,7 +401,7 @@ changing any pipeline stage.
 
 ## LLM stack
 
-*Decision rationale: [Local LM Studio at :1234](../delivery.md#other-notable-decisions) in delivery.md.*
+*Decision rationale: [Local LM Studio at :1234](delivery.md#other-notable-decisions) in delivery.md.*
 
 A single thin client (`shared/src/llm/`) wraps the local LM Studio server
 over its OpenAI-compatible HTTP API:
@@ -432,7 +432,7 @@ Defaults in `config/models.json` (see `docs/why.md` for the picks):
 
 ## Embedding model
 
-*Decision rationale and rejected alternatives: [§ 1 Embedding model](../delivery.md#1-embedding-model--text-embedding-embeddinggemma-300m-768-d) in delivery.md.*
+*Decision rationale and rejected alternatives: [§ 1 Embedding model](delivery.md#1-embedding-model--text-embedding-embeddinggemma-300m-768-d) in delivery.md.*
 
 The agent uses `text-embedding-embeddinggemma-300m` (referenced as
 `embeddinggemma-300m` in `config/models.json`) to embed both the seeded
@@ -526,7 +526,7 @@ shape the MCP tools expect, so only the transport layer changes.
 
 ## Evaluation harness
 
-*Decision rationale: [Eval harness as contract](../delivery.md#other-notable-decisions) in delivery.md.*
+*Decision rationale: [Eval harness as contract](delivery.md#other-notable-decisions) in delivery.md.*
 
 `eval/run.js` (and `npm run eval`) scores the agent against the eight
 hand-labelled briefs under `eval/briefs/` using `eval/expectations/`:
@@ -544,7 +544,7 @@ without touching `config/models.json`.
 
 ## Why agentic
 
-*Decision rationale and orchestration patterns: [§ 4 Why agentic + the orchestration pattern](../delivery.md#4-why-agentic--the-orchestration-pattern--sequential-typed-multi-stage-pipeline) in delivery.md.*
+*Decision rationale and orchestration patterns: [§ 4 Why agentic + the orchestration pattern](delivery.md#4-why-agentic--the-orchestration-pattern--sequential-typed-multi-stage-pipeline) in delivery.md.*
 
 The agent isn't a one-shot RAG call; it composes LLM steps with
 deterministic infrastructure:

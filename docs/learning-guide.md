@@ -10,7 +10,7 @@
 - Read it front to back **once** - it builds concepts in the same order as the runtime pipeline.
 - Each section ends with one or two **"Pop quiz"** prompts. If you can answer them out loud, you understand it.
 - The **citations** are not decoration: `path#Lstart-end` ranges are current; open the file alongside the prose.
-- For the *why* behind a choice, jump to [`why.md`](why.md) and [`delivery.md`](../delivery.md). For the *what*,
+- For the *why* behind a choice, jump to [`why.md`](why.md) and [`delivery.md`](delivery.md). For the *what*,
   jump to [`architecture.md`](architecture.md). This guide stitches them together for an interview audience.
 - Interview-style Q&A is collected at the very end (Section 19).
 
@@ -514,7 +514,7 @@ API:
 Stage-level overrides keep every LLM call routable to a different model without changing code, while the harness
 also accepts `EVAL_CHAT_MODEL` as a runtime override
 ([`eval/run.js#L27`](../eval/run.js)). The rationale lives in
-[`delivery.md`](../delivery.md): one config file, no rebuild, easy to swap to a smaller fallback.
+[`delivery.md`](delivery.md): one config file, no rebuild, easy to swap to a smaller fallback.
 
 **Pop quiz.** How would you point `compose` at a different model without touching code?
 
@@ -862,7 +862,7 @@ multilingual-weak (the stopword list is English-only,
 [`bm25.js#L3-L7`](../shared/src/retrieve/bm25.js)). The 60/30/10 weighting was chosen because the corpus is small and
 multilingual: vectors dominate, BM25 anchors precision, freshness lightly biases recency. The literal weights live
 at [`retrieve.js#L10`](../discovery-agent/src/pipeline/retrieve.js); the rationale is in
-[`delivery.md`](../delivery.md) and [`why.md`](why.md).
+[`delivery.md`](delivery.md) and [`why.md`](why.md).
 
 > **Q. How do you prevent the LLM from hallucinating fragment ids?**
 
@@ -900,12 +900,12 @@ Each stage hands the next a *typed* object, and each LLM call validates its own 
 
 Cost, privacy, and the brief's explicit preference for local execution. LM Studio's OpenAI-compat surface
 (`/v1/chat/completions`, `/v1/embeddings`) means the same client works against most local stacks. See
-[`delivery.md#L11-L24`](../delivery.md) on embedding choice and [`why.md`](why.md) for the lineage choice
+[`delivery.md#L11-L24`](delivery.md) on embedding choice and [`why.md`](why.md) for the lineage choice
 between chat and embedding models.
 
 > **Q. What would you change to scale to 40k fragments?**
 
-Three concrete moves, all signposted in [`delivery.md`](../delivery.md):
+Three concrete moves, all signposted in [`delivery.md`](delivery.md):
 
 1. Truncate Matryoshka embeddings from 768 → 256/128 to fit memory and speed lookup.
 2. Move BM25 out of `retrieve` into an index built once at seed-time (it is currently rebuilt per request at

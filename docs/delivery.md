@@ -5,12 +5,12 @@
 
 This document justifies the significant design choices behind the AEM Content
 Discovery Agent. It does not describe what was built - for that, see
-[`README.md`](README.md) and [`architecture.md`](architecture.md).
+[`README.md`](../README.md) and [`architecture.md`](architecture.md).
 
 ## 1. Embedding model - `text-embedding-embeddinggemma-300m` (768-d)
 
 **Choice.** Local embeddings served by LM Studio at `:1234`, configured in
-[`config/models.json`](config/models.json).
+[`config/models.json`](../config/models.json).
 
 **Why for this content / use case.** The corpus is multilingual by
 construction (en-gb, fr-fr, de-de Content Fragments). `embeddinggemma-300m`
@@ -28,7 +28,7 @@ fr-fr/de-de. Hosted OpenAI embeddings - cost, rate limits, and the brief
 favours local. Reusing the chat model as an embedder - chat models are not
 embedders.
 
-**Details:** see [Embedding model](docs/architecture.md#embedding-model) in the architecture doc.
+**Details:** see [Embedding model](architecture.md#embedding-model) in the architecture doc.
 
 ## 2. Chunking strategy - fragment-as-chunk
 
@@ -47,7 +47,7 @@ sentence-or-paragraph splitting - both produce chunks that are not
 addressable by fragment id and therefore cannot be re-assembled into a
 "reuse this whole fragment" suggestion.
 
-**Details:** see [Chunking strategy](docs/architecture.md#chunking-strategy) in the architecture doc.
+**Details:** see [Chunking strategy](architecture.md#chunking-strategy) in the architecture doc.
 
 ## 3. Retrieval method - hybrid fused score `0.6 · cosine + 0.3 · BM25 + 0.1 · freshness`
 
@@ -71,7 +71,7 @@ overfit an 8-brief eval set.
 **Trade-off.** Weights are constants. A substantially different corpus
 character (e.g. long-form technical docs) would warrant re-tuning.
 
-**Details:** see [Score components explained](docs/architecture.md#score-components-explained) in the architecture doc for the per-component breakdown and weight rationale.
+**Details:** see [Score components explained](architecture.md#score-components-explained) in the architecture doc for the per-component breakdown and weight rationale.
 
 ## 4. Why agentic + the orchestration pattern - sequential typed multi-stage pipeline
 
@@ -104,19 +104,19 @@ non-deterministic call patterns, harder to audit against the locked
 `AgentOutput` schema. RAG framework - extra abstraction layers obscure
 the seams the contract depends on.
 
-**Details:** see [Why agentic](docs/architecture.md#why-agentic) in the architecture doc.
+**Details:** see [Why agentic](architecture.md#why-agentic) in the architecture doc.
 
 ## Other notable decisions
 
 - **JSON-primary, AEM-optional.** `data/corpus.json` and
   `data/embeddings.db` are committed so a clean clone runs without an
-  AEM SDK; `--source=aem` is an opt-in flag for the live AEM round-trip. (Details: see [Monorepo layout](docs/architecture.md#monorepo-layout))
+  AEM SDK; `--source=aem` is an opt-in flag for the live AEM round-trip. (Details: see [Monorepo layout](architecture.md#monorepo-layout))
 - **Local LM Studio at `:1234`.** OpenAI-compatible HTTP, zero-cost
   reproduction, no rate limits; single source of model truth in
-  `config/models.json`. (Details: see [LLM stack](docs/architecture.md#llm-stack))
+  `config/models.json`. (Details: see [LLM stack](architecture.md#llm-stack))
 - **Schema-validated, fail-loud-with-retry.** Every stage validates its
   output with Zod; `JsonParseError` / `ZodError` triggers one re-prompt
   with the error appended, then propagates as a typed error.
 - **Eval harness as contract.** `npm run eval` scores precision@3 /
   recall@3 / gap-F1 across 8 hand-labelled briefs and exits non-zero
-  below the 0.6 gap-F1 threshold. (Details: see [Evaluation harness](docs/architecture.md#evaluation-harness))
+  below the 0.6 gap-F1 threshold. (Details: see [Evaluation harness](architecture.md#evaluation-harness))
