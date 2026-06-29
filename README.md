@@ -157,34 +157,6 @@ brief.txt  ──► parseBrief ──► retrieve ──► analyseGaps ──�
 The full pipeline walkthrough, schema definitions, and the Adobe MCP / sqlite-vec / Matryoshka discussion live in
 `docs/architecture.md`.
 
-## Output contract
-
-```js
-AgentOutput = {
-  schemaVersion: "1.0",
-  brief: StructuredBrief,
-  matchedFragments: MatchedFragment[0..3
-], // id, path, score [0..1], reason ≤140 chars
-gaps: Gap[], // topic, coverage, description, partialMatches[], suggestedAction
-  draftOutline
-:
-{
-  title,
-    pathHint,
-    sections
-:
-  SectionUnion[1.
-  .8
-] // ReuseSection | NewSection
-}
-,
-reusedFragments: Fragment[] // full content for every id cited by reuse sections,
-                            // de-duplicated, ordered by first appearance in the outline
-}
-```
-
-Zod schemas: `shared/src/schema/` - `brief.js`, `corpus.js`, `fragment.js`, `output.js`.
-
 ## Example result
 
 **Input brief**
