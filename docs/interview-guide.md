@@ -120,7 +120,7 @@ The full reasoning per decision lives in [`docs/why.md`](why.md). Headline calls
 - **Prompt logging = every call, success or failure** - `docs/runtime-prompt-log.md`
   is greppable, 200-char head truncation; curated templates in
   `docs/prompt-templates.md` capture the verbatim system/user prompts per stage.
-- **Eval harness = offline F1 + non-zero exit on regression** - 8 briefs in
+- **Eval harness = offline F1 + non-zero exit on regression** - 20 briefs in
   `eval/briefs/`, gold labels in `eval/expectations/`, scores written to
   `eval/latest.json`. Exits non-zero below `EVAL_F1_THRESHOLD` (default 0.6).
 - **Seeder is the sole writer to `data/embeddings.db`; agent opens read-only.**
@@ -181,7 +181,7 @@ Talking points to hit as it runs:
 **Why the `0.6 / 0.3 / 0.1` weights - were they tuned?**
 - Hand-picked from a defensible story (semantic dominates paraphrase, BM25
   catches proper nouns, freshness is a tiebreaker). Not learned from the
-  eval set on purpose - that would overfit 8 briefs and make the metric
+  eval set on purpose - that would overfit 20 briefs and make the metric
   meaningless. Re-tunable if the corpus character changes substantially.
 
 **How do you guarantee the LLM doesn't hallucinate fragment ids?**

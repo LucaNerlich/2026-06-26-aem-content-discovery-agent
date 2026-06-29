@@ -102,7 +102,7 @@ Top-level scripts in [`package.json#L14-L21`](../package.json) match the headlin
 - `npm run seed` → generate `data/corpus.json` (Step 1)
 - `npm run embed` → embed corpus into `data/embeddings.db` (Step 2)
 - `npm run agent eval/briefs/<brief>.txt` → run the pipeline
-- `npm run eval` → precision@3 / recall@3 / gap-F1 across 8 briefs
+- `npm run eval` → precision@3 / recall@3 / gap-F1 across 20 briefs
 - `npm run full-run` → run every brief and capture `runs/full-run/` artifacts
 - `npm test` → all workspace test suites via `node --test`
 
@@ -620,7 +620,7 @@ not a one-line change.)
 
 ### `npm run eval` - [`eval/run.js`](../eval/run.js)
 
-Scores **8 briefs** in `eval/briefs/` against hand-labelled `eval/expectations/<slug>.json`. The locked seed is
+Scores **20 briefs** in `eval/briefs/` against hand-labelled `eval/expectations/<slug>.json`. The locked seed is
 `DEMO_SEED = 20260626` ([`eval/run.js#L14`](../eval/run.js)) - change the seeder and the expectations need
 re-labelling.
 

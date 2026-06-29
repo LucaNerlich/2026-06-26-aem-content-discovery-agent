@@ -55,7 +55,7 @@ eval/
   with the same `coverage` enum and a topic-label cosine similarity ≥ 0.5.
   Cosine uses the configured embedding model (`text-embedding-embeddinggemma-300m`
   by default) so paraphrases and cross-lingual variants are not penalised.
-- **aggregate** - unweighted mean of per-brief metrics over the 8 briefs.
+- **aggregate** - unweighted mean of per-brief metrics over the 20 briefs.
 
 Briefs in `eval/briefs/` without a matching `eval/expectations/` file are skipped (with a `warn:` line on stderr) rather than aborting the run - additional full-run briefs live alongside the eval set, but un-calibrated expectations would skew aggregate metrics.
 

@@ -84,7 +84,7 @@ Three npm workspaces wired through the root `package.json`:
 ├── discovery-agent/       # `npm run agent` - CLI + 4-stage pipeline + Markdown renderer
 │   └── src/{cli.js, pipeline/, render/markdown.js}
 ├── eval/                  # `npm run eval` - F1 harness over hand-labelled briefs
-│   ├── briefs/            # 8 briefs spanning en-gb / en-us / fr-fr / de-de
+│   ├── briefs/            # 20 briefs spanning en-gb / en-us / fr-fr / de-de
 │   ├── expectations/      # gold fragment ids + gap topics
 │   └── run.js
 ├── config/models.json     # single source of truth for chat/embedding model selection

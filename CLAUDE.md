@@ -23,7 +23,7 @@ node --test --test-reporter spec 'shared/test/**/*.test.js'
 node --test --test-reporter spec 'discovery-agent/test/**/*.test.js'
 node --test --test-reporter spec 'content-seeder/test/**/*.test.js'
 
-# Run the eval harness (precision@3 / recall@3 / gap-F1 across 8 briefs)
+# Run the eval harness (precision@3 / recall@3 / gap-F1 across 20 briefs)
 npm run eval
 
 # Run the full-run harness (all briefs, captures JSON + Markdown to runs/full-run/)

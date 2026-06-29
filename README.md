@@ -22,6 +22,10 @@ Download [LM Studio](https://lmstudio.ai/) and load two models:
 Start the **local server** in LM Studio (default `http://localhost:1234`). `config/models.json` already points at these
 model IDs - no changes needed.
 
+> **Context window:** Pipeline prompts can exceed 4 096 tokens. In LM Studio, open **My Models**, select the chat model,
+> and set **Context Length** to at least 8 192 (the pipeline comfortably fits within 32 768; using the maximum ~131 072
+> is fine). Settings saved in **My Models** persist across model reloads — unlike the per-session slider in the Chat UI.
+
 ### 2 - Seed the corpus
 
 ```bash
@@ -77,7 +81,7 @@ aggregates, accumulating a run-to-run history.
 ### 5 - Evaluate
 
 ```bash
-npm run eval    # precision@3 / recall@3 / gap-F1 across 8 briefs → eval/latest.json
+npm run eval    # precision@3 / recall@3 / gap-F1 across 20 briefs → eval/latest.json
 npm test        # unit tests across all workspaces
 ```
 
