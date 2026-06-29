@@ -252,6 +252,65 @@ The `--json` flag returns the same result as a structured `AgentOutput` object
 (schema at [`shared/src/schema/output.js`](./shared/src/schema/output.js)),
 suitable for downstream automation.
 
+## Known Limitations
+
+### Domain / Business
+
+| Limitation                            | Detail                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Narrow topic domain                   | The seeder corpus covers fashion and lifestyle only (outerwear, knitwear, shoe care, silk scarves, seasonal campaigns). Gap analysis for any other vertical is meaningless without re-seeding with domain-relevant content.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Fixed brand vocabulary                | Only 4 brand-guideline values are understood: `sustainability-voice`, `premium-tone`, `inclusive-language`, `technical-precision`. Briefs that reference other guidelines are silently ignored.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Advisory output only                  | The agent produces a draft outline and gap list. It never writes to AEM, triggers workflows, or publishes content.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| AEM live integration is WIP           | `--source=aem` (live fragment fetching from AEM Assets API) is incomplete and not production-ready.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| No feedback loop                      | Authors cannot mark a recommendation as wrong. The model never improves from corrections; improving accuracy requires relabelling eval expectations and re-tuning.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Content Fragments only                | Experience Fragments, AEM Pages, DAM assets, and structured data are out of scope.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| English-only brief parsing            | `parseBrief` system prompts are English; briefs written in French or German may be mis-parsed or produce degraded `StructuredBrief` output.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Structured briefs only ("audit mode") | The pipeline assumes a brief has discrete, nameable topics. It runs in **audit mode** — checking a pre-declared checklist against the corpus. A vague or open-ended brief ("what do we have for the spring launch?") gives `parseBrief` little to extract; it either invents plausible topics (hallucination risk) or returns broad ones that match everything and nothing. What open-ended briefs need is a **discovery mode**: query the full brief as a single embedding, surface the highest-scoring fragments across categories, and let the LLM propose structure from what exists rather than from declared topics. That is an inversion of the current flow and was out of scope for the interview deliverable. |
+
+### Technical
+
+| Limitation                   | Detail                                                                                                                                                             |
+|------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Corpus scale                 | Capped at ~200 fragments (default 120); must be manually re-seeded whenever content changes - no live sync.                                                        |
+| Top-3 only                   | Retrieval returns at most 3 matched fragments (`k=3`); `compose` sees exactly those 3 regardless of brief complexity.                                              |
+| Content truncation           | Fragment content is cut to 160 chars before `analyseGaps` and 200 chars before `compose` - the LLM never reads full fragments.                                     |
+| Three locales                | `parseBrief` understands only `en-gb`, `fr-fr`, and `de-de`. Any other locale silently falls back through the locale ladder to "any match".                        |
+| Hard-coded retrieval weights | Cosine 0.6 / BM25 0.3 / freshness 0.1, with a fixed 18-month freshness decay window - not tunable without a code change.                                           |
+| Eval accuracy                | Aggregate Precision@3 = 0.60, Recall@3 = 0.61 (`eval/latest.json`) - roughly 4 in 10 recommendations are wrong on the current corpus. See improvement paths below. |
+| Stateless                    | No caching, incremental re-indexing, or cross-run learning. Every run re-embeds the query and re-builds the BM25 index in memory.                                  |
+| LM Studio dependency         | Requires a locally running LM Studio server; no fallback model or offline mode.                                                                                    |
+
+**What "wrong" means in practice:** 
+
+The metric penalises any recommendation that doesn't match the labelled fragment
+exactly, but the business impact is softer. Failure modes cluster into three tiers: a *near-miss* (right topic, wrong
+locale, or adjacent topic - authors recognise and adapt these), a *weak match* (broadly related content that still gives
+the author something to react to), and a *complete miss* (irrelevant fragment). Complete misses are rare; the dominant
+failure is near-misses that a human reviewer would filter in seconds. Crucially, even the worst-performing briefs (e.g.
+`de-de-workwear-tech`, P/R = 0/0) still achieve gap-F1 ≈ 0.9 - meaning the agent correctly tells the author "this
+content doesn't exist yet", which is the most actionable output. The system degrades gracefully: when fragment retrieval
+fails, gap detection does not.
+
+**How accuracy could be improved with more time:**
+
+- Larger, more diverse corpus
+    - 120 synthetic fragments is toy scale; real AEM deployments have thousands. More fragments directly improve recall.
+- Stronger embedding model
+    - `embeddinggemma-300m` (300 M params) is a lightweight choice. A larger or domain-tuned bi-encoder (e.g.
+      `bge-large`, `e5-mistral`) would produce more accurate cosine scores.
+- Cross-encoder re-ranking
+    - a second-pass re-ranker over the top-15 BM25+vector candidates would sharply lift precision before the final top-3
+      cut.
+- Query expansion / HyDE
+    - generating a hypothetical ideal document per topic before embedding (Hypothetical Document Embeddings) addresses
+      vocabulary mismatch between brief language and fragment language.
+- Tuned retrieval weights
+    - the 0.6/0.3/0.1 split is hand-tuned; a short grid-search against the eval set would find better values per locale
+      or category.
+- Richer eval labels
+    - current expectations were authored for one seed run; multi-annotator labelling or labelling at topic-level (not
+      exact fragment id) would reduce variance and give more reliable scores.
+
 ## Eval results
 
 [`npm run eval`](./eval/README.md) scores the full pipeline against eight
@@ -340,64 +399,6 @@ and gap topics as the new ground truth. `GAP_COSINE_THRESHOLD` in `eval/run.js`
 was lowered from 0.7 to 0.5 - still requiring clear semantic overlap, but
 robust to paraphrase and cross-lingual variation. After re-labelling, aggregate
 precision/recall rose from ~0.13 to 0.42 and gap-F1 from 0.46 to 0.75.
-
-## Known Limitations
-
-### Domain / Business
-
-| Limitation                  | Detail                                                                                                                                                                                                                      |
-|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Narrow topic domain         | The seeder corpus covers fashion and lifestyle only (outerwear, knitwear, shoe care, silk scarves, seasonal campaigns). Gap analysis for any other vertical is meaningless without re-seeding with domain-relevant content. |
-| Fixed brand vocabulary      | Only 4 brand-guideline values are understood: `sustainability-voice`, `premium-tone`, `inclusive-language`, `technical-precision`. Briefs that reference other guidelines are silently ignored.                             |
-| Advisory output only        | The agent produces a draft outline and gap list. It never writes to AEM, triggers workflows, or publishes content.                                                                                                          |
-| AEM live integration is WIP | `--source=aem` (live fragment fetching from AEM Assets API) is incomplete and not production-ready.                                                                                                                         |
-| No feedback loop            | Authors cannot mark a recommendation as wrong. The model never improves from corrections; improving accuracy requires relabelling eval expectations and re-tuning.                                                          |
-| Content Fragments only      | Experience Fragments, AEM Pages, DAM assets, and structured data are out of scope.                                                                                                                                          |
-| English-only brief parsing  | `parseBrief` system prompts are English; briefs written in French or German may be mis-parsed or produce degraded `StructuredBrief` output.                                                                                 |
-
-### Technical
-
-| Limitation                   | Detail                                                                                                                                                             |
-|------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Corpus scale                 | Capped at ~200 fragments (default 120); must be manually re-seeded whenever content changes - no live sync.                                                        |
-| Top-3 only                   | Retrieval returns at most 3 matched fragments (`k=3`); `compose` sees exactly those 3 regardless of brief complexity.                                              |
-| Content truncation           | Fragment content is cut to 160 chars before `analyseGaps` and 200 chars before `compose` - the LLM never reads full fragments.                                     |
-| Three locales                | `parseBrief` understands only `en-gb`, `fr-fr`, and `de-de`. Any other locale silently falls back through the locale ladder to "any match".                        |
-| Hard-coded retrieval weights | Cosine 0.6 / BM25 0.3 / freshness 0.1, with a fixed 18-month freshness decay window - not tunable without a code change.                                           |
-| Eval accuracy                | Aggregate Precision@3 = 0.60, Recall@3 = 0.61 (`eval/latest.json`) - roughly 4 in 10 recommendations are wrong on the current corpus. See improvement paths below. |
-| Stateless                    | No caching, incremental re-indexing, or cross-run learning. Every run re-embeds the query and re-builds the BM25 index in memory.                                  |
-| LM Studio dependency         | Requires a locally running LM Studio server; no fallback model or offline mode.                                                                                    |
-
-**What "wrong" means in practice:** 
-
-The metric penalises any recommendation that doesn't match the labelled fragment
-exactly, but the business impact is softer. Failure modes cluster into three tiers: a *near-miss* (right topic, wrong
-locale, or adjacent topic - authors recognise and adapt these), a *weak match* (broadly related content that still gives
-the author something to react to), and a *complete miss* (irrelevant fragment). Complete misses are rare; the dominant
-failure is near-misses that a human reviewer would filter in seconds. Crucially, even the worst-performing briefs (e.g.
-`de-de-workwear-tech`, P/R = 0/0) still achieve gap-F1 ≈ 0.9 - meaning the agent correctly tells the author "this
-content doesn't exist yet", which is the most actionable output. The system degrades gracefully: when fragment retrieval
-fails, gap detection does not.
-
-**How accuracy could be improved with more time:**
-
-- Larger, more diverse corpus
-    - 120 synthetic fragments is toy scale; real AEM deployments have thousands. More fragments directly improve recall.
-- Stronger embedding model
-    - `embeddinggemma-300m` (300 M params) is a lightweight choice. A larger or domain-tuned bi-encoder (e.g.
-      `bge-large`, `e5-mistral`) would produce more accurate cosine scores.
-- Cross-encoder re-ranking
-    - a second-pass re-ranker over the top-15 BM25+vector candidates would sharply lift precision before the final top-3
-      cut.
-- Query expansion / HyDE
-    - generating a hypothetical ideal document per topic before embedding (Hypothetical Document Embeddings) addresses
-      vocabulary mismatch between brief language and fragment language.
-- Tuned retrieval weights
-    - the 0.6/0.3/0.1 split is hand-tuned; a short grid-search against the eval set would find better values per locale
-      or category.
-- Richer eval labels
-    - current expectations were authored for one seed run; multi-annotator labelling or labelling at topic-level (not
-      exact fragment id) would reduce variance and give more reliable scores.
 
 ## Optional AEM round-trip
 
