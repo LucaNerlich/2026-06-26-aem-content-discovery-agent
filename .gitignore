@@ -8,7 +8,6 @@ node_modules/
 shared/.cache/
 .DS_Store
 *.log
-data/embeddings.db
 # Timestamped per-run artifacts (see docs/why.md 2026-06-27).
 # The aggregate runs/full-run/<slug>.{json,md,meta.json} files are committed;
 # the timestamped accumulating files are not.
