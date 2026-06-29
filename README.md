@@ -1,6 +1,6 @@
 # AEM Content Discovery Agent
 
-An Adobe AI Engineering interview deliverable: a Node CLI that ingests a free-form content brief, retrieves relevant
+An interview deliverable: a Node CLI that ingests a free-form content brief, retrieves relevant
 fragments from a local corpus using hybrid vector + BM25 search, asks a local LLM to judge content gaps, and returns a
 strict three-block `AgentOutput` (top matches, gaps, draft outline).
 
