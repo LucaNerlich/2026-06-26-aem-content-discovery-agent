@@ -691,7 +691,7 @@ Four test roots, mirroring the three workspaces plus the `scripts/` harness driv
 | [`scripts/test/`](../scripts/test) | 1 | 18 | `full-run` harness wiring: corpus precheck, retry, README aggregation, stage instrumentation |
 | **Total** | **17** | **181** | |
 
-`npm test` runs all four roots in one invocation. A single root can be run on its own — useful while iterating:
+`npm test` runs all four roots in one invocation. A single root can be run on its own - useful while iterating:
 
 ```bash
 node --test --test-reporter spec 'shared/test/**/*.test.js'
@@ -701,68 +701,68 @@ node --test --test-reporter spec 'shared/test/**/*.test.js'
 
 **`shared/test/`**
 
-- [`schema.test.js`](../shared/test/schema.test.js) — every Zod schema (Fragment, Corpus, StructuredBrief,
+- [`schema.test.js`](../shared/test/schema.test.js) - every Zod schema (Fragment, Corpus, StructuredBrief,
   MatchedFragment, Gap, SectionUnion, AgentOutput). Includes happy-path parses + every refinement: locale enum,
   brand-vocab enum, `schemaVersion === "1.0"`, `matchedFragments[0..3]`, `draftOutline.sections[1..8]`, the
   `superRefine` discriminated union on `kind: "reuse" | "new"`.
-- [`retrieve.test.js`](../shared/test/retrieve.test.js) — the low-level retrieval primitives without the
+- [`retrieve.test.js`](../shared/test/retrieve.test.js) - the low-level retrieval primitives without the
   `retrieve()` pipeline orchestration. Builds a real on-disk `sqlite-vec` DB inside `mkdtemp()`, then asserts
   cosine ordering, BM25 ranking, and `VECTOR_DB_MISSING_HINT` when the DB is absent.
-- [`llm.test.js`](../shared/test/llm.test.js) — all 22 tests around the LLM client: `chat`, `embed`,
+- [`llm.test.js`](../shared/test/llm.test.js) - all 22 tests around the LLM client: `chat`, `embed`,
   `appendPromptLog`, `getHost`, `llmFetch`, plus each of the **7 error classes** (`LlmUnavailableError`,
   `LlmServerError`, `LlmTimeoutError`, `LlmModelNotFoundError`, `LlmJsonParseError`, `LlmContextOverflowError`,
   `LlmInvariantError`) and `truncateHead`. Mocks `global.fetch` per `beforeEach`/`afterEach`.
-- [`config.test.js`](../shared/test/config.test.js) — `loadModelsConfig` / `getChatModel` / `getEmbeddingModel`
+- [`config.test.js`](../shared/test/config.test.js) - `loadModelsConfig` / `getChatModel` / `getEmbeddingModel`
   resolution rules; per-stage override; cache reset; fallback to `default`.
-- [`aem.test.js`](../shared/test/aem.test.js) — the `@aemdisc/shared` AEM client. Verifies request shape against
+- [`aem.test.js`](../shared/test/aem.test.js) - the `@aemdisc/shared` AEM client. Verifies request shape against
   a hand-rolled `createMockFetch` recorder: Sling POST encoding, CF model walk, `damPathToAssetsApi` path
   translation, the three typed errors (`AemAuthError`, `AemNotFoundError`, `AemUnavailableError`).
-- [`smoke.test.js`](../shared/test/smoke.test.js) — single placeholder that imports the barrel and asserts the
+- [`smoke.test.js`](../shared/test/smoke.test.js) - single placeholder that imports the barrel and asserts the
   package is loadable. Guards against accidental export-graph breaks.
 
 **`discovery-agent/test/`**
 
-- [`parseBrief.test.js`](../discovery-agent/test/parseBrief.test.js) — deterministic shape (locale detection,
+- [`parseBrief.test.js`](../discovery-agent/test/parseBrief.test.js) - deterministic shape (locale detection,
   brand vocab clamping), retry-with-error-hint on `LlmJsonParseError`, `LlmTimeoutError` surfacing.
-- [`retrieve.test.js`](../discovery-agent/test/retrieve.test.js) — full pipeline retrieve against a real
+- [`retrieve.test.js`](../discovery-agent/test/retrieve.test.js) - full pipeline retrieve against a real
   `sqlite-vec` DB built from a 4-fragment fixture (`FIXTURE_FRAGMENTS`). Uses a deterministic
-  `vectorFromTopic` so the embedder is replaced by a pure function — **no LLM is contacted**.
-- [`analyseGaps.test.js`](../discovery-agent/test/analyseGaps.test.js) — structural gaps (locale relax,
+  `vectorFromTopic` so the embedder is replaced by a pure function - **no LLM is contacted**.
+- [`analyseGaps.test.js`](../discovery-agent/test/analyseGaps.test.js) - structural gaps (locale relax,
   brand-filter drop), the LLM judge stub, candidate pool union, orphan-id rejection.
-- [`compose.test.js`](../discovery-agent/test/compose.test.js) — the `buildOrphanCheckedSchema` wrapper,
+- [`compose.test.js`](../discovery-agent/test/compose.test.js) - the `buildOrphanCheckedSchema` wrapper,
   schema retry once, `reuse`/`new` section discrimination, `schemaVersion` enforcement.
-- [`cli.test.js`](../discovery-agent/test/cli.test.js) — flag parser (`--json`, `--locale`, `--top`,
+- [`cli.test.js`](../discovery-agent/test/cli.test.js) - flag parser (`--json`, `--locale`, `--top`,
   `--source`, `--corpus`, `--results-dir`), exit code mapping, `INIT_CWD` path re-anchoring,
   `slugify`/`buildArtifactFilename` round-trip. Drives `runPipeline` with injected mocks for chat + embed.
-- [`render-markdown.test.js`](../discovery-agent/test/render-markdown.test.js) — the markdown renderer as a
+- [`render-markdown.test.js`](../discovery-agent/test/render-markdown.test.js) - the markdown renderer as a
   pure view: deterministic output given a fixed `AgentOutput`. No I/O.
 
 **`content-seeder/test/`**
 
-- [`seed.test.js`](../content-seeder/test/seed.test.js) — `parseArgs` defaults, deterministic `planFragments`
+- [`seed.test.js`](../content-seeder/test/seed.test.js) - `parseArgs` defaults, deterministic `planFragments`
   (same seed → identical IDs and reserved-topic placement), `avgBodyWords` body-length sanity.
-- [`embeddings.test.js`](../content-seeder/test/embeddings.test.js) — `buildEmbeddingsDb` writes a valid
+- [`embeddings.test.js`](../content-seeder/test/embeddings.test.js) - `buildEmbeddingsDb` writes a valid
   `sqlite-vec` table; vectors round-trip; idempotent re-build.
-- [`aem-push.test.js`](../content-seeder/test/aem-push.test.js) — CF model validation (`validateCfModel`) and
+- [`aem-push.test.js`](../content-seeder/test/aem-push.test.js) - CF model validation (`validateCfModel`) and
   `pushFragments` Sling-POST payload shape, with a hand-rolled mock client.
-- [`preflight.test.js`](../content-seeder/test/preflight.test.js) — `preflightModels` HTTP probes against LM
+- [`preflight.test.js`](../content-seeder/test/preflight.test.js) - `preflightModels` HTTP probes against LM
   Studio, with `global.fetch` mocked.
 
 **`scripts/test/`**
 
-- [`full-run.test.js`](../scripts/test/full-run.test.js) — `runBriefWithRetry` retry semantics,
+- [`full-run.test.js`](../scripts/test/full-run.test.js) - `runBriefWithRetry` retry semantics,
   `corpusPrecheck` (counts + locales), `buildIndexReadme`, `instrumentStages` timing capture,
   `localeFromSlug` / `inferLocale` heuristics, `buildSeedSummary`.
 
 ### Mocking patterns (the three workhorses)
 
 1. **`global.fetch` swap.** LLM, AEM, and preflight tests all replace `global.fetch` in `beforeEach` and
-   restore it in `afterEach` — e.g. [`llm.test.js#L28-L39`](../shared/test/llm.test.js) and
+   restore it in `afterEach` - e.g. [`llm.test.js#L28-L39`](../shared/test/llm.test.js) and
    [`preflight.test.js#L7-L13`](../content-seeder/test/preflight.test.js). No HTTP ever leaves the process.
 2. **Real `sqlite-vec` in `mkdtemp()`.** Retrieval tests build a throw-away DB on the temp filesystem
    ([`shared/test/retrieve.test.js#L1-L23`](../shared/test/retrieve.test.js),
    [`discovery-agent/test/retrieve.test.js#L1-L24`](../discovery-agent/test/retrieve.test.js)) instead of
-   mocking the driver — the math is the system under test, so stubs would defeat the purpose.
+   mocking the driver - the math is the system under test, so stubs would defeat the purpose.
 3. **Deterministic vectors as fake embedders.** `vectorFromTopic` (a normalised `sin()`-based hash) replaces
    the embedding model entirely. Pipeline tests inject this via the `embed` parameter so the LLM stack is
    never touched.
@@ -772,18 +772,18 @@ so log appends do not pollute `runtime-prompt-log.md`.
 
 ### What is **not** tested (and why)
 
-- **LM Studio itself** — out of scope; the harnesses call the real server in `npm run agent` / `npm run eval`.
-- **`sqlite-vec` native extension correctness** — trusted as a dependency; we test our usage of it, not its
+- **LM Studio itself** - out of scope; the harnesses call the real server in `npm run agent` / `npm run eval`.
+- **`sqlite-vec` native extension correctness** - trusted as a dependency; we test our usage of it, not its
   cosine math.
-- **Markdown rendering against external diff tooling** — `render-markdown.test.js` only asserts our string
+- **Markdown rendering against external diff tooling** - `render-markdown.test.js` only asserts our string
   output is stable.
-- **End-to-end against a real AEM tenant** — `AemFragmentSource` is exercised via mocked fetch; live AEM is
+- **End-to-end against a real AEM tenant** - `AemFragmentSource` is exercised via mocked fetch; live AEM is
   reached only by the production path (`--source=aem`).
 
 ### Determinism budget
 
 The whole suite runs in ~10.6s on a developer laptop (`duration_ms 10653` in the last green run). Tests that
-need randomness use fixed seeds — `planFragments(seed=42)` in
+need randomness use fixed seeds - `planFragments(seed=42)` in
 [`seed.test.js#L9`](../content-seeder/test/seed.test.js), `DEMO_SEED = 20260626` in eval expectations.
 
 **Pop quiz.** A new test for `retrieve()` needs an embedding vector but you cannot call LM Studio in CI.
@@ -838,7 +838,7 @@ so `data/corpus.json` resolves correctly.
 
 ---
 
-## 19. Interview cheat-sheet — likely questions
+## 19. Interview cheat-sheet - likely questions
 
 These are the questions the design itself invites; canned answers below cite the supporting code.
 
@@ -886,13 +886,13 @@ Seven typed error classes in [`errors.js#L25-L31`](../shared/src/llm/errors.js) 
 *shape-vs-availability*. `llmFetch` retries only network and 5xx ([`llm.js#L77-L116`](../shared/src/llm/llm.js)).
 `JsonParseError` / `ZodError` retries happen at the **call site** with a stricter prompt:
 `parseBrief.js#L68-L81`, `analyseGaps.js#L132-L140`, `compose.js#L64-L98`. The last LLM call (`compose`) fails
-loud after the retry — there is no third attempt.
+loud after the retry - there is no third attempt.
 
 > **Q. Why Zod everywhere and not just at the boundary?**
 
 Each stage hands the next a *typed* object, and each LLM call validates its own reply. That means:
 - An LLM mistake fails the stage that made the call, not three stages later.
-- The renderer is provably a view over `AgentOutput` — it cannot read fields the schema doesn't declare.
+- The renderer is provably a view over `AgentOutput` - it cannot read fields the schema doesn't declare.
 - The eval harness can short-circuit a failing `compose` and still score retrieval+gaps
   ([`run.js#L171-L184`](../eval/run.js)).
 
@@ -923,30 +923,30 @@ streaming them buys nothing.
 
 ## 20. Glossary
 
-- **AgentOutput** — the single Zod-validated object returned by `compose`. Contract: `schemaVersion`, `brief`,
+- **AgentOutput** - the single Zod-validated object returned by `compose`. Contract: `schemaVersion`, `brief`,
   `matchedFragments[≤3]`, `gaps[]`, `draftOutline`, `reusedFragments[]`. Source:
   [`shared/src/schema/output.js#L48-L55`](../shared/src/schema/output.js).
-- **BM25** — the keyword-relevance scoring function provided by `wink-bm25-text-search`. Lives entirely in memory;
+- **BM25** - the keyword-relevance scoring function provided by `wink-bm25-text-search`. Lives entirely in memory;
   built per request.
-- **Brand guideline** — one of the four labels in `BRAND_VOCAB`
+- **Brand guideline** - one of the four labels in `BRAND_VOCAB`
   ([`parseBrief.js#L12-L17`](../discovery-agent/src/pipeline/parseBrief.js)). Used by the brand filter in `retrieve`.
-- **Brief** — the raw text input. After `parseBrief`, the structured form is called `StructuredBrief`.
-- **Candidate pool** — the deduplicated set of fragments `analyseGaps` reasons over: `matches ∪ nearMisses ∪
+- **Brief** - the raw text input. After `parseBrief`, the structured form is called `StructuredBrief`.
+- **Candidate pool** - the deduplicated set of fragments `analyseGaps` reasons over: `matches ∪ nearMisses ∪
   droppedByBrandFilter` ([`analyseGaps.js#L45-L60`](../discovery-agent/src/pipeline/analyseGaps.js)).
-- **Coverage** — `"none" | "partial"`. Per-topic verdict emitted by `analyseGaps` and constrained by
+- **Coverage** - `"none" | "partial"`. Per-topic verdict emitted by `analyseGaps` and constrained by
   `GAP_COVERAGE` ([`output.js#L12`](../shared/src/schema/output.js)).
-- **DEMO_SEED** — `20260626`, the locked seed against which eval expectations are valid
+- **DEMO_SEED** - `20260626`, the locked seed against which eval expectations are valid
   ([`eval/run.js#L14`](../eval/run.js)).
-- **Freshness** — `clamp01(1 − monthsSinceModified / 18)` ([`retrieve.js#L20-L26`](../discovery-agent/src/pipeline/retrieve.js)).
-- **Locale ladder** — three-rung fallback (exact → prefix → any) applied before scoring
+- **Freshness** - `clamp01(1 − monthsSinceModified / 18)` ([`retrieve.js#L20-L26`](../discovery-agent/src/pipeline/retrieve.js)).
+- **Locale ladder** - three-rung fallback (exact → prefix → any) applied before scoring
   ([`retrieve.js#L28-L35`](../discovery-agent/src/pipeline/retrieve.js)).
-- **LM Studio** — local OpenAI-compatible LLM server at `http://localhost:1234`
+- **LM Studio** - local OpenAI-compatible LLM server at `http://localhost:1234`
   ([`llm.js#L11-L15`](../shared/src/llm/llm.js)).
-- **Orphan fragmentId** — a `fragmentId` returned by `compose` that does not appear in `matchedFragments`. Caught
+- **Orphan fragmentId** - a `fragmentId` returned by `compose` that does not appear in `matchedFragments`. Caught
   by `buildOrphanCheckedSchema` ([`compose.js#L46-L62`](../discovery-agent/src/pipeline/compose.js)).
-- **Reserved topics** — six fixed entries that guarantee the demo brief has retrievable matches per locale
+- **Reserved topics** - six fixed entries that guarantee the demo brief has retrievable matches per locale
   ([`topics.js#L3-L34`](../content-seeder/src/topics.js)).
-- **Structural gap** — a gap synthesised from retrieval shape (locale relaxed, brand filter dropped fragments)
+- **Structural gap** - a gap synthesised from retrieval shape (locale relaxed, brand filter dropped fragments)
   rather than from the LLM judge ([`analyseGaps.js#L157-L204`](../discovery-agent/src/pipeline/analyseGaps.js)).
 
 ---

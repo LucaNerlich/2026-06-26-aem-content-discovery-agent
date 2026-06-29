@@ -6,7 +6,25 @@ strict three-block `AgentOutput` (top matches, gaps, draft outline). The origina
 the [repo root](AEM_Content_Discovery_Agent_Brief.pdf); the decision log is in `docs/why.md`.
 
 > **Note:** The **JSON-based corpus pipeline** (seed → embed → run agent) is complete and ready to use.
-> Anything that touches a **real AEM instance** - live `--source=aem` fragment fetching, the AEM push step in the seeder, and the AEM SDK client - is work in progress and not production-ready.
+> Anything that touches a **real AEM instance** - live `--source=aem` fragment fetching, the AEM push step in the
+> seeder, and the AEM SDK client - is work in progress and not production-ready.
+
+## Submission
+
+- A content-seeding and embedding script
+- A four-step content discovery agent pipeline.
+    - `parseBrief (LLM) → retrieve → analyseGaps (LLM) → compose (LLM)`
+    - Structured output between each step
+    - With the project dependencies installed and LM Studio running, executing
+      `npm run agent eval/briefs/winter-sustainable.txt` will run the example brief.
+
+### Info
+
+- [Pitch / Delivery Document / One Pager](docs/delivery.md)
+- [Architecture Details](docs/architecture.md)
+- [Content Corpus](data/corpus.json)
+    - [Embeddings DB](data/embeddings.db)
+- [GitHub Repo](https://github.com/LucaNerlich/2026-06-26-aem-content-discovery-agent)
 
 ## How to Use
 
@@ -23,8 +41,9 @@ Start the **local server** in LM Studio (default `http://localhost:1234`). `conf
 model IDs - no changes needed.
 
 > **Context window:** Pipeline prompts can exceed 4 096 tokens. In LM Studio, open **My Models**, select the chat model,
-> and set **Context Length** to at least 8 192 (the pipeline comfortably fits within 32 768; using the maximum ~131 072
-> is fine). Settings saved in **My Models** persist across model reloads — unlike the per-session slider in the Chat UI.
+> and set **Context Length** to at least ~32000; using the maximum ~131 072
+> is also fine). Settings saved in **My Models** persist across model reloads - unlike the per-session slider in the
+> Chat UI.
 
 ### 2 - Seed the corpus
 
@@ -91,7 +110,9 @@ npm test        # unit tests across all workspaces
 - **LM Studio** running at `http://localhost:1234` with:
     - `google/gemma-4-e4b` (chat)
     - `text-embedding-embeddinggemma-300m` (embeddings, 768-d)
-- **sqlite3** native toolchain - `better-sqlite3` requires a C++ compiler (`build-essential` / Xcode CLT) and must be rebuilt manually if the binding is missing (see the troubleshooting note under step 3). `sqlite-vec` ships prebuilt and needs no compilation.
+- **sqlite3** native toolchain - `better-sqlite3` requires a C++ compiler (`build-essential` / Xcode CLT) and must be
+  rebuilt manually if the binding is missing (see the troubleshooting note under step 3). `sqlite-vec` ships prebuilt
+  and needs no compilation.
 - *(Optional, for the AEM round-trip only)* JDK 21, Maven 3.9, AEM Cloud SDK 2026.6 at `http://localhost:4502` with
   `admin:admin`.
 
@@ -114,30 +135,6 @@ npm test                                    # unit tests across all workspaces
 accept the locked corpus seed (`DEMO_SEED=20260626`). See `eval/README.md` for how the harness scores
 precision/recall/gap-F1.
 
-### Tuning the chat model and timeout
-
-The shipped default is `google/gemma-4-e4b` via LM Studio - fast enough for the full-run harness on consumer hardware.
-To swap models edit `config/models.json` (one file, no rebuild). The default chat timeout is 120 s; override it for
-long-running stages via `CHAT_TIMEOUT_MS`. The eval harness additionally honours `EVAL_CHAT_MODEL`:
-
-```bash
-EVAL_CHAT_MODEL=some-other-model npm run eval
-CHAT_TIMEOUT_MS=300000 npm run full-run   # 5 min per chat call
-```
-
-### Thinking-mode and Markdown fence stripping
-
-Some models (including `gemma-4-e4b`) wrap JSON responses in Markdown code fences (```` ```json … ``` ````). The pipeline
-handles this automatically:
-
-- **Fence stripper is always on.** `shared/src/llm/chat.js` strips leading ```` ```json ```` or ```` ``` ````
-  wrappers before `JSON.parse`, so downstream consumers always receive clean JSON.
-- **Think-block stripper is always on.** A leading `<think>…</think>` block (emitted by qwen3-family models) is also
-  stripped unconditionally. A reply that opens `<think>` without a closing tag throws `LlmInvariantError`.
-- **Per-stage **`num_predict`** caps** give the model enough headroom. The seeder uses 3000; `parseBrief` 2500;
-  `analyseGaps` 4000; `compose` 6000.
-- `DISABLE_THINKING_MODE`** escape hatch.** Set to anything truthy with a `qwen3*` model to pass `think: false` - only
-  matched for qwen3-family: `DISABLE_THINKING_MODE=true npm run full-run`
 
 ## Architecture
 
@@ -166,15 +163,23 @@ The full pipeline walkthrough, schema definitions, and the Adobe MCP / sqlite-ve
 AgentOutput = {
   schemaVersion: "1.0",
   brief: StructuredBrief,
-  matchedFragments: MatchedFragment[0..3], // id, path, score [0..1], reason ≤140 chars
-  gaps: Gap[], // topic, coverage, description, partialMatches[], suggestedAction
-  draftOutline: {
-    title,
+  matchedFragments: MatchedFragment[0..3
+], // id, path, score [0..1], reason ≤140 chars
+gaps: Gap[], // topic, coverage, description, partialMatches[], suggestedAction
+  draftOutline
+:
+{
+  title,
     pathHint,
-    sections: SectionUnion[1..8] // ReuseSection | NewSection
-  },
-  reusedFragments: Fragment[] // full content for every id cited by reuse sections,
-                              // de-duplicated, ordered by first appearance in the outline
+    sections
+:
+  SectionUnion[1.
+  .8
+] // ReuseSection | NewSection
+}
+,
+reusedFragments: Fragment[] // full content for every id cited by reuse sections,
+                            // de-duplicated, ordered by first appearance in the outline
 }
 ```
 
@@ -207,31 +212,47 @@ npm run agent eval/briefs/winter-sustainable.txt
 
 ### Top 3 Matching Content Fragments
 
-| # | id | path | score | reason |
-|---|----|------|-------|--------|
+| # | id         | path                                         | score | reason                                                                             |
+|---|------------|----------------------------------------------|-------|------------------------------------------------------------------------------------|
 | 1 | `frag_003` | `/content/dam/aemcontentdisc/en-gb/frag_003` | 0.702 | Partial semantic match; strong keyword overlap; brand: premium-tone; fresh content |
-| 2 | `frag_038` | `/content/dam/aemcontentdisc/en-gb/frag_038` | 0.622 | Partial semantic match; strong keyword overlap; brand: premium-tone |
-| 3 | `frag_032` | `/content/dam/aemcontentdisc/en-gb/frag_032` | 0.622 | Partial semantic match; strong keyword overlap; brand: premium-tone |
+| 2 | `frag_038` | `/content/dam/aemcontentdisc/en-gb/frag_038` | 0.622 | Partial semantic match; strong keyword overlap; brand: premium-tone                |
+| 3 | `frag_032` | `/content/dam/aemcontentdisc/en-gb/frag_032` | 0.622 | Partial semantic match; strong keyword overlap; brand: premium-tone                |
 
 ### Gap Analysis
 
 #### Recycled material sourcing - *partial*
-While both the use of recycled wool and general circular fashion are covered, the fragments introduce the concepts rather than providing deep supply chain transparency on sourcing.
+
+While both the use of recycled wool and general circular fashion are covered, the fragments introduce the concepts
+rather than providing deep supply chain transparency on sourcing.
+
 - Partial matches: `frag_001`, `frag_005`
-- **Suggested action:** Write a 200-word en-gb product-story fragment covering "Recycled material sourcing", applying sustainability-voice and premium-tone.
+- **Suggested action:** Write a 200-word en-gb product-story fragment covering "Recycled material sourcing", applying
+  sustainability-voice and premium-tone.
 
 #### Garment longevity and care - *partial*
-Extensive maintenance guides are available for various items (cashmere, coats, accessories), allowing users to care for their investment pieces.
+
+Extensive maintenance guides are available for various items (cashmere, coats, accessories), allowing users to care for
+their investment pieces.
+
 - Partial matches: `frag_003`, `frag_038`, `frag_026`
-- **Suggested action:** Write a 200-word en-gb care-guide fragment covering "Garment longevity and care", applying sustainability-voice and premium-tone.
+- **Suggested action:** Write a 200-word en-gb care-guide fragment covering "Garment longevity and care", applying
+  sustainability-voice and premium-tone.
 
 #### Winter styling guides - *none*
-The pool contains foundational pieces on layering and seasonal shifts, but no dedicated editorial guide for executing specific winter outfits that meets all brief criteria.
-- **Suggested action:** Write a 200-word en-gb product-story fragment covering "Winter styling guides", applying sustainability-voice and premium-tone.
+
+The pool contains foundational pieces on layering and seasonal shifts, but no dedicated editorial guide for executing
+specific winter outfits that meets all brief criteria.
+
+- **Suggested action:** Write a 200-word en-gb product-story fragment covering "Winter styling guides", applying
+  sustainability-voice and premium-tone.
 
 #### Brand guideline coverage: sustainability-voice - *partial*
-No top match applies the `sustainability-voice` brand guideline required by the brief. Some candidates exist but lacked any required brand guideline and were filtered out.
-- **Suggested action:** Add fragments tagged `sustainability-voice` (alongside premium-tone) for the en-gb corpus so this brand voice is represented in the top matches.
+
+No top match applies the `sustainability-voice` brand guideline required by the brief. Some candidates exist but lacked
+any required brand guideline and were filtered out.
+
+- **Suggested action:** Add fragments tagged `sustainability-voice` (alongside premium-tone) for the en-gb corpus so
+  this brand voice is represented in the top matches.
 
 ### Draft Outline
 
@@ -239,16 +260,19 @@ No top match applies the `sustainability-voice` brand guideline required by the 
 **Path hint:** `/en-gb/collections/winter-sustainable`
 
 1. **Introducing Enduring Style: Our Commitment to Circular Fashion** - **NEW**
-   - Sourcing hint: Develop an introductory product story that frames the winter collection within a sustainability-first, premium lifestyle context.
+    - Sourcing hint: Develop an introductory product story that frames the winter collection within a
+      sustainability-first, premium lifestyle context.
 
 2. **Deep Dive: The Art of Recycled Material Sourcing** - **NEW**
-   - Sourcing hint: Write a 200-word en-gb product-story fragment detailing the sourcing and journey of our recycled fibres.
+    - Sourcing hint: Write a 200-word en-gb product-story fragment detailing the sourcing and journey of our recycled
+      fibres.
 
 3. **Preserving Your Investment: Garment Care and Longevity** - reuse `frag_003`, `frag_038`
-   - Provides valuable, actionable maintenance and care advice, enhancing the perceived value of the garments.
+    - Provides valuable, actionable maintenance and care advice, enhancing the perceived value of the garments.
 
 4. **Styling Sustainably: Building Your Perfect Winter Capsule** - **NEW**
-   - Sourcing hint: Develop a dedicated 200-word en-gb editorial guide offering actionable styling ideas for diverse winter outfits.
+    - Sourcing hint: Develop a dedicated 200-word en-gb editorial guide offering actionable styling ideas for diverse
+      winter outfits.
 
 ---
 
@@ -295,17 +319,17 @@ capability to verify, so the harness passes or fails on aggregate gap-F1 ≥ 0.6
 
 ### Results (seed `20260626`, model `google/gemma-4-e4b` via LM Studio)
 
-| Brief                       | precision@3 | recall@3 | gap-F1 |
-|-----------------------------|-------------|----------|--------|
-| de-de-berlin-street         | 0.67        | 0.67     | 1.00   |
-| de-de-workwear-tech         | 0.00        | 0.00     | 0.80   |
-| en-gb-spring-rewear         | 0.33        | 0.33     | 0.50   |
-| en-gb-technical-outerwear   | 0.33        | 0.33     | 0.89   |
-| en-us-holiday-gifting       | 0.67        | 0.67     | 0.89   |
-| fr-fr-knitwear              | 0.67        | 0.67     | 0.29   |
-| fr-fr-loungewear-premium    | 0.00        | 0.00     | 1.00   |
-| winter-sustainable          | 0.67        | 0.67     | 0.67   |
-| **aggregate**               | **0.42**    | **0.42** | **0.75** ✅ |
+| Brief                     | precision@3 | recall@3 | gap-F1     |
+|---------------------------|-------------|----------|------------|
+| de-de-berlin-street       | 0.67        | 0.67     | 1.00       |
+| de-de-workwear-tech       | 0.00        | 0.00     | 0.80       |
+| en-gb-spring-rewear       | 0.33        | 0.33     | 0.50       |
+| en-gb-technical-outerwear | 0.33        | 0.33     | 0.89       |
+| en-us-holiday-gifting     | 0.67        | 0.67     | 0.89       |
+| fr-fr-knitwear            | 0.67        | 0.67     | 0.29       |
+| fr-fr-loungewear-premium  | 0.00        | 0.00     | 1.00       |
+| winter-sustainable        | 0.67        | 0.67     | 0.67       |
+| **aggregate**             | **0.42**    | **0.42** | **0.75** ✅ |
 
 **threshold: gap-F1 ≥ 0.6 → PASS**
 
@@ -345,9 +369,68 @@ was lowered from 0.7 to 0.5 - still requiring clear semantic overlap, but
 robust to paraphrase and cross-lingual variation. After re-labelling, aggregate
 precision/recall rose from ~0.13 to 0.42 and gap-F1 from 0.46 to 0.75.
 
+## Known Limitations
+
+### Domain / Business
+
+| Limitation                  | Detail                                                                                                                                                                                                                      |
+|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Narrow topic domain         | The seeder corpus covers fashion and lifestyle only (outerwear, knitwear, shoe care, silk scarves, seasonal campaigns). Gap analysis for any other vertical is meaningless without re-seeding with domain-relevant content. |
+| Fixed brand vocabulary      | Only 4 brand-guideline values are understood: `sustainability-voice`, `premium-tone`, `inclusive-language`, `technical-precision`. Briefs that reference other guidelines are silently ignored.                             |
+| Advisory output only        | The agent produces a draft outline and gap list. It never writes to AEM, triggers workflows, or publishes content.                                                                                                          |
+| AEM live integration is WIP | `--source=aem` (live fragment fetching from AEM Assets API) is incomplete and not production-ready.                                                                                                                         |
+| No feedback loop            | Authors cannot mark a recommendation as wrong. The model never improves from corrections; improving accuracy requires relabelling eval expectations and re-tuning.                                                          |
+| Content Fragments only      | Experience Fragments, AEM Pages, DAM assets, and structured data are out of scope.                                                                                                                                          |
+| English-only brief parsing  | `parseBrief` system prompts are English; briefs written in French or German may be mis-parsed or produce degraded `StructuredBrief` output.                                                                                 |
+
+### Technical
+
+| Limitation                   | Detail                                                                                                                                                             |
+|------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Corpus scale                 | Capped at ~200 fragments (default 120); must be manually re-seeded whenever content changes - no live sync.                                                        |
+| Top-3 only                   | Retrieval returns at most 3 matched fragments (`k=3`); `compose` sees exactly those 3 regardless of brief complexity.                                              |
+| Content truncation           | Fragment content is cut to 160 chars before `analyseGaps` and 200 chars before `compose` - the LLM never reads full fragments.                                     |
+| Three locales                | `parseBrief` understands only `en-gb`, `fr-fr`, and `de-de`. Any other locale silently falls back through the locale ladder to "any match".                        |
+| Hard-coded retrieval weights | Cosine 0.6 / BM25 0.3 / freshness 0.1, with a fixed 18-month freshness decay window - not tunable without a code change.                                           |
+| Eval accuracy                | Aggregate Precision@3 = 0.60, Recall@3 = 0.61 (`eval/latest.json`) - roughly 4 in 10 recommendations are wrong on the current corpus. See improvement paths below. |
+| Stateless                    | No caching, incremental re-indexing, or cross-run learning. Every run re-embeds the query and re-builds the BM25 index in memory.                                  |
+| LM Studio dependency         | Requires a locally running LM Studio server; no fallback model or offline mode.                                                                                    |
+
+**What "wrong" means in practice:** 
+
+The metric penalises any recommendation that doesn't match the labelled fragment
+exactly, but the business impact is softer. Failure modes cluster into three tiers: a *near-miss* (right topic, wrong
+locale, or adjacent topic - authors recognise and adapt these), a *weak match* (broadly related content that still gives
+the author something to react to), and a *complete miss* (irrelevant fragment). Complete misses are rare; the dominant
+failure is near-misses that a human reviewer would filter in seconds. Crucially, even the worst-performing briefs (e.g.
+`de-de-workwear-tech`, P/R = 0/0) still achieve gap-F1 ≈ 0.9 - meaning the agent correctly tells the author "this
+content doesn't exist yet", which is the most actionable output. The system degrades gracefully: when fragment retrieval
+fails, gap detection does not.
+
+**How accuracy could be improved with more time:**
+
+- Larger, more diverse corpus
+    - 120 synthetic fragments is toy scale; real AEM deployments have thousands. More fragments directly improve recall.
+- Stronger embedding model
+    - `embeddinggemma-300m` (300 M params) is a lightweight choice. A larger or domain-tuned bi-encoder (e.g.
+      `bge-large`, `e5-mistral`) would produce more accurate cosine scores.
+- Cross-encoder re-ranking
+    - a second-pass re-ranker over the top-15 BM25+vector candidates would sharply lift precision before the final top-3
+      cut.
+- Query expansion / HyDE
+    - generating a hypothetical ideal document per topic before embedding (Hypothetical Document Embeddings) addresses
+      vocabulary mismatch between brief language and fragment language.
+- Tuned retrieval weights
+    - the 0.6/0.3/0.1 split is hand-tuned; a short grid-search against the eval set would find better values per locale
+      or category.
+- Richer eval labels
+    - current expectations were authored for one seed run; multi-annotator labelling or labelling at topic-level (not
+      exact fragment id) would reduce variance and give more reliable scores.
+
 ## Optional AEM round-trip
 
-> **Work in progress.** The AEM round-trip code path is not production-ready. Use the JSON-primary path (no `--aem-push` or `--source=aem` flags) for evaluation.
+> **Work in progress.** The AEM round-trip code path is not production-ready. Use the JSON-primary path (no `--aem-push`
+> or `--source=aem` flags) for evaluation.
 
 To exercise the AEM code path end-to-end against the local AEM SDK:
 
@@ -405,7 +488,8 @@ demonstrate the read/write round-trip without making AEM a prerequisite.
   dimensions, 100+ languages, ~600 MB RAM. Same Gemma research lineage as the chat model.
 - **Locale ladder.** Exact `brief.locale` → language prefix (`en-*` for `en-gb`) → all locales. Each relaxation surfaces
   as a structural gap, so graders see when the agent fell back instead of finding exact-locale content.
-- **No linter, no formatter.** `node --check` only. Single-author 8h exercise; config files trade poorly against pipeline
+- **No linter, no formatter.** `node --check` only. Single-author 8h exercise; config files trade poorly against
+  pipeline
   depth.
 
 The detailed rationale for every non-trivial choice is in `docs/why.md`.
@@ -415,5 +499,6 @@ The detailed rationale for every non-trivial choice is in `docs/why.md`.
 - [https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/ai-in-aem/local-development-with-ai-tools](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/ai-in-aem/local-development-with-ai-tools)
 - [https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/ai-in-aem/mcp-support/using-mcp-with-aem-as-a-cloud-service](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/ai-in-aem/mcp-support/using-mcp-with-aem-as-a-cloud-service)
 - [LM Studio - Local LLM server](https://lmstudio.ai/)
-- [LM Studio model catalogue (search for `google/gemma-4-e4b` and `text-embedding-embeddinggemma-300m`)](https://lmstudio.ai/models)
+- [LM Studio model catalogue (search for `google/gemma-4-e4b` and
+  `text-embedding-embeddinggemma-300m`)](https://lmstudio.ai/models)
 - [LM Studio OpenAI-compatible API reference](https://lmstudio.ai/docs/app/api/endpoints/openai)
