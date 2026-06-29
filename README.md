@@ -2,8 +2,7 @@
 
 An Adobe AI Engineering interview deliverable: a Node CLI that ingests a free-form content brief, retrieves relevant
 fragments from a local corpus using hybrid vector + BM25 search, asks a local LLM to judge content gaps, and returns a
-strict three-block `AgentOutput` (top matches, gaps, draft outline). The original brief PDF lives at
-the [repo root](AEM_Content_Discovery_Agent_Brief.pdf); the decision log is in `docs/why.md`.
+strict three-block `AgentOutput` (top matches, gaps, draft outline).
 
 > **Note:** The **JSON-based corpus pipeline** (seed → embed → run agent) is complete and ready to use.
 > Anything that touches a **real AEM instance** - live `--source=aem` fragment fetching, the AEM push step in the
@@ -17,6 +16,7 @@ the [repo root](AEM_Content_Discovery_Agent_Brief.pdf); the decision log is in `
     - Structured output between each step
     - With the project dependencies installed and LM Studio running, executing
       `npm run agent eval/briefs/winter-sustainable.txt` will run the example brief.
+- [Example Run and Output](docs/sample-run.md)
 
 ### Info
 
