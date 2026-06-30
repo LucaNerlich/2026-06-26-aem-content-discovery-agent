@@ -7,7 +7,7 @@ import {
 } from "./errors.js";
 import { getChatModel } from "../config/models.js";
 
-const DEFAULT_CHAT_TIMEOUT_MS = 120_000;
+const DEFAULT_CHAT_TIMEOUT_MS = 520_000;
 
 function getChatTimeoutMs() {
   const raw = process.env.CHAT_TIMEOUT_MS;
@@ -50,7 +50,9 @@ export async function chat({ system, user, json = false, model = getChatModel("d
   messages.push({ role: "user", content: user });
 
   // Map legacy options-shape keys to OpenAI-compat top-level fields.
-  const { temperature = 1.0, top_p = 0.95, num_predict, stop, seed: optSeed } = options ?? {};
+  const { temperature = 1.0, top_p = 0.95, num_predict, stop, seed: optSeed, think: optThink } = options ?? {};
+  const disableThinking = process.env.DISABLE_THINKING_MODE && /^qwen3/i.test(model);
+  const thinkValue = disableThinking ? false : optThink;
   const body = {
     model,
     messages,
@@ -60,6 +62,7 @@ export async function chat({ system, user, json = false, model = getChatModel("d
     ...(num_predict != null ? { max_tokens: num_predict } : {}),
     ...(stop != null ? { stop } : {}),
     ...(optSeed != null ? { seed: optSeed } : {}),
+    ...(thinkValue != null ? { think: thinkValue } : {}),
   };
   // LM Studio only accepts "json_schema" or "text"; rely on prompt instructions + JSON.parse instead.
 
